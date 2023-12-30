@@ -8,8 +8,7 @@ Your go-to resource for comprehensive information on rugby tournaments, teams, p
 - [Features](#features)
 - [Getting Started](#getting-started)
 - [Technologies Used](#technologies-used)
-- [Contributing](#contributing)
-- [License](#license)
+- [Live Demo](#view-live-site)
 
 ## About
 RugbyWiki is a website dedicated to providing in-depth coverage of various rugby tournaments. Whether you're a passionate rugby fan, a player, or just curious about the sport, RugbyWiki has you covered. Explore detailed tournament information, team profiles, and more.
@@ -40,3 +39,6 @@ To get started with RugbyWiki locally, follow these steps:
 - **Frontend:** HTML, CSS, JavaScript.
 - **Backend:** Node.js, Express.
 - **Deployment:** Netlify.
+
+## View Live Site
+
