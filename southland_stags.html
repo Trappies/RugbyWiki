@@ -1,0 +1,1385 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .cont:nth-child(14){
+          animation-delay: 13s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #southlandKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #southlandKitSection {
+          display: none;
+        }
+
+        #southlandKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #southlandKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #southlandKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #southlandKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #southlandKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #southlandKitSection {
+          display: flex;
+        }
+
+        #southlandKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #southlandKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Southland Stags</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/southlandbanner.png" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About Southland Stags</h3>
+    <p>The Southland Rugby Football Union, proudly represented by the Southland Stags, stands as a testament to unwavering determination in New Zealand's rugby landscape. Established in 1887, the union has been a resilient force in the National Provincial Championship (NPC) since its inception in 1976. The Stags, adorned in maroon and gold, embody the spirit of Southland as they fiercely compete in the NPC, showcasing a legacy of grit and passion for the game. With home games hosted at Rugby Park Stadium in Invercargill, the Southland Stags enjoy fervent support from their local community, creating an atmosphere that echoes the rich rugby heritage of the region. Affiliated with the Highlanders Super Rugby franchise, the Southland Stags serve as a crucial pathway for emerging talent, contributing to the broader success of New Zealand rugby. The maroon and gold colors proudly worn by the Stags symbolize not just a team but a community's enduring commitment to the sport they hold dear.
+    </p>
+  
+    
+
+      <div id="southlandKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Southland Stags Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/southlandhome.png" alt="Southland Stags Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/southlandaway.png" alt="Southland Stags Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="southlandKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Southland Stags Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/southlandhome.png" alt="Southland Stags Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/southlandaway.png" alt="Southland Stags Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/303981-539f9b2e37-3/JonahAoinaSouthland.jpg" class="card-img-top" alt="Jonah Aoina" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jonah Aoina</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/303982-7d94ff17ae-3/ShunsukeAsaokaSouthland.jpg" class="card-img-top" alt="Shunsuke Asaoka" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Shunsuke Asaoka</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/303983-b916c39ef3-3/MartyBanksSouthland.jpg" class="card-img-top" alt="Marty Banks" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marty Banks</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/303984-fd653806a8-3/JoshBekhuisSouthland.jpg" class="card-img-top" alt="Josh Bekhuis" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Josh Bekhuis</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/303985-a7df9adae6-3/JacobCoghlan.jpg" class="card-img-top" alt="Jacob Coghlan." style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jacob Coghlan.</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282901-e67a95a3f5-3/EthandeGrootSouthland.jpg" class="card-img-top" alt="Ethan de Groot" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ethan de Groot</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/303986-582a524172-3/DannyDrakeSouthland.jpg" class="card-img-top" alt="Danny Drake" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Danny Drake</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/303987-b4b93d0708-3/GregDyerSouthland.jpg" class="card-img-top" alt="Greg Dyer" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Greg Dyer</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307204-77f5b2b78c-3/HunterFaheySouthland.jpg" class="card-img-top" alt="Hunter Fahey" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Hunter Fahey</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/303988-f16610fa3d-3/LeroyFergusonSouthland.jpg" class="card-img-top" alt="Leroy Ferguson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Leroy Ferguson</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/303990-fce54ad03b-3/ViliamiFineSouthland.jpg" class="card-img-top" alt="Viliami Fine" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Viliami Fine</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/303992-e35b7d6e70-3/NoahFosterSouthland.jpg" class="card-img-top" alt="Noah Foster" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Noah Foster</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/303993-4b98058ff8-3/ScottGregorySouthland.jpg" class="card-img-top" alt="Scott Gregory" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Scott Gregory</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304022-f116c5a9d4-3/DavidHallSouthland.jpg" class="card-img-top" alt="David Hall" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">David Hall</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/303994-de83b9b300-3/GabrielHamer-WebbSouthland.jpg" class="card-img-top" alt="Gabriel Hamer-Webb" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gabriel Hamer-Webb</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/303996-8aa54624af-3/QuinnHarrison-JonesSouthland.jpg" class="card-img-top" alt="Quinn Harrison-Jones" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Quinn Harrison-Jones</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/303997-bc2eae1fe0-3/DanHollinsheadSouthland.jpg" class="card-img-top" alt="Dan Hollinshead" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dan Hollinshead</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/198058-b69d12f84b-3/LiamHowleySouthland.jpg" class="card-img-top" alt="Liam Howley" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Liam Howley</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/303998-42c3168f51-3/GraysonKnappSouthland.jpg" class="card-img-top" alt="Grayson Knapp" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Grayson Knapp</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/303999-ad9976873a-3/PaulaLatuSouthland.jpg" class="card-img-top" alt="Paula Latu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Paula Latu</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304000-d481881f0b-3/TevitaLeo-LatuSouthland.jpg" class="card-img-top" alt="Tevita Leo-Latu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tevita Leo-Latu</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304001-acc487fda2-3/MichaelMansonSouthland.jpg" class="card-img-top" alt="Michael Manson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Michael Manson</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304002-4506b686dc-3/RintaroMaruyamaSouthland.jpg" class="card-img-top" alt="Rintaro Maruyama" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rintaro Maruyama</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/247395-860898e5d5-3/MikeMcKeeSouthland.jpg" class="card-img-top" alt="Mike McKee" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mike McKee</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307205-792304d0f1-3/ConnorMcLeodSouthland.jpg" class="card-img-top" alt="Connor McLeod" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Connor McLeod</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304003-46cb28412b-3/HaydenMichaelsSouthland.jpg" class="card-img-top" alt="Hayden Michaels" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Hayden Michaels</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304004-bd6297fbff-3/MorganMitchellSouthland.jpg" class="card-img-top" alt="Morgan Mitchell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Morgan Mitchell</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304007-952fbeeef6-3/JacobPayneSouthland.jpg" class="card-img-top" alt="Jacob Payne" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jacob Payne</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304008-ee1364c69f-3/JayRentonSouthland.jpg" class="card-img-top" alt="Jay Renton" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jay Renton</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304010-457abdd2fe-3/BlairRyallSouthland.jpg" class="card-img-top" alt="Blair Ryall" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Blair Ryall</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309402-194ee6e448-3/JerrySextonSouthland.jpg" class="card-img-top" alt="Jerry Sexton" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jerry Sexton</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304011-4615c4662a-3/AngusSimmersSouthland.jpg" class="card-img-top" alt="Angus Simmers" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Angus Simmers</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304012-2245a79998-3/ShneilSinghSouthland.jpg" class="card-img-top" alt="Shneil Singh" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Shneil Singh</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307203-22fa95729d-3/NicSouchonSouthland.jpg" class="card-img-top" alt="Nic Souchon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nic Souchon</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304013-dd60d0e97f-3/ShaunStodartSouthland.jpg" class="card-img-top" alt="Shaun Stodart" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Shaun Stodart</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304014-290c114836-3/BenStrangSouthland.jpg" class="card-img-top" alt="Ben Strang" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben Strang</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305371-719056cae3-3/KaiseiTamuraSouthland.jpg" class="card-img-top" alt="Kaisei Tamura" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kaisei Tamura</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304015-81dc839099-3/JackTaylorSouthland.jpg" class="card-img-top" alt="Jack Taylor" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jack Taylor</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304024-62e9b102e1-3/DarylThompsonSouthland.jpg" class="card-img-top" alt="Daryl Thompson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Daryl Thompson</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308441-e09bc9cd68-3/HamdahnTuipulotuSouthland.jpg" class="card-img-top" alt="Hamdahn Tuipulotu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Hamdahn Tuipulotu</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304016-32a5cb8ea5-3/SemisiTupouSouthland.jpg" class="card-img-top" alt="Semisi Tupou" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Semisi Tupou</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304018-d7325dbf28-3/RoryvanVugtSouthland.jpg" class="card-img-top" alt="Rory van Vugt" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rory van Vugt</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304019-5c8eae10e9-3/JahvisWallaceSouthland.jpg" class="card-img-top" alt="Jahvis Wallace" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jahvis Wallace</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304020-20f0893df8-3/JoeWalshSouthland.jpg" class="card-img-top" alt="Joe Walsh" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joe Walsh</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304021-81a97178dd-3/MattWhaangaSouthland.jpg" class="card-img-top" alt="Matt Whaanga" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matt Whaanga</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304023-5de6f83d57-3/JamesWilsonSouthland.jpg" class="card-img-top" alt="James Wilson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James Wilson</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Southland Rugby Union: Founded in 1887</h2>
+                <p>Established in 1887, the Southland Rugby Union has a rich history in New Zealand's rugby landscape. Originally founded in 1887, the union has been a key participant in the National Provincial Championship since its inception in 1976.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Home Ground: Rugby Park Stadium, Invercargill</h2>
+                <p>The Southland Stags call Rugby Park Stadium in Invercargill their home. This venue hosts the team's home games, providing a vibrant and supportive environment for players and fans alike.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Affiliation with Highlanders in Super Rugby</h2>
+                  <p>As a crucial component of player development, the Southland Stags are affiliated with the Highlanders Super Rugby franchise. This collaboration serves as a talent pipeline, contributing to the broader success of New Zealand rugby.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Colors and Identity: Maroon and Gold</h2>
+                  <p>Identified by their distinctive maroon and gold colors, the Southland Stags proudly showcase their unique identity on the rugby field. These colors symbolize the unity and strength of the Southland rugby community.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

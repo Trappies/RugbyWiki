@@ -1,0 +1,1562 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #bayonneKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #bayonneKitSection {
+          display: none;
+        }
+
+        #bayonneKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #bayonneKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #bayonneKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #bayonneKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #bayonneKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #bayonneKitSection {
+          display: flex;
+        }
+
+        #bayonneKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #bayonneKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Bayonne</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/bayonnebanner.jpg" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About Bayonne</h3>
+    <p>Aviron Bayonnais, commonly known as Aviron Bayonne, is a French rugby union club based in Bayonne, in the Basque Country. Founded in 1904, the club has a rich history and a passionate fan base. Aviron Bayonne has consistently competed in the top tiers of French rugby and is known for its distinctive blue and white striped jerseys. The team plays its home matches at the iconic Stade Jean-Dauger. Over the years, the club has experienced periods of success, including notable achievements in domestic and European competitions. Aviron Bayonne holds a significant place in the rugby landscape, contributing to the vibrant rugby culture in the Basque region and maintaining a strong connection with its loyal supporters.
+    </p>
+  
+    
+
+      <div id="bayonneKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Bayonne Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/bayonnehome.png" alt="Bayonne Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/bayonneaway.png" alt="Bayonne Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 18px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="bayonneKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Bayonne Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/bayonnehome.png" alt="Bayonne Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/bayonneaway.png" alt="Bayonne Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284076-446211a622-3/ThomasAcquierBayonne.jpg" class="card-img-top" alt="Thomas Acquier" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Thomas Acquier</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284109-2b11bbb46f-3/AfaesetitiAmosaBayonne.jpg" class="card-img-top" alt="Afaesetiti Amosa" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Afaesetiti Amosa</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312928-ee692ed880-3/GelaAprasidzeBayonne.jpg" class="card-img-top" alt="Gela Aprasidze" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gela Aprasidze</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284175-fac5c5a5cb-3/RemyBagetBayonne.jpg" class="card-img-top" alt="Remy Baget" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Remy Baget</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/265336-1be23a3138-3/PaulBeltranrugbyplayer.jpg" class="card-img-top" alt="Paul Beltran" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Paul Beltran</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284066-74c803476e-3/QuentinBethuneBayonne.jpg" class="card-img-top" alt="Quentin Bethune" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Quentin Bethune</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/306716-b3002d14ff-3/MartinBogadorugbyplayer.jpg" class="card-img-top" alt="Martin Bogado" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Martin Bogado</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284081-9de5f7d1f7-3/FacundoBoschBayonne.jpg" class="card-img-top" alt="Facundo Bosch" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Facundo Bosch</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306070-c36a619031-3/RemiBourdeauBayonne.jpg" class="card-img-top" alt="Remi Bourdeau" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Remi Bourdeau</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312925-2c98133ad0-3/RodrigoBruniBayonne.jpg" class="card-img-top" alt="Rodrigo Bruni" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rodrigo Bruni</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284144-dad8be127d-3/EnerikoBuliruaruaBayonne.jpg" class="card-img-top" alt="Eneriko Buliruarua" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Eneriko Buliruarua</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305465-98fda8059c-3/AurelienCallandretBayonne.jpg" class="card-img-top" alt="Aurelien Callandret" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Aurelien Callandret</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/284163-307947b7e5-3/YonCamourugbyplayer.jpg" class="card-img-top" alt="Yon Camou" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Yon Camou</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305878-6e3a1a8294-3/EstebanCapillaBayonne.jpg" class="card-img-top" alt="Esteban Capilla" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Esteban Capilla</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284111-3596984a7a-3/UzairCassiemBayonne.jpg" class="card-img-top" alt="Uzair Cassiem" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Uzair Cassiem</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/284069-a9b8cfcf2a-3/RemiCastagnetrugbyplayer.jpg" class="card-img-top" alt="Remi Castagnet" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Remi Castagnet</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284099-5efadbd595-3/ThomasCeyteBayonne.jpg" class="card-img-top" alt="Thomas Ceyte" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Thomas Ceyte</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284070-a4490166bb-3/SwanCormenierBayonne.jpg" class="card-img-top" alt="Swan Cormenier" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Swan Cormenier</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284084-104201b98e-3/PascalCottetBayonne.jpg" class="card-img-top" alt="Pascal Cotet" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Pascal Cotet</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/232914-d69580861e-3/JeanBaptisteDeClercqBayonne.jpg" class="card-img-top" alt="Jean Baptiste De Clercq" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jean Baptiste De Clercq</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/265327-2a4aaf7a75-3/Jean-BaptisteDeClercqBayonne.jpg" class="card-img-top" alt="Jean-Baptiste De Clercq" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jean-Baptiste De Clercq</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284133-f6eb08bb4f-3/ThomasDolhagarayBayonne.jpg" class="card-img-top" alt="Thomas Dolhagaray" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Thomas Dolhagaray</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284178-b9ea3fae94-3/ArnaudErbinartegarayBayonne.jpg" class="card-img-top" alt="Arnaud Erbinartegaray" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Arnaud Erbinartegaray</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305887-6d6e9ea7b0-3/GerardFraserBayonne.jpg" class="card-img-top" alt="Gerard Fraser" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gerard Fraser</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284179-e48300c1b0-3/GaetanGermainBayonne.jpg" class="card-img-top" alt="Gaetan Germain" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gaetan Germain</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305453-a2004eb07f-3/VincentGiudicelliBayonne.jpg" class="card-img-top" alt="Vincent Giudicelli" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Vincent Giudicelli</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/app/public/images/noimage/webPlayer.png" class="card-img-top" alt="Hugo Gomes Camacho" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Hugo Gomes Camacho</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305883-c73052f88f-3/VictorHannounBayonne.jpg" class="card-img-top" alt="Victor Hannoun" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Victor Hannoun</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284118-22e7b7ca9b-3/BaptisteHeguyBayonne.jpg" class="card-img-top" alt="Baptiste Heguy" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Baptiste Heguy</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305463-f5ce8d3cd1-3/ReeceHodgeBayonne.jpg" class="card-img-top" alt="Reece Hodge" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Reece Hodge</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284121-6364a02369-3/AitorHourcadeBayonne.jpg" class="card-img-top" alt="Aitor Hourcade" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Aitor Hourcade</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305874-a5b12e704a-3/PierreHuguetBayonne.jpg" class="card-img-top" alt="Pierre Huguet" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Pierre Huguet</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305457-50bbb256c8-3/ArthurIturriaBayonne.jpg" class="card-img-top" alt="Arthur Iturria" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Arthur Iturria</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305875-82e647b813-3/ManuelLeindekarVirginioBayonne.jpg" class="card-img-top" alt="Manuel Leindekar Virginio" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Manuel Leindekar Virginio</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284151-29aa9fb7af-3/YanLestradeBayonne.jpg" class="card-img-top" alt="Yan Lestrade" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Yan Lestrade</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305882-eae55d6c9f-3/NikaLomidzeBayonne.jpg" class="card-img-top" alt="Nika Lomidze" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nika Lomidze</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284139-fa2ec34c05-3/CamilleLopezBayonne.jpg" class="card-img-top" alt="Camille Lopez" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Camille Lopez</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305876-fa48fdc538-3/MaximeMachenaudBayonne.jpg" class="card-img-top" alt="Maxime Machenaud" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Maxime Machenaud</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284155-5fd6ea7eca-3/SireliMaqalaBayonne.jpg" class="card-img-top" alt="Sireli Maqala" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sireli Maqala</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284103-87dc5576d4-3/DenisMarchoisBayonne.jpg" class="card-img-top" alt="Denis Marchois" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Denis Marchois</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284157-0ad6245e14-3/GuillaumeMartocqBayonne.jpg" class="card-img-top" alt="Guillaume Martocq" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Guillaume Martocq</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312926-c7860fe5af-3/NadirMegdoudBayonne.jpg" class="card-img-top" alt="Nadir Megdoud" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nadir Megdoud</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284107-8cdb128536-3/KonstantineMikautadzeBayonne.jpg" class="card-img-top" alt="Konstantine Mikautadze" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Konstantine Mikautadze</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305885-f343034aec-3/LukeMorahanBayonne.jpg" class="card-img-top" alt="Luke Morahan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Luke Morahan</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312927-1e40e9f5d0-3/FedericoMoriBayonne.jpg" class="card-img-top" alt="Federico Mori" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Federico Mori</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284160-5442ada2c0-3/PeyoMuscarditzBayonne.jpg" class="card-img-top" alt="Peyo Muscarditz" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Peyo Muscarditz</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305886-12e6538b1d-3/YohanOrabBayonne.jpg" class="card-img-top" alt="Yohan Orabé" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Yohan Orabé</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284082-b4f1cc465e-3/LouisOrtolanBayonne.jpg" class="card-img-top" alt="Louis Ortolan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Louis Ortolan</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305891-a90fda9ec3-3/GregoryPatatBayonne.jpg" class="card-img-top" alt="Gregory Patat" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gregory Patat</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312924-79738868a0-3/LucasPaulosBayonne.jpg" class="card-img-top" alt="Lucas Paulos" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lucas Paulos</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284073-90b8149989-3/MatisPerchaudBayonne.jpg" class="card-img-top" alt="Matis Perchaud" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matis Perchaud</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284172-1877989e38-3/BastienPouraillyBayonne.jpg" class="card-img-top" alt="Bastien Pourailly" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Bastien Pourailly</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305462-e0e9081a9d-3/KaminieliRasakuBayonne.jpg" class="card-img-top" alt="Kaminieli Rasaku" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kaminieli Rasaku</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305454-c0824b1d5a-3/ApiRatuniyarawaBayonne.jpg" class="card-img-top" alt="Api Ratuniyarawa" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Api Ratuniyarawa</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305888-105a69dafe-3/JoelReyBayonne.jpg" class="card-img-top" alt="Joel Rey" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joel Rey</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284131-6ab6a3d97d-3/GuillaumeRouetBayonne.jpg" class="card-img-top" alt="Guillaume Rouet" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Guillaume Rouet</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284086-1e17ad76b2-3/PieterScholtzBayonne.jpg" class="card-img-top" alt="Pieter Scholtz" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Pieter Scholtz</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305877-885b02f4a8-3/TomSpringBayonne.jpg" class="card-img-top" alt="Tom Spring" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Spring</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305452-702c8ba4c5-3/LukeTagiBayonne.jpg" class="card-img-top" alt="Luke Tagi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Luke Tagi</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284092-00d302400e-3/TevitaTatafuBayonne.jpg" class="card-img-top" alt="Tevita Tatafu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tevita Tatafu</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305467-96605bb7b8-3/CheikhTiberghienBayonne.jpg" class="card-img-top" alt="Cheikh Tiberghien" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cheikh Tiberghien</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/265350-8074c3a353-3/IsaiaToeavaBayonne.jpg" class="card-img-top" alt="Isaia Toeava" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Isaia Toeava</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291477-0fcb79c4b4-3/BadriTsikhistaviBayonne.jpg" class="card-img-top" alt="Badri Tsikhistavi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Badri Tsikhistavi</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305880-c31ed4bae8-3/LashaTsikhistaviBayonne.jpg" class="card-img-top" alt="Lasha Tsikhistavi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lasha Tsikhistavi</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313732-e70ce5b10f-3/MartinVillarBayonne.jpg" class="card-img-top" alt="Martin Villar" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Martin Villar</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Aviron Bayonnais - French Rugby Club</h2>
+                <p>Aviron Bayonnais, affectionately known as Bayonne, is a historic French rugby union club based in Bayonne, Pyrénées-Atlantiques. Established in 1904, the club has a rich legacy and strong ties to the French Basque community. Competing in the top tiers, Bayonne plays its home matches at the renowned Parc des Sports, also known as Stade Jean-Dauger. The team's distinctive blue and white striped jerseys are donned as they passionately represent their region. Despite facing relegation challenges, Bayonne's resilience and historical successes make them a notable entity in French rugby.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Historic Triumphs and Challenges</h2>
+                <p>Aviron Bayonnais has a storied history in French rugby, making its first final appearance in 1913 and securing victory against S.C.U.F. Since then, the club has faced both triumphs and challenges. Notable successes include championship victories in the 1930s, marked by a memorable win against Biarritz and a Challenge Yves du Manoir triumph in 1936. Despite a period of lesser success, Bayonne reemerged in the 1980s, winning the Challenge Yves du Manoir in 1980 and reaching the championship final in 1982. The team's journey, marked by relegations and promotions, showcases their resilience and commitment to the sport.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Symbolic Mascot and Community Ties</h2>
+                <p>Founded in 1904, Aviron Bayonnais not only boasts a strong rugby legacy but also holds symbolic connections to its community. The club's mascot, a pottok pony named Pottoka, adds a distinctive touch to their identity. This reflects the team's rootedness in the local culture and its commitment to embodying the spirit of the French Basque region. With ties to the community and a rich heritage, Aviron Bayonnais remains a symbol of pride for its supporters and the broader French rugby landscape.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            
+            
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

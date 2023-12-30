@@ -1,0 +1,1301 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #waratahsKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #waratahsKitSection {
+          display: none;
+        }
+
+        #waratahsKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #waratahsKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #waratahsKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #waratahsKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #waratahsKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #waratahsKitSection {
+          display: flex;
+        }
+
+        #waratahsKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #waratahsKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Waratahs</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/waratahsbanner.jpg" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About The Waratahs</h3>
+    <p>The Waratahs, based in Sydney, Australia, are a renowned rugby union team with a rich history in the sport. Established in 1882, they have been a dominant force in Australian rugby. The team competes in Super Rugby and has played a pivotal role in the development of elite rugby talent in the country. The Waratahs have produced numerous Wallabies, contributing significantly to the national team. Over the years, they have achieved success in the Super Rugby competition, clinching the championship in 2014. Known for their distinctive blue and sky blue jerseys, the Waratahs boast a strong fan base and continue to be a formidable presence in the world of Australian rugby.
+    </p>
+  
+    
+
+      <div id="waratahsKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Waratahs Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/waratahshome.png" alt="Waratahs Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/waratahsaway.png" alt="Waratahs Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="waratahsKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Waratahs Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/waratahshome.png" alt="Waratahs Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/waratahsaway.png" alt="Waratahs Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313152-9d87ad659e-3/MilesAmatoseroNSWWaratahs.jpg" class="card-img-top" alt="Miles Amatosero" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Miles Amatosero</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313138-ab828f8880-3/AngusBellNSWWaratahs.jpg" class="card-img-top" alt="Angus Bell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Angus Bell</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313142-875f27208c-3/DanielBothaNSWWaratahs.jpg" class="card-img-top" alt="Daniel Botha" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Daniel Botha</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313122-63fb016d8c-3/JackBowenNSWWaratahs.jpg" class="card-img-top" alt="Jack Bowen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jack Bowen</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313158-2634b68ed0-3/DarrenColemanNSWWaratahs.jpg" class="card-img-top" alt="Darren Coleman" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Darren Coleman</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313131-c556cf6cd2-3/TaneEdmedNSWWaratahs.jpg" class="card-img-top" alt="Tane Edmed" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tane Edmed</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313125-4c2c3ba1c8-3/LalakaiFoketiNSWWaratahs.jpg" class="card-img-top" alt="Lalakai Foketi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lalakai Foketi</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313155-79db382305-3/TheoFourieNSWWaratahs.jpg" class="card-img-top" alt="Theo Fourie" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Theo Fourie</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313140-67377f0f81-3/CharlieGambleNSWWaratahs.jpg" class="card-img-top" alt="Charlie Gamble" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Charlie Gamble</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313159-e8fc2a07cb-3/JasonGilmoreNSWWaratahs.jpg" class="card-img-top" alt="Jason Gilmore" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jason Gilmore</h5>
+            <p class="card-text">Assistant Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313150-30c12d3314-3/LangiGleesonNSWWaratahs.jpg" class="card-img-top" alt="Langi Gleeson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Langi Gleeson</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313123-663ffd4e2f-3/JakeGordonNSWWaratahs.jpg" class="card-img-top" alt="Jake Gordon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jake Gordon</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274991-9b8a81bc54-3/JackGrantNSWWaratahs.jpg" class="card-img-top" alt="Jack Grant" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jack Grant</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313153-e4b56e969f-3/NedHaniganNSWWaratahs.jpg" class="card-img-top" alt="Ned Hanigan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ned Hanigan</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313137-1363fbe857-3/WillHarrisonNSWWaratahs.jpg" class="card-img-top" alt="Will Harrison" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Will Harrison</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313148-6f2acb4ac9-3/JedHollowayNSWWaratahs.jpg" class="card-img-top" alt="Jed Holloway" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jed Holloway</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313139-0103dffa24-3/ArcherHolzNSWWaratahs.jpg" class="card-img-top" alt="Archer Holz" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Archer Holz</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313145-384ae58cf9-3/HarryJohnson-HolmesNSWWaratahs.jpg" class="card-img-top" alt="Harry Johnson-Holmes" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Harry Johnson-Holmes</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313129-2070b673a8-3/MaxJorgensenNSWWaratahs.jpg" class="card-img-top" alt="Max Jorgensen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Max Jorgensen</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313136-44b768583d-3/VuateKarawalevuNSWWaratahs.jpg" class="card-img-top" alt="Vuate Karawalevu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Vuate Karawalevu</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313156-3767ac8dd5-3/ThomasLambertNSWWaratahs.jpg" class="card-img-top" alt="Thomas Lambert" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Thomas Lambert</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313144-de35b03f6a-3/FergusLee-WarnerNSWWaratahs.jpg" class="card-img-top" alt="Fergus Lee-Warner" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Fergus Lee-Warner</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313126-40e9cd7ab2-3/MarkNawaqanitawaseNSWWaratahs.jpg" class="card-img-top" alt="Mark Nawaqanitawase" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mark Nawaqanitawase</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313120-0b5067732d-3/IzaiaPereseNSWWaratahs.jpg" class="card-img-top" alt="Izaia Perese" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Izaia Perese</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313119-560aeaa2eb-3/DylanPietschNSWWaratahs.jpg" class="card-img-top" alt="Dylan Pietsch" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dylan Pietsch</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313143-f8df97c997-3/DavePoreckiNSWWaratahs.jpg" class="card-img-top" alt="Dave Porecki" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dave Porecki</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313157-c05d1e6988-3/TomRossNSWWaratahs.jpg" class="card-img-top" alt="Tom Ross" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Ross</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313147-84e1cb5162-3/HughSinclairNSWWaratahs.jpg" class="card-img-top" alt="Hugh Sinclair" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Hugh Sinclair</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313154-a19c5eb280-3/NedSlack-SmithNSWWaratahs.jpg" class="card-img-top" alt="Ned Slack-Smith" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ned Slack-Smith</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313149-d3c1b6913c-3/LachlanSwintonNSWWaratahs.jpg" class="card-img-top" alt="Lachlan Swinton" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lachlan Swinton</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313162-7766a955b3-3/PauliTaumoepeauNSWWaratahs.jpg" class="card-img-top" alt="Pauli Taumoepeau" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Pauli Taumoepeau</h5>
+            <p class="card-text">Assistant Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313146-b08df14a19-3/HaydenThompson-StringerNSWWaratahs.jpg" class="card-img-top" alt="Hayden Thompson-Stringer" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Hayden Thompson-Stringer</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313130-5fad195c4d-3/MoseseTuipulotuNSWWaratahs.jpg" class="card-img-top" alt="Mosese Tuipulotu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mosese Tuipulotu</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313151-025e1401d3-3/MaheVailanuNSWWaratahs.jpg" class="card-img-top" alt="Mahe Vailanu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mahe Vailanu</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313124-2234123c9f-3/JoeyWaltonNSWWaratahs.jpg" class="card-img-top" alt="Joey Walton" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joey Walton</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313160-593552f1af-3/ChrisWhitakerNSWWaratahs.jpg" class="card-img-top" alt="Chris Whitaker" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Chris Whitaker</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313133-dd7cb750b5-3/TeddyWilsonNSWWaratahs.jpg" class="card-img-top" alt="Teddy Wilson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Teddy Wilson</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313118-086f7d995a-3/HarryWilsonNSWWaratahs.jpg" class="card-img-top" alt="Harry Wilson," style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Harry Wilson,</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Amateur Glory Days: 1874–1963</h2>
+                <p>The New South Wales Rugby Union (NSWRU), established in 1874, laid the foundation for rugby competition in the region. By 1882, the first NSW team emerged victorious against Queensland, marking the beginning of a storied rugby tradition. The 1927/28 Waratahs' iconic tour introduced an unprecedented style of open, running rugby, leaving an indelible mark on the Australian game. The 1930s witnessed NSW's pinnacle with a triumphant victory against the South African Springboks in 1937. The 1963 establishment of the Sydney Rugby Union and the centennial celebration in 1974 underscored the enduring legacy of amateur rugby in NSW.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Super 12 Triumphs and Challenges: 1996–2005</h2>
+                <p>The transition to professionalism brought both successes and hurdles for the Waratahs. In the inaugural Super 12 season (1996), they secured a mid-table position, with subsequent years witnessing a gradual climb. The breakthrough came in 2002 when the Waratahs, under coach Ewen McKenzie, reached the semifinals, showcasing their potential. The 2005 season marked their best, finishing second in the regular season but falling short in the final against the Crusaders. This era set the stage for the evolution of NSW rugby on the professional stage.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Super 14 Rollercoaster: 2006–2010</h2>
+                <p>The Waratahs' journey in the expanded Super 14 brought moments of brilliance and disappointment. Despite finishing 3rd in 2006, a tumultuous season ensued, with the team facing challenges like Wendell Sailor's suspension. The following years saw fluctuating performances, including a disappointing 2007 season. However, 2008 showcased their resilience, securing the 500th win and reaching the Super 14 final in 2008, only to be defeated by the Crusaders. The last two Super14 seasons saw the Waratahs narrowly miss the finals and then progress to the semifinals in 2010.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Super Rugby Evolution: 2011–Present</h2>
+                <p>The post-Super14 era brought a revamped competition, and the Waratahs faced ups and downs under coaches like Michael Foley and Michael Cheika. The years 2011 and 2012 saw the team struggling to reach the finals. However, a transformative period began in 2014 under Cheika's leadership. The Waratahs' exhilarating, attacking style led to a historic Super Rugby Championship win. The 2014 season stands as a testament to the team's resilience, marking a new era of success and exciting rugby for the New South Wales Waratahs.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

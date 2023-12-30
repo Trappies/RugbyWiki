@@ -1,0 +1,1351 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #wallabiesKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #wallabiesKitSection {
+          display: none;
+        }
+
+        #wallabiesKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #wallabiesKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #wallabiesKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #wallabiesKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #wallabiesKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #wallabiesKitSection {
+          display: flex;
+        }
+
+        #wallabiesKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #wallabiesKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Wallabies</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/wallabiesbanner.jpg" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About The Wallabies</h3>
+    <p>The Wallabies, Australia's national rugby union team, boast a rich history and a legacy of competitive prowess on the international stage. Renowned for their distinctive green and gold jerseys, the Wallabies have been a formidable force since their establishment. Over the years, they have engaged in fierce rivalries, most notably against the All Blacks, contributing to the storied tradition of trans-Tasman clashes. The Wallabies have celebrated successes, including two Rugby World Cup victories in 1991 and 1999, solidifying their status as a powerhouse in the rugby world. Committed to excellence, the team continues to evolve, showcasing the indomitable spirit that defines Australian rugby.
+    </p>
+  
+    
+
+      <div id="wallabiesKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Wallabies Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/wallabieshome.png" alt="Wallabies Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/wallabiesaway.png" alt="Wallabies Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 22px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="wallabiesKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Wallabies Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/wallabieshome.png" alt="Wallabies Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/wallabiesaway.png" alt="Wallabies Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307667-4c33e70964-3/RichieArnoldAustralia.jpg" class="card-img-top" alt="Richie Arnold" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Richie Arnold</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307663-ea68ada390-3/AngusBellAustralia.jpg" class="card-img-top" alt="Angus Bell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Angus Bell</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/303184-c89c896f37-3/BradDavisAustralia.jpg" class="card-img-top" alt="Brad Davis" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Brad Davis</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307650-6b05c84044-3/BenDonaldsonAustralia.jpg" class="card-img-top" alt="Ben Donaldson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben Donaldson</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307644-d8b69793cc-3/MattFaesslerAustralia.jpg" class="card-img-top" alt="Matt Faessler" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matt Faessler</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307662-3a3de9dde4-3/PoneFaamausiliAustralia.jpg" class="card-img-top" alt="Pone Fa’amausili" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Pone Fa’amausili</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307637-f85956b461-3/IssakFines-LeleiwasaAustralia.jpg" class="card-img-top" alt="Issak Fines-Leleiwasa" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Issak Fines-Leleiwasa</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307649-5fec147415-3/LalakaiFoketiAustralia.jpg" class="card-img-top" alt="Lalakai Foketi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lalakai Foketi</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307656-f807929f3d-3/LangiGleesonAustralia.jpg" class="card-img-top" alt="Langi Gleeson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Langi Gleeson</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307633-6780f317f8-3/NealHatleyAustralia.jpg" class="card-img-top" alt="Neal Hatley" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Neal Hatley</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307634-f73ed65695-3/BrettHodgsonAustralia.jpg" class="card-img-top" alt="Brett Hodgson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Brett Hodgson</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307660-cb83dbf810-3/TomHooperAustralia.jpg" class="card-img-top" alt="Tom Hooper" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Hooper</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307629-72f7a733df-3/EddieJonesAustralia.jpg" class="card-img-top" alt="Eddie Jones" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Eddie Jones</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307646-a7c101b640-3/MaxJorgensenAustralia.jpg" class="card-img-top" alt="Max Jorgensen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Max Jorgensen</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307642-65280b4afc-3/AndrewKellawayAustralia.jpg" class="card-img-top" alt="Andrew Kellaway" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Andrew Kellaway</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307653-858b01b970-3/JoshKemenyAustralia.jpg" class="card-img-top" alt="Josh Kemeny" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Josh Kemeny</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307654-600eb9e807-3/SamuKereviAustralia.jpg" class="card-img-top" alt="Samu Kerevi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Samu Kerevi</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307640-08727651d9-3/MarikaKoroibeteAustralia.jpg" class="card-img-top" alt="Marika Koroibete" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marika Koroibete</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307645-9a78634a85-3/RobLeotaAustralia.jpg" class="card-img-top" alt="Rob Leota" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rob Leota</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307638-ab73a14c13-3/TateMcDermottAustralia.jpg" class="card-img-top" alt="Tate McDermott" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tate McDermott</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307648-a4a969161a-3/FraserMcReightAustralia.jpg" class="card-img-top" alt="Fraser McReight" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Fraser McReight</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307659-1ebb8f63fd-3/MarkNawaqanitawaseAustralia.jpg" class="card-img-top" alt="Mark Nawaqanitawase" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mark Nawaqanitawase</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307651-507c5fe728-3/ZaneNonggorrAustralia.jpg" class="card-img-top" alt="Zane Nonggorr" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Zane Nonggorr</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307632-843c6ed0f2-3/DanPalmerAustralia.jpg" class="card-img-top" alt="Dan Palmer" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dan Palmer</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307636-5db19fe56f-3/IzaiaPereseAustralia.jpg" class="card-img-top" alt="Izaia Perese" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Izaia Perese</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307657-56dacbf25b-3/JordanPetaiaAustralia.jpg" class="card-img-top" alt="Jordan Petaia" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jordan Petaia</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307664-840d17d581-3/MatthewPhilipAustralia.jpg" class="card-img-top" alt="Matthew Philip" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matthew Philip</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307643-b0458109cc-3/DavePoreckiAustralia.jpg" class="card-img-top" alt="Dave Porecki" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dave Porecki</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307631-b6564095aa-3/JasonRylesAustralia.jpg" class="card-img-top" alt="Jason Ryles" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jason Ryles</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307639-ab02b66156-3/BlakeSchouppAustralia.jpg" class="card-img-top" alt="Blake Schoupp" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Blake Schoupp</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307665-2f83403047-3/WillSkeltonAustralia.jpg" class="card-img-top" alt="Will Skelton" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Will Skelton</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307647-c3a4a8452f-3/JamesSlipperAustralia.jpg" class="card-img-top" alt="James Slipper" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James Slipper</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307641-c5ce94e1df-3/TanielaTupouAustralia.jpg" class="card-img-top" alt="Taniela Tupou" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Taniela Tupou</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307655-a33155f4f6-3/JordanUeleseAustralia.jpg" class="card-img-top" alt="Jordan Uelese" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jordan Uelese</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307661-12992d5470-3/RobValetiniAustralia.jpg" class="card-img-top" alt="Rob Valetini" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rob Valetini</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307658-7ec2676610-3/SuliasiVunivaluAustralia.jpg" class="card-img-top" alt="Suliasi Vunivalu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Suliasi Vunivalu</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307635-2720e71506-3/NicWhiteAustralia.jpg" class="card-img-top" alt="Nic White" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nic White</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Early Years: 1899–1950</h2>
+                <p>In the early years, Australia faced challenges and triumphs, marking their debut in 1899 against the British Isles and adopting the 'Wallabies' moniker in 1907. Notable moments include the 1947–48 tour of the home nations and the historic 1952 victory against the All Blacks in New Zealand.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>1960s – Mid-1960s: Shaping a Legacy</h2>
+                <p>The 1960s brought varied outcomes for Australia, with pivotal wins and losses against Fiji, South Africa, and the All Blacks. The mid-1960s featured fewer Tests, but a pivotal 1966 series win against South Africa marked a turning point in shaping the Wallabies' legacy.
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>1970s – 1980s: Triumphs and Challenges</h2>
+                <p>The 1970s witnessed victories against England, Wales, and South Africa, while the 1980s saw Australia's Grand Slam tour and their inaugural Rugby World Cup win in 1991, defeating England in the final at Twickenham.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>1990s: Dominance and World Cup Glory</h2>
+                <p>The 1990s were a decade of dominance for Australia, marked by the Bledisloe Cup win in 1992 and two Rugby World Cup victories in 1991 and 1999. The emergence of professionalism in 1995 led to the establishment of the Tri-Nations and Super 12 tournaments.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>2000s: Tri Nations Triumph and Challenges</h2>
+                <p>In 2000, Australia achieved their first Tri Nations title and retained the Bledisloe Cup. The 2003 World Cup campaign culminated in a final loss to England, and the 2000s saw a mix of successes and challenges, including wins over the British & Irish Lions and the Tri Nations title in 2001.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Coaching Transitions: 2000s</h2>
+                <p>The coaching transitions from Eddie Jones to John Connolly and then to Robbie Deans marked shifts in team dynamics. The 2008 Tri-Nations featured a historic defeat to South Africa, and 2009 presented a mixed bag of results, including losses to New Zealand and South Africa but notable wins against England and France.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Tri Nations Triumph and World Cup Drama: 2010-2011</h2>
+                <p>In the early years of the 2010s, the Wallabies showcased notable improvements, securing the Mandela Plate with a rare away win against South Africa in the 2010 Tri Nations series. The momentum continued with a significant victory against the All Blacks in Hong Kong, ending a three-year drought. However, the year was not without setbacks, as losses to England and Munster during the end-of-year European tour tempered the overall success. The following year brought a Tri Nations victory, but the attempt at The Rugby Championship in 2012 fell short. The 2011 Rugby World Cup had its highs with a semi-final appearance, but it concluded with a defeat to the All Blacks, leaving a bittersweet taste.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Coaching Transitions and Challenges: 2012-2014</h2>
+                <p>The period from 2012 to 2014 marked significant coaching transitions and challenges for the Wallabies. After facing increasing pressure, coach Robbie Deans stepped down in 2013 following a defeat to the British & Irish Lions. Ewen McKenzie took the helm, bringing both successes and challenges, including a series of wins in 2014. However, the era concluded with McKenzie's resignation in October 2014, leading to the appointment of Michael Cheika as the new head coach. These years were characterized by shifts in coaching dynamics and the team's resilience in the face of adversity.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Rugby Championship, World Cup Run, and Decline: 2015-2019</h2>
+                <p>The mid-2010s to the end of the decade brought a mix of triumphs and challenges for the Wallabies. In 2015, they triumphed in the Rugby Championship but faced defeat to the All Blacks in the Bledisloe Cup. The Rugby World Cup that year showcased a strong group stage performance, leading to a final against New Zealand but ultimately resulting in defeat. The following years witnessed a downward trend, marked by losses to England, New Zealand, and Ireland, with 2018 standing out as one of the team's worst years. Despite the challenges, there were moments of improvement in 2019, including a notable win against New Zealand and a quarter-final appearance in the Rugby World Cup.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Dave Rennie Era and Mixed Results: 2020-2021</h2>
+                <p>The early 2020s saw the beginning of the Dave Rennie era, with his appointment as head coach in 2020. The Bledisloe Cup competitions under Rennie's leadership showcased mixed results, including a notable win against New Zealand. The year 2020 presented additional challenges with disruptions due to the COVID-19 pandemic, impacting the team's schedule and competitions. In 2021, the Wallabies experienced both highs and lows, with a series win against France and losses to New Zealand in the Bledisloe Cup, illustrating the team's resilience in navigating a competitive international rugby landscape.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Struggles and Coaching Changes: 2022-2023</h2>
+                  <p>The Wallabies faced significant struggles in 2022, marked by losses to England and a decline in World Rugby rankings. The coaching landscape also witnessed change, with the return of Eddie Jones as coach in 2023. Despite this coaching transition, the Rugby World Cup in the same year turned into a disaster for the Wallabies as they failed to advance from the group stage for the first time. Losses to Fiji and a record defeat to Wales highlighted the challenges faced by the team, emphasizing the need for strategic reevaluation and rebuilding.
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+            
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

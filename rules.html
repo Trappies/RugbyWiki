@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>RugbyWiki - Rules</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        body {
+            transition: margin-left 0.5s;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            padding-bottom: 20px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+            margin-right: 50px;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        .container {
+            background-color: #fff;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card {
+            margin-bottom: 20px;
+            border: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        .card-header {
+            background-color: #6e7072;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            border: none;
+        }
+
+        .card-header h5 {
+            margin: 0;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .btn-link {
+            padding: 0;
+        }
+
+        .btn-link i {
+            margin-left: 10px;
+            transition: transform 0.3s;
+        }
+
+        .btn-link:hover i {
+            transform: rotate(90deg);
+        }
+
+        .footer {
+      background-color: #333;
+      color: white;
+      padding: 40px 0;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .footer-col-md-4 {
+      flex: 0 0 calc(33.3333% - 20px);
+      margin-bottom: 20px;
+    }
+
+    h4 {
+      color: #ffcc00;
+      /* Change the heading color */
+    }
+
+    .footer-col-md-4 p {
+      margin: 10px 0;
+    }
+
+    .footer-col-md-4 ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-col-md-4 li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col-md-4 a {
+      color: #66ccff;
+      /* Change the link color */
+      text-decoration: none;
+      transition: color 0.3s ease-in-out;
+    }
+
+    .footer-col-md-4 a:hover {
+      color: #ff9900;
+      /* Change the link color on hover */
+    }
+
+    @media only screen and (max-width: 500px) {
+      body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+       .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        max-height: 100%;
+        height: 100%;
+        margin-top: 0px;
+      }
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    /* Hamburger-Menue */
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="img/RugbyWiki.png">
+        <nav id="desktop-nav">
+          <a href="index.html">Home</a>
+          <a href="tournaments.html">Tournaments</a>
+          <a href="teams.html">Teams</a>
+          <a href="rules.html">Rules</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="rankings.html">Rankings</a>
+          <a href="forum.html">Community</a>
+        </nav>
+        <nav id="hamburger-nav">
+          <div class="hamburger-menu">
+            <div class="hamburger-icon" onclick="toggleMenu()">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="menu-links">
+              <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+              <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+              <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+              <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+              <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+              <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+              <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+<div class="container">
+    <!-- <h1 class="mt-4 mb-4">Rules and Laws of the Game</h1> -->
+
+    <!-- Accordion -->
+    <div id="accordion">
+
+        <!-- Rule 1 -->
+        <div class="card">
+            <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <h5 class="mb-0">
+                      1. Introduction
+                </h5>
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                   <i class="fas fa-arrow-down"></i>
+                </button>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                    <p>A game which started out as a simple pastime has been transformed into a global network around which vast stadia have been built, an intricate administrative structure created and complex strategies devised. Rugby union, in common with any activity which attracts the interest and enthusiasm of all kinds of people, has many sides and faces.</p>
+                    <p>Rugby is played worldwide by people of all ages from across a wide and diverse range of backgrounds. More than 8.5 million people aged from six to 60+ regularly participate in the playing of the game. The wide variation of skills and physical requirements needed for the game mean that there is an opportunity for individuals of every shape, size and ability to participate.</p>
+                    <p>Apart from the playing of the game and its ancillary support, rugby embraces a number of social and emotional concepts such as courage, loyalty, sportsmanship, discipline and teamwork. What this charter does is to give the game a checklist against which the mode of play and behaviour can be assessed. The objective is to ensure that rugby maintains its unique character both on and off the field.</p>
+                    <p>The charter covers the basic principles of rugby as they relate to playing and coaching, and to the creation and application of the laws. It is hoped that the charter, which is an important complement to the laws, will set the standards for all those who are involved in rugby, at whatever level.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rule 2 -->
+        <div class="card">
+            <div class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <h5 class="mb-0">
+                        2. Conduct
+                </h5>
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                  <i class="fas fa-arrow-down"></i>
+               </button>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <p>The legend of William Webb Ellis, who is credited with first picking up the football and running with it, has doggedly survived the countless revisionist theories since that day at Rugby School in 1823. That the game should have its origins in an act of spirited defiance is somehow appropriate.</p>
+                    <p>At first glance it is difficult to find the guiding principles behind a game which, to the casual observer, appears to be a mass of contradictions. It is perfectly acceptable, for example, to be seen to be exerting extreme physical pressure on an opponent in an attempt to gain possession of the ball, but not wilfully or maliciously to inflict injury.</p>
+                    <p>These are the boundaries within which players and referees must operate and it is the capacity to make this fine distinction, combined with control and discipline, both individual and collective, upon which the code of conduct depends.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+              <h5 class="mb-0">
+                      3. Spirit
+              </h5>
+              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                <i class="fas fa-arrow-down"></i>
+             </button>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+              <div class="card-body">
+                  <p>Rugby owes much of its appeal to the fact that it is played both to the letter and within the spirit of the laws. The responsibility for ensuring that this happens lies not with one individual - it involves coaches, captains, players and referees.</p>
+                  <p>It is through discipline, control and mutual respect that the spirit of the game flourishes and, in the context of a game as physically challenging as rugby, these are the qualities which forge the fellowship and sense of fair play so essential to the game’s ongoing success and survival.</p>
+                  <p>Old-fashioned traditions and virtues they may be, but they have stood the test of time and, at all levels at which the game is played, they remain as important to rugby’s future as they have been throughout its long and distinguished past. The principles of rugby are the fundamental elements upon which the game is based and they enable participants to immediately identify the game’s character and what makes it distinctive as a sport.
+                  </p>
+              </div>
+          </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header" id="headingFour" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+            <h5 class="mb-0">
+                    4. Objective
+            </h5>
+            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+              <i class="fas fa-arrow-down"></i>
+           </button>
+        </div>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+            <div class="card-body">
+                <p>The game’s objective is to score as many points as possible against an opposing team by carrying, passing, kicking and grounding the ball, according to the laws of the game, its sporting spirit and fair play.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" id="headingFive" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+          <h5 class="mb-0">
+                  5. Contest and Continuity
+          </h5>
+          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+            <i class="fas fa-arrow-down"></i>
+         </button>
+      </div>
+      <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+          <div class="card-body">
+            <p>The contest for possession of the ball is one of rugby’s key features. These contests occur throughout the game and in a number of different forms:</p>
+            <ul>
+                <li>in contact</li>
+                <li>in open play</li>
+                <li>when play is re-started at scrums, lineouts, kick-offs, and restart kicks.</li>
+            </ul>
+            <p>The contests are balanced in such a way as to reward superior skill displayed in the preceding action. For example, a team forced to kick for touch because of its inability to maintain the play is denied the throw-in to the lineout. Similarly, the team knocking the ball on or passing the ball forward is denied the throw at the subsequent scrum. The advantage then must always lie with the team throwing the ball in, although, here again, it is important that these areas of play can be fairly contested.</p>
+            <p>The team in possession aims to maintain continuity by denying the opposition the ball and, by skilful means, to advance and score points. Failure to do this will mean the surrendering of possession to the opposition either as a result of shortcomings on the part of the team in possession or because of the quality of the opposition defence; contest and continuity, profit and loss.</p>
+            <p>As one team attempts to maintain continuity of possession, the opposing team strives to contest for possession. This provides the essential balance between continuity of play and continuity of possession. This balance of contestability and continuity applies to both set piece and open play.</p>            
+          </div>
+      </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" id="headingSix" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+        <h5 class="mb-0">
+                6. A Sport For All
+        </h5>
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+          <i class="fas fa-arrow-down"></i>
+       </button>
+    </div>
+    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+        <div class="card-body">
+          <p>The laws provide players of different physiques, skills, genders and ages with the opportunity to participate at their levels of ability in a controlled, competitive and enjoyable environment. It is incumbent upon all who play rugby to have a thorough knowledge and understanding of the laws of the game.</p>        
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header" id="headingSeven" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+        <h5 class="mb-0">
+                7. Maintaining the Identity
+        </h5>
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+          <i class="fas fa-arrow-down"></i>
+       </button>
+    </div>
+    <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
+        <div class="card-body">
+          <p>The laws ensure that rugby’s distinctive features are maintained through scrums, lineouts, mauls, rucks, kick-offs and re-starts. Also the key features relating to contest and continuity - the backward pass, the offensive tackle.
+          </p>        
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header" id="headingEight" data-toggle="collapse" data-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+        <h5 class="mb-0">
+                8. Enjoyment and Entertainment
+        </h5>
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+          <i class="fas fa-arrow-down"></i>
+       </button>
+    </div>
+    <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordion">
+        <div class="card-body">
+          <p>The laws provide the framework for a game that is both enjoyable to play and entertaining to watch. If, on occasions, these objectives appear to be incompatible, enjoyment and entertainment are enhanced by enabling the players to give full rein to their skills. To achieve the correct balance, the laws are constantly under review.</p>        
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header" id="headingNine" data-toggle="collapse" data-target="#collapseNine" aria-expanded="true" aria-controls="collapseNine">
+        <h5 class="mb-0">
+                9. Application
+        </h5>
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseNine" aria-expanded="true" aria-controls="collapseNine">
+          <i class="fas fa-arrow-down"></i>
+       </button>
+    </div>
+    <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordion">
+        <div class="card-body">
+          <p>There is an over-riding obligation on the players to observe the laws and to respect the principles of fair play. The laws must be applied in such a way as to ensure that the game is played according to the principles of play. The match officials can achieve this through fairness, consistency, sensitivity and, when appropriate, management. In return, it is the responsibility of coaches, captains and players to respect the authority of the match officials.
+          </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header" id="headingTen" data-toggle="collapse" data-target="#collapseTen" aria-expanded="true" aria-controls="collapseTen">
+        <h5 class="mb-0">
+                10. Conclusion
+        </h5>
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTen" aria-expanded="true" aria-controls="collapseTen">
+          <i class="fas fa-arrow-down"></i>
+       </button>
+    </div>
+    <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordion">
+        <div class="card-body">
+          <p>Rugby is valued as a sport for all. It builds teamwork, understanding, co-operation and respect for fellow participants. Its cornerstones are, as they always have been:</p>
+          <ul>
+              <li>The pleasure of participating</li>
+              <li>The courage and skill which the game demands</li>
+              <li>The love of a team sport that enriches the lives of all involved</li>
+              <li>The lifelong friendships forged through a shared interest in the game.</li>
+          </ul>
+          <p>It is because of, not despite, rugby’s intensely physical and athletic characteristics that such great camaraderie exists before and after matches. The long standing tradition of players from competing teams enjoying each other’s company away from the pitch and in a social context remains at the very core of the game.</p>
+          <p>Rugby has fully embraced the professional era, but has retained the ethos and traditions of the recreational game. In an age in which many traditional sporting qualities are being diluted or even challenged, rugby is rightly proud of its ability to retain high standards of sportsmanship, ethical behaviour and fair play.</p>            
+        </div>
+    </div>
+</div>
+
+        <!-- Add more rules as needed -->
+
+    </div>
+    <!-- End Accordion -->
+
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+</script>
+
+</body>
+</html>

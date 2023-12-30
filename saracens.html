@@ -1,0 +1,1741 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #saracensKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #saracensKitSection {
+          display: none;
+        }
+
+        #saracensKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #saracensKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #saracensKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #saracensKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #saracensKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #sarecensKitSection {
+          display: flex;
+        }
+
+        #sarecensKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #sarecensKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Saracens</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/saracensbanner.png" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About The Saracens</h3>
+    <p>Saracens Rugby Club, based in London, England, is a powerhouse in English and European rugby. Established in 1876, the club has a rich history and has been a dominant force in the professional era. Saracens competes in the Gallagher Premiership, the top tier of English rugby, and has consistently been a title contender. The club has also enjoyed success on the European stage, winning the prestigious Heineken Cup (now known as the Champions Cup) three times. Known for their strong team culture and commitment to player development, Saracens has produced numerous international stars. Despite facing challenges such as salary cap controversies, Saracens remains a formidable presence in the rugby world, embodying a legacy of excellence that extends over a century.
+    </p>
+  
+    
+
+      <div id="saracensKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Saracens Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/saracenshome.png" alt="Saracens Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/saracensaway.png" alt="Saracens Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 18px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="saracensKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Saracens Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/saracenshome.png" alt="Saracens Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/saracensaway.png" alt="Saracens Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309786-106e85d891-3/RalphAdams-HaleSaracens.jpg" class="card-img-top" alt="Ralph Adams-Hale" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ralph Adams-Hale</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/271580-428447dc2f-3/SamsonAdejimirugbyplayer.jpg" class="card-img-top" alt="Samson Adejimi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Samson Adejimi</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/272500-b3613911d1-3/HarveyBeatonSaracens.jpg" class="card-img-top" alt="Harvey Beaton" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Harvey Beaton</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309771-002e8a8e4b-3/CameronBoonSaracens.jpg" class="card-img-top" alt="Cameron Boon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cameron Boon</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300455-e1c2493513-3/CharlieBrackenSaracens.jpg" class="card-img-top" alt="Charlie Bracken" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Charlie Bracken</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/269778-36a72edab7-3/KellyBrownSaracens.jpg" class="card-img-top" alt="Kelly Brown" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kelly Brown</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/277071-4432c2b0c1-3/SamBryanSaracens.jpg" class="card-img-top" alt="Sam Bryan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sam Bryan</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/271132-6056b6ed30-3/AndyChristieSaracens.jpg" class="card-img-top" alt="Andy Christie" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Andy Christie</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309776-617bd05145-3/LucioCintiSaracens.jpg" class="card-img-top" alt="Lucio Cinti" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lucio Cinti</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309769-d353880c94-3/AlecClareySaracens.jpg" class="card-img-top" alt="Alec Clarey" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alec Clarey</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/258362-ca22f72eea-3/SamCreanSaracens.jpg" class="card-img-top" alt="Sam Crean" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sam Crean</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309773-322377e3ce-3/ElliotDalySaracens.jpg" class="card-img-top" alt="Elliot Daly" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Elliot Daly</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298813-b32e22d2b9-3/TheoDanSaracens.jpg" class="card-img-top" alt="Theo Dan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Theo Dan</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308746-336fc08e83-3/AledDaviesSaracens.jpg" class="card-img-top" alt="Aled Davies" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Aled Davies</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298830-142655ad1d-3/BenEarlSaracens.jpg" class="card-img-top" alt="Ben Earl" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben Earl</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300453-7fac94286c-3/MaxEkeSaracens.jpg" class="card-img-top" alt="Max Eke" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Max Eke</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/287176-00017093c4-3/TobiasElliottrugbyplayer.jpg" class="card-img-top" alt="Tobias Elliott" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tobias Elliott</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309785-7b0f7196e4-3/OwenFarrellSaracens.jpg" class="card-img-top" alt="Owen Farrell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Owen Farrell</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309774-73ad2c964b-3/JamieGeorgeSaracens.jpg" class="card-img-top" alt="Jamie George" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jamie George</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309775-b5bde76148-3/JuanMartinGonzalezSaracens.jpg" class="card-img-top" alt="Juan Martin Gonzalez" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Juan Martin Gonzalez</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298826-3fe8c3e53d-3/AlexGoodeSaracens.jpg" class="card-img-top" alt="Alex Goode" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alex Goode</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311448-ecabda15f1-3/JamesHadfieldSaracens.jpg" class="card-img-top" alt="James Hadfield" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James Hadfield</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298832-a8c6d8081d-3/JoshHallettSaracens.jpg" class="card-img-top" alt="Josh Hallett" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Josh Hallett</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308744-fc2927e9c9-3/BenHarris.jpg" class="card-img-top" alt="Ben Harris." style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben Harris.</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309784-71d41a16d7-3/OllyHartleySaracens.jpg" class="card-img-top" alt="Olly Hartley" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Olly Hartley</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309782-71cb1fe400-3/OliverHoskinsSaracens.jpg" class="card-img-top" alt="Oliver Hoskins" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Oliver Hoskins</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/267573-6499701900-3/FrancoisHougaardrugbyplayer.jpg" class="card-img-top" alt="Francois Hougaard" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Francois Hougaard</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/267301-9cd516d1e7-3/TomHowerugbyplayer.jpg" class="card-img-top" alt="Tom Howe" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Howe</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308739-78b1c7ae48-3/CallumHunter-HillSaracens.jpg" class="card-img-top" alt="Callum Hunter-Hill" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Callum Hunter-Hill</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/noimage/webPlayer.png" class="card-img-top" alt="James Isaacs" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James Isaacs</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308748-fdf666a0d4-3/NickIsiekweSaracens.jpg" class="card-img-top" alt="Nick Isiekwe" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nick Isiekwe</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309780-294ae00e08-3/MaroItojeSaracens.jpg" class="card-img-top" alt="Maro Itoje" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Maro Itoje</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/277073-8be6654979-3/BrandonJacksonSaracens.jpg" class="card-img-top" alt="Brandon Jackson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Brandon Jackson</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308738-3858255838-3/ChristianJudgeSaracens.jpg" class="card-img-top" alt="Christian Judge" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Christian Judge</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292865-9e3072dc93-3/AndrewKitchenerSaracens.jpg" class="card-img-top" alt="Andrew Kitchener" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Andrew Kitchener</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309789-9c9c5932d9-3/TobyKnightSaracens.jpg" class="card-img-top" alt="Toby Knight" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Toby Knight</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308747-12a0855926-3/AlexLewingtonSaracens.jpg" class="card-img-top" alt="Alex Lewington" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alex Lewington</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/267945-6acf6d22c4-3/AlexLozowskiSaracens.jpg" class="card-img-top" alt="Alex Lozowski" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alex Lozowski</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/271117-147035d669-3/SeanMaitlandSaracens.jpg" class="card-img-top" alt="Sean Maitland" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sean Maitland</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298814-76e93d3ac0-3/EroniMawiSaracens.jpg" class="card-img-top" alt="Eroni Mawi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Eroni Mawi</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309795-c006a1268e-3/MarkMcCallSaracens.jpg" class="card-img-top" alt="Mark McCall" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mark McCall</h5>
+            <p class="card-text">DoR</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309788-988ca906e1-3/TheoMcFarlandSaracens.jpg" class="card-img-top" alt="Theo McFarland" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Theo McFarland</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/287178-0f262c8431-3/JensonMcInultyrugbyplayer.jpg" class="card-img-top" alt="Jenson McInulty" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jenson McInulty</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/287177-6161b5c482-3/NathanMichelowrugbyplayer.jpg" class="card-img-top" alt="Nathan Michelow" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nathan Michelow</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/219427-da76fcf65f-3/GarethMilasinovichrugbyplayer.jpg" class="card-img-top" alt="Gareth Milasinovich" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gareth Milasinovich</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/277072-d9abe3163e-3/FrancisMooreSaracens.jpg" class="card-img-top" alt="Francis Moore" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Francis Moore</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309772-d71ac0bad9-3/DominicMorrisSaracens.jpg" class="card-img-top" alt="Dominic Morris" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dominic Morris</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/179181-26f62bc4f7-3/RossNealrugbyplayer.jpg" class="card-img-top" alt="Ross Neal" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ross Neal</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309790-3f729b53a7-3/TomPartonSaracens.jpg" class="card-img-top" alt="Tom Parton" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Parton</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300454-e724789345-3/KadenPearce-PaulSaracens.jpg" class="card-img-top" alt="Kaden Pearce-Paul" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kaden Pearce-Paul</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309792-040534104f-3/IanPeelSaracens.jpg" class="card-img-top" alt="Ian Peel" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ian Peel</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308737-0e7debda67-3/KapeliPifeletiSaracens.jpg" class="card-img-top" alt="Kapeli Pifeleti" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kapeli Pifeleti</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309791-39e5652ef2-3/AdamPowellSaracens.jpg" class="card-img-top" alt="Adam Powell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Adam Powell</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/287179-042c602177-3/CharlieReynolds-Westrugbyplayer.jpg" class="card-img-top" alt="Charlie Reynolds-West" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Charlie Reynolds-West</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298828-d13d256abe-3/MarcoRiccioniSaracens.jpg" class="card-img-top" alt="Marco Riccioni" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marco Riccioni</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308743-1c9ffbbabd-3/RotimiSegunSaracens.jpg" class="card-img-top" alt="Rotimi Segun" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rotimi Segun</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309793-34bbed6934-3/JoeShawSaracens.jpg" class="card-img-top" alt="Joe Shaw" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joe Shaw</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308741-d421f956c0-3/GarethSimpsonSaracens.jpg" class="card-img-top" alt="Gareth Simpson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gareth Simpson</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/noimage/webPlayer.png" class="card-img-top" alt="Tristan Smith" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tristan Smith</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309794-1151aabe04-3/KevinSorrellSaracens.jpg" class="card-img-top" alt="Kevin Sorrell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kevin Sorrell</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308740-4f629384b0-3/OliverStonhamSaracens.jpg" class="card-img-top" alt="Oliver Stonham" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Oliver Stonham</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/267939-236c5c68be-3/TimSwinsonSaracens.jpg" class="card-img-top" alt="Tim Swinson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tim Swinson</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286236-c21516dc1d-3/HughTizardSaracens.jpg" class="card-img-top" alt="Hugh Tizard" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Hugh Tizard</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309781-5d83350a51-3/NickTompkinsSaracens.jpg" class="card-img-top" alt="Nick Tompkins" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nick Tompkins</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298831-6deed95518-3/IvanvanZylSaracens.jpg" class="card-img-top" alt="Ivan van Zyl" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ivan van Zyl</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/271103-60c87d9e0e-3/JancoVenterSaracens.jpg" class="card-img-top" alt="Janco Venter" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Janco Venter</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309768-a71d0e204f-3/BillyVunipolaSaracens.jpg" class="card-img-top" alt="Billy Vunipola" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Billy Vunipola</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/271105-04a05e6e5d-3/MakoVunipolaSaracens.jpg" class="card-img-top" alt="Mako Vunipola" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mako Vunipola</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308742-3482fc24b9-3/ManuVunipolaSaracens.jpg" class="card-img-top" alt="Manu Vunipola" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Manu Vunipola</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300452-3706c032a0-3/AlexWardellSaracens.jpg" class="card-img-top" alt="Alex Wardell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alex Wardell</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/277631-163acd909c-3/JevaughnWarrenrugbyplayer.jpg" class="card-img-top" alt="Jevaughn Warren" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jevaughn Warren</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308736-c7f854cb2b-3/TomWestSaracens.jpg" class="card-img-top" alt="Tom West" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom West</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308745-9eaa54ccba-3/TomWillisSaracens.jpg" class="card-img-top" alt="Tom Willis" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Willis</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298815-1d7aacfa81-3/TomWoolstencroftSaracens.jpg" class="card-img-top" alt="Tom Woolstencroft" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Woolstencroft</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Origins and Early Years</h2>
+                <p>Saracens, founded in 1876 by the Old Boys of the Philological School in Marylebone, London, traces its name to the perceived invincibility of Saladin's desert warriors. After amalgamating with the Crusaders in 1878, the club moved across various grounds until settling at Bramley Road in 1939. The pre-league era saw Saracens produce internationals, achieving success in the 1970s, including winning the 1972 Middlesex Cup. The professional era, marked by financial backing in 1995, led to notable signings like Michael Lynagh and Francois Pienaar. Despite challenges, Saracens secured the Tetley Bitter Cup in 1998, marking their first major silverware.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Courage Leagues and Restructuring</h2>
+                <p>Responding to the challenge of the Courage Leagues in the early 1980s, Saracens, captained by Floyd Steadman and coached by Tony Russ, achieved a 100% record and won the second division in 1989. Despite losing key players, including Jason Leonard and Dean Ryan, they surprised by finishing fourth in the first division the following year. The leagues were restructured in 1992–93, leading to relegation for Saracens, but they bounced back, finishing as champions the next year. The 1990s saw the club navigating a seesaw existence, with ups and downs, including avoiding relegation in the first season of professional rugby in 1995–96.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>The Professional Era and Key Signings (1996–2000)</h2>
+                <p>In 1995, Saracens gained financial backing, enabling signings like Michael Lynagh, Philippe Sella, Francois Pienaar, and Kyran Bracken. Despite moving to Southbury Road, Enfield, they finished seventh in the 1996–97 season. A landmark move to Vicarage Road in 1997 marked the "year of the Fez," symbolizing the team's identity. The late 1990s brought success, with a Tetley Bitter Cup win in 1998, but they narrowly missed Heineken Cup qualification. The late 1990s and early 2000s saw Saracens facing challenges and restructuring but maintaining a strong presence in English rugby.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Challenges and Changes (2000–2006)</h2>
+                <p>The 2000–01 season began with challenges, including defeats to Cardiff and injuries to key players. Despite a fifth-place finish, Saracens missed Heineken Cup qualification. The 2001–02 season saw changes, with established players leaving, and despite a reasonable start, Saracens struggled. Inconsistent performances and relegation fears characterized the season. The coaching reins passed to Buck Shelford in 2002–03, bringing new signings, but Saracens faced struggles and ended the season in 10th place. The 2004–05 season, marked by English-based player recruitment, saw a strong start, but a mid-season dip led to a 10th-place finish.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Progress and Challenges (2006–07)</h2>
+                  <p>The 2006–07 season saw Alan Gaffney appointed as coach, bringing positive results and a Premiership playoff spot. Despite a defeat in the final, the season represented progress. In 2007–08, Saracens signed All Black Chris Jack and saw improved performances. The season included a good run in the European Challenge Cup, but the team finished 10th in the Premiership. The following seasons saw Saracens facing challenges, coaching changes, and fluctuating performances, highlighting the club's journey through the ups and downs of professional rugby.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+            </div>
+            <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Brendan Venter Era and Notable Achievements (2009–10)</h2>
+                  <p>Brendan Venter's arrival in 2009 sparked controversy, with significant squad changes and a focus on South African players. The 2009–10 season started with a 10-match unbeaten run, including wins over London Irish and Northampton. A memorable victory over South Africa at Wembley generated publicity. Despite a post-Christmas slump, Saracens secured a Guinness Premiership Semi-Final spot, defeating Northampton. The 2010 Guinness Premiership Final against Leicester Tigers ended in heartbreak, but the season marked notable achievements, including a return to competitiveness on the domestic and European stages.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont left-containter">
+                  <img src="img/rugbyicon.png">
+                  <div class="text-box">
+                    <h2>2010–11: Premiership Champions</h2>
+                    <p>Saracens' 2010–11 season was a rollercoaster, starting with a loss to London Irish but rebounding with four consecutive wins. Despite crashing out of the Heineken Cup, their domestic form was stellar, securing a home semi-final and a 12–10 victory against Leicester Tigers in the final. The Men in Black, led by Man of the Match Schalk Brits, became English champions for the first time, overcoming a determined Leicester side.
+
+                    </p>
+                    <span class="left-container-arrow"></span>
+                  </div>
+              </div>
+              <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>2014–15: Premiership Champions</h2>
+                  <p>Saracens' 2014–15 season showcased high-scoring victories, securing a fourth-place finish in the regular season. In the final against Bath, they scored three unanswered tries in the first half, winning 28–16. This marked the first time a team finished fourth and became Premiership champions. The season also saw success in the Anglo-Welsh Cup but a loss in the European Rugby Champions Cup semi-finals.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont left-containter">
+                  <img src="img/rugbyicon.png">
+                  <div class="text-box">
+                    <h2>2019: Relegation and Scandal</h2>
+                    <p>Allegations of salary cap breaches emerged in 2019, leading to a 35-point deduction and a £5.3 million fine. Chairman Nigel Wray stepped down, and Saracens were relegated to the RFU Championship for the 2020–21 season. The club's lack of cooperation in a mid-season audit played a role in the severity of the punishment.
+
+                    </p>
+                    <span class="left-container-arrow"></span>
+                  </div>
+              </div>
+              <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>CEO Changes and Further Deductions: 2019–20 Season</h2>
+                  <p>In the aftermath, Edward Griffiths returned as CEO, but the struggles continued. Saracens faced a further 70-point deduction, ensuring a bottom finish. Lord Dyson's report detailed overspending, including property investments, and rejected the claim that the Salary Cap was unenforceable.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont left-containter">
+                  <img src="img/rugbyicon.png">
+                  <div class="text-box">
+                    <h2>2020/21 Season: Redemption and Promotion</h2>
+                    <p>Despite the challenges, Saracens had a triumphant 2020/21 season, winning the RFU Championship and securing promotion back to the Gallagher Premiership. The team's success was built on strong teamwork, leadership from experienced players like Owen Farrell, Maro Itoje, and Billy Vunipola, and key victories, including a dominant 73–0 win over Coventry and a crucial 117–15 win over Ealing Trailfinders in the play-off final.
+
+                    </p>
+                    <span class="left-container-arrow"></span>
+                  </div>
+              </div>
+              <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>2021/22 Season: Runners-Up in Gallagher Premiership</h2>
+                  <p>Saracens' return to the Gallagher Premiership in the 2021/22 season was marked by success, finishing as runners-up. The squad's depth, rotation strategy, and contributions from world-class players like Maro Itoje, Owen Farrell, and Alex Goode were pivotal. Despite a defeat in the Premiership final to Leicester Tigers, Saracens demonstrated their prowess and resilience, setting the stage for future success.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+            
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

@@ -1,0 +1,1335 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .cont:nth-child(14){
+          animation-delay: 13s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #griffonsKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #griffonsKitSection {
+          display: none;
+        }
+
+        #griffonsKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #griffonsKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #griffonsKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #griffonsKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #griffonsKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #griffonsKitSection {
+          display: flex;
+        }
+
+        #griffonsKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #griffonsKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Griffons</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/griffonsbanner.png" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About The Griffons</h3>
+    <p>The Griffons, a formidable force in South African rugby, proudly represent the Northen Free State province in the annual Currie Cup tournament. Established to nurture rugby prowess in the heart of the country, the team draws its strength from a rich rugby heritage. The iconic Griffons emblem adorns their jerseys, signifying resilience and determination. The team's home ground, the North West Stadium in Welkom, resonates with the cheers of dedicated supporters. With a commitment to excellence and a passion for the sport, the Griffons continue to contribute to the dynamic tapestry of South African rugby, engaging in spirited competitions and showcasing the indomitable spirit that defines their legacy.    
+    </p>
+  
+    
+
+      <div id="griffonsKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Griffons Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/griffonshome.png" alt="Griffons Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/griffonshome.png" alt="Griffons Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="griffonsKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Griffons Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/griffonshome.png" alt="Griffons Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/griffonshome.png" alt="Griffons Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295809-3456b1f3c5-3/MichaelBenadieNovavitGriffons.jpg" class="card-img-top" alt="Michael Benadie" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Michael Benadie</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295971-11bd66a187-3/DoctorBooysenGriffons.jpg" class="card-img-top" alt="Doctor Booysen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Doctor Booysen</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295843-eee4b91c09-3/MitchellCarstensNovavitGriffons.jpg" class="card-img-top" alt="Mitchell Carstens" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mitchell Carstens</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299924-dcf8d47026-3/Carel-JanCoetzeeGriffons.jpg" class="card-img-top" alt="Carel-Jan Coetzee" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Carel-Jan Coetzee</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300508-eb5987250e-3/JdeBeerGriffons.jpg" class="card-img-top" alt="J de Beer" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">J de Beer</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299926-fd4ccd00e4-3/StephandeJagerGriffons.jpg" class="card-img-top" alt="Stephan de Jager" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Stephan de Jager</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299925-63573da8ae-3/DandreDelportGriffons.jpg" class="card-img-top" alt="Dandre Delport" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dandre Delport</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295845-ad8a2a5d12-3/DonovanDonNovavitGriffons.jpg" class="card-img-top" alt="Donovan Don" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Donovan Don</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297002-104124b858-3/RFieliesGriffons.jpg" class="card-img-top" alt="R Fielies" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">R Fielies</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296722-628c2a15f6-3/RichmanGoraGriffons.jpg" class="card-img-top" alt="Richman Gora" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Richman Gora</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295817-8fec35c4bf-3/DurenHoffmanNovavitGriffons.jpg" class="card-img-top" alt="Duren Hoffman" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Duren Hoffman</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295819-ee6625d1c9-3/XolaniJacobsNovavitGriffons.jpg" class="card-img-top" alt="Xolani Jacobs" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Xolani Jacobs</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295854-3bfa8394c9-3/JacquesJuriesNovavitGriffons.jpg" class="card-img-top" alt="Jacques Juries" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jacques Juries</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295825-864de1b7c5-3/JaywinnJuriesNovavitGriffons.jpg" class="card-img-top" alt="Jaywinn Juries" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jaywinn Juries</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295831-946f8d30b9-3/JaredKrugerNovavitGriffons.jpg" class="card-img-top" alt="Jared Kruger" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jared Kruger</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295852-c9e2252a15-3/GranwillMatthysNovavitGriffons.jpg" class="card-img-top" alt="Granwill Matthys" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Granwill Matthys</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299927-d6d63b7149-3/ThatoMavundlaGriffons.jpg" class="card-img-top" alt="Thato Mavundla" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Thato Mavundla</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295975-cfdbf66b31-3/NeoMohapiGriffons.jpg" class="card-img-top" alt="Neo Mohapi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Neo Mohapi</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295839-1ca8be472c-3/AlistairMumbaNovavitGriffons.jpg" class="card-img-top" alt="Alistair Mumba" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alistair Mumba</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302380-3e34edaeb1-3/HMwanjilwaGriffons.jpg" class="card-img-top" alt="H Mwanjilwa" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">H Mwanjilwa</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295837-93266abf59-3/WikusNieuwenhuisNovavitGriffons.jpg" class="card-img-top" alt="Wikus Nieuwenhuis" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Wikus Nieuwenhuis</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299923-bccafe8851-3/BuhleSiyasangaNojekwaGriffons.jpg" class="card-img-top" alt="Buhle Siyasanga Nojekwa" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Buhle Siyasanga Nojekwa</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298638-111868aea8-3/ThomasOkeyoGriffons.jpg" class="card-img-top" alt="Thomas Okeyo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Thomas Okeyo</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300507-2ee485b83d-3/RyanOlivierGriffons.jpg" class="card-img-top" alt="Ryan Olivier" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ryan Olivier</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299593-1da1782974-3/ThomasOngeraGriffons.jpg" class="card-img-top" alt="Thomas Ongera" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Thomas Ongera</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295827-823e30e204-3/RobertPetzerNovavitGriffons.jpg" class="card-img-top" alt="Robert Petzer" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Robert Petzer</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295850-203538eba9-3/Carl-EvertPienaarNovavitGriffons.jpg" class="card-img-top" alt="Carl-Evert Pienaar" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Carl-Evert Pienaar</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295841-5576faeb4c-3/JeanPretoriusNovavitGriffons.jpg" class="card-img-top" alt="Jean Pretorius" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jean Pretorius</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295974-8ae2ad722b-3/DuanPretoriusGriffons.jpg" class="card-img-top" alt="Duan Pretorius" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Duan Pretorius</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295815-c4293a4fcf-3/MarquitVirgilSeptemberNovavitGriffons.jpg" class="card-img-top" alt="Marquit Virgil September" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marquit Virgil September</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295848-fd6deb18c8-3/DomenicSmitNovavitGriffons.jpg" class="card-img-top" alt="Domenic Smit" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Domenic Smit</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295811-7f75c79981-3/CurtlyAmbroseThomasNovavitGriffons.jpg" class="card-img-top" alt="Curtly Ambrose Thomas" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Curtly Ambrose Thomas</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296721-6b9e8722f6-3/JambaUlengoGriffons.jpg" class="card-img-top" alt="Jamba Ulengo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jamba Ulengo</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295807-71610c7248-3/HPvanSchoorNovavitGriffons.jpg" class="card-img-top" alt="HP van Schoor" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">HP van Schoor</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295976-133fe386bb-3/KeanuVersGriffons.jpg" class="card-img-top" alt="Keanu Vers" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Keanu Vers</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295833-2008b97eee-3/ChadleyWennNovavitGriffons.jpg" class="card-img-top" alt="Chadley Wenn" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Chadley Wenn</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295972-0daed116cf-3/JacoWillemseGriffons.jpg" class="card-img-top" alt="Jaco Willemse" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jaco Willemse</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295977-b5a87039f5-3/EWilliamsGriffons.jpg" class="card-img-top" alt="Ethan Williams" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ethan Williams</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295821-bfc78f13a7-3/LudioWilliamsNovavitGriffons.jpg" class="card-img-top" alt="Ludio Williams" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ludio Williams</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295973-4c2e6b3e74-3/SosoSokuphumlaGriffons.jpg" class="card-img-top" alt="Soso Xakalashe" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Soso Xakalashe</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Novavit Griffons: The Pride of Northern Free State</h2>
+                <p>The Novavit Griffons, formerly known as Northern Free State, stand as a formidable South African rugby union team in the annual Currie Cup and Rugby Challenge tournaments. Hailing from Welkom and calling the North West Stadium their fortress, the Griffons draw their strength from the vibrant rugby culture of the eastern third of the Free State Province. With a rich history dating back to 1968, the team was envisioned by the late Dr Danie Craven, reflecting a commitment to spreading the joy of rugby to rural areas.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Home Turf Glory: North West Stadium in Welkom</h2>
+                <p>The North West Stadium in Welkom serves as the vibrant battleground for the Novavit Griffons. With a seating capacity that echoes with the cheers of approximately 4,000 passionate fans, this stadium becomes the heart of rugby action during the Currie Cup. As the Griffons showcase their prowess on home turf, the stadium transforms into a cauldron of excitement, witnessing thrilling encounters and memorable moments.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Selection Honor: Path to the Cheetahs Super Rugby Team</h2>
+                  <p>Players donning the Novavit Griffons jersey not only represent the pride of the team but also carry the honor of potential selection to the prestigious Cheetahs Super Rugby team. The pathway to the top echelons of South African rugby is paved through the dedication and skill displayed in Griffons colors. This interconnected journey fosters a strong rugby community and fuels the dreams of aspiring players.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Rivalry Chronicles: Clash with Free State Cheetahs and NW Leopards</h2>
+                  <p>The Novavit Griffons engage in intense battles with traditional rivals, the Free State Cheetahs, and the North West Province Leopards. These encounters, etched in the annals of South African rugby history, add spice to the competitive landscape. The matchups against familiar foes showcase the grit and determination that define the spirit of the Griffons.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont left-containter">
+                  <img src="img/rugbyicon.png">
+                  <div class="text-box">
+                    <h2>Evolution of Identity: From Northern Free State to Griffons</h2>
+                    <p>Founded in 1968 as part of a visionary initiative by Dr Danie Craven, the team initially carried the moniker Northern Free State. However, with the advent of professional rugby in 1999, the team underwent a transformation, adopting the name Griffons. This evolution reflects the team's commitment to progress, resilience, and embracing a new era in the dynamic world of South African rugby.
+
+                    </p>
+                    <span class="left-container-arrow"></span>
+                  </div>
+                </div>
+              
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

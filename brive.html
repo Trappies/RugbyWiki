@@ -1,0 +1,1415 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .cont:nth-child(14){
+          animation-delay: 13s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #briveKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #briveKitSection {
+          display: none;
+        }
+
+        #briveKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #briveKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #briveKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #briveKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #briveKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #briveKitSection {
+          display: flex;
+        }
+
+        #briveKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #briveKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Brive</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/brivebanner.png" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About Brive</h3>
+    <p>Brive Rugby Club, officially known as CA Brive, stands as a historic and resilient force in French rugby. Based in Brive-la-Gaillarde, the club has etched its name in the annals of rugby history with a rich legacy dating back to its foundation in 1910. CA Brive boasts multiple domestic and international triumphs, including their notable victory in the European Cup during the 1996-1997 season. The team, adorned in black and white, emanates a sense of pride and tradition, representing the passion and dedication deeply ingrained in French rugby culture. The loyal fanbase, known for their fervent support, contributes to the vibrant and electric atmosphere at Stade Amédée-Domenech, the club's iconic home stadium. CA Brive continues to be a symbol of resilience and sporting excellence, maintaining its status as a formidable contender in the competitive world of French rugby.
+    </p>
+  
+    
+
+      <div id="briveKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Brive Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/brivehome.png" alt="Brive Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/briveaway.png" alt="Brive Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 14px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="briveKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Brive Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/brivehome.png" alt="Brive Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/briveaway.png" alt="Brive Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306618-a20cc6a082-3/VakhAbdaladzeBrive.jpg" class="card-img-top" alt="Vakh Abdaladze" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Vakh Abdaladze</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301505-cc72791c08-3/SamArnoldBrive.jpg" class="card-img-top" alt="Sam Arnold" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sam Arnold</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/158055-8c62ec8a54-3/JeanBaptistePejoineBrive.jpg" class="card-img-top" alt="Jean Baptiste Pejoine" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jean Baptiste Pejoine</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305999-9a39a86d9b-3/JulienBlancBrive.jpg" class="card-img-top" alt="Julien Blanc" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Julien Blanc</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299378-547b5dd90d-3/ArthurBonnevalBrive.jpg" class="card-img-top" alt="Arthur Bonneval" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Arthur Bonneval</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299360-f65624494f-3/DanielBrennanBrive.jpg" class="card-img-top" alt="Daniel Brennan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Daniel Brennan</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309602-371ad34af6-3/MathieuBrignonenBrive.jpg" class="card-img-top" alt="Mathieu Brignonen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mathieu Brignonen</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299790-f8d8a89987-3/ArthurBrugesBrive.jpg" class="card-img-top" alt="Arthur Bruges" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Arthur Bruges</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306011-d6f9a1e4cd-3/LeoCarbonneauBrive.jpg" class="card-img-top" alt="Leo Carbonneau" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Leo Carbonneau</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/244391-fffc239f67-3/PatriceCollazorugbyplayer.jpg" class="card-img-top" alt="Patrice Collazo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Patrice Collazo</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299392-90313411e1-3/FranciscoCoriaMarchettiBrive.jpg" class="card-img-top" alt="Francisco Coria Marchetti" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Francisco Coria Marchetti</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301013-38a7653847-3/LucasDaSilvaBrive.jpg" class="card-img-top" alt="Lucas Da Silva" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lucas Da Silva</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299796-991fc71442-3/TomDanovaroBrive.jpg" class="card-img-top" alt="Tom Danovaro" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Danovaro</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299366-c52c00243e-3/JulienDelannoyBrive.jpg" class="card-img-top" alt="Julien Delannoy" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Julien Delannoy</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309605-aea54cecb5-3/WesleyDouglasBrive.jpg" class="card-img-top" alt="Wesley Douglas" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Wesley Douglas</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291693-3863a9016b-3/MathisFerteBrive.jpg" class="card-img-top" alt="Mathis Ferte" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mathis Ferte</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291694-f17c627171-3/NathanFraissenonBrive.jpg" class="card-img-top" alt="Nathan Fraissenon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nathan Fraissenon</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313267-28f8a62ac0-3/GuillaumeGalletierBrive.jpg" class="card-img-top" alt="Guillaume Galletier" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Guillaume Galletier</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306001-875de2044b-3/JacksonGarden-BachopBrive.jpg" class="card-img-top" alt="Jackson Garden-Bachop" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jackson Garden-Bachop</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299803-4d342d61c7-3/AaronGrandidier-NkanangBrive.jpg" class="card-img-top" alt="Aaron Grandidier-Nkanang" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Aaron Grandidier-Nkanang</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301507-6cc7d348b1-3/SachaGueBrive.jpg" class="card-img-top" alt="Sacha Gue" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sacha Gue</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305994-a3f20a7421-3/IssamHamelBrive.jpg" class="card-img-top" alt="Issam Hamel" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Issam Hamel</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299368-d11c0f9dab-3/SaidHirecheBrive.jpg" class="card-img-top" alt="Said Hireche" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Said Hireche</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306005-ba18bc13e5-3/SamJohnsonBrive.jpg" class="card-img-top" alt="Sam Johnson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sam Johnson</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297828-89f58ed728-3/NicKronerugbyplayer.jpg" class="card-img-top" alt="Nic Krone" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nic Krone</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299810-bc2719f953-3/TanguyLacosteBrive.jpg" class="card-img-top" alt="Tanguy Lacoste" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tanguy Lacoste</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299813-2c77af5e26-3/YannLaganeBrive.jpg" class="card-img-top" alt="Yann Lagane" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Yann Lagane</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299374-0b5c4b7c2e-3/ThomasLaranjeiraBrive.jpg" class="card-img-top" alt="Thomas Laranjeira" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Thomas Laranjeira</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/noimage/webPlayer.png" class="card-img-top" alt="Loan Lavergne" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Loan Lavergne</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301012-807c31771b-3/NicoLeeBrive.jpg" class="card-img-top" alt="Nico Lee" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nico Lee</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306009-7505787705-3/BenjaminLefrancBrive.jpg" class="card-img-top" alt="Benjamin Lefranc" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Benjamin Lefranc</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301504-b8f7c5505a-3/VasilLobzhanidzeBrive.jpg" class="card-img-top" alt="Vasil Lobzhanidze" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Vasil Lobzhanidze</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301009-06c3e2be31-3/RetiefMaraisBrive.jpg" class="card-img-top" alt="Retief Marais" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Retief Marais</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/158064-8ddb8e351f-3/ArnaudMelaBrive.jpg" class="card-img-top" alt="Arnaud Mela" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Arnaud Mela</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299388-e871ea8add-3/RossMoriartyBrive.jpg" class="card-img-top" alt="Ross Moriarty" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ross Moriarty</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299380-d72c124730-3/StuartOldingBrive.jpg" class="card-img-top" alt="Stuart Olding" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Stuart Olding</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306617-1137ee382b-3/AdrienPelissieBrive.jpg" class="card-img-top" alt="Adrien Pelissie" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Adrien Pelissie</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301017-1d3f153711-3/TomRaffyBrive.jpg" class="card-img-top" alt="Tom Raffy" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Raffy</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306619-8d2025f78e-3/TevitaRatuvaBrive.jpg" class="card-img-top" alt="Tevita Ratuva" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tevita Ratuva</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309603-23d95dd4ac-3/OskarRixenBrive.jpg" class="card-img-top" alt="Oskar Rixen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Oskar Rixen</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313268-6b167740b5-3/TanielaSadruguBrive.jpg" class="card-img-top" alt="Taniela Sadrugu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Taniela Sadrugu</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309604-12ffd51cbe-3/GeorgesShvelidzeBrive.jpg" class="card-img-top" alt="Georges Shvelidze" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Georges Shvelidze</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299384-c1e738146d-3/WesleyTapuelueluBrive.jpg" class="card-img-top" alt="Wesley Tapueluelu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Wesley Tapueluelu</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305996-6cc45fee18-3/SitalekiTimaniBrive.jpg" class="card-img-top" alt="Sitaleki Timani" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sitaleki Timani</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306003-f138c0d3fb-3/AsaeliTuivuakaBrive.jpg" class="card-img-top" alt="Asaeli Tuivuaka" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Asaeli Tuivuaka</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301008-7dcf71895a-3/MarcelvanderMerweBrive.jpg" class="card-img-top" alt="Marcel van der Merwe" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marcel van der Merwe</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301503-75fe298137-3/RengervanEertenBrive.jpg" class="card-img-top" alt="Renger van Eerten" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Renger van Eerten</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305997-732687205e-3/MatthieuVoisinBrive.jpg" class="card-img-top" alt="Matthieu Voisin" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matthieu Voisin</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306007-82fc15b038-3/PaulaWalisolisoBrive.jpg" class="card-img-top" alt="Paula Walisoliso" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Paula Walisoliso</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309606-19274757f3-3/RahboniWarren-VosayacoBrive.jpg" class="card-img-top" alt="Rahboni Warren-Vosayaco" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rahboni Warren-Vosayaco</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>CA Brive: A Rugby Legacy</h2>
+                <p>Brive, also known as CA Brive, stands as a pillar in French rugby history. With a foundation dating back to 1910, this club has been a longstanding member of French rugby, boasting numerous seasons in the top domestic competition. Their triumph in the Heineken Cup in 1997, where they defeated Leicester Tigers in a resounding 28-9 victory, remains a crowning achievement. The club has been a breeding ground for talent, nurturing players like Amédée Domenech, Olivier Magne, Christophe Lamaison, Alain Penaud, Jean-Luc Joinel, and Michel Yachvili, who went on to represent France. Their home ground, the Stade Amédée-Domenech, witnesses the fervor of black and white-clad supporters. Despite facing challenges, including a brief stint in the second division and financial hurdles, CA Brive continues to be a resilient force, showcasing the indomitable spirit of French rugby.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Historic Journey and Setbacks</h2>
+                <p>CA Brive's journey reflects the highs and lows of rugby prowess. Established on March 15, 1910, and later re-established in 1912, the club transitioned between rugby union and rugby league before firmly settling into union post-World War II. The club's ascent to the First Division saw them establish themselves as Limousin's rugby stronghold. Despite several appearances in finals, including a heartbreaking loss to AS Béziers in 1975, they experienced a resurgence in the mid-1990s. In 1996, they reached the finals but fell short against Stade Toulousain. However, their redemption came in 1997 when they clinched the Heineken Cup, defeating Leicester Tigers. This triumph made them the only club to win the European Cup without securing their domestic championship.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Challenges and Resilience</h2>
+                  <p>While basking in European glory, Brive faced challenges, including financial woes leading to relegation in 2000. Despite bouncing back in 2002, the club encountered struggles, residing in the lower echelons of the league table. The year 2012 saw another relegation, yet Brive's fighting spirit prevailed as they triumphantly returned to the Top 14 the following year after defeating Pau. The club's journey epitomizes resilience, showcasing their ability to overcome adversity and remain a symbol of enduring strength in French rugby.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

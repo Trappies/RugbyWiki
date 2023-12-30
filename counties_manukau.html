@@ -1,0 +1,1455 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .cont:nth-child(14){
+          animation-delay: 13s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #manukauKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #manukauKitSection {
+          display: none;
+        }
+
+        #manukauKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #manukauKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #manukauKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #manukauKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #manukauKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #manukauKitSection {
+          display: flex;
+        }
+
+        #manukauKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #manukauKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Counties Manukau</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/manukaubanner.png" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About Counties Manukau</h3>
+    <p>Established in 1955, the Counties Manukau rugby team embodies the rich rugby culture of New Zealand. Competing in the National Provincial Championship (NPC), now branded as the Bunnings NPC, the team has showcased remarkable determination and skill over the years. Their home matches are played at Navigation Homes Stadium in Pukekohe, creating a vibrant atmosphere for fans. Counties Manukau has faced formidable opponents, leaving an indelible mark on the rugby landscape. As they continue to forge ahead, the team remains a testament to the passion and talent that define New Zealand's rugby tradition.
+    </p>
+  
+    
+
+      <div id="manukauKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Counties Manukau Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/manukauhome.png" alt="Counties Manukau Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/manukauhome.png" alt="Counties Manukau Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="manukauKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Counties Manukau Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/manukauhome.png" alt="Counties Manukau Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/manukauhome.png" alt="Counties Manukau Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282766-c93bd47330-3/AJAlatimuCountiesManukau.jpg" class="card-img-top" alt="AJ Alatimu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">AJ Alatimu</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304108-64d23d4083-3/PaluAleCountiesManukau.jpg" class="card-img-top" alt="Palu Ale" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Palu Ale</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/264301-4b78a00d17-3/SuetenaAsomuaCountiesManukau.jpg" class="card-img-top" alt="Suetena Asomua" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Suetena Asomua</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307091-9436506f6f-3/CohenBrady-LeathemCountiesManukau.jpg" class="card-img-top" alt="Cohen Brady-Leathem" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cohen Brady-Leathem</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298491-30c2358ac3-3/AdamBrashCountiesManukau.jpg" class="card-img-top" alt="Adam Brash" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Adam Brash</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298515-72c51ae910-3/LiamDanielaCountiesManukau.jpg" class="card-img-top" alt="Liam Daniela" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Liam Daniela</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304147-33ed91b058-3/AlexErueraCountiesManukau.jpg" class="card-img-top" alt="Alex Eruera" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alex Eruera</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282751-deda5ddf19-3/LionelEvansCountiesManukau.jpg" class="card-img-top" alt="Lionel Evans" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lionel Evans</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282777-33ba612936-3/EsauFilimoehalaCountiesManukau.jpg" class="card-img-top" alt="Esau Filimoehala" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Esau Filimoehala</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304149-0dc4adef59-3/NikolaiFoliakiCountiesManukau.jpg" class="card-img-top" alt="Nikolai Foliaki" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nikolai Foliaki</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282756-3a9d9210e0-3/WilliamFurnissCountiesManukau.jpg" class="card-img-top" alt="William Furniss" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">William Furniss</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304152-086cbed2a5-3/JoshGrayCountiesManukau.jpg" class="card-img-top" alt="Josh Gray" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Josh Gray</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304137-0fc06d6da0-3/KanavaleHeluCountiesManukau.jpg" class="card-img-top" alt="Kanavale Helu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kanavale Helu</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304138-37a9810243-3/RileyHohepaCountiesManukau.jpg" class="card-img-top" alt="Riley Hohepa" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Riley Hohepa</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298512-29351fe479-3/KauvakaKaivelataCountiesManukau.jpg" class="card-img-top" alt="Kauvaka Kaivelata" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kauvaka Kaivelata</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304140-b72c3aa90c-3/JamieKingCountiesManukau.jpg" class="card-img-top" alt="Jamie King" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jamie King</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298507-9c830165a4-3/JadinKingiCountiesManukau.jpg" class="card-img-top" alt="Jadin Kingi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jadin Kingi</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298502-74dfade547-3/EzekielLindenmuthCountiesManukau.jpg" class="card-img-top" alt="Ezekiel Lindenmuth" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ezekiel Lindenmuth</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304165-8dff60a2d2-3/JimmyMaherCountiesManukau.jpg" class="card-img-top" alt="Jimmy Maher" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jimmy Maher</h5>
+            <p class="card-text">Assistant Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304154-d870dbf2bb-3/BlakeMakiriCountiesManukau.jpg" class="card-img-top" alt="Blake Makiri" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Blake Makiri</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304155-9053c99a52-3/PeniasiMalimaliCountiesManukau.jpg" class="card-img-top" alt="Peniasi Malimali" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Peniasi Malimali</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282765-d33b3508a6-3/ThorManaseCountiesManukau.jpg" class="card-img-top" alt="Thor Manase" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Thor Manase</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298494-2087147bc3-3/AlexMcRobbieCountiesManukau.jpg" class="card-img-top" alt="Alex McRobbie" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alex McRobbie</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298505-2c528213d3-3/IoaneMoananuCountiesManukau.jpg" class="card-img-top" alt="Ioane Moananu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ioane Moananu</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304157-5c7f90bc32-3/SioneMoliaCountiesManukau.jpg" class="card-img-top" alt="Sione Molia" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sione Molia</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298492-80397a5b32-3/AlamandaMotugaCountiesManukau.jpg" class="card-img-top" alt="Alamanda Motuga" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alamanda Motuga</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305036-f471c154aa-3/NicholasMuliCountiesManukau.jpg" class="card-img-top" alt="Nicholas Muli" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nicholas Muli</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304159-eef30b1775-3/SolomoneNaidukiCountiesManukau.jpg" class="card-img-top" alt="Solomone Naiduki" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Solomone Naiduki</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298500-c8c009f80a-3/EteneNanai-SeturoCountiesManukau.jpg" class="card-img-top" alt="Etene Nanai-Seturo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Etene Nanai-Seturo</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304131-cd5859dbcf-3/LeoNgatai-TafauCountiesManukau.jpg" class="card-img-top" alt="Leo Ngatai-Tafau" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Leo Ngatai-Tafau</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307085-ab9cf7249d-3/TevitaOfaCountiesManukau.jpg" class="card-img-top" alt="Tevita Ofa" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tevita Ofa</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298499-10de1548f2-3/DaltonPapaliiCountiesManukau.jpg" class="card-img-top" alt="Dalton Papali'i" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dalton Papali'i</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304142-29f107dd83-3/JoshPenneyCountiesManukau.jpg" class="card-img-top" alt="Josh Penney" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Josh Penney</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307090-c19318909f-3/ToniPuluCountiesManukau.jpg" class="card-img-top" alt="Toni Pulu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Toni Pulu</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307089-a72f67ff4f-3/SeanReidyCountiesManukau.jpg" class="card-img-top" alt="Sean Reidy" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sean Reidy</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298498-4adfc5b6a2-3/CameronRoigardCountiesManukau.jpg" class="card-img-top" alt="Cameron Roigard" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cameron Roigard</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/264311-8127a07a03-3/SamuelSladeCountiesManukau.jpg" class="card-img-top" alt="Samuel Slade" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Samuel Slade</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282770-af36ce2613-3/NuaSotiCountiesManukau.jpg" class="card-img-top" alt="Nua Soti" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nua Soti</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298503-0f063c7564-3/HoskinsSotutuCountiesManukau.jpg" class="card-img-top" alt="Hoskins Sotutu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Hoskins Sotutu</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282761-eaf5ef70ed-3/RyanStewartCountiesManukau.jpg" class="card-img-top" alt="Ryan Stewart" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ryan Stewart</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/264312-981f006684-3/ViliamiTaulaniCountiesManukau.jpg" class="card-img-top" alt="Viliami Taulani" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Viliami Taulani</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304744-8cdf691604-3/SiateTaupakirugbyplayer.jpg" class="card-img-top" alt="Siate Taupaki" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Siate Taupaki</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307087-43c2ff1827-3/JamesThompsonCountiesManukau.jpg" class="card-img-top" alt="James Thompson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James Thompson</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298488-86c27a2984-3/ZurielTogiatamaCountiesManukau.jpg" class="card-img-top" alt="Zuriel Togiatama" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Zuriel Togiatama</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304162-e8eced4cd6-3/RodneyTongoteaCountiesManukau.jpg" class="card-img-top" alt="Rodney Tongotea" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rodney Tongotea</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282771-0d020af059-3/AhseeTualaCountiesManukau.jpg" class="card-img-top" alt="Ahsee Tuala" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ahsee Tuala</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304103-c4763547e6-3/SalesiTuifuaCountiesManukau.jpg" class="card-img-top" alt="Salesi Tuifua" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Salesi Tuifua</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282763-3a1d945c7d-3/SamTuifuaCountiesManukau.jpg" class="card-img-top" alt="Sam Tuifua" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sam Tuifua</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304151-cbb0816faa-3/LarenzTupaea-ThomsenCountiesManukau.jpg" class="card-img-top" alt="Larenz Tupaea-Thomsen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Larenz Tupaea-Thomsen</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304114-b84d80be45-3/JimmyTupouCountiesManukau.jpg" class="card-img-top" alt="Jimmy Tupou" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jimmy Tupou</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304133-3d9212457d-3/MaamaVaipuluCountiesManukau.jpg" class="card-img-top" alt="Maama Vaipulu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Maama Vaipulu</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304104-249bcf6305-3/KeranvanStadenCountiesManukau.jpg" class="card-img-top" alt="Keran van Staden" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Keran van Staden</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304112-5d169b58b9-3/IanWest-StevensCountiesManukau.jpg" class="card-img-top" alt="Ian West-Stevens" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ian West-Stevens</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304167-7df7d30202-3/PaulWheelerCountiesManukau.jpg" class="card-img-top" alt="Paul Wheeler" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Paul Wheeler</h5>
+            <p class="card-text">Assistant Coach</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>A Rugby Powerhouse in Black, White, and Red</h2>
+                <p>Founded in 1955, the Counties Manukau Steelers stand as a rugby institution in New Zealand. Competing in the National Provincial Championship (NPC), they showcase a legacy steeped in tradition and success. The Navigation Homes Stadium in Pukekohe, Auckland, becomes a battleground where the Steelers exhibit their prowess in distinctive black, white, and red jerseys. Affiliated with the Chiefs Super Rugby franchise, this team continues to be a force, representing the heart and soul of New Zealand rugby.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>The Iconic Home of Counties Manukau Rugby</h2>
+                <p>Step into the heart of New Zealand rugby at Navigation Homes Stadium in Pukekohe, Auckland, where the Counties Manukau Steelers command the field. This iconic stadium, witnessing the birth of countless rugby legends, becomes a battleground for the Steelers' intense clashes. With a seating capacity of thousands, fans clad in black, white, and red rally behind their team, creating an electric atmosphere that defines the spirit of Counties Manukau rugby.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Chiefs Super Rugby Affiliation: Counties Manukau's Path to Glory</h2>
+                  <p>Counties Manukau Steelers, donned in their distinctive black, white, and red jerseys, proudly align themselves with the Chiefs Super Rugby franchise. This affiliation not only enhances their prowess on the field but also solidifies their status as a rugby powerhouse. As they compete in the reformed National Provincial Championship, the Steelers carry the hopes and legacy of two formidable rugby entities, showcasing a commitment to excellence and a vibrant tradition that spans decades.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

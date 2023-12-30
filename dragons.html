@@ -1,0 +1,1485 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .cont:nth-child(14){
+          animation-delay: 13s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #dragonsKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #dragonsKitSection {
+          display: none;
+        }
+
+        #dragonsKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #dragonsKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #dragonsKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #dragonsKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #dragonsKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #dragonsKitSection {
+          display: flex;
+        }
+
+        #dragonsKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #dragonsKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Dragons</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/dragonsbanner.png" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About The Dragons</h3>
+    <p>The Dragons, a prominent professional rugby union team based in Newport, Wales, compete in the United Rugby Championship and European competitions. Formed in 2003 through the merger of Ebbw Vale, Newport, and Pontypool, the team has evolved as a vital entity in Welsh rugby. Home matches are held at Rodney Parade, and the Dragons have been a breeding ground for Welsh talent. While success in league competitions has been challenging, the Dragons continue to be a symbol of resilience and commitment, contributing significantly to the vibrant rugby culture in Wales. With a dedicated fan base and a focus on nurturing local talent, the Dragons remain integral to the rugby landscape in the United Kingdom.
+    </p>
+  
+    
+
+      <div id="dragonsKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Dragons Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/dragonshome.png" alt="Dragons Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/dragonsaway.png" alt="Dragons Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="dragonsKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Dragons Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/dragonshome.png" alt="Dragons Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/dragonsaway.png" alt="Dragons Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310934-321fd6bbfe-3/CoreyBaldwinDragonsRFC.jpg" class="card-img-top" alt="Corey Baldwin" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Corey Baldwin</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310935-5b390a3807-3/TaineBashamDragonsRFC.jpg" class="card-img-top" alt="Taine Basham" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Taine Basham</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310936-349502c99a-3/JamesBenjaminDragonsRFC.jpg" class="card-img-top" alt="James Benjamin" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James Benjamin</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310937-1c07928637-3/GonzaloBertranouDragonsRFC.jpg" class="card-img-top" alt="Gonzalo Bertranou" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gonzalo Bertranou</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310938-2ba7af31d6-3/DaneBlackerDragonsRFC.jpg" class="card-img-top" alt="Dane Blacker" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dane Blacker</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310939-6e9d6adce9-3/LeonBrownDragonsRFC.jpg" class="card-img-top" alt="Leon Brown" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Leon Brown</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310940-b57f7de124-3/BenCarterDragonsRFC.jpg" class="card-img-top" alt="Ben Carter" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben Carter</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310941-01656a98dd-3/MaxClarkDragonsRFC.jpg" class="card-img-top" alt="Max Clark" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Max Clark</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310943-1091282f21-3/BrodieCoghlanDragonsRFC.jpg" class="card-img-top" alt="Brodie Coghlan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Brodie Coghlan</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310944-7d2bb944b5-3/ChrisColemanDragonsRFC.jpg" class="card-img-top" alt="Chris Coleman" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Chris Coleman</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310993-3e33b2595d-3/MefinDaviesDragonsRFC.jpg" class="card-img-top" alt="Mefin Davies" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mefin Davies</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310945-f1d0f06ecc-3/JoeDaviesDragonsRFC.jpg" class="card-img-top" alt="Joe Davies" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joe Davies</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310946-b230b303b6-3/ElliotDeeDragonsRFC.jpg" class="card-img-top" alt="Elliot Dee" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Elliot Dee</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310948-efc3bf147e-3/JackDixonDragonsRFC.jpg" class="card-img-top" alt="Jack Dixon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jack Dixon</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310950-4e09206c1d-3/RioDyerDragonsRFC.jpg" class="card-img-top" alt="Rio Dyer" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rio Dyer</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310951-0fed69b28d-3/CaiEvansDragonsRFC.jpg" class="card-img-top" alt="Cai Evans" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cai Evans</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285811-fb2287bf4e-3/NathanEvansDragonsRFC.jpg" class="card-img-top" alt="Nathan Evans" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nathan Evans</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310952-5f0fa38ba7-3/LloydFairbrotherDragonsRFC.jpg" class="card-img-top" alt="Lloyd Fairbrother" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lloyd Fairbrother</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310991-be00df5a71-3/DaiFlanaganDragonsRFC.jpg" class="card-img-top" alt="Dai Flanagan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dai Flanagan</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/268511-3f39b48620-3/TomGriffithsDragons.jpg" class="card-img-top" alt="Tom Griffiths" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Griffiths</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310953-d71b076d56-3/OllieGriffithsDragonsRFC.jpg" class="card-img-top" alt="Ollie Griffiths" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ollie Griffiths</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310954-565ecbb590-3/AshtonHewittDragonsRFC.jpg" class="card-img-top" alt="Ashton Hewitt" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ashton Hewitt</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/302373-472afc2d1b-3/CheHoperugbyplayer.jpg" class="card-img-top" alt="Che Hope" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Che Hope</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310955-174ad4933b-3/SteffanHughesDragonsRFC.jpg" class="card-img-top" alt="Steffan Hughes" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Steffan Hughes</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310958-609b822688-3/RhodriJonesDragonsRFC.jpg" class="card-img-top" alt="Rhodri Jones" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rhodri Jones</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310957-c31864bc64-3/LewisJonesDragonsRFC.jpg" class="card-img-top" alt="Lewis Jones" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lewis Jones</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310959-9bd0a85961-3/HarrisonKeddieDragonsRFC.jpg" class="card-img-top" alt="Harrison Keddie" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Harrison Keddie</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/app/public/images/noimage/webPlayer.png" class="card-img-top" alt="Barney Langton-Cryer" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Barney Langton-Cryer</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310960-087be9441e-3/SeanLonsdaleDragonsRFC.jpg" class="card-img-top" alt="Sean Lonsdale" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sean Lonsdale</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310961-176003d486-3/DanLydiateDragonsRFC.jpg" class="card-img-top" alt="Dan Lydiate" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dan Lydiate</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/244197-d57437aa5f-3/BarryMaddockrugbyplayer.jpg" class="card-img-top" alt="Barry Maddock" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Barry Maddock</h5>
+            <p class="card-text">Assistant Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/24703-9192c01b27-3/DeaconManurugbyplayer.jpg" class="card-img-top" alt="Deacon Manu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Deacon Manu</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310962-72675627cc-3/RodrigoMartinezDragonsRFC.jpg" class="card-img-top" alt="Rodrigo Martinez" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rodrigo Martinez</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310992-abd378ec54-3/LukeNarrawayDragonsRFC.jpg" class="card-img-top" alt="Luke Narraway" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Luke Narraway</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310963-a474f74973-3/GeorgeNottDragonsRFC.jpg" class="card-img-top" alt="George Nott" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">George Nott</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310994-128c2b6ead-3/MattObrienDragonsRFC.jpg" class="card-img-top" alt="Matt O'brien" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matt O'brien</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310964-49a4500c2f-3/AngusOBrienDragonsRFC.jpg" class="card-img-top" alt="Angus O'Brien" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Angus O'Brien</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310965-f14e8a2ab2-3/AneurinOwenDragonsRFC.jpg" class="card-img-top" alt="Aneurin Owen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Aneurin Owen</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310966-1299011f8b-3/WillReedDragonsRFC.jpg" class="card-img-top" alt="Will Reed" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Will Reed</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310968-921fdcb0f6-3/DavidRichardsDragonsRFC.jpg" class="card-img-top" alt="David Richards" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">David Richards</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310969-9916e1fbdd-3/BradleyRobertsDragonsRFC.jpg" class="card-img-top" alt="Bradley Roberts" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Bradley Roberts</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/241134-67047a83cc-3/EwanRosserrugbyplayer.jpg" class="card-img-top" alt="Ewan Rosser" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ewan Rosser</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310970-b03329a4ac-3/JaredRosserDragonsRFC.jpg" class="card-img-top" alt="Jared Rosser" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jared Rosser</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310978-7a027b69aa-3/MatthewScreechDragonsRFC.jpg" class="card-img-top" alt="Matthew Screech" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matthew Screech</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310980-a5e203808e-3/AkiSeiuliDragonsRFC.jpg" class="card-img-top" alt="Aki Seiuli" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Aki Seiuli</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310981-1aa152625b-3/EllisShippDragonsRFC.jpg" class="card-img-top" alt="Ellis Shipp" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ellis Shipp</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292864-00ebfc56a5-3/GeorgeTaylor.jpg" class="card-img-top" alt="George Taylor." style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">George Taylor.</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310982-0df2d52a30-3/PatelesioTomkinsonDragonsRFC.jpg" class="card-img-top" alt="Patelesio Tomkinson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Patelesio Tomkinson</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310983-385e103854-3/AaronWainwrightDragonsRFC.jpg" class="card-img-top" alt="Aaron Wainwright" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Aaron Wainwright</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310984-9aac311e11-3/JordanWilliamsDragonsRFC.jpg" class="card-img-top" alt="Jordan Williams" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jordan Williams</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310985-0ec609d1b6-3/RhodriWilliamsDragonsRFC.jpg" class="card-img-top" alt="Rhodri Williams" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rhodri Williams</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291463-4d65112396-3/RyanWoodmanDragonsRFC.jpg" class="card-img-top" alt="Ryan Woodman" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ryan Woodman</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310986-8a8033d4b7-3/LukeYendleDragonsRFC.jpg" class="card-img-top" alt="Luke Yendle" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Luke Yendle</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310989-34e8792071-3/GeorgeYoungDragonsRFC.jpg" class="card-img-top" alt="George Young" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">George Young</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Formation: Building the Dragons Legacy</h2>
+                <p>The Dragons emerged on 1 April 2003, born from the collaboration between Ebbw Vale RFC and Newport RFC. The formation process faced challenges, leading to the adoption of the name "Gwent Dragons." However, disagreements persisted, prompting further adjustments until the region officially became 'Newport Gwent Dragons' on 21 August 2003. Despite early financial setbacks and administrative changes, the Dragons established themselves as a force in Welsh rugby.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>2003–2005: Infancy and Ruddock's Impact</h2>
+                <p>Under the coaching of Mike Ruddock, the Dragons exceeded expectations in their inaugural seasons. A notable unbeaten home record in the Celtic League showcased their prowess. Ruddock's success led to his appointment as the Welsh national coach in 2004. The Dragons continued to evolve, with significant player acquisitions and achievements, setting the stage for their future in top-class rugby.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>2005–2011 Paul Turner Era: Navigating Challenges</h2>
+                  <p>The Paul Turner era witnessed challenges and changes in coaching staff. Despite difficulties, including a low finish in the Celtic League and a play-off defeat, the Dragons persevered. Notable players like Colin Charvis joined the team, contributing to a European Challenge Cup semi-final appearance. The Dragons demonstrated resilience, securing their place in top-tier European competitions.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>2011–2017: Edwards, Jones, and Challenge Cup Semis</h2>
+                  <p>Darren Edwards assumed a caretaker role in 2011, leading the Dragons to their first Anglo-Welsh Cup semi-final. Subsequent coaching transitions saw Lyn Jones taking on the role of Director of Rugby. The Dragons reached the Challenge Cup semi-finals twice during the 2014–2015 and 2015–2016 seasons, marking notable achievements in European competitions.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>2017–2023: WRU Ownership and Transformation</h2>
+                  <p>Welsh Rugby Union (WRU) took full ownership in 2017, rebranding the team as simply "Dragons." Bernard Jackman's coaching tenure faced challenges, leading to his dismissal in 2019. Dean Ryan took charge, and the WRU era witnessed a recruitment strategy involving English-born players eligible for Wales. Despite ups and downs, the Dragons continued to shape their identity.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>2023 Onwards: Return to Private Ownership</h2>
+                  <p>In a significant development, a consortium led by Dragons chairman David Buttress acquired Rodney Parade and the Dragons from the WRU in July 2023. This transition marked a new chapter, potentially influencing the Dragons' trajectory as they aimed for further success and sustainability in the ever-evolving world of professional rugby.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

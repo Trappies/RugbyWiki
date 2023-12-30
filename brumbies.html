@@ -1,0 +1,1411 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #brumbiesKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #brumbiesKitSection {
+          display: none;
+        }
+
+        #brumbiesKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #brumbiesKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #brumbiesKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #brumbiesKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #brumbiesKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #brumbiesKitSection {
+          display: flex;
+        }
+
+        #brumbiesKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #brumbiesKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Brumbies</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/brumbiesbanner.jpg" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About The Brumbies</h3>
+    <p>The Brumbies, based in Canberra, Australia, stand as one of the premier rugby teams in the Southern Hemisphere. Established in 1996 to compete in the Super 12 (now Super Rugby), the Brumbies quickly asserted themselves as a dominant force. With a commitment to expansive and skillful play, they secured their maiden Super Rugby title in 2001. Known for their strategic game plans and a strong emphasis on player development, the Brumbies have consistently been contenders in the competition. Over the years, they have produced numerous Wallabies, contributing significantly to Australian rugby. The team's legacy is marked not only by their on-field successes but also by their role in shaping the rugby landscape in the region. The Brumbies remain a symbol of excellence and resilience in the world of professional rugby.
+    </p>
+  
+    
+
+      <div id="brumbiesKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Brumbies Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/brumbieshome.png" alt="Brumbies Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/brumbiesaway.png" alt="Brumbies Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="brumbiesKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Brumbies Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/brumbieshome.png" alt="Brumbies Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/brumbiesaway.png" alt="Brumbies Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274899-c686ddf1d1-3/AllanAlaalatoaACTBrumbies.jpg" class="card-img-top" alt="Allan Alaalatoa" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Allan Alaalatoa</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274838-bda09ab903-3/LachlanAlbertACTBrumbies.jpg" class="card-img-top" alt="Lachlan Albert" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lachlan Albert</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274785-3d39437e4e-3/TomBanksACTBrumbies.jpg" class="card-img-top" alt="Tom Banks" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Banks</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274847-bd34d4dbd7-3/JahromeBrownACTBrumbies.jpg" class="card-img-top" alt="Jahrome Brown" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jahrome Brown</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274877-f031444e86-3/CharlieCaleACTBrumbies.jpg" class="card-img-top" alt="Charlie Cale" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Charlie Cale</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274836-62b73ed657-3/NathanCarrollACTBrumbies.jpg" class="card-img-top" alt="Nathan Carroll" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nathan Carroll</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274885-1cb954d140-3/CameronClarkACTBrumbies.jpg" class="card-img-top" alt="Cameron Clark" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cameron Clark</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274865-e7d2d9a1df-3/HudsonCreightonACTBrumbies.jpg" class="card-img-top" alt="Hudson Creighton" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Hudson Creighton</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/294939-fcb6b9ee00-3/JackDebreczeniACTBrumbies.jpg" class="card-img-top" alt="Jack Debreczeni" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jack Debreczeni</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274872-9a259385e6-3/FolauFaingaaACTBrumbies.jpg" class="card-img-top" alt="Folau Faingaa" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Folau Faingaa</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274883-3dfc2eebb2-3/ChrisFeauai-SautiaACTBrumbies.jpg" class="card-img-top" alt="Chris Feauai-Sautia" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Chris Feauai-Sautia</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/255792-16179d5920-3/LaurieFisherACTBrumbies.jpg" class="card-img-top" alt="Laurie Fisher" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Laurie Fisher</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274826-32ccec1010-3/NickFrostACTBrumbies.jpg" class="card-img-top" alt="Nick Frost" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nick Frost</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274787-5eb8d74319-3/TomHooperACTBrumbies.jpg" class="card-img-top" alt="Tom Hooper" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Hooper</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274841-39fb5a646f-3/LenIkitauACTBrumbies.jpg" class="card-img-top" alt="Len Ikitau" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Len Ikitau</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274860-c1950c53a7-3/FredKaiheaACTBrumbies.jpg" class="card-img-top" alt="Fred Kaihea" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Fred Kaihea</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274811-1eb8f34417-3/SosefoKautaiACTBrumbies.jpg" class="card-img-top" alt="Sosefo Kautai" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sosefo Kautai</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274878-bd6e1c7a25-3/EdKennedyACTBrumbies.jpg" class="card-img-top" alt="Ed Kennedy" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ed Kennedy</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/244498-c0cb56f4f6-3/StephenLarkhamrugbyplayer.jpg" class="card-img-top" alt="Stephen Larkham" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Stephen Larkham</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274844-e5be92878a-3/LachlanLonerganACTBrumbies.jpg" class="card-img-top" alt="Lachlan Lonergan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lachlan Lonergan</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274797-bc4fc56760-3/RyanLonerganACTBrumbies.jpg" class="card-img-top" alt="Ryan Lonergan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ryan Lonergan</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274887-d0a04c5532-3/ConnalMcInerneyACTBrumbies.jpg" class="card-img-top" alt="Connal McInerney" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Connal McInerney</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274882-2bedfbddcd-3/DeclanMeredithACTBrumbies.jpg" class="card-img-top" alt="Declan Meredith" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Declan Meredith</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274850-bd1d04b293-3/JesseMoggACTBrumbies.jpg" class="card-img-top" alt="Jesse Mogg" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jesse Mogg</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274892-0967ebdac8-3/AndyMuirheadACTBrumbies.jpg" class="card-img-top" alt="Andy Muirhead" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Andy Muirhead</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274890-c81d08aa74-3/CadeyrnNevilleACTBrumbies.jpg" class="card-img-top" alt="Cadeyrn Neville" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cadeyrn Neville</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296886-a3ca6db2a9-3/BenODonnellACTBrumbies.jpg" class="card-img-top" alt="Ben O'Donnell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben O'Donnell</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274894-c9fb3578d6-3/BillyPollardACTBrumbies.jpg" class="card-img-top" alt="Billy Pollard" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Billy Pollard</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274823-35c955e274-3/LukeReimerACTBrumbies.jpg" class="card-img-top" alt="Luke Reimer" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Luke Reimer</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296887-e42838aeda-3/PedroRolandoACTBrumbies.jpg" class="card-img-top" alt="Pedro Rolando" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Pedro Rolando</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274789-93a56e60c3-3/TomRossACTBrumbies.jpg" class="card-img-top" alt="Tom Ross" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Ross</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274808-dab9af9323-3/PeteSamuACTBrumbies.jpg" class="card-img-top" alt="Pete Samu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Pete Samu</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274801-23efcbea9b-3/OllieSapsfordACTBrumbies.jpg" class="card-img-top" alt="Ollie Sapsford" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ollie Sapsford</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296882-f94c578b3c-3/BlakeSchouppACTBrumbies.jpg" class="card-img-top" alt="Blake Schoupp" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Blake Schoupp</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274792-942e3816d3-3/RoryScottACTBrumbies.jpg" class="card-img-top" alt="Rory Scott" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rory Scott</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274854-ef986f451b-3/IraeSimoneACTBrumbies.jpg" class="card-img-top" alt="Irae Simone" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Irae Simone</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274857-a4c0f9dac8-3/JamesSlipperACTBrumbies.jpg" class="card-img-top" alt="James Slipper" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James Slipper</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274869-52a42a02c5-3/DarcySwainACTBrumbies.jpg" class="card-img-top" alt="Darcy Swain" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Darcy Swain</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/164331-d6d1b92691-3/SamThomsonrugbyplayer.jpg" class="card-img-top" alt="Sam Thomson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sam Thomson</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/289612-22a2020390-3/KlaytonThornrugbyplayer.jpg" class="card-img-top" alt="Klayton Thorn" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Klayton Thorn</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296884-3f5119a1ee-3/CoreyTooleACTBrumbies.jpg" class="card-img-top" alt="Corey Toole" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Corey Toole</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296885-86880738c1-3/TamatiTuaACTBrumbies.jpg" class="card-img-top" alt="Tamati Tua" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tamati Tua</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274805-8331af173e-3/RobValetiniACTBrumbies.jpg" class="card-img-top" alt="Rob Valetini" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rob Valetini</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/294921-8433f62bb6-3/RhysvanNekACTBrumbies.jpg" class="card-img-top" alt="Rhys van Nek" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rhys van Nek</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274875-023831d803-3/HarryVellaACTBrumbies.jpg" class="card-img-top" alt="Harry Vella" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Harry Vella</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274815-a39e4d9708-3/NicWhiteACTBrumbies.jpg" class="card-img-top" alt="Nic White" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nic White</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296883-b3bdf52661-3/JackWrightACTBrumbies.jpg" class="card-img-top" alt="Jack Wright" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jack Wright</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274897-5ef1aaa234-3/TomWrightACTBrumbies.jpg" class="card-img-top" alt="Tom Wright" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Wright</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Early Years of ACT Rugby</h2>
+                <p>Rugby's roots in the ACT date back to 1899, and the ACT Rugby Union (ACTRU) was officially established in 1937. The First Grade competition began in 1938 with four clubs, laying the foundation for the region's rugby legacy. Notable moments include a representative ACT side facing the All Blacks in 1938 and the ACT's first international victory in 1973 against Tonga. The adoption of the name 'Kookaburras' in 1989 marked a significant step, and the Kookaburras' impressive win against the Waratahs in 1994 paved the way for the ACT's professional era.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Birth of the Brumbies (1995–1996)</h2>
+                <p>Formally established on December 9, 1995, in Jindabyne, the ACT Brumbies emerged as Australia's third provincial team with the inception of Super Rugby. Under coach Rod Macqueen, the inaugural Super 12 season in 1996 saw the Brumbies finish fifth. Despite a loss in the 1997 final, the foundation was laid for future successes, setting the stage for the Brumbies' role as a dominant force in Australian rugby.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Super 12 Era Triumphs (1998–2005)</h2>
+                <p>Under the leadership of Eddie Jones and later David Nucifora, the Brumbies experienced highs and lows. They reached the Super 12 Final in 2000 and 2001, winning the latter and becoming the first team outside of New Zealand to claim the title. Laurie Fisher took over in 2004, guiding the Brumbies to another Final victory, solidifying their place in Super Rugby history.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Transition to Super 14 (2006–2010)</h2>
+                <p>The Brumbies faced new challenges in the expanded Super 14 era, narrowly missing the playoffs in 2006. Despite the shift, they showcased their prowess by winning the Australian Provincial Championship. The team consistently maintained a competitive edge, demonstrating their resilience and commitment to excellence.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Super Rugby Evolution (2011–present)</h2>
+                <p>With a changing coaching lineup, the Brumbies continued their legacy in Super Rugby. Jake White's tenure saw strong performances, including defeating the British & Irish Lions in 2013. The team reached the finals in 2013, securing victories but falling short in the championship final against the Waikato Chiefs. The Brumbies remain a formidable force, contributing to the rich tapestry of Australian rugby.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

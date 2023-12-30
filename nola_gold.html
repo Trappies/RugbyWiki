@@ -1,0 +1,1395 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .cont:nth-child(14){
+          animation-delay: 13s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #nolagoldKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #nolagoldKitSection {
+          display: none;
+        }
+
+        #nolagoldKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #nolagoldKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #nolagoldKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #nolagoldKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #nolagoldKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #nolagoldKitSection {
+          display: flex;
+        }
+
+        #nolagoldKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #nolagoldKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Nola Gold</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/nolagoldbanner.png" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About Nola Gold</h3>
+    <p>NOLA Gold is a professional rugby union team competing in Major League Rugby (MLR) and is based in New Orleans, Louisiana. Established in 2017, the team has become a prominent force in American rugby. The Gold plays its home matches at the Shrine on Airline stadium. Known for its vibrant fanbase and commitment to developing rugby in the region, NOLA Gold has steadily made its mark in the MLR since joining the league. With a strong presence in the Southern Conference, the team continues to contribute to the growth and popularity of rugby in the United States.
+    </p>
+  
+    
+
+      <div id="nolagoldKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Nola Gold Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/nolagoldhome.png" alt="Nola Gold Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/nolagoldaway.png" alt="Nola Gold Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="nolagoldKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Nola Gold Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/nolagoldhome.png" alt="Nola Gold Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/nolagoldaway.png" alt="Nola Gold Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301875-764bc9d528-3/JarredAdamsNOLAGold.jpg" class="card-img-top" alt="Jarred Adams" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jarred Adams</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301883-02c2e50f38-3/ReeceBothaNOLAGold.jpg" class="card-img-top" alt="Reece Botha" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Reece Botha</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301886-d7e001cc1f-3/LukeCampbell.jpg" class="card-img-top" alt="Luke Campbell." style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Luke Campbell.</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/257546-fb349ef697-3/RossDepperschmidtNOLAGold.jpg" class="card-img-top" alt="Ross Depperschmidt" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ross Depperschmidt</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/257547-206ffb5094-3/CameronDolanNOLAGold.jpg" class="card-img-top" alt="Cameron Dolan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cameron Dolan</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/257535-df80f46ad3-3/JPduPlessisNOLAGold.jpg" class="card-img-top" alt="JP du Plessis" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">JP du Plessis</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302805-ff1dc32132-3/REdwardsNOLAGold.jpg" class="card-img-top" alt="R Edwards" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">R Edwards</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301884-9a99604d41-3/DougieFifeNOLAGold.jpg" class="card-img-top" alt="Dougie Fife" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dougie Fife</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301877-0e51f7e0c9-3/TomFlorenceNOLAGold.jpg" class="card-img-top" alt="Tom Florence" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Florence</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292786-d25311bf09-3/AndrewGuerraNOLAGold.jpg" class="card-img-top" alt="Andrew Guerra" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Andrew Guerra</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301876-5cb4cc1c31-3/LiamHallam-EamesNOLAGold.jpg" class="card-img-top" alt="Liam Hallam-Eames" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Liam Hallam-Eames</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/257553-b03c550461-3/MattHarmonNOLAGold.jpg" class="card-img-top" alt="Matt Harmon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matt Harmon</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301880-0a40b2a5b8-3/CaelHodgsonNOLAGold.jpg" class="card-img-top" alt="Cael Hodgson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cael Hodgson</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/257554-936eee0937-3/EricHowardNOLAGold.jpg" class="card-img-top" alt="Eric Howard" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Eric Howard</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/212628-ac82d9da82-3/TaylorHowdenNOLAGold.jpg" class="card-img-top" alt="Taylor Howden" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Taylor Howden</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301879-195680fd7c-3/RodneyIonaNOLAGold.jpg" class="card-img-top" alt="Rodney Iona" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rodney Iona</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/257555-fbd420a8c1-3/JamesIreyNOLAGold.jpg" class="card-img-top" alt="James Irey" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James Irey</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292811-ab732709ed-3/JordanJackson-HopeNOLAGold.jpg" class="card-img-top" alt="Jordan Jackson-Hope" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jordan Jackson-Hope</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/257557-0116238d65-3/KennethJinkinsNOLAGold.jpg" class="card-img-top" alt="Kenneth Jinkins" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kenneth Jinkins</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292810-3a8e9f0a8e-3/SamKlimkowskiNOLAGold.jpg" class="card-img-top" alt="Sam Klimkowski" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sam Klimkowski</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292783-0e088a033c-3/MaciuKoroiNOLAGold.jpg" class="card-img-top" alt="Maciu Koroi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Maciu Koroi</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/257558-f95040759b-3/GiovanniLappNOLAGold.jpg" class="card-img-top" alt="Giovanni Lapp" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Giovanni Lapp</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301885-32340a8376-3/AlexLopetiNOLAGold.jpg" class="card-img-top" alt="Alex Lopeti" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alex Lopeti</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292781-5e69fe27c6-3/AaronMatthewsNOLAGold.jpg" class="card-img-top" alt="Aaron Matthews" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Aaron Matthews</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/257560-7f522b19ef-3/MalcolmMayNOLAGold.jpg" class="card-img-top" alt="Malcolm May" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Malcolm May</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292808-c90c6bfbe4-3/GarraldMcDowellNOLAGold.jpg" class="card-img-top" alt="Garrald McDowell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Garrald McDowell</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292806-a2f2bf353b-3/AniMtetoNOLAGold.jpg" class="card-img-top" alt="Ani Mteto" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ani Mteto</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292785-38ed762b8b-3/PatOTooleNOLAGold.jpg" class="card-img-top" alt="Pat O'Toole" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Pat O'Toole</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292804-c492b4b304-3/ChristianOlneyNOLAGold.jpg" class="card-img-top" alt="Christian Olney" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Christian Olney</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301887-6668e71ee4-3/SeanParanihiNOLAGold.jpg" class="card-img-top" alt="Sean Paranihi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sean Paranihi</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292799-da46e632cf-3/TrentRogersNOLAGold.jpg" class="card-img-top" alt="Trent Rogers" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Trent Rogers</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292780-a170e722d8-3/GeorgeSharpeNOLAGold.jpg" class="card-img-top" alt="George Sharpe" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">George Sharpe</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292784-f1ff9eb7be-3/DevinShortNOLAGold.jpg" class="card-img-top" alt="Devin Short" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Devin Short</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/257540-0c49eb2e5b-3/DamianStevensNOLAGold.jpg" class="card-img-top" alt="Damian Stevens" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Damian Stevens</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/257565-a81d1ac333-3/BillyStewartNOLAGold.jpg" class="card-img-top" alt="Billy Stewart" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Billy Stewart</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/257567-0d305edf21-3/KevinSullivanNOLAGold.jpg" class="card-img-top" alt="Kevin Sullivan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kevin Sullivan</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/272464-e3e86f3a50-3/KaneThompsonNOLAGold.jpg" class="card-img-top" alt="Kane Thompson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kane Thompson</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301878-15cde1a3db-3/TesimoniTongauihaNOLAGold.jpg" class="card-img-top" alt="Tesimoni Tongauiha" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tesimoni Tongauiha</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292825-ef1cc16f54-3/MoniTongauihaNOLAGold.jpg" class="card-img-top" alt="Moni Tongauiha" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Moni Tongauiha</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/257571-d21b110a76-3/OsaiasiTongauihaNOLAGold.jpg" class="card-img-top" alt="Osaiasi Tongauiha" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Osaiasi Tongauiha</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301881-410869a690-3/JordanTrainorNOLAGold.jpg" class="card-img-top" alt="Jordan Trainor" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jordan Trainor</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301882-6da8bd4104-3/SebastianoVillaniNOLAGold.jpg" class="card-img-top" alt="Sebastiano Villani" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sebastiano Villani</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/257573-5f3d2c44d1-3/WilliamWaguespackNOLAGold.jpg" class="card-img-top" alt="William Waguespack" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">William Waguespack</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/257575-33993054b1-3/DinoWaldrenNOLAGold.jpg" class="card-img-top" alt="Dino Waldren" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dino Waldren</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/257539-2aafb1868a-3/JackWebsterNOLAGold.jpg" class="card-img-top" alt="Jack Webster" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jack Webster</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292778-5eacbf254b-3/HarleyWheelerNOLAGold.jpg" class="card-img-top" alt="Harley Wheeler" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Harley Wheeler</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>New Orleans Gold Overview</h2>
+                <p>The New Orleans Gold, known as NOLA Gold, is a professional rugby union team founded in 2017 and competes in Major League Rugby. Since January 2020, they have had a minority stake owned by the French rugby powerhouse ASM Clermont Auvergne.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Home Field - Gold Mine on Airline</h2>
+                <p>NOLA Gold plays its home matches at the Gold Mine on Airline, situated in Metairie, Louisiana. Formerly known as the Shrine on Airline and Zephyr Field, this venue on the East Bank of the New Orleans metropolitan area serves as the team's vibrant home ground.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Previous Venue - Joe Zimmerman Stadium</h2>
+                  <p>In the initial two seasons of Major League Rugby (2018-2019), NOLA Gold played at Joe Zimmerman Stadium in Archbishop Shaw High School. Branded as Gold Stadium, this venue on the West Bank at Marrero, Louisiana, boasted a natural turf field and grandstand seating for up to 3,000 spectators.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Broadcasts and On-Air Talent</h2>
+                  <p>Home games of NOLA Gold are broadcasted on Cox Sports Television, featuring on-air talent Ian McNulty and Geoffrey Ormsby. The broadcasts bring the thrilling rugby action to fans, enhancing the team's reach and engagement.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont left-containter">
+                  <img src="img/rugbyicon.png">
+                  <div class="text-box">
+                    <h2>Sponsorship - "GOLDen Ale" Partnership</h2>
+                    <p>In the 2022 season, NOLA Gold entered into a partnership with local Louisiana business, Port Orleans Brewing Company, to create "GOLDen Ale." These 16-ounce cans are available for purchase in the brewery's taproom and on tap at the Shrine on Airline, adding a unique touch to the fan experience.
+
+                    </p>
+                    <span class="left-container-arrow"></span>
+                  </div>
+                </div>
+              
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

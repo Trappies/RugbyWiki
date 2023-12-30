@@ -1,0 +1,1595 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .cont:nth-child(14){
+          animation-delay: 13s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #clermontKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #clermontKitSection {
+          display: none;
+        }
+
+        #clermontKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #clermontKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #clermontKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #clermontKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #clermontKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #clermontKitSection {
+          display: flex;
+        }
+
+        #clermontKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #clermontKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Clermont</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/clermontbanner.png" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About Clermont</h3>
+    <p>Clermont Auvergne, commonly known as ASM Clermont Auvergne, stands as a rugby powerhouse in the French league system. Founded in 1911, the club is based in Clermont-Ferrand in the Auvergne region. Renowned for their passionate fanbase, the team plays home matches at the Parc des Sports Marcel-Michelin, where the electric atmosphere adds to the formidable challenge for visiting teams. Clermont has consistently been a top contender in French rugby, claiming the French top-division championship in 1925, 1936, 1956, 1966, and 2010. The club's distinctive yellow and blue jerseys symbolize their rich heritage and the unwavering support of their dedicated fans. With a storied history and a commitment to excellence, Clermont Auvergne continues to be a dominant force in French rugby, captivating audiences with their thrilling performances and competitive spirit.
+    </p>
+  
+    
+
+      <div id="clermontKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Clermont Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/clermonthome.png" alt="Clermont Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/clermontaway.png" alt="Clermont Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 19px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="clermontKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Clermont Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/clermonthome.png" alt="Clermont Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/clermontaway.png" alt="Clermont Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305940-7f07182bcf-3/MilesAmatoseroClermontAuvergne.jpg" class="card-img-top" alt="Miles Amatosero" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Miles Amatosero</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305934-2d93941c44-3/YohanBeheregarayClermontAuvergne.jpg" class="card-img-top" alt="Yohan Beheregaray" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Yohan Beheregaray</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305947-1995f5c1cb-3/TomBelkessaClermontAuvergne.jpg" class="card-img-top" alt="Tom Belkessa" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Belkessa</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305960-124f089843-3/AnthonyBelleauClermontAuvergne.jpg" class="card-img-top" alt="Anthony Belleau" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Anthony Belleau</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305923-13647f967c-3/GiorgiBeriaClermontAuvergne.jpg" class="card-img-top" alt="Giorgi Beria" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Giorgi Beria</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305955-84e47b7d7e-3/SebastienBezyClermontAuvergne.jpg" class="card-img-top" alt="Sebastien Bezy" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sebastien Bezy</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305924-06d399088d-3/DanielBibiBiziwuClermontAuvergne.jpg" class="card-img-top" alt="Daniel Bibi Biziwu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Daniel Bibi Biziwu</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305935-f1514e230b-3/BenjaminBoudouClermontAuvergne.jpg" class="card-img-top" alt="Benjamin Boudou" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Benjamin Boudou</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305957-5486607e1f-3/JulesBousquetClermontAuvergne.jpg" class="card-img-top" alt="Jules Bousquet" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jules Bousquet</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305949-2018f32a86-3/BaptisteBritzClermontAuvergne.jpg" class="card-img-top" alt="Baptiste Britz" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Baptiste Britz</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305976-27ee01b313-3/FredericCharrierClermontAuvergne.jpg" class="card-img-top" alt="Frederic Charrier" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Frederic Charrier</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306310-d3d07b8760-3/RobinCoulyClermontAuvergne.jpg" class="card-img-top" alt="Robin Couly" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Robin Couly</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312931-eb9e0af432-3/LeonDarricarrereClermontAuvergne.jpg" class="card-img-top" alt="Leon Darricarrere" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Leon Darricarrere</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305969-9073a5a979-3/BautistaDelguyClermontAuvergne.jpg" class="card-img-top" alt="Bautista Delguy" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Bautista Delguy</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305950-516255088c-3/LucasDessaigneClermontAuvergne.jpg" class="card-img-top" alt="Lucas Dessaigne" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lucas Dessaigne</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305925-178d95109a-3/GiorgiDzmanashviliClermontAuvergne.jpg" class="card-img-top" alt="Giorgi Dzmanashvili" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Giorgi Dzmanashvili</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312067-2017a14f65-3/FolauFaingaaClermontAuvergne.jpg" class="card-img-top" alt="Folau Faingaa" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Folau Faingaa</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305927-ff450339e2-3/EtienneFalgouxClermontAuvergne.jpg" class="card-img-top" alt="Etienne Falgoux" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Etienne Falgoux</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313733-b3877ddecd-3/YrimFallClermontAuvergne.jpg" class="card-img-top" alt="Yérim Fall" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Yérim Fall</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305965-0ef927bc2f-3/AnthonyFavierClermontAuvergne.jpg" class="card-img-top" alt="Anthony Favier" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Anthony Favier</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305951-dac425b822-3/AlexandreFischerClermontAuvergne.jpg" class="card-img-top" alt="Alexandre Fischer" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alexandre Fischer</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305939-ea9ad4471e-3/EtienneFourcadeClermontAuvergne.jpg" class="card-img-top" alt="Etienne Fourcade" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Etienne Fourcade</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305492-558c77d72a-3/PierreFouyssacClermontAuvergne.jpg" class="card-img-top" alt="Pierre Fouyssac" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Pierre Fouyssac</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305931-78c413c181-3/MatheoFrisachClermontAuvergne.jpg" class="card-img-top" alt="Matheo Frisach" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matheo Frisach</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305485-c6ecb60907-3/ChrisGabrielClermontAuvergne.jpg" class="card-img-top" alt="Chris Gabriel" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Chris Gabriel</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/272941-5cd16ee6d2-3/TheoGiralrugbyplayer.jpg" class="card-img-top" alt="Theo Giral" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Theo Giral</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305962-f7beb055a5-3/LoukaGuilhotClermontAuvergne.jpg" class="card-img-top" alt="Louka Guilhot" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Louka Guilhot</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305966-b52c4aada7-3/JulienHeriteauClermontAuvergne.jpg" class="card-img-top" alt="Julien Heriteau" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Julien Heriteau</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305958-6354efc75a-3/BaptisteJauneauClermontAuvergne.jpg" class="card-img-top" alt="Baptiste Jauneau" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Baptiste Jauneau</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305941-287f1e5a36-3/PaulJedrasiakClermontAuvergne.jpg" class="card-img-top" alt="Paul Jedrasiak" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Paul Jedrasiak</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297855-34eddaa6aa-3/Jean-MaxenceJules-RosetteClermontAuvergne.jpg" class="card-img-top" alt="Jean-Maxence Jules-Rosette" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jean-Maxence Jules-Rosette</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305494-5b6322a853-3/JorisJurandClermontAuvergne.jpg" class="card-img-top" alt="Joris Jurand" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joris Jurand</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305480-eb341b0a72-3/HenzoKiteauClermontAuvergne.jpg" class="card-img-top" alt="Henzo Kiteau" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Henzo Kiteau</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312930-9dcf2ed6fb-3/MarcosKremerClermontAuvergne.jpg" class="card-img-top" alt="Marcos Kremer" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marcos Kremer</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305978-c7ce9b3e3d-3/JulienLairleClermontAuvergne.jpg" class="card-img-top" alt="Julien Lairle" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Julien Lairle</h5>
+            <p class="card-text">Assistant Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305942-c57bb0d98c-3/ThibaudLanenClermontAuvergne.jpg" class="card-img-top" alt="Thibaud Lanen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Thibaud Lanen</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305944-eea23a55f5-3/RemyLanenClermontAuvergne.jpg" class="card-img-top" alt="Remy Lanen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Remy Lanen</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/266461-3ee4f0389f-3/AlexandreLapandryClermontAuvergne.jpg" class="card-img-top" alt="Alexandre Lapandry" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alexandre Lapandry</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305945-f2f9e2e499-3/TomasLavaniniClermontAuvergne.jpg" class="card-img-top" alt="Tomas Lavanini" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tomas Lavanini</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305952-09b6327523-3/FritzLeeClermontAuvergne.jpg" class="card-img-top" alt="Fritz Lee" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Fritz Lee</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274119-5690d4a81d-3/FrancoisCarloMeyrugbyplayer.jpg" class="card-img-top" alt="Francois Carlo Mey" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Francois Carlo Mey</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305967-1b7490b60d-3/GeorgeMoalaClermontAuvergne.jpg" class="card-img-top" alt="George Moala" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">George Moala</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305974-0dbb5eb6ec-3/AlexNewsomeClermontAuvergne.jpg" class="card-img-top" alt="Alex Newsome" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alex Newsome</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305970-b83d72d91f-3/MarvinOConnorClermontAuvergne.jpg" class="card-img-top" alt="Marvin O'Connor" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marvin O'Connor</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305932-a925c9130b-3/CristianOjovanClermontAuvergne.jpg" class="card-img-top" alt="Cristian Ojovan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cristian Ojovan</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305972-cf6f0f4a79-3/BeltranOrtegaClermontAuvergne.jpg" class="card-img-top" alt="Beltran Ortega" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Beltran Ortega</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305963-44f5bc9b5d-3/JulesPlissonClermontAuvergne.jpg" class="card-img-top" alt="Jules Plisson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jules Plisson</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305973-1a1f293bb5-3/AliveretiRakaClermontAuvergne.jpg" class="card-img-top" alt="Alivereti Raka" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alivereti Raka</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/195949-5b600a0689-3/AurelienRougerieClermontAuvergne.jpg" class="card-img-top" alt="Aurelien Rougerie" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Aurelien Rougerie</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305493-58f3df3628-3/ThomasRoziereClermontAuvergne.jpg" class="card-img-top" alt="Thomas Roziere" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Thomas Roziere</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305959-95a1920b85-3/EnzoSangaClermontAuvergne.jpg" class="card-img-top" alt="Enzo Sanga" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Enzo Sanga</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/272948-abf5f80353-3/HugoSarrasinrugbyplayer.jpg" class="card-img-top" alt="Hugo Sarrasin" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Hugo Sarrasin</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305483-f426552e95-3/RobSimmonsClermontAuvergne.jpg" class="card-img-top" alt="Rob Simmons" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rob Simmons</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305968-5c1374f0cc-3/IraeSimoneClermontAuvergne.jpg" class="card-img-top" alt="Irae Simone" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Irae Simone</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305933-ae40361c50-3/RabahSlimaniClermontAuvergne.jpg" class="card-img-top" alt="Rabah Slimani" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rabah Slimani</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305487-e573c88eac-3/Pita-GusSowakulaClermontAuvergne.jpg" class="card-img-top" alt="Pita-Gus Sowakula" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Pita-Gus Sowakula</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305486-91f565c1f2-3/CalebTimuClermontAuvergne.jpg" class="card-img-top" alt="Caleb Timu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Caleb Timu</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305953-a12fb7f399-3/KillianTixerontClermontAuvergne.jpg" class="card-img-top" alt="Killian Tixeront" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Killian Tixeront</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/noimage/webPlayer.png" class="card-img-top" alt="Yoni Tuataane" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Yoni Tuataane</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305981-1463309bfe-3/KoulaTukinoClermontAuvergne.jpg" class="card-img-top" alt="Koula Tukino" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Koula Tukino</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305491-ace751872f-3/BenUrdapilletaClermontAuvergne.jpg" class="card-img-top" alt="Ben Urdapilleta" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben Urdapilleta</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/176972-9c010dac5c-3/ChristopheUriosrugbyplayer.jpg" class="card-img-top" alt="Christophe Urios" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Christophe Urios</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/266449-446c27b452-3/SebastienVahaamahinaClermontAuvergne.jpg" class="card-img-top" alt="Sebastien Vahaamahina" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sebastien Vahaamahina</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305979-68d7cc4199-3/IanVassClermontAuvergne.jpg" class="card-img-top" alt="Ian Vass" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ian Vass</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305954-3aae3725a5-3/PeceliYatoClermontAuvergne.jpg" class="card-img-top" alt="Peceli Yato" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Peceli Yato</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>ASM Clermont Auvergne: A Storied Legacy in French Rugby</h2>
+                <p>Association Sportive Montferrandaise Clermont Auvergne (ASM Clermont Auvergne) embodies a rich rugby legacy. Established in 1911, the club persevered through numerous challenges, reaching thirteen French Championship finals before clinching the title in the 2009-10 and 2016-17 seasons. The iconic yellow and blue jerseys, inspired by Michelin's colors, symbolize the team's resilience and triumph.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Stade Marcel-Michelin - The Bib Park Experience</h2>
+                <p>The Stade Marcel-Michelin, affectionately known as The Bib Park, serves as the formidable fortress for ASM Clermont Auvergne. With a seating capacity of 19,022, this iconic stadium creates an electrifying atmosphere for fans. Witness the roaring cheers, the breathtaking moments, and the unwavering support that make every match a memorable experience.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Vern Cotter Era - A Resurgence in Excellence</h2>
+                <p>The Vern Cotter era marked a resurgence in ASM Clermont Auvergne's excellence. Taking over in 2006, Cotter guided the team to their first final since 2001, winning the European Challenge Cup in 2007. Under his leadership, the club consistently competed at the highest levels, showcasing resilience and determination on their journey to reclaiming the French Championship.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>European Glory and Heartbreaks</h2>
+                  <p>ASM Clermont Auvergne's European campaigns have been a rollercoaster of glory and heartbreaks. From winning the European Challenge Cup in 2007 to reaching the Heineken Cup final in 2013, the team has left an indelible mark. Each campaign, filled with memorable clashes, has added to the club's storied history in European rugby.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Cultural Exchange with New Orleans Gold</h2>
+                  <p>In January 2020, ASM Clermont Auvergne expanded its reach by acquiring a minority stake in the American rugby club, New Orleans Gold. Beyond player exchanges, this partnership aims to facilitate cultural exchanges between Louisiana and France. Witnessing the fusion of rugby traditions and shared values, this collaboration adds a global dimension to ASM Clermont Auvergne's identity.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>ASM Clermont Auvergne - A Legacy Unfolding</h2>
+                  <p>ASM Clermont Auvergne's enduring spirit is woven into the fabric of French rugby history. From its early days as AS Michelin to the present as a force to be reckoned with, the club's legacy unfolds with each match. The journey, marked by triumphs, challenges, and unwavering support, continues to shape the story of ASM Clermont Auvergne.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

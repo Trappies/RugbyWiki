@@ -1,0 +1,1385 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .cont:nth-child(14){
+          animation-delay: 13s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #torontoKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #torontoKitSection {
+          display: none;
+        }
+
+        #torontoKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #torontoKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #torontoKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #torontoKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #torontoKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+  
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #torontoKitSection {
+          display: flex;
+        }
+
+        #torontoKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #torontoKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Toronto Arrows</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/torontobanner.png" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About Toronto Arrows</h3>
+    <p>The Toronto Arrows are a professional rugby union team based in Toronto, Ontario, Canada. Competing in Major League Rugby (MLR), the team was founded in 2017 and joined the league for its inaugural 2018 season. Known for their distinctive maple leaf logo, the Arrows have quickly become a prominent force in North American rugby. The team plays its home games at Lamport Stadium, contributing to the growing popularity of rugby in Canada. The Arrows' commitment to fostering local talent and engaging their passionate fanbase has solidified their position as a key player in the MLR landscape.
+    </p>
+  
+    
+
+      <div id="torontoKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Toronto Arrows Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/torontohome.png" alt="Toronto Arrows Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/torontoaway.png" alt="Toronto Arrows Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 14px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="torontoKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Toronto Arrows Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/torontohome.png" alt="Toronto Arrows Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/torontoaway.png" alt="Toronto Arrows Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292221-1bce246a49-3/TomArtmannTorontoArrows.jpg" class="card-img-top" alt="Tom Artmann" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Artmann</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300862-19ee3a39d9-3/JoseRamonAyarzaTorontoArrows.jpg" class="card-img-top" alt="Jose Ramon Ayarza" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jose Ramon Ayarza</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292209-298668e347-3/NicBennTorontoArrows.jpg" class="card-img-top" alt="Nic Benn" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nic Benn</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292223-0ad7646896-3/BrendenBlackTorontoArrows.jpg" class="card-img-top" alt="Brenden Black" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Brenden Black</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300859-2f34100c54-3/DShawnBowenTorontoArrows.jpg" class="card-img-top" alt="D'Shawn Bowen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">D'Shawn Bowen</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301940-a6f21e2999-3/LiamBowmanTorontoArrows.jpg" class="card-img-top" alt="Liam Bowman" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Liam Bowman</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292202-77cd749070-3/RossBraudeTorontoArrows.jpg" class="card-img-top" alt="Ross Braude" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ross Braude</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301942-00617c1f06-3/CiaranBreenTorontoArrows.jpg" class="card-img-top" alt="Ciaran Breen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ciaran Breen</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292204-b9b0549dd5-3/ColeBrownTorontoArrows.jpg" class="card-img-top" alt="Cole Brown" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cole Brown</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292212-f22582bbd9-3/ColeDavisTorontoArrows.jpg" class="card-img-top" alt="Cole Davis" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cole Davis</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292192-35c66ccfa2-3/MitchEadieTorontoArrows.jpg" class="card-img-top" alt="Mitch Eadie" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mitch Eadie</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292172-379b0c752b-3/LolaniFaleivaTorontoArrows.jpg" class="card-img-top" alt="Lolani Faleiva" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lolani Faleiva</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301944-f63808f7ef-3/DawsonFatoricTorontoArrows.jpg" class="card-img-top" alt="Dawson Fatoric" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dawson Fatoric</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292214-dafffa05a5-3/KobeFaustTorontoArrows.jpg" class="card-img-top" alt="Kobe Faust" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kobe Faust</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302804-e91705eb84-3/MFishTorontoArrows.jpg" class="card-img-top" alt="M Fish" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">M Fish</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292194-fe685abf57-3/MasonFleschTorontoArrows.jpg" class="card-img-top" alt="Mason Flesch" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mason Flesch</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301945-c7f89b89ea-3/FabianGoodallTorontoArrows.jpg" class="card-img-top" alt="Fabian Goodall" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Fabian Goodall</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300851-35d2562f71-3/WillGrantTorontoArrows.jpg" class="card-img-top" alt="Will Grant" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Will Grant</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300864-7dd9d8c0d2-3/ConnorGrindalTorontoArrows.jpg" class="card-img-top" alt="Connor Grindal" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Connor Grindal</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292175-579babe687-3/NikHildebrandTorontoArrows.jpg" class="card-img-top" alt="Nik Hildebrand" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nik Hildebrand</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292225-2c178fb2a8-3/JacobInceTorontoArrows.jpg" class="card-img-top" alt="Jacob Ince" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jacob Ince</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301938-f4e84d65a1-3/ShayKerryTorontoArrows.jpg" class="card-img-top" alt="Shay Kerry" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Shay Kerry</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300849-b4ae8539bc-3/TravisLarsenTorontoArrows.jpg" class="card-img-top" alt="Travis Larsen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Travis Larsen</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292206-eb6419a84d-3/SamMalcolmTorontoArrows.jpg" class="card-img-top" alt="Sam Malcolm" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sam Malcolm</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301946-e4c5008aea-3/JackMcRogersTorontoArrows.jpg" class="card-img-top" alt="Jack McRogers" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jack McRogers</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300853-ad9a344a1d-3/PeterNelsonTorontoArrows.jpg" class="card-img-top" alt="Peter Nelson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Peter Nelson</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301943-f9af16e5ff-3/ConanODonnellTorontoArrows.jpg" class="card-img-top" alt="Conan O'Donnell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Conan O'Donnell</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300860-e1a1254ef8-3/ShaneOLearyTorontoArrows.jpg" class="card-img-top" alt="Shane O'Leary" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Shane O'Leary</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300855-ef00403e2a-3/AveryOitomenTorontoArrows.jpg" class="card-img-top" alt="Avery Oitomen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Avery Oitomen</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292188-49471458c6-3/JamesONeillTorontoArrows.jpg" class="card-img-top" alt="James O’Neill" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James O’Neill</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300857-a32db142c4-3/NoelReidTorontoArrows.jpg" class="card-img-top" alt="Noel Reid" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Noel Reid</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292211-1d857b00cb-3/MitchRichardsonTorontoArrows.jpg" class="card-img-top" alt="Mitch Richardson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mitch Richardson</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292177-f81419f377-3/TylerRowlandTorontoArrows.jpg" class="card-img-top" alt="Tyler Rowland" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tyler Rowland</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292191-ebad59d70b-3/LucasRumballTorontoArrows.jpg" class="card-img-top" alt="Lucas Rumball" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lucas Rumball</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300869-8a2a9126a1-3/OwainRuttanTorontoArrows.jpg" class="card-img-top" alt="Owain Ruttan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Owain Ruttan</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292178-2ae14701a3-3/IsaacSalmonTorontoArrows.jpg" class="card-img-top" alt="Isaac Salmon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Isaac Salmon</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292227-6473ce157d-3/DavidScollonTorontoArrows.jpg" class="card-img-top" alt="David Scollon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">David Scollon</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300866-a10ecc8a1b-3/MichaelSheppardTorontoArrows.jpg" class="card-img-top" alt="Michael Sheppard" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Michael Sheppard</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292231-815810b56a-3/Peter.jpg" class="card-img-top" alt="Peter. Smith" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Peter. Smith</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/294305-2be562318e-3/PeterSmithTorontoArrows.jpg" class="card-img-top" alt="Peter Smith" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Peter Smith</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292229-b23a24d5de-3/HankStevensonTorontoArrows.jpg" class="card-img-top" alt="Hank Stevenson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Hank Stevenson</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292182-30807a9dff-3/GeneSymintonTorontoArrows.jpg" class="card-img-top" alt="Gene Syminton" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gene Syminton</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300871-6ae906b79c-3/TautalatasiTasiTorontoArrows.jpg" class="card-img-top" alt="Tautalatasi Tasi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tautalatasi Tasi</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292195-ece2e25c18-3/CoreyThomasTorontoArrows.jpg" class="card-img-top" alt="Corey Thomas" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Corey Thomas</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292185-55476f5376-3/MicaiahTorrance-ReadTorontoArrows.jpg" class="card-img-top" alt="Micaiah Torrance-Read" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Micaiah Torrance-Read</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292187-f0df56be91-3/AdrianWaddenTorontoArrows.jpg" class="card-img-top" alt="Adrian Wadden" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Adrian Wadden</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299602-c40cf4fdbb-3/TWongTorontoArrows.jpg" class="card-img-top" alt="Tyler Wong" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tyler Wong</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Toronto Arrows RFC in MLR</h2>
+                <p>The Toronto Arrows RFC, originally founded as the Ontario Arrows in 2017, played a vital role in Major League Rugby (MLR). Established with the aim of joining MLR in 2019, the team showcased its potential through an exhibition schedule and became an MLR franchise in November 2018, subsequently adopting the name Toronto Arrows. Led by Co-founder & President Bill Webb and a diverse ownership group, the team faced challenges during the COVID-19 pandemic, temporarily relocating to Marietta, Georgia, for the 2021 season. Despite these hurdles, the Arrows continued to play a significant role in MLR, hosting games in various locations, including British Columbia, and capturing the rugby community's support. Tragically, on August 30, 2023, the passing of President Bill Webb marked a somber moment for the team. Regrettably, on November 27, 2023, it was announced that the Toronto Arrows would not participate in the 2024 MLR season, signaling a hiatus for this influential rugby club.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Arrows' Journey and Impact</h2>
+                <p>The Toronto Arrows' journey in Major League Rugby (MLR) was marked by determination and resilience. Initially founded as the Ontario Arrows in 2017, the team aimed to contribute to MLR from its 2019 debut. Under the leadership of Co-founder & President Bill Webb, the Arrows navigated challenges, including the impact of the COVID-19 pandemic. The team showcased its commitment to the sport by adapting to the circumstances, temporarily relocating to Marietta, Georgia, for the 2021 season and expanding their playing venues. The passing of President Bill Webb on August 30, 2023, deeply affected the rugby community, highlighting the profound impact the Arrows had on the sport. Despite their significant contributions, the announcement on November 27, 2023, about the Arrows' hiatus from the 2024 MLR season marked a poignant moment in their storied history.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Toronto Arrows' Legacy and Community Support</h2>
+                  <p>The Toronto Arrows RFC, a notable presence in Major League Rugby (MLR), carved out a legacy characterized by determination, resilience, and community support. Founded as the Ontario Arrows in 2017, the team transitioned to the Toronto Arrows in 2018, showcasing their potential to contribute to MLR. Led by President Bill Webb, the Arrows faced challenges, including the impact of the COVID-19 pandemic, which led to temporary relocations and innovative approaches to continue their participation. The passing of President Bill Webb on August 30, 2023, resonated across the rugby world, reflecting the profound impact the Arrows had on players, teams, leagues, and fans. Despite the challenges, the Arrows' legacy is embedded in the hearts of the rugby community, and their hiatus from the 2024 MLR season marks a moment of reflection on their significant contributions to the sport.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

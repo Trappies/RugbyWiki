@@ -1,0 +1,1662 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #exeterKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #exeterKitSection {
+          display: none;
+        }
+
+        #exeterKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #exeterKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #exeterKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #exeterKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #exeterKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #exeterKitSection {
+          display: flex;
+        }
+
+        #exeterKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #exeterKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Exeter Chiefs</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/exeterbanner.jpg" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About The Exeter Chiefs</h3>
+    <p>The Exeter Chiefs are a professional rugby union club based in Exeter, Devon, England. Established in 1871, the club has a long and distinguished history. However, it wasn't until the professional era that the Chiefs gained significant prominence. They currently compete in the English Premiership, the top tier of English rugby. The team plays its home matches at Sandy Park, a stadium that has witnessed the Chiefs' rise to prominence in recent years. Known for their strong team ethos and powerful forward play, the Exeter Chiefs have achieved notable success in the Premiership, winning multiple titles and consistently performing at the highest level of English rugby. The club's distinctive emblem, featuring a Native American chief, adds a unique touch to their identity, and their passionate fan base contributes to the vibrant rugby culture in the region.
+    </p>
+  
+    
+
+      <div id="exeterKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Exeter Chiefs Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/exeterhome.png" alt="Exeter Chiefs Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/exeteraway.png" alt="Exeter Chiefs Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 18px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="exeterKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Exeter Chiefs Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/exeterhome.png" alt="Exeter Chiefs Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/exeteraway.png" alt="Exeter Chiefs Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309105-df2c7e3d9d-3/NikaAbuladzeExeterChiefs.jpg" class="card-img-top" alt="Nika Abuladze" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nika Abuladze</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308467-1bf05cd650-3/NiallArmstrongExeterChiefs.jpg" class="card-img-top" alt="Niall Armstrong" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Niall Armstrong</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309106-319920a54c-3/JoeBaileyExeterChiefs.jpg" class="card-img-top" alt="Joe Bailey" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joe Bailey</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309107-b596b0b3e5-3/WillBecconsallExeterChiefs.jpg" class="card-img-top" alt="Will Becconsall" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Will Becconsall</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309108-5afe9142b6-3/AlfieBellExeterChiefs.jpg" class="card-img-top" alt="Alfie Bell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alfie Bell</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309109-2bdf475721-3/OliBurrowsExeterChiefs.jpg" class="card-img-top" alt="Oli Burrows" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Oli Burrows</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309111-44a02e846b-3/TomCairnsExeterChiefs.jpg" class="card-img-top" alt="Tom Cairns" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Cairns</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/252093-f345cb2faa-3/RichardCapstickExeterChiefs.jpg" class="card-img-top" alt="Richard Capstick" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Richard Capstick</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309112-4f483671fa-3/AidonDavisExeterChiefs.jpg" class="card-img-top" alt="Aidon Davis" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Aidon Davis</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/200357-b05fbfc8ec-3/OllieDevotoExeterChiefs.jpg" class="card-img-top" alt="Ollie Devoto" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ollie Devoto</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309114-05f4741dba-3/JackDunneExeterChiefs.jpg" class="card-img-top" alt="Jack Dunne" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jack Dunne</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309160-ec05e4d4f0-3/GarethElliottExeterChiefs.jpg" class="card-img-top" alt="Gareth Elliott" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gareth Elliott</h5>
+            <p class="card-text">Assistant Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309118-6ec69adb2f-3/ImmanuelFeyi-WabosoExeterChiefs.jpg" class="card-img-top" alt="Immanuel Feyi-Waboso" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Immanuel Feyi-Waboso</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309119-45bda22435-3/GregFisilauExeterChiefs.jpg" class="card-img-top" alt="Greg Fisilau" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Greg Fisilau</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309120-aea0c2d5f4-3/DanFrostExeterChiefs.jpg" class="card-img-top" alt="Dan Frost" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dan Frost</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309122-7fb06a0615-3/KianGentryExeterChiefs.jpg" class="card-img-top" alt="Kian Gentry" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kian Gentry</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/251581-7a59195185-3/JonnyGrayExeterChiefs.jpg" class="card-img-top" alt="Jonny Gray" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jonny Gray</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/267361-5bfcf53e14-3/BenGrubbExeterChiefs.jpg" class="card-img-top" alt="Ben Grubb" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben Grubb</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309124-67f1de03c4-3/BenHammersleyExeterChiefs.jpg" class="card-img-top" alt="Ben Hammersley" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben Hammersley</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309125-59f101aecb-3/IestynHarrisExeterChiefs.jpg" class="card-img-top" alt="Iestyn Harris" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Iestyn Harris</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309126-7d1f9b7063-3/JoeHawkinsExeterChiefs.jpg" class="card-img-top" alt="Joe Hawkins" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joe Hawkins</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309127-2cbdc031d4-3/WillHaydon-WoodExeterChiefs.jpg" class="card-img-top" alt="Will Haydon-Wood" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Will Haydon-Wood</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/200019-0a283b9a3e-3/TomHendricksonExeterChiefs.jpg" class="card-img-top" alt="Tom Hendrickson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Hendrickson</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/200392-59f7dd4a6e-3/AlecHepburnExeterChiefs.jpg" class="card-img-top" alt="Alec Hepburn" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alec Hepburn</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309152-9d051e60f5-3/AliHepherExeterChiefs.jpg" class="card-img-top" alt="Ali Hepher" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ali Hepher</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309128-db7f352fba-3/HarryHockingExeterChiefs.jpg" class="card-img-top" alt="Harry Hocking" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Harry Hocking</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/255229-8eb88d85f2-3/JoshHodgeExeterChiefs.jpg" class="card-img-top" alt="Josh Hodge" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Josh Hodge</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309154-128dcb6b1b-3/RobHunterExeterChiefs.jpg" class="card-img-top" alt="Rob Hunter" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rob Hunter</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/200383-f30bec288a-3/JackInnardExeterChiefs.jpg" class="card-img-top" alt="Jack Innard" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jack Innard</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/271916-4a32fc5607-3/JoshIosefa-ScottExeterChiefs.jpg" class="card-img-top" alt="Josh Iosefa-Scott" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Josh Iosefa-Scott</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309132-5593ea73c4-3/OrsonJamesExeterChiefs.jpg" class="card-img-top" alt="Orson James" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Orson James</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309133-07087cd144-3/IwanJenkinsExeterChiefs.jpg" class="card-img-top" alt="Iwan Jenkins" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Iwan Jenkins</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274293-384e9807a1-3/DafyddJenkinsExeterChiefs.jpg" class="card-img-top" alt="Dafydd Jenkins" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dafydd Jenkins</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/290276-9f7584e7bb-3/DanJohnExeterChiefs.jpg" class="card-img-top" alt="Dan John" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dan John</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309134-abe79b81b6-3/MattJohnson.jpg" class="card-img-top" alt="Matt Johnson." style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matt Johnson.</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/200381-dbae972dc6-3/BillyKeastExeterChiefs.jpg" class="card-img-top" alt="Billy Keast" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Billy Keast</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/252553-6ac7f8ff47-3/JamesKennyExeterChiefs.jpg" class="card-img-top" alt="James Kenny" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James Kenny</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274300-b46ff54845-3/SamMaunderExeterChiefs.jpg" class="card-img-top" alt="Sam Maunder" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sam Maunder</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309137-d8ee4f2d45-3/CharlieMcCaigExeterChiefs.jpg" class="card-img-top" alt="Charlie McCaig" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Charlie McCaig</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309138-9f9d38c1de-3/JacobMorrisExeterChiefs.jpg" class="card-img-top" alt="Jacob Morris" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jacob Morris</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309161-a4772db566-3/OmarMouneimneExeterChiefs.jpg" class="card-img-top" alt="Omar Mouneimne" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Omar Mouneimne</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274295-f73eef827c-3/MaxNoreyExeterChiefs.jpg" class="card-img-top" alt="Max Norey" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Max Norey</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/267400-73b17fe212-3/FrankieNowellExeterChiefs.jpg" class="card-img-top" alt="Frankie Nowell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Frankie Nowell</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309139-ad146b61b9-3/EoinOConnorExeterChiefs.jpg" class="card-img-top" alt="Eoin O'Connor" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Eoin O'Connor</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/287164-d8e94c50ef-3/RoryOLoughlinExeterChiefs.jpg" class="card-img-top" alt="Rory O'Loughlin" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rory O'Loughlin</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309140-121b920edc-3/EhrenPainterExeterChiefs.jpg" class="card-img-top" alt="Ehren Painter" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ehren Painter</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274294-dd164faa10-3/LewisPearsonExeterChiefs.jpg" class="card-img-top" alt="Lewis Pearson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lewis Pearson</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/250678-bea85e09fa-3/MattPostlethwaiterugbyplayer.jpg" class="card-img-top" alt="Matt Postlethwaite" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matt Postlethwaite</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309141-24baf77077-3/ArthurReltonExeterChiefs.jpg" class="card-img-top" alt="Arthur Relton" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Arthur Relton</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309143-2da953cff2-3/ChesterRibbonsExeterChiefs.jpg" class="card-img-top" alt="Chester Ribbons" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Chester Ribbons</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309144-cfe7b35ff2-3/FinlayRichardsonExeterChiefs.jpg" class="card-img-top" alt="Finlay Richardson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Finlay Richardson</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302175-ff1941c765-3/EthanRootsExeterChiefs.jpg" class="card-img-top" alt="Ethan Roots" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ethan Roots</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/273872-1ff0d21f3c-3/PatrickSchickerlingExeterChiefs.jpg" class="card-img-top" alt="Patrick Schickerling" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Patrick Schickerling</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309156-b222418af4-3/NicSestaretExeterChiefs.jpg" class="card-img-top" alt="Nic Sestaret" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nic Sestaret</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309145-2a205b628c-3/ScottSioExeterChiefs.jpg" class="card-img-top" alt="Scott Sio" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Scott Sio</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/221718-b02a4ffa54-3/HarveySkinnerExeterChiefs.jpg" class="card-img-top" alt="Harvey Skinner" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Harvey Skinner</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/199408-57fcc23b2e-3/HenrySladeExeterChiefs.jpg" class="card-img-top" alt="Henry Slade" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Henry Slade</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/200412-305c14b3d0-3/JoeSnowExeterChiefs.jpg" class="card-img-top" alt="Joe Snow" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joe Snow</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/236259-c1a05c5e9b-3/DannySouthworthExeterChiefs.jpg" class="card-img-top" alt="Danny Southworth" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Danny Southworth</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309157-3ca64a588a-3/GarethSteensonExeterChiefs.jpg" class="card-img-top" alt="Gareth Steenson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gareth Steenson</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/200363-b8f540bab0-3/MarcusStreetExeterChiefs.jpg" class="card-img-top" alt="Marcus Street" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marcus Street</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/236261-3057a55c3c-3/CoryTeagueExeterChiefs.jpg" class="card-img-top" alt="Cory Teague" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cory Teague</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309158-a98fd5ef5a-3/HaydnThomasExeterChiefs.jpg" class="card-img-top" alt="Haydn Thomas" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Haydn Thomas</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/199444-755387e2f7-3/StuartTownsendExeterChiefs.jpg" class="card-img-top" alt="Stuart Townsend" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Stuart Townsend</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/273686-2a903e282c-3/ChristTshiunzaExeterChiefs.jpg" class="card-img-top" alt="Christ Tshiunza" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Christ Tshiunza</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/267924-c152d78998-3/RusiateTuimaExeterChiefs.jpg" class="card-img-top" alt="Rusiate Tuima" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rusiate Tuima</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/258454-4a979ba63e-3/JacquesVermeulenExeterChiefs.jpg" class="card-img-top" alt="Jacques Vermeulen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jacques Vermeulen</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309148-dac76b01cd-3/RossVintcentExeterChiefs.jpg" class="card-img-top" alt="Ross Vintcent" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ross Vintcent</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309149-5f543e2e82-3/ZackWimbushExeterChiefs.jpg" class="card-img-top" alt="Zack Wimbush" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Zack Wimbush</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/199416-422156bf7a-3/OllyWoodburnExeterChiefs.jpg" class="card-img-top" alt="Olly Woodburn" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Olly Woodburn</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309151-f8d6ffc584-3/TomWyattExeterChiefs.jpg" class="card-img-top" alt="Tom Wyatt" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Wyatt</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/199432-5914a3ff44-3/JackYeandleExeterChiefs.jpg" class="card-img-top" alt="Jack Yeandle" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jack Yeandle</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Early Years</h2>
+                <p>Exeter Rugby Club, founded in 1871, has a rich history, playing its first match in 1873 and winning the Devon Cup in 1890. Notably, in 1905, they hosted the first match played by New Zealand on English soil, a game that led to the "All Blacks" moniker.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Early League and Professional Era</h2>
+                <p>Exeter made strides in the early '90s, reaching the Pilkington Cup quarter-finals in 1993 and 1995. They entered the Premiership Two in 1997, consistently finishing in the top half. In 2009, Exeter secured promotion to the Premiership, marking their debut season with an eighth-place finish and a quarter-final appearance in the European Challenge Cup.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Premiership Success</h2>
+                <p>Exeter's Premiership journey saw them finish fifth in 2010-11, allowing entry into the Heineken Cup for the first time. In 2014, they secured their first major trophy, winning the Anglo-Welsh Cup. The 2016-17 season marked historic achievements, with Exeter winning the Premiership for the first time and reaching the European Champions Cup quarter-finals.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Recent Success and Double Triumph</h2>
+                  <p>The 2019-20 season was a pinnacle for Exeter as they achieved an unprecedented double, winning both the European Rugby Champions Cup and the Premiership. Despite reaching the Premiership final in 2017-18 and finishing eight points clear at the top in the regular season, they faced defeat against Saracens in the final.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Logo Controversy and Change</h2>
+                  <p>In 1999, Exeter turned semi-professional, adopting the name Exeter Chiefs and a Native American-themed logo. Over the years, controversy arose regarding cultural appropriation. In 2022, the club addressed concerns, retiring their mascot Big Chief and adopting imagery depicting the Iron Age tribe, the Dumnonii, in July.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Logo Issue Resolution</h2>
+                  <p>Amidst controversy over their Native American imagery, Exeter Chiefs made a significant decision in January 2022 to drop the branding, opting for imagery representing the Dumnonii tribe, addressing concerns about cultural sensitivity.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+            
+            
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

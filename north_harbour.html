@@ -1,0 +1,1395 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .cont:nth-child(14){
+          animation-delay: 13s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #northharbourKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #northharbourKitSection {
+          display: none;
+        }
+
+        #northharbourKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #northharbourKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #northharbourKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #northharbourKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #northharbourKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #northharbourKitSection {
+          display: flex;
+        }
+
+        #northharbourKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #northharbourKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - North Harbour</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/northharbourbanner.png" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About North Harbour</h3>
+    <p>Established in 1985, the North Harbour rugby team represents the vibrant Northern Shore of Auckland, New Zealand. Competing in the National Provincial Championship (NPC), this professional rugby union team has become synonymous with skill and tenacity. The team proudly sports their colors, featuring a striking combination of green, black, and white, as they fiercely defend their turf at QBE Stadium in Albany, the team's fortress. Affiliated with the Blues Super Rugby franchise, North Harbour's legacy is etched in the annals of New Zealand rugby, embodying the spirit of excellence and competition that defines the NPC.
+    </p>
+  
+    
+
+      <div id="northharbourKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">North Harbour Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/northharbourhome.png" alt="North Harbour Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/northharbouraway.png" alt="North Harbour Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="northharbourKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">North Harbour Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/northharbourhome.png" alt="North Harbour Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/northharbouraway.png" alt="North Harbour Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/303979-af31e3d26d-3/KennyAddisonNorthHarbour.jpg" class="card-img-top" alt="Kenny Addison" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kenny Addison</h5>
+            <p class="card-text">Assistant Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/65111-4d80749f94-3/BenAfeakiNorthHarbour.jpg" class="card-img-top" alt="Ben Afeaki" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben Afeaki</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304331-d59b03ed3d-3/KadeBanksNorthHarbour.jpg" class="card-img-top" alt="Kade Banks" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kade Banks</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304329-4f76472755-3/TomBarhamNorthHarbour.jpg" class="card-img-top" alt="Tom Barham" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Barham</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286418-c1f2f06699-3/JamieBoothNorthHarbour.jpg" class="card-img-top" alt="Jamie Booth" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jamie Booth</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304338-52192ba298-3/CamChristieNorthHarbour.jpg" class="card-img-top" alt="Cam Christie" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cam Christie</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304345-a03fc4d848-3/TristynCookNorthHarbour.jpg" class="card-img-top" alt="Tristyn Cook" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tristyn Cook</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304314-4e0d1b8502-3/SamDavies.jpg" class="card-img-top" alt="Sam Davies." style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sam Davies.</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304838-16eb8ea511-3/JamesFiebigNorthHarbour.jpg" class="card-img-top" alt="James Fiebig" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James Fiebig</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/193921-a6299d480a-3/BrynGatlandNorthHarbour.jpg" class="card-img-top" alt="Bryn Gatland" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Bryn Gatland</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304317-a85edc17bc-3/BrynGordonNorthHarbour.jpg" class="card-img-top" alt="Bryn Gordon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Bryn Gordon</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304319-5def01fc02-3/BenGrantNorthHarbour.jpg" class="card-img-top" alt="Ben Grant" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben Grant</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/73043-8141fc621d-3/DanielHalangahuNorthHarbour.jpg" class="card-img-top" alt="Daniel Halangahu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Daniel Halangahu</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304325-c7ed5fd611-3/AiseaHaloNorthHarbour.jpg" class="card-img-top" alt="Aisea Halo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Aisea Halo</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304326-410e7ede65-3/JackHeightonNorthHarbour.jpg" class="card-img-top" alt="Jack Heighton" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jack Heighton</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304343-eeba9dd310-3/CameronHowellNorthHarbour.jpg" class="card-img-top" alt="Cameron Howell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cameron Howell</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304341-e4f70c8ec9-3/PheonixHunapo-NofoaNorthHarbour.jpg" class="card-img-top" alt="Pheonix Hunapo-Nofoa" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Pheonix Hunapo-Nofoa</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/232002-d3216112b6-3/LotuInisiNorthHarbour.jpg" class="card-img-top" alt="Lotu Inisi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lotu Inisi</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/173575-6e706489cd-3/KieranKeanerugbyplayer.jpg" class="card-img-top" alt="Kieran Keane" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kieran Keane</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304318-1117e40a26-3/ShiloKleinNorthHarbour.jpg" class="card-img-top" alt="Shilo Klein" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Shilo Klein</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304328-3dfea5cd5a-3/OscarKollerNorthHarbour.jpg" class="card-img-top" alt="Oscar Koller" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Oscar Koller</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286409-7067160d6a-3/TevitaLangiNorthHarbour.jpg" class="card-img-top" alt="Tevita Langi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tevita Langi</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304836-493887c686-3/AlapatiLeiuaNorthHarbour.jpg" class="card-img-top" alt="Alapati Leiua" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alapati Leiua</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304334-30f5d44efb-3/TikaLelengaNorthHarbour.jpg" class="card-img-top" alt="Tika Lelenga" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tika Lelenga</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304330-625d8fc65b-3/MosesLeoNorthHarbour.jpg" class="card-img-top" alt="Moses Leo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Moses Leo</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/247310-5213183f5b-3/JamesLittleNorthHarbour.jpg" class="card-img-top" alt="James Little" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James Little</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304839-f825f7a608-3/SioneMafileoNorthHarbour.jpg" class="card-img-top" alt="Sione Mafileo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sione Mafileo</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304313-9fc39429dd-3/TevitaMafileoNorthHarbour.jpg" class="card-img-top" alt="Tevita Mafileo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tevita Mafileo</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307775-8b791d5298-3/SofaiMakaNorthHarbour.jpg" class="card-img-top" alt="Sofai Maka" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sofai Maka</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304840-1bcbbed6ac-3/NicMayhewNorthHarbour.jpg" class="card-img-top" alt="Nic Mayhew" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nic Mayhew</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286411-31660b2e39-3/TamarauMcGahanNorthHarbour.jpg" class="card-img-top" alt="Tamarau McGahan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tamarau McGahan</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304324-fb32907f4e-3/JedMelvinNorthHarbour.jpg" class="card-img-top" alt="Jed Melvin" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jed Melvin</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304333-d27a92d498-3/DanyonMorgan-PuterangiNorthHarbour.jpg" class="card-img-top" alt="Danyon Morgan-Puterangi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Danyon Morgan-Puterangi</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304320-5c1195a0a6-3/MahonriNgakuruNorthHarbour.jpg" class="card-img-top" alt="Mahonri Ngakuru" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mahonri Ngakuru</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286412-65c9273ab2-3/SiaosiNgininginiNorthHarbour.jpg" class="card-img-top" alt="Siaosi Nginingini" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Siaosi Nginingini</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306693-d4ded7419d-3/RayNiuiaNorthHarbour.jpg" class="card-img-top" alt="Ray Niuia" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ray Niuia</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307776-678a7ad02f-3/FetuliPaeaNorthHarbour.jpg" class="card-img-top" alt="Fetuli Paea" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Fetuli Paea</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304347-df4055db09-3/JosiahPokaiNorthHarbour.jpg" class="card-img-top" alt="Josiah Pokai" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Josiah Pokai</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304336-3ed09f8c0c-3/RexPollockNorthHarbour.jpg" class="card-img-top" alt="Rex Pollock" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rex Pollock</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/noimage/webPlayer.png" class="card-img-top" alt="Osea Qamasea" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Osea Qamasea</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304323-6970af4781-3/KarlRuzichNorthHarbour.jpg" class="card-img-top" alt="Karl Ruzich" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Karl Ruzich</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304321-6ec703bcd0-3/WallaceSititiNorthHarbour.jpg" class="card-img-top" alt="Wallace Sititi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Wallace Sititi</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306065-0cc799507d-3/ShaunStevensonNorthHarbour.jpg" class="card-img-top" alt="Shaun Stevenson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Shaun Stevenson</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286417-127a08bfc2-3/CameronSuafoaNorthHarbour.jpg" class="card-img-top" alt="Cameron Suafoa" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cameron Suafoa</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286413-a8e3c4a0d1-3/HenryTaefuNorthHarbour.jpg" class="card-img-top" alt="Henry Taefu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Henry Taefu</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304837-6cdf88134a-3/JohnTapuelueluNorthHarbour.jpg" class="card-img-top" alt="John Tapueluelu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">John Tapueluelu</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/193934-d7e459e5fe-3/MarkTeleaNorthHarbour.jpg" class="card-img-top" alt="Mark Telea" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mark Telea</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>North Harbour Rugby Union: Pinnacle of Northern Shore Rugby</h2>
+                <p>Established in 1985, the North Harbour Rugby Union (NHRU) governs a vast region north of Auckland, boasting 12 formidable rugby clubs. The union, known as North Harbour or simply Harbour, carved its niche by breaking away from the Auckland Rugby Union, symbolized by the Hibiscus flower in its logo, paying homage to the Hibiscus Coast. The NHRU provincial rugby team competes in the prestigious Mitre 10 Cup, showcasing prowess since its inception. Their journey includes triumphs in the 3rd division, promotions to NPC Division 1, and memorable runs in the 1990s NPC competitions. With home games played at the iconic North Harbour Stadium at Albany, North Harbour proudly contributes players to the Super Rugby competition, embodying a rich legacy of success and resilience.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>NHRU History: The Birth and Growth of a Rugby Powerhouse</h2>
+                <p>In 1985, North Harbour Rugby Union emerged, led by clubs breaking away from the Auckland Rugby Union. Their inaugural under 20 side marked the beginning, with Grant Ferguson securing the honor of scoring the union's first points. Over the years, the union expanded, absorbing clubs like Omaha, Warkworth, and Kaipara Flats, forging the Mahurangi club. North Harbour's journey includes hosting the 1994 NPC final against Auckland, Super 10 competition qualifications, and consistent contributions to New Zealand Representative players.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>North Harbour's Mitre 10 Cup Campaigns: Triumphs and Challenges</h2>
+                  <p>North Harbour's presence in the Mitre 10 Cup has been marked by triumphs and challenges. The team, playing in striking green, black, and white colors, made history as the first to face the Tasman Makos, securing a historic Ranfurly Shield victory over Canterbury in 2006. However, subsequent years brought ups and downs, from disappointments in 2007 to significant wins against champions like Canterbury in 2009. The team's journey includes promotions, heartbreaking defeats, and an impressive campaign in 2017, with notable victories against Auckland and Waikato.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Promotion to Premiership Division: North Harbour's Resurgence</h2>
+                  <p>In 2016, North Harbour's exceptional performance saw them promoted from the Championship division. Victories over Counties Manukau, Manawatu, Southland, Bay of Plenty, and Northland culminated in their triumphant promotion. The journey continued in 2017 as they secured wins against formidable opponents, making the semi-finals but falling to Canterbury. The team's resilience and skill were further showcased in the 2018 season, with victories over Northland, Waikato, Bay of Plenty, Hawke's Bay, Taranaki, and Counties Manukau. North Harbour's journey in New Zealand rugby reflects a legacy of determination, growth, and a commitment to excellence.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

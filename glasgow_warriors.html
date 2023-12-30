@@ -1,0 +1,1702 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #glasgowKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #glasgowKitSection {
+          display: none;
+        }
+
+        #glasgowKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #glasgowKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #glasgowKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #glasgowKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #glasgowKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #glasgowKitSection {
+          display: flex;
+        }
+
+        #glasgowKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #glasgowKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Glasgow Warriors</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/glasgowbanner.jpg" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About The Glasgow Warriors</h3>
+    <p>Glasgow Warriors, founded in 1996, are a professional rugby union team based in Glasgow, Scotland. Competing in the United Rugby Championship and the European Rugby Champions Cup, the team plays their home games at Scotstoun Stadium. Since their inception, the Warriors have become a formidable force in Scottish rugby, consistently contending in domestic and international competitions. They clinched their first major trophy in the 2014-15 season by winning the Pro12 (now United Rugby Championship). Known for their passionate fanbase and dynamic style of play, the Glasgow Warriors continue to make significant contributions to the Scottish rugby scene.
+    </p>
+  
+    
+
+      <div id="glasgowKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Glasgow Warriors Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/glasgowhome.png" alt="Glasgow Warriors Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/glasgowaway.png" alt="Glasgow Warriors Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 18px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="glasgowKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Glasgow Warriors Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/glasgowhome.png" alt="Glasgow Warriors Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/glasgowaway.png" alt="Glasgow Warriors Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285835-53a73a3c27-3/BenAfsharGlasgowWarriors.jpg" class="card-img-top" alt="Ben Afshar" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben Afshar</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285832-ddbdc71d80-3/TomBanatvalaGlasgowWarriors.jpg" class="card-img-top" alt="Tom Banatvala" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Banatvala</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270259-c5c1193670-3/JamieBhattiGlasgowWarriors.jpg" class="card-img-top" alt="Jamie Bhatti" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jamie Bhatti</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270251-71236e9df0-3/GregorBrownGlasgowWarriors.jpg" class="card-img-top" alt="Gregor Brown" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gregor Brown</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270239-3c150e4208-3/FraserBrownGlasgowWarriors.jpg" class="card-img-top" alt="Fraser Brown" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Fraser Brown</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285836-7906b72cec-3/FinlayBurgessGlasgowWarriors.jpg" class="card-img-top" alt="Finlay Burgess" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Finlay Burgess</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270237-51a85eb016-3/FinlayCallaghanGlasgowWarriors.jpg" class="card-img-top" alt="Finlay Callaghan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Finlay Callaghan</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286122-7fbb1a28f3-3/SebastianCancelliereGlasgowWarriors.jpg" class="card-img-top" alt="Sebastian Cancelliere" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sebastian Cancelliere</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313405-d8f6a2fdda-3/NigelCarolanGlasgowWarriors.jpg" class="card-img-top" alt="Nigel Carolan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nigel Carolan</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/169817-a870dab3a1-3/EliasCavenrugbyplayer.jpg" class="card-img-top" alt="Elias Caven" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Elias Caven</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311383-585d90ce81-3/FacundoCorderoGlasgowWarriors.jpg" class="card-img-top" alt="Facundo Cordero" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Facundo Cordero</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270341-bea48324e9-3/ScottCummingsGlasgowWarriors.jpg" class="card-img-top" alt="Scott Cummings" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Scott Cummings</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270230-17c6833022-3/EuanCunninghamGlasgowWarriors.jpg" class="card-img-top" alt="Euan Cunningham" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Euan Cunningham</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270323-15ea2fe5c9-3/RoryDargeGlasgowWarriors.jpg" class="card-img-top" alt="Rory Darge" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rory Darge</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285821-88a6bfa55b-3/AllanDellGlasgowWarriors.jpg" class="card-img-top" alt="Allan Dell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Allan Dell</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270256-b5156f9db3-3/JackDempseyGlasgowWarriors.jpg" class="card-img-top" alt="Jack Dempsey" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jack Dempsey</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313407-748ba296d5-3/AlasdairDickinsonGlasgowWarriors.jpg" class="card-img-top" alt="Alasdair Dickinson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alasdair Dickinson</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270262-7e7ce9402d-3/JamieDobieGlasgowWarriors.jpg" class="card-img-top" alt="Jamie Dobie" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jamie Dobie</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285823-ca87a02822-3/JPduPreezGlasgowWarriors.jpg" class="card-img-top" alt="JP du Preez" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">JP du Preez</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270280-6c3bde0d1c-3/MattFagersonGlasgowWarriors.jpg" class="card-img-top" alt="Matt Fagerson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matt Fagerson</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/239102-ddfe49982f-3/ZanderFagersonGlasgowWarriors.jpg" class="card-img-top" alt="Zander Fagerson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Zander Fagerson</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270233-b4fdb639ef-3/EuanFerrieGlasgowWarriors.jpg" class="card-img-top" alt="Euan Ferrie" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Euan Ferrie</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270216-49db4c27df-3/AngusFraserGlasgowWarriors.jpg" class="card-img-top" alt="Angus Fraser" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Angus Fraser</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270354-cad5fb6257-3/ThomasGordonGlasgowWarriors.jpg" class="card-img-top" alt="Thomas Gordon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Thomas Gordon</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270316-902fc59272-3/RichieGrayGlasgowWarriors.jpg" class="card-img-top" alt="Richie Gray" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Richie Gray</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311386-26bb10d0f4-3/GregorHiddlestonGlasgowWarriors.jpg" class="card-img-top" alt="Gregor Hiddleston" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gregor Hiddleston</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270309-cc24db38da-3/PeterHorneGlasgowWarriors.jpg" class="card-img-top" alt="Peter Horne" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Peter Horne</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/196594-5cd3922cb0-3/GeorgeHorneGlasgowWarriors.jpg" class="card-img-top" alt="George Horne" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">George Horne</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285829-c0f06e7958-3/WillHuntGlasgowWarriors.jpg" class="card-img-top" alt="Will Hunt" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Will Hunt</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299713-308a0f1a53-3/GeorgeHunterGlasgowWarriors.jpg" class="card-img-top" alt="George Hunter" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">George Hunter</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270326-2f11d8b2a6-3/RoryJacksonGlasgowWarriors.jpg" class="card-img-top" alt="Rory Jackson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rory Jackson</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285839-1c6c5ebfa3-3/LoganJarvieGlasgowWarriors.jpg" class="card-img-top" alt="Logan Jarvie" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Logan Jarvie</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285826-2f555eed85-3/CameronJonesGlasgowWarriors.jpg" class="card-img-top" alt="Cameron Jones" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cameron Jones</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/204625-1fed2eabb0-3/HuwJonesGlasgowWarriors.jpg" class="card-img-top" alt="Huw Jones" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Huw Jones</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286121-27aef723e3-3/TomJordanGlasgowWarriors.jpg" class="card-img-top" alt="Tom Jordan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Jordan</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270304-d0f6308202-3/OliverKebbleGlasgowWarriors.jpg" class="card-img-top" alt="Oliver Kebble" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Oliver Kebble</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270344-d8b786f744-3/SeanKennedyGlasgowWarriors.jpg" class="card-img-top" alt="Sean Kennedy" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sean Kennedy</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/258069-5f64b9daeb-3/JordanLenacrugbyplayer.jpg" class="card-img-top" alt="Jordan Lenac" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jordan Lenac</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285824-31b81ad65c-3/SintuManjeziGlasgowWarriors.jpg" class="card-img-top" alt="Sintu Manjezi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sintu Manjezi</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/225415-5685424eef-3/JackMannrugbyplayer.jpg" class="card-img-top" alt="Jack Mann" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jack Mann</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270268-ed266d22ef-3/JohnnyMatthewsGlasgowWarriors.jpg" class="card-img-top" alt="Johnny Matthews" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Johnny Matthews</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301197-638f79ac28-3/NathanMcBethGlasgowWarriors.jpg" class="card-img-top" alt="Nathan McBeth" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nathan McBeth</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270321-e1564fb992-3/RobbieMcCallumGlasgowWarriors.jpg" class="card-img-top" alt="Robbie McCallum" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Robbie McCallum</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270352-d0c3726355-3/StaffordMcDowallGlasgowWarriors.jpg" class="card-img-top" alt="Stafford McDowall" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Stafford McDowall</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/205391-ae07191769-3/JoshuaMcKayrugbyplayer.jpg" class="card-img-top" alt="Josh McKay" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Josh McKay</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270328-8ad32830a4-3/RossMcKnightGlasgowWarriors.jpg" class="card-img-top" alt="Ross McKnight" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ross McKnight</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285833-520b8064ba-3/HarrisMcleodGlasgowWarriors.jpg" class="card-img-top" alt="Harris Mcleod" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Harris Mcleod</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270214-d7bf08f08a-3/AllyMillerGlasgowWarriors.jpg" class="card-img-top" alt="Ally Miller" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ally Miller</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285837-bcff09f0bf-3/DuncanMunnGlasgowWarriors.jpg" class="card-img-top" alt="Duncan Munn" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Duncan Munn</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/171725-e8daeac16d-3/PeterMurchieGlasgowWarriors.jpg" class="card-img-top" alt="Peter Murchie" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Peter Murchie</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/217363-34bb02c216-3/KennyMurrayrugbyplayer.jpg" class="card-img-top" alt="Kenny Murray" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kenny Murray</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285831-5c22990e3d-3/CallumNorrieGlasgowWarriors.jpg" class="card-img-top" alt="Callum Norrie" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Callum Norrie</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/196579-c13bde5038-3/GregPetersonGlasgowWarriors.jpg" class="card-img-top" alt="Greg Peterson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Greg Peterson</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/249859-08973ab91a-3/EnriquePierettorugbyplayer.jpg" class="card-img-top" alt="Enrique Pieretto" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Enrique Pieretto</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/239411-7309d24cea-3/AliPriceGlasgowWarriors.jpg" class="card-img-top" alt="Ali Price" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ali Price</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/207220-6d6e043246-3/KyleRowerugbyplayer.jpg" class="card-img-top" alt="Kyle Rowe" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kyle Rowe</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285838-5bec977b0f-3/BenSalmonGlasgowWarriors.jpg" class="card-img-top" alt="Ben Salmon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben Salmon</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270213-01aa266c54-3/AlexSamuelGlasgowWarriors.jpg" class="card-img-top" alt="Alex Samuel" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alex Samuel</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/277617-997c622373-3/MichaelScottrugbyplayer.jpg" class="card-img-top" alt="Michael Scott" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Michael Scott</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311387-b5af3a2640-3/RichieSimpsonGlasgowWarriors.jpg" class="card-img-top" alt="Richie Simpson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Richie Simpson</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285834-c3375ed11c-3/ArchieSmeatonGlasgowWarriors.jpg" class="card-img-top" alt="Archie Smeaton" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Archie Smeaton</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270306-13ff1a04da-3/OliverSmithGlasgowWarriors.jpg" class="card-img-top" alt="Oliver Smith" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Oliver Smith</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313408-15c97ebf2c-3/FrancoSmithGlasgowWarriors.jpg" class="card-img-top" alt="Franco Smith" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Franco Smith</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285822-e76feeca7a-3/LucioSordoniGlasgowWarriors.jpg" class="card-img-top" alt="Lucio Sordoni" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lucio Sordoni</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270274-4f4a0ffd5a-3/KyleSteynGlasgowWarriors.jpg" class="card-img-top" alt="Kyle Steyn" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kyle Steyn</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285830-adbab8138d-3/AndyStirratGlasgowWarriors.jpg" class="card-img-top" alt="Andy Stirrat" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Andy Stirrat</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270330-02cf374d2f-3/RossThompsonGlasgowWarriors.jpg" class="card-img-top" alt="Ross Thompson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ross Thompson</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270221-2bc9ccdc9f-3/ChristianTownsendGlasgowWarriors.jpg" class="card-img-top" alt="Christian Townsend" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Christian Townsend</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311385-f4d069ec30-3/LoganTrotterGlasgowWarriors.jpg" class="card-img-top" alt="Logan Trotter" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Logan Trotter</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270350-bbac020a7f-3/SioneTuipulotuGlasgowWarriors.jpg" class="card-img-top" alt="Sione Tuipulotu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sione Tuipulotu</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270245-b15cf13e89-3/GeorgeTurnerGlasgowWarriors.jpg" class="card-img-top" alt="George Turner" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">George Turner</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301198-386ca93eab-3/SioneVailanuGlasgowWarriors.jpg" class="card-img-top" alt="Sione Vailanu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sione Vailanu</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302136-b09fa30372-3/HencoVenterGlasgowWarriors.jpg" class="card-img-top" alt="Henco Venter" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Henco Venter</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270285-9270117d40-3/MurphyWalkerGlasgowWarriors.jpg" class="card-img-top" alt="Murphy Walker" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Murphy Walker</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270227-98c52fed7d-3/DuncanWeirGlasgowWarriors.jpg" class="card-img-top" alt="Duncan Weir" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Duncan Weir</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270283-66aa43cff1-3/MaxWilliamsonGlasgowWarriors.jpg" class="card-img-top" alt="Max Williamson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Max Williamson</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Origins and Professionalization (1996-2005)</h2>
+                <p>Glasgow Warriors trace their roots to the 1872 Glasgow District side, transforming into a professional entity in 1996 as Glasgow Rugby. The club underwent various rebrands, becoming Glasgow Caledonians in 1998 through a merger with Caledonian Reds, then reverting to Glasgow Rugby in 2001 and adopting the name Glasgow Warriors in 2005.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Mergers and Challenges (1998-2005)</h2>
+                <p>Financial constraints led to a merger with Caledonia Reds in 1998, briefly named Glasgow Caledonians. The 2001–02 season saw a return to Glasgow Rugby, while the moniker "Glasgow Warriors" gained prominence. The period featured mixed success, including participation in European competitions.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Celtic League and 1872 Cup (2005-2011)</h2>
+                <p>Rebranded as Glasgow Warriors in 2005, the team entered the Celtic League. The 1872 Cup, introduced in 2007-08 against Edinburgh Rugby, marked a historic inter-city rivalry. During the Pro12 era, the Warriors consistently reached the play-offs, securing a record number of consecutive seasons.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Pro14 Era and Records (2011-2021)</h2>
+                  <p>The Celtic League became the Pro12 in 2011–12. Glasgow Warriors consistently excelled, securing play-off spots, with a notable runner-up finish in 2018. The 2019–20 season saw them clinch the 1872 Cup and achieve multiple records despite the pandemic disruptions.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>United Rugby Championship and Franco Smith Era (2021-2022)</h2>
+                  <p>In the expanded Pro14, renamed United Rugby Championship (URC), Glasgow Warriors faced challenges. A slump in form led to an 8th-place finish, missing Champions Cup qualification. Head Coach Danny Wilson was replaced by Franco Smith ahead of the 2022-23 season.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Franco Smith's Impact (2022-)</h2>
+                  <p>Under Franco Smith's leadership, Glasgow Warriors experienced a revival in the 2022-23 season. Unbeaten at home in the URC, they reached the European Challenge Cup final, securing the 1872 Cup and the Scottish-Italian Shield. Despite setbacks, Smith's tenure marked a successful resurgence, with the team back in contention across competitions.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+            
+            
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

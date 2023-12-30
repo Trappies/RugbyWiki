@@ -1,0 +1,1360 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #lospumasKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #lospumasKitSection {
+          display: none;
+        }
+
+        #lospumasKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #lospumasKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #lospumasKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #lospumasKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #lospumasKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #lospumasKitSection {
+          display: flex;
+        }
+
+        #lospumasKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #lospumasKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Los Pumas</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/argentinabanner.jpg" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About Los Pumas</h3>
+    <p>The Argentina national rugby team, often referred to as "Los Pumas", is a formidable force in international rugby. Established in 1910, the team has steadily grown in prominence and skill, becoming a key contender on the global stage. Known for their passionate and resilient style of play, the Pumas have achieved notable successes, including reaching the semi-finals of the Rugby World Cup in 2007 and consistently competing in prestigious tournaments like The Rugby Championship. Argentina's rugby prowess is deeply rooted in a rich history of the sport, with a growing pool of talented players who have made a significant impact on the world of rugby. With a fervent fan base and a commitment to excellence, the Pumas continue to be a team to watch, embodying the spirit and tenacity of Argentine rugby.
+    </p>
+  
+    
+
+      <div id="lospumasKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Los Pumas Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/argentinahome.png" alt="Los Pumas Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/argentinaaway.png" alt="Los Pumas Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 22px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="lospumasKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Los Pumas Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/argentinahome.png" alt="Los Pumas Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/argentinaaway.png" alt="Los Pumas Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307402-0503a9c401-3/MatasAlemannoArgentina.jpg" class="card-img-top" alt="Matías Alemanno" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matías Alemanno</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307409-f9ea503374-3/LautaroBazanVelezArgentina.jpg" class="card-img-top" alt="Lautaro Bazan Velez" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lautaro Bazan Velez</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307450-5e351f04dd-3/EduardoBelloArgentina.jpg" class="card-img-top" alt="Eduardo Bello" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Eduardo Bello</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307416-d57a711e81-3/GonzaloBertranouArgentina.jpg" class="card-img-top" alt="Gonzalo Bertranou" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gonzalo Bertranou</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307452-d417cedcd7-3/EmilianoBoffelliArgentina.jpg" class="card-img-top" alt="Emiliano Boffelli" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Emiliano Boffelli</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307399-73de6c4d20-3/MartinBogadoArgentina.jpg" class="card-img-top" alt="Martin Bogado" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Martin Bogado</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307438-e6f2255fd7-3/RodrigoBruniArgentina.jpg" class="card-img-top" alt="Rodrigo Bruni" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rodrigo Bruni</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307428-bb79444175-3/SantiagoCarrerasArgentina.jpg" class="card-img-top" alt="Santiago Carreras" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Santiago Carreras</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307405-94636031ee-3/MateoCarrerasArgentina.jpg" class="card-img-top" alt="Mateo Carreras" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mateo Carreras</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307403-7bbab3ea18-3/MichaelCheikaArgentina.jpg" class="card-img-top" alt="Michael Cheika" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Michael Cheika</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307442-e616b1db13-3/SantiagoChocobaresArgentina.jpg" class="card-img-top" alt="Santiago Chocobares" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Santiago Chocobares</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307447-cf5cc616c2-3/LucioCintiArgentina.jpg" class="card-img-top" alt="Lucio Cinti" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lucio Cinti</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/217358-8caf3fbc70-3/FelipeContepomirugbyplayer.jpg" class="card-img-top" alt="Felipe Contepomi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Felipe Contepomi</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307419-4c7ae3d963-3/AgustinCreevyArgentina.jpg" class="card-img-top" alt="Agustin Creevy" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Agustin Creevy</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307404-09010eca83-3/TomasCubelliArgentina.jpg" class="card-img-top" alt="Tomas Cubelli" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tomas Cubelli</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307432-8363f5d17d-3/JeronimodelaFuenteArgentina.jpg" class="card-img-top" alt="Jeronimo de la Fuente" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jeronimo de la Fuente</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307408-8f8bfd1523-3/ThomasGalloArgentina.jpg" class="card-img-top" alt="Thomas Gallo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Thomas Gallo</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307433-dc86362f78-3/FranciscoGomez-KodelaArgentina.jpg" class="card-img-top" alt="Francisco Gomez-Kodela" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Francisco Gomez-Kodela</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307445-f095783df5-3/JuanMartinGonzalezArgentina.jpg" class="card-img-top" alt="Juan Martin Gonzalez" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Juan Martin Gonzalez</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307427-7999753da2-3/JuanImhoffArgentina.jpg" class="card-img-top" alt="Juan Imhoff" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Juan Imhoff</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307406-5a35817981-3/FacundoIsaArgentina.jpg" class="card-img-top" alt="Facundo Isa" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Facundo Isa</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307440-e1772a1967-3/RodrigoIsgroArgentina.jpg" class="card-img-top" alt="Rodrigo Isgro" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rodrigo Isgro</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307398-12cae28ee3-3/MarcosKremerArgentina.jpg" class="card-img-top" alt="Marcos Kremer" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marcos Kremer</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307401-e0260628df-3/TomasLavaniniArgentina.jpg" class="card-img-top" alt="Tomas Lavanini" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tomas Lavanini</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307424-bf1835711f-3/JuanCruzMalliaArgentina.jpg" class="card-img-top" alt="Juan Cruz Mallia" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Juan Cruz Mallia</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307425-924c63fe3f-3/JulianMontoyaArgentina.jpg" class="card-img-top" alt="Julian Montoya" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Julian Montoya</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307435-9620d22487-3/MatiasMoroniArgentina.jpg" class="card-img-top" alt="Matias Moroni" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matias Moroni</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307446-17871a9eeb-3/JoaqunOviedoArgentina.jpg" class="card-img-top" alt="Joaquín Oviedo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joaquín Oviedo</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/303568-95dbb62e80-3/LucasPaulosArgentina.jpg" class="card-img-top" alt="Lucas Paulos" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lucas Paulos</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307400-c1f08b370a-3/GuidoPettiArgentina.jpg" class="card-img-top" alt="Guido Petti" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Guido Petti</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307449-acbcb17e47-3/PedroRubioloArgentina.jpg" class="card-img-top" alt="Pedro Rubiolo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Pedro Rubiolo</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307431-14b3050abd-3/IgnacioRuizArgentina.jpg" class="card-img-top" alt="Ignacio Ruiz" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ignacio Ruiz</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307415-745b3e071d-3/NicolasSanchezArgentina.jpg" class="card-img-top" alt="Nicolas Sanchez" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nicolas Sanchez</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307430-ebd4ae2dec-3/JoelSclaviArgentina.jpg" class="card-img-top" alt="Joel Sclavi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joel Sclavi</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307443-5872d9c66a-3/MaycoVivasArgentina.jpg" class="card-img-top" alt="Mayco Vivas" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mayco Vivas</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Origins and Nickname</h2>
+                <p>The history of the Argentina national rugby union team dates back to 1910 when they played their first international match against the British Isles. The tour marked the beginning of Argentina's recognition in rugby, and the team earned the nickname "Los Pumas," which remains an iconic identity to this day.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Early Years and First International Triumph</h2>
+                <p>In the early 20th century, rugby took root in Argentina, with Irish immigrants playing a pivotal role. The first rugby union match in 1873 laid the foundation for the sport's growth. Argentina's journey included defeats by the British Lions in 1927, but the team wore its traditional light blue and white jersey for the first time, leaving a lasting mark.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>The Birth of Los Pumas</h2>
+                <p>The 1960s marked a turning point for Argentina's rugby team with tours by the home unions. The team's first trip across the Atlantic in 1965 introduced the nickname "Pumas" after a journalist's mix-up. Victories over the Junior Springboks and the emergence of key players set the stage for a new era in Argentine rugby.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Steady Rise and International Tours (1970s)</h2>
+                <p>Led by fly-half Hugo Porta, Argentina saw a steady rise in the 1970s. International tours to South Africa, Ireland, and Scotland showcased their prowess. The tour of England, Ireland, and Italy in 1979 demonstrated Argentina's growing importance on the global rugby stage.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Golden Year of 1985 and International Tours (1980s)</h2>
+                <p>1985 stood out as a landmark year for Los Pumas, achieving a historic tie against the All Blacks. Tours by England and France in the '80s highlighted Argentina's growth. The team's performance against Australia in 1987 showcased their competitiveness, laying the foundation for future successes.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>World Cup Achievements and Transition (1990s)</h2>
+                <p>The '90s witnessed a transition phase for Argentina, with the retirement of experienced players. Despite challenges, the team's powerful pack earned praise in the 1995 World Cup. The 1999 World Cup marked a significant milestone as Los Pumas reached the quarter-finals for the first time.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>New Millennium Challenges and World Cup Campaigns (2000s)</h2>
+                <p>In the early 2000s, coach Marcelo Loffreda led Argentina through challenges, including a narrow loss to Ireland in the 2003 World Cup. The team's form against Wales and France showcased their resilience. The 2007 Rugby World Cup saw Los Pumas impress with a quarter-final finish, led by standout performances from Gonzalo Quesada.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Continued Success and International Tests (2000s-2010s)</h2>
+                <p>The 2000s and 2010s saw Argentina's continued success, marked by victories over Wales, England, and Ireland. Notable performances against the British & Irish Lions and All Blacks cemented Argentina's status as a formidable rugby nation. The team's qualification for the expanded Tri Nations hinted at even greater challenges and achievements in the years to come.
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Argentina's Remarkable Journey in the 2007 Rugby World Cup</h2>
+                <p>In the 2007 Rugby World Cup, Argentina, or Los Pumas, achieved historic feats that reverberated globally. Defeating hosts France in the opening match set the tone for an impressive run, culminating in a 34–10 win against France in the 3rd/4th place playoff—Argentina's best-ever Rugby World Cup performance. The Pumas' success prompted discussions about increasing Argentina's role in international rugby and led to unprecedented scheduling adjustments in football-crazed Argentina.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>2011 World Cup: Pumas' Resilience and Quarterfinal Qualification</h2>
+                <p>In the 2011 Rugby World Cup, Los Pumas showcased resilience, securing a quarterfinal spot with victories against Romania and Scotland. Despite a 33–10 defeat to the All Blacks in the quarterfinals, Argentina's campaign was deemed a success, marking their first consecutive quarterfinal qualification in World Cup history.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Argentina Joins The Rugby Championship in 2012</h2>
+                  <p>A significant milestone occurred in 2012 as Argentina joined The Rugby Championship, facing rugby powerhouses New Zealand, Australia, and South Africa. Despite challenges, including a historic 16–16 draw against South Africa, Argentina earned respect for their competitive spirit, marking their debut in top-tier international competition.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Ups and Downs in the Daniel Hourcade Era</h2>
+                  <p>Under coach Daniel Hourcade from 2013, Los Pumas experienced triumphs like their first-ever Rugby Championship win against Australia in 2014. However, they faced challenges, finishing last in the tournament for three consecutive years. The journey included ups, like defeating South Africa in the 2015 Rugby Championship, and downs, including a record 73–13 defeat to South Africa in 2013.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont left-containter">
+                  <img src="img/rugbyicon.png">
+                  <div class="text-box">
+                    <h2>2015 World Cup: Pumas' Entertaining Rugby and Semi-final Glory</h2>
+                    <p>In the 2015 Rugby World Cup, Argentina showcased an entertaining and attacking style, scoring 22 tries. While falling short with a 29–15 defeat to Australia in the semi-finals, Los Pumas' journey marked another successful campaign, reaching the semi-finals for the second time in Rugby World Cup history. Argentina's rugby story epitomizes passion, resilience, and a commitment to global competitiveness.
+
+                    </p>
+                    <span class="left-container-arrow"></span>
+                  </div>
+                </div>
+            
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

@@ -1,0 +1,1675 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .cont:nth-child(14){
+          animation-delay: 13s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #wpKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #wpKitSection {
+          display: none;
+        }
+
+        #wpKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #wpKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #wpKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #wpKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #wpKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #wpKitSection {
+          display: flex;
+        }
+
+        #wpKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #wpKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Western Province</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/wpbanner.png" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About Western Province</h3>
+    <p>The Western Province Rugby team, based in Cape Town, South Africa, is synonymous with a legacy of excellence in the world of rugby. Established in 1883, the team boasts a rich history and a strong presence in South African rugby. They proudly wear blue and white hoops as their home playing colors, symbolizing the tradition and pride associated with the Western Province. Newlands Stadium in Cape Town serves as the hallowed ground where the team showcases its skill and determination. Affiliated with the Stormers Super Rugby franchise, the Western Province Rugby team continues to captivate fans with their dynamic style of play and unwavering commitment to success on the rugby field. As stalwarts of South African rugby, they carry the torch of tradition while forging new chapters of glory in each game they play.
+    </p>
+  
+    
+
+      <div id="wpKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Western Province Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/wphome.png" alt="Western Province Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/wphome.png" alt="Western Province Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="wpKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Western Province Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/wphome.png" alt="Western Province Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/wphome.png" alt="Western Province Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295741-5b3c27426e-3/ClaytonBlommetjiesWesternProvince.jpg" class="card-img-top" alt="Clayton Blommetjies" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Clayton Blommetjies</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295725-c635cc3406-3/KwenzoBloseWesternProvince.jpg" class="card-img-top" alt="Kwenzo Blose" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kwenzo Blose</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298717-02ff74682d-3/LukeJohnBurgerWesternProvince.jpg" class="card-img-top" alt="Luke John Burger" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Luke John Burger</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295773-30215db267-3/ThomasBurseyWesternProvince.jpg" class="card-img-top" alt="Thomas Bursey" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Thomas Bursey</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/app/public/images/noimage/webPlayer.png" class="card-img-top" alt="M Coenraad" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">M Coenraad</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297120-6601ce8c9e-3/EwardCoulsonWesternProvince.jpg" class="card-img-top" alt="Eward Coulson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Eward Coulson</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295761-ab24593dbc-3/AngeloDavidsWesternProvince.jpg" class="card-img-top" alt="Angelo Davids" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Angelo Davids</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295733-a7e5abdee9-3/HacjivahDayimaniWesternProvince.jpg" class="card-img-top" alt="Hacjivah Dayimani" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Hacjivah Dayimani</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295759-995e0fa40b-3/JuandeJonghWesternProvince.jpg" class="card-img-top" alt="Juan de Jongh" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Juan de Jongh</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297116-889e01d64d-3/DylandeLeeuwWesternProvince.jpg" class="card-img-top" alt="Dylan de Leeuw" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dylan de Leeuw</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295728-7635a6a4af-3/PauldeVilliersWesternProvince.jpg" class="card-img-top" alt="Paul de Villiers" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Paul de Villiers</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295764-76f51ca2ed-3/PauldeWetWesternProvince.jpg" class="card-img-top" alt="Paul de Wet" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Paul de Wet</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295730-2cca9e42b1-3/Ben-JasonDixonWesternProvince.jpg" class="card-img-top" alt="Ben-Jason Dixon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben-Jason Dixon</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/232488-48d0074b75-3/JohnDobsonWesternProvince.jpg" class="card-img-top" alt="John Dobson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">John Dobson</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/218807-c03395a512-3/DanielduPlessisWesternProvince.jpg" class="card-img-top" alt="Daniel du Plessis" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Daniel du Plessis</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/209027-f36945591c-3/Jean-LucduPlessisrugbyplayer.jpg" class="card-img-top" alt="Jean-Luc du Plessis" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jean-Luc du Plessis</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295709-f923690d9c-3/JosephDwebaWesternProvince.jpg" class="card-img-top" alt="Joseph Dweba" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joseph Dweba</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295705-a4d2bf39de-3/WillieEngelbrechtWesternProvince.jpg" class="card-img-top" alt="Willie Engelbrecht" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Willie Engelbrecht</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295735-d4fae10d89-3/ConnorEvansWesternProvince.jpg" class="card-img-top" alt="Connor Evans" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Connor Evans</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295740-468bc9521c-3/SachaMngomezuluWesternProvince.jpg" class="card-img-top" alt="Sacha Feinberg-Mngomezulu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sacha Feinberg-Mngomezulu</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295726-0c6c3700ab-3/JohanNeethlingFoucheWesternProvince.jpg" class="card-img-top" alt="Neethling Fouche" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Neethling Fouche</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295706-a63ce64350-3/DeonFourieWesternProvince.jpg" class="card-img-top" alt="Deon Fourie" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Deon Fourie</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/282002-a0ba6bfbc9-3/WarrickGelantrugbyplayer.jpg" class="card-img-top" alt="Warrick Gelant" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Warrick Gelant</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/300751-4a92fa6ca8-3/AndreGoedhalsrugbyplayer.jpg" class="card-img-top" alt="Andre Goedhals" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Andre Goedhals</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295742-21d34cb7ee-3/SuleimanHartzenbergWesternProvince.jpg" class="card-img-top" alt="Suleiman Hartzenberg" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Suleiman Hartzenberg</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/244847-73c9b918d4-3/RitoHlungwanirugbyplayer.jpg" class="card-img-top" alt="Rito Hlungwani" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rito Hlungwani</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297117-9c9d09ac1e-3/LouwhanHornWesternProvince.jpg" class="card-img-top" alt="Louwhan Horn" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Louwhan Horn</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295736-6d6585f642-3/HerschelJantjiesWesternProvince.jpg" class="card-img-top" alt="Herschel Jantjies" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Herschel Jantjies</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297119-deccb0848d-3/LabibKennemeyerWesternProvince.jpg" class="card-img-top" alt="Labib Kennemeyer" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Labib Kennemeyer</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295771-1025e961e9-3/ImadKhanWesternProvince.jpg" class="card-img-top" alt="Imad Khan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Imad Khan</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/300749-1c24d92e61-3/PatricKiteterugbyplayer.jpg" class="card-img-top" alt="Patric Kitete" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Patric Kitete</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295717-b673fcde52-3/StevenKitshoffWesternProvince.jpg" class="card-img-top" alt="Steven Kitshoff" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Steven Kitshoff</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301464-0aa1ec71e1-3/LloydKosterWesternProvince.jpg" class="card-img-top" alt="Lloyd Koster" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lloyd Koster</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295716-bc6c5e89d9-3/Jean-JacquesKotzeWesternProvince.jpg" class="card-img-top" alt="Jean-Jacques Kotze" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jean-Jacques Kotze</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/244845-ab791674ce-3/NormanLakerrugbyplayer.jpg" class="card-img-top" alt="Norman Laker" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Norman Laker</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295766-c09e965129-3/TristanLeydsWesternProvince.jpg" class="card-img-top" alt="Tristan Leyds" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tristan Leyds</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295743-edf5b5aa51-3/ManieLibbokWesternProvince.jpg" class="card-img-top" alt="Manie Libbok" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Manie Libbok</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295715-01cf02b0c2-3/LeonLyonsWesternProvince.jpg" class="card-img-top" alt="Leon Lyons" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Leon Lyons</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295719-a095cdc5f2-3/FransMalherbeWesternProvince.jpg" class="card-img-top" alt="Frans Malherbe" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Frans Malherbe</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297118-44638f77d8-3/ArmandMaritzWesternProvince.jpg" class="card-img-top" alt="Armand Maritz" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Armand Maritz</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299488-b2f8acffff-3/DamianMarkusWesternProvince.jpg" class="card-img-top" alt="Damian Markus" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Damian Markus</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295767-121185bbce-3/GodlenMasimlaWesternProvince.jpg" class="card-img-top" alt="Godlen Masimla" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Godlen Masimla</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301465-c5abc5429c-3/JurieMattheeWesternProvince.jpg" class="card-img-top" alt="Jurie Matthee" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jurie Matthee</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295723-647d5965b8-3/Lee-MarvinMazibukoWesternProvince.jpg" class="card-img-top" alt="Lee-Marvin Mazibuko" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lee-Marvin Mazibuko</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295710-3adfbce6c8-3/SalmaanMoeratWesternProvince.jpg" class="card-img-top" alt="Salmaan Moerat" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Salmaan Moerat</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295720-16392dde26-3/KekeMorabeWesternProvince.jpg" class="card-img-top" alt="Keke Morabe" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Keke Morabe</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301466-09e94a1b41-3/TomNelWesternProvince.jpg" class="card-img-top" alt="Tom Nel" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Nel</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295744-754ed2fac9-3/RuhanNelWesternProvince.jpg" class="card-img-top" alt="Ruhan Nel" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ruhan Nel</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298716-d6faac5fba-3/LouwNelWesternProvince.jpg" class="card-img-top" alt="Louw Nel" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Louw Nel</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295711-d147c2a300-3/ScarraNtubeniWesternProvince.jpg" class="card-img-top" alt="Scarra Ntubeni" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Scarra Ntubeni</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/280762-fc2023f288-3/LamlaNunurugbyplayer.jpg" class="card-img-top" alt="Lamla Nunu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lamla Nunu</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297111-a19253b030-3/JuniorPokomelaWesternProvince.jpg" class="card-img-top" alt="Junior Pokomela" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Junior Pokomela</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295732-212bff5041-3/GaryPorterWesternProvince.jpg" class="card-img-top" alt="Gary Porter" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gary Porter</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297115-6a99b4ac66-3/FazeelRobertsonWesternProvince.jpg" class="card-img-top" alt="Fazeel Robertson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Fazeel Robertson</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295712-042764a415-3/EvanRoosWesternProvince.jpg" class="card-img-top" alt="Evan Roos" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Evan Roos</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/297947-9339816969-3/JacquesRousseaurugbyplayer.jpg" class="card-img-top" alt="Jacques Rousseau" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jacques Rousseau</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295769-da896d9cb9-3/DuncanSaalWesternProvince.jpg" class="card-img-top" alt="Duncan Saal" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Duncan Saal</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295729-e8630f8bc0-3/SaziSandiWesternProvince.jpg" class="card-img-top" alt="Sazi Sandi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sazi Sandi</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295758-d78c95b7d1-3/SeabeloSenatlaWesternProvince.jpg" class="card-img-top" alt="Seabelo Senatla" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Seabelo Senatla</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297114-cae423b00a-3/BruceSherwoodWesternProvince.jpg" class="card-img-top" alt="Bruce Sherwood" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Bruce Sherwood</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295746-da1b62a1d0-3/CornelSmitWesternProvince.jpg" class="card-img-top" alt="Cornel Smit" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cornel Smit</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/269487-2e5c3e3d26-3/AdreSmithrugbyplayer.jpg" class="card-img-top" alt="Adre Smith" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Adre Smith</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/244843-6e6bbf4a24-3/DawieSnymanrugbyplayer.jpg" class="card-img-top" alt="Dawie Snyman" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dawie Snyman</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/143953-d24d9acb3b-3/ChadSolomonWesternProvince.jpg" class="card-img-top" alt="Chad Solomon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Chad Solomon</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/311112-d326c2bb95-3/JarrodTaylorrugbyplayer.jpg" class="card-img-top" alt="Jarrod Taylor" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jarrod Taylor</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295724-a83e955f78-3/MarcelTheunissenWesternProvince.jpg" class="card-img-top" alt="Marcel Theunissen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marcel Theunissen</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301463-442fbe6113-3/GeorgevanderWesthuizenWesternProvince.jpg" class="card-img-top" alt="George van der Westhuizen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">George van der Westhuizen</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295722-32888448ef-3/RubenvanHeerdenWesternProvince.jpg" class="card-img-top" alt="Ruben van Heerden" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ruben van Heerden</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295714-680a83c9d6-3/ErnstvanRhynWesternProvince.jpg" class="card-img-top" alt="Ernst van Rhyn" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ernst van Rhyn</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297121-cea514c701-3/Andre-HugoVenterWesternProvince.jpg" class="card-img-top" alt="Andre-Hugo Venter" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Andre-Hugo Venter</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/218797-e3d8ea4a14-3/AlistairVermaakWesternProvince.jpg" class="card-img-top" alt="Alistair Vermaak" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alistair Vermaak</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298715-1d0caed667-3/CorneWeilbachWesternProvince.jpg" class="card-img-top" alt="Corne Weilbach" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Corne Weilbach</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295738-d7e675e8e8-3/DamianWillemseWesternProvince.jpg" class="card-img-top" alt="Damian Willemse" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Damian Willemse</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/259504-68c3b97bb2-3/NamaXabaWesternProvince.jpg" class="card-img-top" alt="Nama Xaba" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nama Xaba</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295739-31ed0bc555-3/LeolinZasWesternProvince.jpg" class="card-img-top" alt="Leolin Zas" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Leolin Zas</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295763-be83720a4d-3/MnomboZwelendabaWesternProvince.jpg" class="card-img-top" alt="Mnombo Zwelendaba" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mnombo Zwelendaba</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>DHL Western Province Rugby: A Rich Tradition of Triumph</h2>
+                <p>DHL Western Province, based in Newlands, Cape Town, is a powerhouse in South African rugby with a legacy dating back to 1883. Recognized for sponsorship reasons as DHL Western Province, the team has clinched numerous titles, including an impressive 34 Currie Cup triumphs, Vodacom Cup victories, Absa Nite Series, and Lion Cup successes. The iconic blue and white hooped jerseys, known as Die Streeptruie, symbolize the team's legacy. In 2012, they secured the Vodacom Cup, defeating Griquas 20–18, and claimed the Currie Cup in 2014 by overcoming the Lions 19–16. Western Province stands as the only South African team, alongside the Blue Bulls, to feature in every final of various competitions, showcasing their enduring excellence in South African rugby. With historic victories over the All Blacks, Wallabies, and British and Irish Lions, DHL Western Province continues to shape the rugby landscape, fueled by a 30-year sponsorship with Adidas and unwavering fan support.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Historical Dominance and Rivalry</h2>
+                <p>Established in 1883, Western Province's rich history includes dominating the Currie Cup in the 1890s and early 1900s. The team won titles in 1914, the 1920s, and the 1930s, creating a legacy that spans decades. A fierce rivalry with Northern Transvaal (now Blue Bulls) intensified during South Africa's sporting isolation, culminating in multiple championship finals. The 1980s marked Western Province's golden era, clinching five consecutive titles. Their reign continued with victories in 2000 and 2001, defeating the Sharks both times. Notably, the club's 2012 triumph in the Currie Cup and their 2014 success solidify Western Province's status as a dominant force in South African rugby. The club's remarkable achievements extend across Super Rugby, Vodacom Cup, and Currie Cup competitions, making them a true icon in the rugby realm.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Unprecedented Success and Contemporary Glory</h2>
+                  <p>In recent times, Western Province has demonstrated unparalleled success, making three consecutive Currie Cup finals and securing the title in 2014 against the Lions. The club's prowess extends to Super Rugby, where they clinched the Conference Cup thrice in five years, showcasing their dominance from 2011 to 2015. Their unbeaten run in the 2013 Currie Cup season further underscores their contemporary glory. With a strong fan base and enduring partnerships with sponsors like DHL and Adidas, Western Province remains a formidable force, shaping the narrative of South African rugby with each triumphant campaign.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

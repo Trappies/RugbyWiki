@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RugbyWiki - Tournaments</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            /* Align items horizontally */
+            align-items: center;
+            /* Align items vertically */
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+            margin-right: 50px;
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        .main-content {
+            margin-left: 0;
+            padding: 20px;
+            background-color: #CCCCCC;
+            padding: 20px;
+            /* border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        /* Add specific styles for the tournaments page */
+        /* .tournaments-section {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 50px;
+} */
+
+        .tournament-item {
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+            width: 350px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-color: black;
+            border: black 10px;
+            background-color: #08AEEA;
+            background-image: linear-gradient(to bottom right, #00C0FF, #4218B8);
+            background-size: cover;
+            /* Ensures the background image covers the entire container */
+            background-position: center;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(0, 0, 0, 0.35) 0px -2px 6px 0px inset;
+        }
+
+        .tournament-item:nth-child(1) {
+            background-image: url('img/6nationsbg.jpg');
+            /* Replace with the actual path to your image */
+        }
+
+        .tournament-item:nth-child(2) {
+            background-image: url('img/trcbg.jpg');
+            /* Replace with the actual path to your image */
+        }
+
+        .tournament-item:nth-child(3) {
+            background-image: url('img/superrugbybg.jpg');
+            /* Replace with the actual path to your image */
+        }
+
+        .tournament-item:nth-child(4) {
+            background-image: url('img/hccbg.jpeg');
+            /* Replace with the actual path to your image */
+        }
+
+        .tournament-item:nth-child(5) {
+            background-image: url('img/top14bg.jpeg');
+            /* Replace with the actual path to your image */
+        }
+
+        .tournament-item:nth-child(6) {
+            background-image: url('img/prembg.jpeg');
+            /* Replace with the actual path to your image */
+        }
+
+        .tournament-item:nth-child(7) {
+            background-image: url('img/urcbg.jpg');
+            /* Replace with the actual path to your image */
+        }
+
+        .tournament-item:nth-child(8) {
+            background-image: url('img/mlrbg.jpg');
+            /* Replace with the actual path to your image */
+        }
+
+        .tournament-item:nth-child(9) {
+            background-image: url('img/epcrbg.jpg');
+            /* Replace with the actual path to your image */
+        }
+
+        .tournament-item:nth-child(10) {
+            background-image: url('img/npcbg.jpeg');
+            /* Replace with the actual path to your image */
+        }
+
+        .tournament-item:nth-child(11) {
+            background-image: url('img/curriecupbg.jpeg');
+            /* Replace with the actual path to your image */
+        }
+
+        .tournament-item:nth-child(12) {
+            background-image: url('img/premcupbg.jpg');
+            /* Replace with the actual path to your image */
+        }
+
+        .tournament-item:nth-child(13) {
+            background-image: url('img/hsbcsevensbg.jpg');
+            /* Replace with the actual path to your image */
+        }
+
+        .tournament-item img {
+            width: 100%;
+            height: 50%;
+            object-fit: contain;
+            align-items: center;
+            border-radius: 8px 8px 0 0;
+            padding-top: 15px;
+        }
+
+        .tournament-item h3 {
+            color: #87fd38;
+            background-color: rgba(255, 255, 255, 0);
+            padding: 10px;
+            margin: 0;
+            text-align: center;
+        }
+
+        .tournament-item a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            margin-top: 41%;
+            text-align: center;
+            padding: 10px;
+            background-color: rgb(0, 40, 83);
+        }
+
+        .tournament-item a:hover {
+            text-decoration: underline;
+        }
+
+        .tag {
+            font-weight: bold;
+            text-transform: uppercase;
+            color: darkgreen;
+        }
+
+        .banner {
+      width: 100%;
+      background-color: #fff;
+    }
+
+    .banner img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    @media only screen and (max-width: 500px) {
+      body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #CCCCCC;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .main-content {
+            margin-left: 0px;
+            padding: 20px;
+            background-color: #CCCCCC;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+      /* Add this style to enhance the provided footer */
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      p {
+        margin: 10px 0;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      li {
+        margin-bottom: 10px;
+      }
+
+      a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    /* Hamburger-Menue */
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  .footer {
+      background-color: #333;
+      color: white;
+      padding: 40px 0;
+    }
+
+    .footer .container {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .footer .row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .footer .col-md-4 {
+      flex: 0 0 calc(33.3333% - 20px);
+      margin-bottom: 20px;
+    }
+
+    .footer h4 {
+      color: #ffcc00;
+      /* Change the heading color */
+    }
+
+    .footer p {
+      margin: 10px 0;
+    }
+
+    .footer ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer li {
+      margin-bottom: 10px;
+    }
+
+    .footer a {
+      color: #66ccff;
+      /* Change the link color */
+      text-decoration: none;
+      transition: color 0.3s ease-in-out;
+    }
+
+    .footer a:hover {
+      color: #ff9900;
+      /* Change the link color on hover */
+    }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="img/RugbyWiki.png">
+        <nav id="desktop-nav">
+          <a href="index.html">Home</a>
+          <a href="tournaments.html">Tournaments</a>
+          <a href="teams.html">Teams</a>
+          <a href="rules.html">Rules</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="rankings.html">Rankings</a>
+          <a href="forum.html">Community</a>
+        </nav>
+        <nav id="hamburger-nav">
+          <div class="hamburger-menu">
+            <div class="hamburger-icon" onclick="toggleMenu()">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="menu-links">
+              <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+              <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+              <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+              <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+              <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+              <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+              <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+
+    <div class="main-content">
+        <!-- <div class="tournaments-section"> -->
+        <div class="tournament-item">
+            <img src="img/Guinness_Six_Nations.png" alt="Tournament 1">
+            <!-- <h3>Guinness Six Nations</h3> -->
+            <a href="SixNations.html">Guinness Six Nations</a>
+        </div>
+        <div class="tournament-item">
+            <img src="img/trc.png" alt="Tournament 2">
+            <!-- <h3>The Rugby Championship</h3> -->
+            <a href="trc.html">The Rugby Championship</a>
+        </div>
+        <div class="tournament-item">
+            <img src="img/superrugby.png" alt="Tournament 2">
+            <!-- <h3>Super Rugby Pacific</h3> -->
+            <a href="superrugby.html">Super Rugby Pacific</a>
+        </div>
+        <div class="tournament-item">
+            <img src="img/HCC.png" alt="Tournament 2">
+            <!-- <h3>Heineken Champions Cup</h3> -->
+            <a href="hcc.html">Heineken Champions Cup</a>
+        </div>
+        <div class="tournament-item">
+            <img src="img/top14.png" alt="Tournament 2">
+            <!-- <h3>Top 14</h3> -->
+            <a href="top14.html">Top 14</a>
+        </div>
+        <div class="tournament-item">
+            <img src="img/prem.png" alt="Tournament 2">
+            <!-- <h3>Premiership Rugby</h3> -->
+            <a href="premiership.html">Premiership Rugby</a>
+        </div>
+        <div class="tournament-item">
+            <img src="img/urc.png" alt="Tournament 2">
+            <!-- <h3>United Rugby Championship</h3> -->
+            <a href="URC.html" target="">United Rugby Championship</a>
+        </div>
+        <div class="tournament-item">
+            <img src="img/mlr.png" alt="Tournament 2">
+            <!-- <h3>Major League Rugby</h3> -->
+            <a href="mlr.html">Major League Rugby</a>
+        </div>
+        <div class="tournament-item">
+            <img src="img/epcrlogo.jpg" alt="Tournament 2">
+            <!-- <h3>EPCR Challenge Cup</h3> -->
+            <a href="epcr.html">EPCR Challenge Cup</a>
+        </div>
+        <div class="tournament-item">
+            <img src="img/npc.png" alt="Tournament 2">
+            <!-- <h3>Bunnings Warehouse NPC</h3> -->
+            <a href="npc.html">Bunnings Warehouse NPC</a>
+        </div>
+        <div class="tournament-item">
+            <img src="img/curriecup.png" alt="Tournament 2">
+            <!-- <h3>The Currie Cup</h3> -->
+            <a href="curriecup.html">The Currie Cup</a>
+        </div>
+        <!-- <div class="tournament-item">
+            <img src="img/premcup.png" alt="Tournament 2">
+            <a href="#tournament2-details" target="_blank">Premiership Rugby Cup</a>
+        </div>
+        <div class="tournament-item">
+            <img src="img/hsbcsevens.png" alt="Tournament 2">
+            <a href="#tournament2-details" target="_blank">HSBC World Rugby Sevens Series</a>
+        </div> -->
+
+        <!-- Repeat the structure for each tournament item -->
+
+        <!-- </div> -->
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+    </script>
+</body>
+
+</html>

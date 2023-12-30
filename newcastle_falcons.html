@@ -1,0 +1,1685 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .cont:nth-child(14){
+          animation-delay: 13s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #newcastleKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #newcastleKitSection {
+          display: none;
+        }
+
+        #newcastleKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #newcastleKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #newcastleKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #newcastleKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #newcastleKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #newcastleKitSection {
+          display: flex;
+        }
+
+        #newcastleKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #newcastleKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Newcastle Falcons</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/newcastlebanner.png" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About The Newcastle Falcons</h3>
+    <p>The Newcastle Falcons, founded in 1877, stand as a testament to the enduring spirit of rugby in the North East of England. With their home at Kingston Park Stadium, the Falcons have experienced both triumphs and rebuilding phases throughout their rich history. Notably, the 1997–98 season marked a pinnacle, as they clinched victories in both the Premiership and the Tetley's Bitter Cup. The club's commitment to excellence, coupled with the contributions of standout players, has solidified their presence as a formidable force in English rugby, embodying the passion and tradition of the sport in the region.
+    </p>
+  
+    
+
+      <div id="newcastleKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Newcastle Falcons Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/newcastlehome.png" alt="Newcastle Falcons Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/newcastleaway.png" alt="Newcastle Falcons Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 19px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="newcastleKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Newcastle Falcons Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/newcastlehome.png" alt="Newcastle Falcons Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/newcastleaway.png" alt="Newcastle Falcons Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308707-2c0f110637-3/JoshBainbridgeNewcastleFalcons.jpg" class="card-img-top" alt="Josh Bainbridge" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Josh Bainbridge</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302213-b19c40d8bd-3/FinnBakerNewcastleFalcons.jpg" class="card-img-top" alt="Finn Baker" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Finn Baker</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308719-d5a97fc810-3/JoshBartonNewcastleFalcons.jpg" class="card-img-top" alt="Josh Barton" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Josh Barton</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309210-973fbdf3b3-3/EduardoBelloNewcastleFalcons.jpg" class="card-img-top" alt="Eduardo Bello" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Eduardo Bello</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/267151-f36b8833e3-3/JamieBlamireNewcastleFalcons.jpg" class="card-img-top" alt="Jamie Blamire" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jamie Blamire</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/267060-b301c941fc-3/PhilBrantinghamNewcastleFalcons.jpg" class="card-img-top" alt="Phil Brantingham" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Phil Brantingham</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308702-7f8b1ec259-3/AdamBrocklebankNewcastleFalcons.jpg" class="card-img-top" alt="Adam Brocklebank" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Adam Brocklebank</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302206-34d119add2-3/LouisBrownNewcastleFalcons.jpg" class="card-img-top" alt="Louis Brown" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Louis Brown</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/267142-ad2c7bb4f0-3/MikeBrownNewcastleFalcons.jpg" class="card-img-top" alt="Mike Brown" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mike Brown</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308701-df43d96e05-3/BryanByrneNewcastleFalcons.jpg" class="card-img-top" alt="Bryan Byrne" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Bryan Byrne</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308704-8d21d7d2f2-3/TimCardallNewcastleFalcons.jpg" class="card-img-top" alt="Tim Cardall" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tim Cardall</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/290273-3598030965-3/MateoCarrerasNewcastleFalcons.jpg" class="card-img-top" alt="Mateo Carreras" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mateo Carreras</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/267161-b3fbaef8bc-3/OscarCaudleNewcastleFalcons.jpg" class="card-img-top" alt="Oscar Caudle" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Oscar Caudle</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/267205-17ee1bbe84-3/CallumChickNewcastleFalcons.jpg" class="card-img-top" alt="Callum Chick" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Callum Chick</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310434-eb3a8415b8-3/SamClarkNewcastleFalcons.jpg" class="card-img-top" alt="Sam Clark" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sam Clark</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309218-8c9e7fa180-3/AlexCodlingNewcastleFalcons.jpg" class="card-img-top" alt="Alex Codling" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alex Codling</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308710-3883155cd2-3/BrettConnonNewcastleFalcons.jpg" class="card-img-top" alt="Brett Connon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Brett Connon</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/288290-3972972fd1-3/LukeCoulstonrugbyplayer.jpg" class="card-img-top" alt="Luke Coulston" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Luke Coulston</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309212-916ede7fee-3/SamCrossNewcastleFalcons.jpg" class="card-img-top" alt="Sam Cross" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sam Cross</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308705-d1f11483e7-3/SebastianDeChavesNewcastleFalcons.jpg" class="card-img-top" alt="Sebastian De Chaves" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sebastian De Chaves</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274005-b6b55ea958-3/MattDeehanrugbyplayer.jpg" class="card-img-top" alt="Matt Deehan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matt Deehan</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/267129-7874ef965d-3/MarkDormerNewcastleFalcons.jpg" class="card-img-top" alt="Mark Dormer" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mark Dormer</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/277675-0fdef0ec19-3/BenDouglasrugbyplayer.jpg" class="card-img-top" alt="Ben Douglas" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben Douglas</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/267067-48a7cc9bff-3/NickEasterNewcastleFalcons.jpg" class="card-img-top" alt="Nick Easter" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nick Easter</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309643-1d4af81d02-3/JamesElliottrugbyplayer.jpg" class="card-img-top" alt="James Elliott" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James Elliott</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/267122-2a01d4a2e3-3/OllieFletcherNewcastleFalcons.jpg" class="card-img-top" alt="Ollie Fletcher" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ollie Fletcher</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295207-f1decd4087-3/NathanGreenwoodrugbyplayer.jpg" class="card-img-top" alt="Nathan Greenwood" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nathan Greenwood</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270038-0680be1c2b-3/JohnHawkinsrugbyplayer.jpg" class="card-img-top" alt="John Hawkins" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">John Hawkins</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308712-83a2024ca6-3/CameronHutchisonNewcastleFalcons.jpg" class="card-img-top" alt="Cameron Hutchison" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cameron Hutchison</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309216-a90340ebc1-3/RoryJenningsNewcastleFalcons.jpg" class="card-img-top" alt="Rory Jennings" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rory Jennings</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/267158-f1e1f6fc46-3/LouieJohnsonNewcastleFalcons.jpg" class="card-img-top" alt="Louie Johnson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Louie Johnson</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302208-91f81c181a-3/IsaacKellerNewcastleFalcons.jpg" class="card-img-top" alt="Isaac Keller" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Isaac Keller</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308718-c561b3de16-3/JohnKellyNewcastleFalcons.jpg" class="card-img-top" alt="John Kelly" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">John Kelly</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/267064-c1ae0544c8-3/ZachKerrNewcastleFalcons.jpg" class="card-img-top" alt="Zach Kerr" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Zach Kerr</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302214-f1f6f11981-3/OllieLeatherbarrowNewcastleFalcons.jpg" class="card-img-top" alt="Ollie Leatherbarrow" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ollie Leatherbarrow</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/267189-583927e5e5-3/OllieLindsay-HagueNewcastleFalcons.jpg" class="card-img-top" alt="Ollie Lindsay-Hague" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ollie Lindsay-Hague</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308708-81c9b0a051-3/FreddieLockwoodNewcastleFalcons.jpg" class="card-img-top" alt="Freddie Lockwood" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Freddie Lockwood</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/217152-0a184956b0-3/ScottMacleodNewcastleFalcons.jpg" class="card-img-top" alt="Scott Macleod" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Scott Macleod</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/267103-52d67df326-3/CharlieMaddisonNewcastleFalcons.jpg" class="card-img-top" alt="Charlie Maddison" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Charlie Maddison</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308703-4eec51f504-3/MurrayMcCallumNewcastleFalcons.jpg" class="card-img-top" alt="Murray McCallum" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Murray McCallum</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308717-7e8c162cc8-3/KiranMcDonaldNewcastleFalcons.jpg" class="card-img-top" alt="Kiran McDonald" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kiran McDonald</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/290271-d77cb4f817-3/MatiasMoroniNewcastleFalcons.jpg" class="card-img-top" alt="Matias Moroni" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matias Moroni</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308709-623a8cdbf3-3/HughOSullivanNewcastleFalcons.jpg" class="card-img-top" alt="Hugh O'Sullivan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Hugh O'Sullivan</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308715-16443d2390-3/ElliottObatoyinboNewcastleFalcons.jpg" class="card-img-top" alt="Elliott Obatoyinbo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Elliott Obatoyinbo</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/277673-9d8a55391d-3/ArinzeOkemuorugbyplayer.jpg" class="card-img-top" alt="Arinze Okemuo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Arinze Okemuo</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302210-807f73aba5-3/JacobOliverNewcastleFalcons.jpg" class="card-img-top" alt="Jacob Oliver" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jacob Oliver</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/252031-ab8902edaa-3/MatiasOrlandoNewcastleFalcons.jpg" class="card-img-top" alt="Matias Orlando" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matias Orlando</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308716-6432ac6f42-3/RichardPalframanNewcastleFalcons.jpg" class="card-img-top" alt="Richard Palframan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Richard Palframan</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/267187-9456d0e6de-3/MorganPassmanNewcastleFalcons.jpg" class="card-img-top" alt="Morgan Passman" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Morgan Passman</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308713-8cf1b8afa2-3/TomPennyNewcastleFalcons.jpg" class="card-img-top" alt="Tom Penny" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Penny</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310435-dd9554dce1-3/MaxPepperNewcastleFalcons.jpg" class="card-img-top" alt="Max Pepper" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Max Pepper</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/267124-3efad18428-3/GuyPepperNewcastleFalcons.jpg" class="card-img-top" alt="Guy Pepper" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Guy Pepper</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291461-27fd1b67b8-3/JoshPetersNewcastleFalcons.jpg" class="card-img-top" alt="Josh Peters" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Josh Peters</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282013-c7935f84ec-3/VereimiQorowalerugbyplayer.jpg" class="card-img-top" alt="Vereimi Qorowale" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Vereimi Qorowale</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/267183-89cff52918-3/AdamRadwanNewcastleFalcons.jpg" class="card-img-top" alt="Adam Radwan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Adam Radwan</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302216-3aac6ab821-3/BenRedshawNewcastleFalcons.jpg" class="card-img-top" alt="Ben Redshaw" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben Redshaw</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/287094-c772b99ac2-3/MichaelRewcastlerugbyplayer.jpg" class="card-img-top" alt="Michael Rewcastle" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Michael Rewcastle</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309215-b233832799-3/PedroRubioloNewcastleFalcons.jpg" class="card-img-top" alt="Pedro Rubiolo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Pedro Rubiolo</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/287162-9e551d6cf3-3/TianSchoemanNewcastleFalcons.jpg" class="card-img-top" alt="Tian Schoeman" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tian Schoeman</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/267144-cad674d37a-3/LouisSchreuderNewcastleFalcons.jpg" class="card-img-top" alt="Louis Schreuder" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Louis Schreuder</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302211-553f5fa6ea-3/AdamScottNewcastleFalcons.jpg" class="card-img-top" alt="Adam Scott" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Adam Scott</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310433-cea1886a5e-3/OliverSpencerNewcastleFalcons.jpg" class="card-img-top" alt="Oliver Spencer" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Oliver Spencer</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308714-f9f5d394c4-3/IwanStephensNewcastleFalcons.jpg" class="card-img-top" alt="Iwan Stephens" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Iwan Stephens</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308711-bc42f9f2ba-3/BenStevensonNewcastleFalcons.jpg" class="card-img-top" alt="Ben Stevenson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben Stevenson</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/267210-5253f17bd6-3/SamStuartNewcastleFalcons.jpg" class="card-img-top" alt="Sam Stuart" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sam Stuart</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/267192-6c3ff08f2e-3/MarkTampinNewcastleFalcons.jpg" class="card-img-top" alt="Mark Tampin" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mark Tampin</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308720-68aded3c77-3/JoshThomasNewcastleFalcons.jpg" class="card-img-top" alt="Josh Thomas" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Josh Thomas</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/287091-e5e5795a8e-3/CorbinThunderrugbyplayer.jpg" class="card-img-top" alt="Corbin Thunder" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Corbin Thunder</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/267116-fdb2d8ffb2-3/MarcusTiffenNewcastleFalcons.jpg" class="card-img-top" alt="Marcus Tiffen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marcus Tiffen</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308706-f6f5c18ec0-3/PhilipvanderWaltNewcastleFalcons.jpg" class="card-img-top" alt="Philip van der Walt" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Philip van der Walt</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309209-2f5e11abaa-3/MichaelvanVuurenNewcastleFalcons.jpg" class="card-img-top" alt="Michael van Vuuren" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Michael van Vuuren</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/267107-086fad5070-3/GeorgeWacokecokeNewcastleFalcons.jpg" class="card-img-top" alt="George Wacokecoke" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">George Wacokecoke</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/294909-edb03b71bd-3/DaveWalderNewcastleFalcons.jpg" class="card-img-top" alt="Dave Walder" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dave Walder</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/253304-fd0bf477d1-3/AlunWalkerrugbyplayer.jpg" class="card-img-top" alt="Alun Walker" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alun Walker</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/267102-23c46db791-3/MattWardNewcastleFalcons.jpg" class="card-img-top" alt="Matthew Ward" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matthew Ward</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>History</h2>
+                <p>Newcastle Falcons, tracing their roots to the founding of Gosforth Football Club in 1877, have undergone several transformations. From Gosforth to Newcastle Gosforth in 1990 and eventually to Newcastle Falcons in 1997, each change marked a chapter in the club's journey.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Professional Era</h2>
+                <p>The club's professional era began in 1996, with significant success under the leadership of Rob Andrew. In the 1997–98 season, they claimed the English Premiership title. Ownership shifts occurred, with Dave Thompson acquiring the club in 1999, leading to Powergen Cup victories in 2001 and 2004.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Challenges and Rebuilding</h2>
+                  <p>The mid-2000s saw notable player acquisitions, including Matt Burke, showcasing the club's ambition. However, challenges surfaced in the late 2000s, with managerial changes and relegation threats. Despite these, they secured promotion back to the Premiership in 2013 under Dean Richards.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Recent Years</h2>
+                  <p>Recent seasons have seen a mix of highs and lows, from the "Big One" success in 2018 to relegation in 2019. The club's resilience shone as they dominated the Championship in 2019–20, earning a return to the Premiership. The 2021–22 season brought attention to the club's commitment to addressing racism, highlighting challenges both on and off the field.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Looking Ahead</h2>
+                  <p>Newcastle Falcons, with a rich history of triumphs, challenges, and community engagement, continue to shape the narrative of English rugby. As they navigate the complexities of the modern game, the club remains a resilient force, symbolizing the enduring spirit of rugby in the North East.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

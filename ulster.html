@@ -1,0 +1,1572 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #ulsterKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #ulsterKitSection {
+          display: none;
+        }
+
+        #ulsterKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #ulsterKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #ulsterKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #ulsterKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #ulsterKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #ulsterKitSection {
+          display: flex;
+        }
+
+        #ulsterKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #ulsterKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Ulster</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/ulsterbanner.jpg" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About Ulster</h3>
+    <p>Ulster Rugby, based in Belfast, Northern Ireland, stands as one of the powerhouse teams in European rugby. The club's rich history dates back to 1879, making it one of the oldest rugby clubs in Ireland. Ulster competes in various leagues, notably the United Rugby Championship and the European Rugby Champions Cup. The iconic white jersey adorned with a distinctive red hand emblem has become synonymous with the team. Over the years, Ulster Rugby has produced remarkable talents and achieved significant success, including European Cup triumph in 1999. The team's home ground, Kingspan Stadium, serves as the fortress where passionate fans rally behind their beloved side. With a commitment to excellence and a fervent supporter base, Ulster Rugby continues to leave an indelible mark on the rugby landscape.
+    </p>
+  
+    
+
+      <div id="ulsterKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Ulster Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/ulsterhome.png" alt="Ulster Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/ulsteraway.png" alt="Ulster Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 18px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="ulsterKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Ulster Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/ulsterhome.png" alt="Ulster Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/ulsteraway.png" alt="Ulster Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304583-37381fefb9-3/WillAddisonUlsterRugby.jpg" class="card-img-top" alt="Will Addison" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Will Addison</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297062-bbaddacb2a-3/JohnAndrewUlsterRugby.jpg" class="card-img-top" alt="John Andrew" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">John Andrew</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297066-8146721fb6-3/RobertBaloucouneUlsterRugby.jpg" class="card-img-top" alt="Robert Baloucoune" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Robert Baloucoune</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297075-7df0724429-3/BillyBurnsUlsterRugby.jpg" class="card-img-top" alt="Billy Burns" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Billy Burns</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304584-4f25683465-3/BenCarsonUlsterRugby.jpg" class="card-img-top" alt="Ben Carson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben Carson</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297054-d2e4c6e96d-3/JohnCooneyUlsterRugby.jpg" class="card-img-top" alt="John Cooney" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">John Cooney</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304585-f39e9b02fa-3/ReubenCrothersUlsterRugby.jpg" class="card-img-top" alt="Reuben Crothers" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Reuben Crothers</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304593-af5a794fed-3/AngusCurtisUlsterRugby.jpg" class="card-img-top" alt="Angus Curtis" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Angus Curtis</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312787-ff2b08a061-3/NathanDoakUlsterRugby.jpg" class="card-img-top" alt="Nathan Doak" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nathan Doak</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312777-071ad844a1-3/DavidEwersUlsterRugby.jpg" class="card-img-top" alt="David Ewers" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">David Ewers</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/290259-9b73873c10-3/JakeFlanneryUlsterRugby.jpg" class="card-img-top" alt="Jake Flannery" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jake Flannery</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304595-102d6b5965-3/JamesFrenchUlsterRugby.jpg" class="card-img-top" alt="James French" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James French</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/244708-0cd2a66f24-3/RoddyGrantUlsterRugby.jpg" class="card-img-top" alt="Roddy Grant" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Roddy Grant</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311398-863cc754ce-3/BenGriffinUlsterRugby.jpg" class="card-img-top" alt="Ben Griffin" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben Griffin</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312786-54fea0549c-3/IainHendersonUlsterRugby.jpg" class="card-img-top" alt="Iain Henderson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Iain Henderson</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312784-fe60f9ea04-3/RobHerringUlsterRugby.jpg" class="card-img-top" alt="Rob Herring" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rob Herring</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296322-8772942140-3/JoeHopesrugbyplayer.jpg" class="card-img-top" alt="Joe Hopes" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joe Hopes</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/234628-f49f690543-3/IwanHughesUlsterRugby.jpg" class="card-img-top" alt="Iwan Hughes" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Iwan Hughes</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297068-10c95b20af-3/JamesHumeUlsterRugby.jpg" class="card-img-top" alt="James Hume" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James Hume</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312780-75a9965d0b-3/CormacIzuchukwuUlsterRugby.jpg" class="card-img-top" alt="Cormac Izuchukwu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cormac Izuchukwu</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/237866-9baa8d4984-3/BillJohnstonUlsterRugby.jpg" class="card-img-top" alt="Bill Johnston" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Bill Johnston</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304602-800e041f95-3/GregJonesUlsterRugby.jpg" class="card-img-top" alt="Greg Jones" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Greg Jones</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302156-c18a8fc7f2-3/StevenKitshoffUlsterRugby.jpg" class="card-img-top" alt="Steven Kitshoff" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Steven Kitshoff</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297064-f268ceee92-3/MichaelLowryUlsterRugby.jpg" class="card-img-top" alt="Michael Lowry" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Michael Lowry</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304603-3e938748c5-3/LukeMarshallUlsterRugby.jpg" class="card-img-top" alt="Luke Marshall" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Luke Marshall</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312781-5742d61588-3/DavidMcCannUlsterRugby.jpg" class="card-img-top" alt="David McCann" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">David McCann</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312782-8c94bb461c-3/StuartMcCloskeyUlsterRugby.jpg" class="card-img-top" alt="Stuart McCloskey" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Stuart McCloskey</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304612-33887c896f-3/JamesMcCormickUlsterRugby.jpg" class="card-img-top" alt="James McCormick" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James McCormick</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304625-047d55e10d-3/DanMcFarlandUlsterRugby.jpg" class="card-img-top" alt="Dan McFarland" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dan McFarland</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312778-3e12348253-3/GregMcGrathUlsterRugby.jpg" class="card-img-top" alt="Greg McGrath" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Greg McGrath</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312783-cb12b757f2-3/EthanMcilroyUlsterRugby.jpg" class="card-img-top" alt="Ethan Mcilroy" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ethan Mcilroy</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304614-59571fa118-3/ConorMcKeeUlsterRugby.jpg" class="card-img-top" alt="Conor McKee" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Conor McKee</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/noimage/webPlayer.png" class="card-img-top" alt="Lorcan McLoughlin" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lorcan McLoughlin</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297089-6bd595b18a-3/DavidMcMannUlsterRugby.jpg" class="card-img-top" alt="David McMann" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">David McMann</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313687-1c19931ab6-3/JamesMcNabneyUlsterRugby.jpg" class="card-img-top" alt="James McNabney" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James McNabney</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304616-ac8e8fcf1d-3/MartyMooreUlsterRugby.jpg" class="card-img-top" alt="Marty Moore" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marty Moore</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297070-8d1cf5e8cb-3/StewartMooreUlsterRugby.jpg" class="card-img-top" alt="Stewart Moore" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Stewart Moore</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270028-e52899d4cd-3/BenMoxhamUlsterRugby.jpg" class="card-img-top" alt="Ben Moxham" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben Moxham</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304618-a5290970b8-3/SheaOBrienUlsterRugby.jpg" class="card-img-top" alt="Shea O'Brien" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Shea O'Brien</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297058-82c860e01a-3/AlanOConnorUlsterRugby.jpg" class="card-img-top" alt="Alan O'Connor" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alan O'Connor</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/230116-952a1fe287-3/TommyOHaganUlsterRugby.jpg" class="card-img-top" alt="Tommy O'Hagan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tommy O'Hagan</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312779-8e1d8cfc00-3/EricOSullivanUlsterRugby.jpg" class="card-img-top" alt="Eric O'Sullivan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Eric O'Sullivan</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304620-c16633a607-3/TomOTooleUlsterRugby.jpg" class="card-img-top" alt="Tom O'Toole" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom O'Toole</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/172458-2a5440e850-3/DwaynePeelrugbyplayer.jpg" class="card-img-top" alt="Dwayne Peel" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dwayne Peel</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297052-63aa1669a7-3/JudePostlethwaiteUlsterRugby.jpg" class="card-img-top" alt="Jude Postlethwaite" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jude Postlethwaite</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297056-c07859c30f-3/MarcusReaUlsterRugby.jpg" class="card-img-top" alt="Marcus Rea" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marcus Rea</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304621-906fc920f5-3/MatthewReaUlsterRugby.jpg" class="card-img-top" alt="Matthew Rea" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matthew Rea</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/288698-664e44a3a2-3/SeanReffellUlsterRugby.jpg" class="card-img-top" alt="Sean Reffell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sean Reffell</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312785-794399d491-3/CallumReidUlsterRugby.jpg" class="card-img-top" alt="Callum Reid" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Callum Reid</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286859-5c5b01cd2f-3/AaronSextonUlsterRugby.jpg" class="card-img-top" alt="Aaron Sexton" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Aaron Sexton</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304624-0b397043ee-3/DavidShanahanUlsterRugby.jpg" class="card-img-top" alt="David Shanahan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">David Shanahan</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297050-12b2f3c9e4-3/HarrySheridanUlsterRugby.jpg" class="card-img-top" alt="Harry Sheridan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Harry Sheridan</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313688-5590758aa5-3/ZSolomonUlsterRugby.jpg" class="card-img-top" alt="Z Solomon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Z Solomon</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304626-e06e61683f-3/DanSoperUlsterRugby.jpg" class="card-img-top" alt="Dan Soper" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dan Soper</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297087-f13978724e-3/TomStewartUlsterRugby.jpg" class="card-img-top" alt="Tom Stewart" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Stewart</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297073-835e649d60-3/JacobStockdaleUlsterRugby.jpg" class="card-img-top" alt="Jacob Stockdale" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jacob Stockdale</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297093-438000fb45-3/NickTimoneyUlsterRugby.jpg" class="card-img-top" alt="Nick Timoney" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nick Timoney</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297083-ce8467481b-3/KieranTreadwellUlsterRugby.jpg" class="card-img-top" alt="Kieran Treadwell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kieran Treadwell</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297081-d0e06cebbe-3/AndrewWarwickUlsterRugby.jpg" class="card-img-top" alt="Andrew Warwick" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Andrew Warwick</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313254-9b59e54454-3/ScottWilson.jpg" class="card-img-top" alt="Scott Wilson." style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Scott Wilson.</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Foundation (1868–1879)</h2>
+                <p>Ulster Rugby's roots trace back to the late 19th century when clubs like North of Ireland F.C., Dungannon, and Queen's University laid the foundation. The provincial game gained momentum with the amalgamation of Irish rugby unions in 1879, forming the Ulster branch.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Amateur Era (1879–1995)</h2>
+                <p>In the amateur era, Ulster dominated the Irish Interprovincial Championship, securing 26 titles. The 1980s and 1990s marked a golden period, clinching ten consecutive championships. Players primarily represented their clubs, setting the stage for provincial success.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Professional Success (1999–2006)</h2>
+                <p>Embracing professionalism in 1995, Ulster quickly rose to prominence. Under coach Harry Williams, they secured the inaugural Heineken Cup in 1999. The 2003–04 season showcased memorable victories, including a triumph over Leicester Tigers and winning the inaugural Celtic Cup.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Decline (2006–2010)</h2>
+                  <p>Despite early success in the 2006–07 season, Ulster faced challenges, leading to Mark McCall's resignation. The subsequent years saw shifts in coaching and player dynamics, impacting performance and league standings.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Revival (2010–2014)</h2>
+                  <p>A turnaround emerged in 2010 with key signings like Ruan Pienaar and a remarkable run in the Celtic League. The 2011-12 season marked a Heineken Cup final appearance, signaling a resurgence in Ulster's competitive stature.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont right-containter">
+                  <img src="img/rugbyicon.png">
+                  <div class="text-box">
+                    <h2>2014–17 – The Les Kiss Years</h2>
+                    <p>The Les Kiss era began in 2014, with Ulster navigating European and Pro12 competitions. While they faced challenges, notable players like Craig Gilroy made significant contributions.
+
+                    </p>
+                    <span class="right-container-arrow"></span>
+                  </div>
+                </div>
+                <div class="cont left-containter">
+                    <img src="img/rugbyicon.png">
+                    <div class="text-box">
+                      <h2>2017–18 - The "Basket Case" Season</h2>
+                      <p>The 2017–18 season brought turmoil, with a coaching change, player controversies, and a challenging campaign. Despite the struggles, scrum-half John Cooney stood out, earning Player of the Year.
+
+                      </p>
+                      <span class="left-container-arrow"></span>
+                    </div>
+                  </div>
+                  <div class="cont right-containter">
+                      <img src="img/rugbyicon.png">
+                      <div class="text-box">
+                        <h2>2018–Present – Rebuilding under Dan McFarland</h2>
+                        <p>Dan McFarland took the helm in 2018, overseeing a rebuilding phase. Key signings, retirements, and academy debuts shaped a new era. Despite challenges, Ulster made notable playoff appearances and retained a competitive edge.
+                            
+                        </p>
+                        <span class="right-container-arrow"></span>
+                      </div>
+                    </div>
+                    <div class="cont left-containter">
+                        <img src="img/rugbyicon.png">
+                        <div class="text-box">
+                          <h2>2022-23 Season</h2>
+                          <p>Recent developments in the 2022-23 season, including new signings and remarkable individual performances, reflect Ulster's ongoing commitment to excellence. Despite challenges, their achievements in the Champions Cup and the United Rugby Championship demonstrate resilience and promise for the future.
+
+                          </p>
+                          <span class="left-container-arrow"></span>
+                        </div>
+                      </div>
+            
+            
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

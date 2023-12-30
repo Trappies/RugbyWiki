@@ -1,0 +1,1645 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .cont:nth-child(14){
+          animation-delay: 13s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #montpellierKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #montpellierKitSection {
+          display: none;
+        }
+
+        #montpellierKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #montpellierKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #montpellierKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #montpellierKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #montpellierKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #montpellierKitSection {
+          display: flex;
+        }
+
+        #montpellierKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #montpellierKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Montpellier</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/montpellierbanner.png" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About Montpellier</h3>
+    <p>Montpellier Hérault Rugby Club, founded in 1986, has rapidly ascended through the ranks to become a formidable presence in French professional rugby, earning its place in the esteemed Top 14 league. Known for its dynamic playing style, the club competes fiercely on both domestic and international fronts, participating in tournaments like the European Rugby Champions Cup. The Stade Yves-du-Manoir serves as its spirited home ground, witnessing thrilling matches and passionate fan engagement. Montpellier Rugby's commitment to excellence positions it as a rising force in the competitive landscape of French rugby, promising fans continued excitement and achievements in the seasons ahead.
+    </p>
+  
+    
+
+      <div id="montpellierKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Montpellier Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/montpellierhome.png" alt="Montpellier Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/montpellieraway.png" alt="Montpellier Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 14px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="montpellierKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Montpellier Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/montpellierhome.png" alt="Montpellier Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/montpellieraway.png" alt="Montpellier Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306123-1dde3ca7a9-3/AlexandreBecogneeMontpellier.jpg" class="card-img-top" alt="Alexandre Becognee" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alexandre Becognee</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/266143-a8a21abefd-3/JulesBertryMontpellier.jpg" class="card-img-top" alt="Jules Bertry" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jules Bertry</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/266147-64492663a9-3/AxelBeviaMontpellier.jpg" class="card-img-top" alt="Axel Bevia" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Axel Bevia</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301502-cf0cab3d45-3/AdamMountagaBouareMontpellier.jpg" class="card-img-top" alt="Adam Mountaga Bouare" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Adam Mountaga Bouare</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/noimage/webPlayer.png" class="card-img-top" alt="Louis Foursans Bourdette" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Louis Foursans Bourdette</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306143-58c48b4321-3/AnthonyBouthierMontpellier.jpg" class="card-img-top" alt="Anthony Bouthier" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Anthony Bouthier</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306146-b7c6da3cff-3/GeorgeBridgeMontpellier.jpg" class="card-img-top" alt="George Bridge" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">George Bridge</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306139-c182997cd3-3/AugusteCadotMontpellier.jpg" class="card-img-top" alt="Auguste Cadot" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Auguste Cadot</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284517-9ce18fa74b-3/YacoubaCamaraMontpellier.jpg" class="card-img-top" alt="Yacouba Camara" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Yacouba Camara</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306136-6cd38e8574-3/LouisCarbonelMontpellier.jpg" class="card-img-top" alt="Louis Carbonel" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Louis Carbonel</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/290893-b06e203ceb-3/BastienChalureauMontpellier.jpg" class="card-img-top" alt="Bastien Chalureau" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Bastien Chalureau</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/266149-181601ddad-3/LucasChaudansonMontpellier.jpg" class="card-img-top" alt="Lucas Chaudanson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lucas Chaudanson</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306107-788aade4ae-3/Simon-PierreChauvacMontpellier.jpg" class="card-img-top" alt="Simon-Pierre Chauvac" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Simon-Pierre Chauvac</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306132-a7abc692e7-3/LeoColyMontpellier.jpg" class="card-img-top" alt="Leo Coly" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Leo Coly</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306129-5188f1cf13-3/MasivesiDakuwaqaMontpellier.jpg" class="card-img-top" alt="Masivesi Dakuwaqa" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Masivesi Dakuwaqa</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306137-1f4041a251-3/ThomasDarmonMontpellier.jpg" class="card-img-top" alt="Thomas Darmon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Thomas Darmon</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306145-8f946ea915-3/AlexandreDeNardiMontpellier.jpg" class="card-img-top" alt="Alexandre De Nardi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alexandre De Nardi</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301500-aae213a186-3/RomainDelemarleMontpellier.jpg" class="card-img-top" alt="Romain Delemarle" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Romain Delemarle</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306134-953f61b492-3/MartinDoanMontpellier.jpg" class="card-img-top" alt="Martin Doan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Martin Doan</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284525-f363292466-3/GeoffreyDoumayrouMontpellier.jpg" class="card-img-top" alt="Geoffrey Doumayrou" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Geoffrey Doumayrou</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306124-3f75202da3-3/ClementDoumencMontpellier.jpg" class="card-img-top" alt="Clement Doumenc" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Clement Doumenc</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306121-c66b868286-3/TylerDuguidMontpellier.jpg" class="card-img-top" alt="Tyler Duguid" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tyler Duguid</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306150-1b7b5eb816-3/Jean-BaptisteElissaldeMontpellier.jpg" class="card-img-top" alt="Jean-Baptiste Elissalde" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jean-Baptiste Elissalde</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306109-3e95fa8f32-3/BaptisteErdocioMontpellier.jpg" class="card-img-top" alt="Baptiste Erdocio" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Baptiste Erdocio</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306133-5d8178e323-3/AubinEymeriMontpellier.jpg" class="card-img-top" alt="Aubin Eymeri" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Aubin Eymeri</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/266164-a06fe8a421-3/SteevenFaupalaMontpellier.jpg" class="card-img-top" alt="Steeven Faupala" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Steeven Faupala</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306113-06d870ff1d-3/GregoryFichtenMontpellier.jpg" class="card-img-top" alt="Gregory Fichten" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gregory Fichten</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306114-b1cae281e6-3/EnzoForlettaMontpellier.jpg" class="card-img-top" alt="Enzo Forletta" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Enzo Forletta</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306135-62ca16e1b6-3/LouisFoursansMontpellier.jpg" class="card-img-top" alt="Louis Foursans" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Louis Foursans</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284522-5c86f6e246-3/PaoloGarbisiMontpellier.jpg" class="card-img-top" alt="Paolo Garbisi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Paolo Garbisi</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/noimage/webPlayer.png" class="card-img-top" alt="Romain Geniez" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Romain Geniez</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/266170-8e7c550fa5-3/HugoGensMontpellier.jpg" class="card-img-top" alt="Hugo Gens" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Hugo Gens</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306120-ecd7e0f789-3/NicoJansevanRensburgMontpellier.jpg" class="card-img-top" alt="Nico Janse van Rensburg" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nico Janse van Rensburg</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305508-a4df555dc3-3/LukaJaparidzeMontpellier.jpg" class="card-img-top" alt="Luka Japaridze" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Luka Japaridze</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306116-1baae583e5-3/VanoKarkadzeMontpellier.jpg" class="card-img-top" alt="Vano Karkadze" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Vano Karkadze</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/266179-0c68f6466e-3/MehmetKilickayaMontpellier.jpg" class="card-img-top" alt="Mehmet Kilickaya" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mehmet Kilickaya</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306142-bd2ca82875-3/BenLamMontpellier.jpg" class="card-img-top" alt="Ben Lam" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben Lam</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284535-a75fad6ed2-3/TitiLamositeleMontpellier.jpg" class="card-img-top" alt="Titi Lamositele" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Titi Lamositele</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306117-723b34d164-3/ToluLatuMontpellier.jpg" class="card-img-top" alt="Tolu Latu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tolu Latu</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/266184-bd0cb729ce-3/GigiLeshkasheliMontpellier.jpg" class="card-img-top" alt="Gigi Leshkasheli" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gigi Leshkasheli</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306147-086389a43a-3/PierreLucasMontpellier.jpg" class="card-img-top" alt="Pierre Lucas" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Pierre Lucas</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306108-8a1c450e3b-3/LashaMacharashviliMontpellier.jpg" class="card-img-top" alt="Lasha Macharashvili" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lasha Macharashvili</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/266193-9874095102-3/AxelMalaretMontpellier.jpg" class="card-img-top" alt="Axel Malaret" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Axel Malaret</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306138-f710612f11-3/KarlMartinMontpellier.jpg" class="card-img-top" alt="Karl Martin" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Karl Martin</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/266198-d81bc7a1bd-3/LouisMauroMontpellier.jpg" class="card-img-top" alt="Louis Mauro" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Louis Mauro</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/266205-f1d73537c1-3/LoanMoulisMontpellier.jpg" class="card-img-top" alt="Loan Moulis" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Loan Moulis</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306112-49c14d43f7-3/LogoviiMulipolaMontpellier.jpg" class="card-img-top" alt="Logovi'i Mulipola" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Logovi'i Mulipola</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306141-801f429b35-3/GabrielNgandebeMontpellier.jpg" class="card-img-top" alt="Gabriel Ngandebe" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gabriel Ngandebe</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306128-916c8c80f2-3/LenniNouchiMontpellier.jpg" class="card-img-top" alt="Lenni Nouchi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lenni Nouchi</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306118-482991380c-3/BrandonPaenga-AmosaMontpellier.jpg" class="card-img-top" alt="Brandon Paenga-Amosa" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Brandon Paenga-Amosa</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306131-18da1ff26c-3/BenoitPaillaugueMontpellier.jpg" class="card-img-top" alt="Benoit Paillaugue" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Benoit Paillaugue</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306111-b2224c6959-3/DArcyRaeMontpellier.jpg" class="card-img-top" alt="D'Arcy Rae" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">D'Arcy Rae</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/246825-c93c6f6e5b-3/CalumRandleMontpellier.jpg" class="card-img-top" alt="Calum Randle" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Calum Randle</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/266211-59b74cbd5a-3/JulienRasamoelinaMontpellier.jpg" class="card-img-top" alt="Julien Rasamoelina" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Julien Rasamoelina</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/290894-e348aa419a-3/CobusReinachMontpellier.jpg" class="card-img-top" alt="Cobus Reinach" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cobus Reinach</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301501-1154778282-3/GabinRocherMontpellier.jpg" class="card-img-top" alt="Gabin Rocher" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gabin Rocher</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306148-0904e58f7a-3/PhilippeSaint-AndrMontpellier.jpg" class="card-img-top" alt="Philippe Saint-André" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Philippe Saint-André</h5>
+            <p class="card-text">DoR</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/266214-db4454eeae-3/ThibaultSalodiniMontpellier.jpg" class="card-img-top" alt="Thibault Salodini" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Thibault Salodini</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306140-c8959f804d-3/JanSerfonteinMontpellier.jpg" class="card-img-top" alt="Jan Serfontein" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jan Serfontein</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306125-43f6e123fa-3/SamSimmondsMontpellier.jpg" class="card-img-top" alt="Sam Simmonds" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sam Simmonds</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/266218-96ae4b410f-3/AdrienSonzogniMontpellier.jpg" class="card-img-top" alt="Adrien Sonzogni" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Adrien Sonzogni</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306122-237e35e610-3/ElliottStookeMontpellier.jpg" class="card-img-top" alt="Elliott Stooke" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Elliott Stooke</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/266220-040acda545-3/LucaTabarotMontpellier.jpg" class="card-img-top" alt="Luca Tabarot" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Luca Tabarot</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306130-37594a86af-3/MarcoTauleigneMontpellier.jpg" class="card-img-top" alt="Marco Tauleigne" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marco Tauleigne</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300909-b8139eac00-3/HenryThomasMontpellier.jpg" class="card-img-top" alt="Henry Thomas" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Henry Thomas</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306144-900b64fa85-3/JulienTisseronMontpellier.jpg" class="card-img-top" alt="Julien Tisseron" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Julien Tisseron</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306115-c01474c4ba-3/KarlTuinukuafeMontpellier.jpg" class="card-img-top" alt="Karl Tu'inukuafe" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Karl Tu'inukuafe</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/290892-42e4028f53-3/FlorianVerhaegheMontpellier.jpg" class="card-img-top" alt="Florian Verhaeghe" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Florian Verhaeghe</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/266123-93f6316114-3/ArthurVincentMontpellier.jpg" class="card-img-top" alt="Arthur Vincent" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Arthur Vincent</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307168-240af89a16-3/ValentinWelschrugbyplayer.jpg" class="card-img-top" alt="Valentin Welsch" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Valentin Welsch</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/266046-44634ed6fa-3/PaulWillemseMontpellier.jpg" class="card-img-top" alt="Paul Willemse" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Paul Willemse</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306110-edf534cb30-3/HarryWilliamsMontpellier.jpg" class="card-img-top" alt="Harry Williams" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Harry Williams</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Montpellier Hérault Rugby Club</h2>
+                <p>Montpellier Hérault Rugby, established in 1986 through the merger of Stade Montpelliérain and MUC Rugby, is a prominent French professional rugby union club competing in the prestigious Top 14 league. The club's journey includes winning the Challenge de l'Espérance in 1993 and clinching the Pro D2 championship in 2003, securing their place in the Top 14. Montpellier's fortunes improved after narrowly avoiding relegation in 2006–07, marking a turning point. The Stade Yves-du-Manoir, later named Altrad Stadium and now GGL Stadium, became their home in 2007. The club's consistent playoff presence and a remarkable run to the Top 14 championship game in 2010–11 highlight their growth. Chaired and funded by Mohed Altrad since 2011, Montpellier has also made significant strides in European competitions, participating in the Heineken Cup and later the European Rugby Champions Cup.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Key Achievements and Challenges</h2>
+                <p>Montpellier's history is marked by notable achievements, including winning the Pro D2 championship in 2003 and the European Shield in 2004. The club's upward trajectory in the Top 14 saw them reach the championship game in 2010–11, a remarkable feat for the underdog squad. Since then, Montpellier has consistently competed in the playoffs and secured a spot in the prestigious Heineken Cup. However, challenges, such as narrowly avoiding relegation in 2006–07, have also shaped their journey. The club's ability to overcome obstacles and emerge as a competitive force reflects its resilience and determination.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Mohed Altrad's Impact on Montpellier</h2>
+                  <p>Since 2011, Montpellier has undergone significant transformation under the chairmanship and financial support of Mohed Altrad. His leadership has played a pivotal role in steering the club towards success and stability. Altrad's vision and commitment have not only elevated Montpellier's standing in domestic competitions but also facilitated their entry into top-tier European tournaments. The strategic influence of Mohed Altrad underscores the crucial role that passionate and dedicated ownership can play in shaping the destiny of a rugby club.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>European Rugby Adventures</h2>
+                  <p>Montpellier's foray into European competitions, starting with their debut in the Heineken Cup in 2011–12, marks a significant chapter in their history. The club's journey in European rugby includes a quarter-final appearance in the 2012–13 tournament and participation in the European Rugby Champions Cup in 2014–15. Montpellier's European adventures showcase their ambition to compete on the continental stage, facing challenges and forging new rivalries while contributing to the rich tapestry of international rugby competition.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

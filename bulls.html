@@ -1,0 +1,1681 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #bullsKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #bullsKitSection {
+          display: none;
+        }
+
+        #bullsKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #bullsKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #bullsKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #bullsKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #bullsKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #bullsKitSection {
+          display: flex;
+        }
+
+        #bullsKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #bullsKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Bulls</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/bullsbanner.jpeg" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About The Bulls</h3>
+    <p>The Bulls rugby team, based in Pretoria, South Africa, stands as a powerhouse in the country's rugby landscape. Established in 1938, the team has a rich history marked by numerous successes. The Bulls have claimed multiple titles in domestic competitions, including the Currie Cup and Vodacom Super Rugby. Notably, the mid-2000s marked a golden era for the Bulls, clinching three Super Rugby championships under the coaching leadership of Heyneke Meyer. Known for their formidable forward pack and dynamic backline, the Bulls continue to be a force on the rugby field. As stalwarts at Loftus Versfeld Stadium, the team enjoys unwavering support from passionate fans in Pretoria and beyond, cementing their status as one of South Africa's most celebrated rugby franchises.
+    </p>
+  
+    
+
+      <div id="bullsKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Bulls Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/bullshome.png" alt="Bulls Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/bullsaway.png" alt="Bulls Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 18px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="bullsKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Bulls Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/bullshome.png" alt="Bulls Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/bullsaway.png" alt="Bulls Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297101-1e42bf9597-3/Kurt-LeeArendseBulls.jpg" class="card-img-top" alt="Kurt-Lee Arendse" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kurt-Lee Arendse</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291512-86282e9567-3/CarltonBaniesBulls.jpg" class="card-img-top" alt="Carlton Banies" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Carlton Banies</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/269360-2509f5b15e-3/HencoBeukesBulls.jpg" class="card-img-top" alt="Henco Beukes" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Henco Beukes</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295657-6e0363d0f4-3/CyleBrinkBulls.jpg" class="card-img-top" alt="Cyle Brink" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cyle Brink</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/269468-35b37ab702-3/JandreBurgerrugbyplayer.jpg" class="card-img-top" alt="Jandre Burger" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jandre Burger</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297100-82e5b60b2f-3/ZakBurgerBulls.jpg" class="card-img-top" alt="Zak Burger" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Zak Burger</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/262458-5d9872c7ad-3/NizaamCarrBulls.jpg" class="card-img-top" alt="Nizaam Carr" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nizaam Carr</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/288137-6a51843c8d-3/MarcellCoetzeeBulls.jpg" class="card-img-top" alt="Marcell Coetzee" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marcell Coetzee</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/269419-44d7ed1de9-3/RuanCombrinckBulls.jpg" class="card-img-top" alt="Ruan Combrinck" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ruan Combrinck</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302115-188d9f8ae1-3/SebastiandeKlerkBulls.jpg" class="card-img-top" alt="Sebastian de Klerk" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sebastian de Klerk</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/269367-0f0e6dcea9-3/JacquesDuPlessisBulls.jpg" class="card-img-top" alt="Jacques Du Plessis" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jacques Du Plessis</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/288332-71d9b0008a-3/StedmanGansBulls.jpg" class="card-img-top" alt="Stedman Gans" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Stedman Gans</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/288140-c9a2064a63-3/JohanGoosenBulls.jpg" class="card-img-top" alt="Johan Goosen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Johan Goosen</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295681-ea60e90003-3/JohanGrobbelaarBulls.jpg" class="card-img-top" alt="Johan Grobbelaar" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Johan Grobbelaar</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311403-aa7d402e0e-3/CelimpiloGumedeBulls.jpg" class="card-img-top" alt="Celimpilo Gumede" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Celimpilo Gumede</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312733-493e687178-3/CameronHanekomBulls.jpg" class="card-img-top" alt="Cameron Hanekom" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cameron Hanekom</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/288143-210669f0ef-3/CornalHendricksBulls.jpg" class="card-img-top" alt="Cornal Hendricks" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cornal Hendricks</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/269440-1ecaf30c16-3/RobertHuntBulls.jpg" class="card-img-top" alt="Robert Hunt" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Robert Hunt</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302116-7791fc158e-3/HenryImmelmanBulls.jpg" class="card-img-top" alt="Henry Immelman" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Henry Immelman</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291507-ffaada738f-3/StravinoJacobsBulls.jpg" class="card-img-top" alt="Stravino Jacobs" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Stravino Jacobs</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/269398-8bf9e24db9-3/MarcoJansenvanVurenBulls.jpg" class="card-img-top" alt="Marco Jansen van Vuren" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marco Jansen van Vuren</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291511-7657965950-3/KeaganJohannesBulls.jpg" class="card-img-top" alt="Keagan Johannes" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Keagan Johannes</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/227183-2843c2289f-3/JannesKirstenBulls.jpg" class="card-img-top" alt="Jannes Kirsten" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jannes Kirsten</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/288323-6a8cdfc8a2-3/FrancoisKlopperBulls.jpg" class="card-img-top" alt="Francois Klopper" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Francois Klopper</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/noimage/webPlayer.png" class="card-img-top" alt="Franco Knoetze" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Franco Knoetze</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/288335-8bb4ab2e4b-3/DavidKrielBulls.jpg" class="card-img-top" alt="David Kriel" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">David Kriel</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/164605-dcca0e6448-3/WernerKrugerBulls.jpg" class="card-img-top" alt="Werner Kruger" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Werner Kruger</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299495-fbfc6cf18d-3/TiaanLangerugbyplayer.jpg" class="card-img-top" alt="Tiaan Lange" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tiaan Lange</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/281647-ea76ba8a5f-3/WillieLeRouxrugbyplayer.jpg" class="card-img-top" alt="Willie Le Roux" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Willie Le Roux</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/273195-afc917c725-3/SebastianLombardrugbyplayer.jpg" class="card-img-top" alt="Sebastian Lombard" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sebastian Lombard</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297103-3be8f20b31-3/ElrighLouwBulls.jpg" class="card-img-top" alt="Elrigh Louw" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Elrigh Louw</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312731-c18a207140-3/WilcoLouwBulls.jpg" class="card-img-top" alt="Wilco Louw" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Wilco Louw</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291502-bef19be05d-3/ReinhardtLudwigBulls.jpg" class="card-img-top" alt="Reinhardt Ludwig" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Reinhardt Ludwig</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/288144-8728721dda-3/LionelMapoeBulls.jpg" class="card-img-top" alt="Lionel Mapoe" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lionel Mapoe</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295644-a6b84c8a7f-3/PhumzileMaqondwanaBulls.jpg" class="card-img-top" alt="Phumzile Maqondwana" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Phumzile Maqondwana</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312728-17a57ec387-3/NollisMaraisBulls.jpg" class="card-img-top" alt="Nollis Marais" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nollis Marais</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/288131-09abb76703-3/SimphiweMatanzimaBulls.jpg" class="card-img-top" alt="Simphiwe Matanzima" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Simphiwe Matanzima</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311401-b9dffaf9bc-3/KhuthaMchunuBulls.jpg" class="card-img-top" alt="Khutha Mchunu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Khutha Mchunu</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295650-ecb5fc4d5b-3/KabeloMokoenarugbyplayer.jpg" class="card-img-top" alt="Kabelo Mokoena" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kabelo Mokoena</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295663-945801c8dc-3/CananMoodieBulls.jpg" class="card-img-top" alt="Canan Moodie" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Canan Moodie</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295645-2c4bf7c329-3/MihlaliMosiBulls.jpg" class="card-img-top" alt="Mihlali Mosi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mihlali Mosi</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295653-a11beafa0f-3/JuanMostertBulls.jpg" class="card-img-top" alt="Juan Mostert" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Juan Mostert</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/288136-daf2aa4a33-3/RuanNortjeBulls.jpg" class="card-img-top" alt="Ruan Nortje" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ruan Nortje</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291005-b048265911-3/SibongileNovukaBulls.jpg" class="card-img-top" alt="Sibongile Novuka" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sibongile Novuka</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299496-8a6ea7763b-3/MerweOlivierrugbyplayer.jpg" class="card-img-top" alt="Merwe Olivier" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Merwe Olivier</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/288139-e4a641f20f-3/EmbrosePapierBulls.jpg" class="card-img-top" alt="Embrose Papier" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Embrose Papier</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302114-87e7fa4646-3/SergealPetersenBulls.jpg" class="card-img-top" alt="Sergeal Petersen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sergeal Petersen</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/269469-705ad83c2b-3/NolanPienaarrugbyplayer.jpg" class="card-img-top" alt="Nolan Pienaar" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nolan Pienaar</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312730-e47a70e033-3/ChrisRossouwBulls.jpg" class="card-img-top" alt="Chris Rossouw" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Chris Rossouw</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/288129-e039ea9987-3/WandisileSimelaneBulls.jpg" class="card-img-top" alt="Wandisile Simelane" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Wandisile Simelane</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311402-27ddb018c3-3/DeonSlabbertBulls.jpg" class="card-img-top" alt="Deon Slabbert" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Deon Slabbert</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291508-4fd05be038-3/ChrisSmitBulls.jpg" class="card-img-top" alt="Chris Smit" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Chris Smit</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/288133-e24886519e-3/MornaySmithBulls.jpg" class="card-img-top" alt="Mornay Smith" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mornay Smith</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291008-6448577920-3/DylanSmithBulls.jpg" class="card-img-top" alt="Dylan Smith" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dylan Smith</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/288330-a41d1acd26-3/ChrisSmithBulls.jpg" class="card-img-top" alt="Chris Smith" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Chris Smith</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/288348-c5476585d1-3/GerhardSteenekampBulls.jpg" class="card-img-top" alt="Gerhard Steenekamp" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gerhard Steenekamp</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291505-f742602ab9-3/WJSteenkampBulls.jpg" class="card-img-top" alt="WJ Steenkamp" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">WJ Steenkamp</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/288327-d7248e24c8-3/JankoSwanepoelBulls.jpg" class="card-img-top" alt="Janko Swanepoel" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Janko Swanepoel</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/256335-aaaa2076fc-3/UzileTelerugbyplayer.jpg" class="card-img-top" alt="Uzile Tele" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Uzile Tele</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291503-14d651dfb6-3/MullerUysBulls.jpg" class="card-img-top" alt="Muller Uys" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Muller Uys</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291504-431c868690-3/BernardvanderLindeBulls.jpg" class="card-img-top" alt="Bernard van der Linde" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Bernard van der Linde</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311400-a6ca8e6fad-3/AkkervanderMerweBulls.jpg" class="card-img-top" alt="Akker van der Merwe" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Akker van der Merwe</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/256333-ab21eb8142-3/GerhardvanderMerwerugbyplayer.jpg" class="card-img-top" alt="Gerhard van der Merwe" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gerhard van der Merwe</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302113-6e8afd6347-3/JacovanderWaltBulls.jpg" class="card-img-top" alt="Jaco van der Walt" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jaco van der Walt</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291501-184bbeda8f-3/JacquesvanRooyenBulls.jpg" class="card-img-top" alt="Jacques van Rooyen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jacques van Rooyen</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/288329-c743d262a7-3/MarcovanStadenBulls.jpg" class="card-img-top" alt="Marco van Staden" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marco van Staden</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291509-01f30fe80f-3/JoevanZylBulls.jpg" class="card-img-top" alt="Joe van Zyl" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joe van Zyl</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/269373-32babbd023-3/JamesVerity-AmmBulls.jpg" class="card-img-top" alt="James Verity-Amm" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James Verity-Amm</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295640-fec4f10f81-3/RuanVermaakBulls.jpg" class="card-img-top" alt="Ruan Vermaak" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ruan Vermaak</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/288141-c0c6b0efcb-3/HaroldVorsterBulls.jpg" class="card-img-top" alt="Harold Vorster" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Harold Vorster</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/241282-c68aecdbbb-3/WianVoslooBulls.jpg" class="card-img-top" alt="Wian Vosloo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Wian Vosloo</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/288132-a95e8af389-3/Jan-HendrikWesselsBulls.jpg" class="card-img-top" alt="Jan-Hendrik Wessels" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jan-Hendrik Wessels</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295701-0f9733e336-3/JakeWhiteBulls.jpg" class="card-img-top" alt="Jake White" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jake White</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312736-77304ddb22-3/DevonWilliamsBulls.jpg" class="card-img-top" alt="Devon Williams" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Devon Williams</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312729-a5dd20778d-3/RussellWinterBulls.jpg" class="card-img-top" alt="Russell Winter" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Russell Winter</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Early Super Rugby Ventures</h2>
+                <p>Before the Super Rugby era, Northern Transvaal made their mark in the Super 10 tournaments from 1993 to 1995. Despite a solid performance in the 1993 season, finishing third in their pool, they missed subsequent qualifications. The transition to the professional era brought about significant changes, leading to the creation of the Super 12 in 1996, where Northern Transvaal emerged as one of the formidable teams, securing a third-place finish.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Building Foundations (1996–2005)</h2>
+                <p>In the inaugural Super 12 season (1996), Northern Transvaal showcased their prowess, finishing third on the table but faced a crushing defeat in the semi-final against the Auckland Blues. Despite the challenges, they continued to compete in subsequent seasons, gradually finding their footing. The franchise system was adopted in 1998, leading to the birth of the Bulls. Initial struggles persisted, but by 2003, the Bulls secured a semi-final berth, setting the stage for a period of transformation and growth.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Super 14 Peaks (2006–2010)</h2>
+                <p>With the expansion to Super 14 in 2006, the Bulls faced intensified competition. A pivotal moment came in 2007 when they secured a historic 92-3 victory over the Queensland Reds, setting a new Super Rugby record. This momentum carried them to the semi-finals, where they fell to the Crusaders. The turning point arrived in 2009, with the Bulls clinching the Super 14 title, a feat they repeated in 2010, securing their place among rugby elites.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Super Rugby Challenges (2011–2020)</h2>
+                <p>The Bulls faced formidable challenges in the Super Rugby era, with notable successes in 2009 and 2010. Despite achieving the South African Conference trophy in 2013, playoff matches proved elusive. The 2020 season brought an unprecedented pause due to the COVID-19 pandemic, leading to the creation of Super Rugby Unlocked, where the Bulls were crowned champions. The following years saw the Bulls adapting to new competitions, marking a dynamic phase in their rugby journey.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Pro14 and United Rugby Championship Transition (2021–present)</h2>
+                  <p>The Bulls embraced a new chapter in 2021, joining the Pro14 and later the United Rugby Championship. While facing initial challenges in Europe, they secured a home quarter-final in the 2021–22 season, showcasing resilience and determination as they continue to navigate the ever-evolving landscape of international rugby.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+            </div>
+            
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

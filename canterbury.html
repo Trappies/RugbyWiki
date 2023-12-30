@@ -1,0 +1,1415 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .cont:nth-child(14){
+          animation-delay: 13s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #canterburyKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #canterburyKitSection {
+          display: none;
+        }
+
+        #canterburyKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #canterburyKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #canterburyKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #canterburyKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #canterburyKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #canterburyKitSection {
+          display: flex;
+        }
+
+        #canterburyKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #canterburyKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Canterbury</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/canterburybanner.png" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About Canterbury</h3>
+    <p>Founded in 1879, the Canterbury Rugby Football Union (CRFU) is a stalwart in New Zealand's rugby landscape. This union, based in Christchurch, represents the Canterbury region and is renowned for its success in domestic and international competitions. The union proudly wears red and black, symbolizing its legacy and commitment to excellence. Canterbury's home matches take place at the iconic Rugby Park in Christchurch. With a storied history, numerous National Provincial Championship victories, and contributions to the Crusaders Super Rugby franchise, the CRFU remains a powerhouse in New Zealand rugby.
+    </p>
+  
+    
+
+      <div id="canterburyKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Canterbury Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/canterburyhome.png" alt="Canterbury Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/canterburyaway.png" alt="Canterbury Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="canterburyKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Canterbury Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/canterburyhome.png" alt="Canterbury Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/canterburyaway.png" alt="Canterbury Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304362-4f3d501c0d-3/SolomonAlaimaloCanterbury.jpg" class="card-img-top" alt="Solomon Alaimalo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Solomon Alaimalo</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304364-567286a834-3/TorianBarnesCanterbury.jpg" class="card-img-top" alt="Torian Barnes" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Torian Barnes</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282518-fac7f313ce-3/GeorgeBellCanterbury.jpg" class="card-img-top" alt="George Bell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">George Bell</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304382-43a47faefc-3/MartyBourkeCanterbury.jpg" class="card-img-top" alt="Marty Bourke" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marty Bourke</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282513-3be6e07c0c-3/FinlayBrewisCanterbury.jpg" class="card-img-top" alt="Finlay Brewis" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Finlay Brewis</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304366-c5006165a6-3/JoeBrialCanterbury.jpg" class="card-img-top" alt="Joe Brial" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joe Brial</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/264871-997be7b71c-3/FergusBurkeCanterbury.jpg" class="card-img-top" alt="Fergus Burke" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Fergus Burke</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304367-d1284d7d6e-3/TahlorCahillCanterbury.jpg" class="card-img-top" alt="Tahlor Cahill" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tahlor Cahill</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282519-3061317ed4-3/SebCalderCanterbury.jpg" class="card-img-top" alt="Seb Calder" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Seb Calder</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/264872-3a1327fb75-3/TomChristieCanterbury.jpg" class="card-img-top" alt="Tom Christie" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Christie</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/202156-f13be49b82-3/RyanCrottyCanterbury.jpg" class="card-img-top" alt="Ryan Crotty" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ryan Crotty</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/264873-95efedbe94-3/SamDarryCanterbury.jpg" class="card-img-top" alt="Sam Darry" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sam Darry</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/264875-eb172ce171-3/MitchellDrummondCanterbury.jpg" class="card-img-top" alt="Mitchell Drummond" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mitchell Drummond</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/noimage/webPlayer.png" class="card-img-top" alt="Craig Dunlea" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Craig Dunlea</h5>
+            <p class="card-text">Assistant Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/218587-1ceea2c22e-3/MitchellDunsheaCanterbury.jpg" class="card-img-top" alt="Mitchell Dunshea" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mitchell Dunshea</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/264876-1dc64aedb6-3/BraydonEnnorCanterbury.jpg" class="card-img-top" alt="Braydon Ennor" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Braydon Ennor</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/264877-9b0fd65411-3/ChayFihakiCanterbury.jpg" class="card-img-top" alt="Chay Fihaki" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Chay Fihaki</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304368-52a249de3b-3/BenFunnellCanterbury.jpg" class="card-img-top" alt="Ben Funnell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben Funnell</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282515-57ac8e9b1b-3/ZachGallagherCanterbury.jpg" class="card-img-top" alt="Zach Gallagher" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Zach Gallagher</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282520-a0f5bf50fc-3/DomGardinerCanterbury.jpg" class="card-img-top" alt="Dom Gardiner" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dom Gardiner</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/264881-d81eefdf54-3/CullenGraceCanterbury.jpg" class="card-img-top" alt="Cullen Grace" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cullen Grace</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304371-4d91da3cbd-3/JamieHannahCanterbury.jpg" class="card-img-top" alt="Jamie Hannah" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jamie Hannah</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282521-5c2ffbbe2b-3/AlexHarfordCanterbury.jpg" class="card-img-top" alt="Alex Harford" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alex Harford</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/264882-c7e0fa2d71-3/BillyHarmonCanterbury.jpg" class="card-img-top" alt="Billy Harmon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Billy Harmon</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282522-c3afdbf962-3/WilliHeinzCanterbury.jpg" class="card-img-top" alt="Willi Heinz" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Willi Heinz</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304373-241031e2fa-3/TomHeywoodCanterbury.jpg" class="card-img-top" alt="Tom Heywood" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Heywood</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306067-5eaa92aa3d-3/NickHydeCanterbury.jpg" class="card-img-top" alt="Nick Hyde" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nick Hyde</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/264883-46ba1e147f-3/OliverJagerCanterbury.jpg" class="card-img-top" alt="Oliver Jager" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Oliver Jager</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282523-827d5b7dab-3/CoreyKellowCanterbury.jpg" class="card-img-top" alt="Corey Kellow" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Corey Kellow</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282524-1b4f84f515-3/JoelLamCanterbury.jpg" class="card-img-top" alt="Joel Lam" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joel Lam</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/264887-d7f0baf529-3/ManasaMataeleCanterbury.jpg" class="card-img-top" alt="Manasa Mataele" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Manasa Mataele</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/264890-d6ca769ed2-3/DallasMcLeodCanterbury.jpg" class="card-img-top" alt="Dallas McLeod" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dallas McLeod</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/202166-fd81aa12de-3/RichieMoungaCanterbury.jpg" class="card-img-top" alt="Richie Mo'unga" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Richie Mo'unga</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/264891-3294580d70-3/JoeMoodyCanterbury.jpg" class="card-img-top" alt="Joe Moody" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joe Moody</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304375-d812e0d401-3/JamesMullanCanterbury.jpg" class="card-img-top" alt="James Mullan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James Mullan</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304376-6e4af92db1-3/BlairMurrayCanterbury.jpg" class="card-img-top" alt="Blair Murray" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Blair Murray</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282517-e7fde41f3d-3/FletcherNewellCanterbury.jpg" class="card-img-top" alt="Fletcher Newell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Fletcher Newell</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/264895-dbb685f464-3/RamekaPoihipiCanterbury.jpg" class="card-img-top" alt="Rameka Poihipi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rameka Poihipi</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/264898-85db9c06ef-3/NganePunivaiCanterbury.jpg" class="card-img-top" alt="Ngane Punivai" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ngane Punivai</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/noimage/webPlayer.png" class="card-img-top" alt="Alex Robertson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alex Robertson</h5>
+            <p class="card-text">Assistant Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/264899-aadfa84403-3/LukeRomanoCanterbury.jpg" class="card-img-top" alt="Luke Romano" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Luke Romano</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304378-94297b72d9-3/JoneRovaCanterbury.jpg" class="card-img-top" alt="Jone Rova" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jone Rova</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304380-c32ebebf8f-3/NicShearerCanterbury.jpg" class="card-img-top" alt="Nic Shearer" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nic Shearer</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/202178-509cb6d8ba-3/CodieTaylorCanterbury.jpg" class="card-img-top" alt="Codie Taylor" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Codie Taylor</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304848-cd46a34b28-3/CToomalataiCanterbury.jpg" class="card-img-top" alt="C Toomalatai" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">C Toomalatai</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/202187-2ca3867aae-3/SamWhitelockCanterbury.jpg" class="card-img-top" alt="Sam Whitelock" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sam Whitelock</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/264901-01a8100d46-3/TamaitiWilliamsCanterbury.jpg" class="card-img-top" alt="Tamaiti Williams" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tamaiti Williams</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Canterbury Rugby Football Union: Early History (1879–1975)</h2>
+                <p>Founded in 1879, the CRFU emerged from a match between South Canterbury and North Canterbury in Timaru. Montague Lewin, an English immigrant, played a pivotal role in urging local clubs to adopt rugby rules, leading to the formation of the CRFU. Canterbury's rich rugby history began with a representative side playing in 1881, marking the start of provincial rugby under union authority. Despite challenges, including a split with South Canterbury in 1888, Canterbury became a founding member of the New Zealand Rugby Union in 1892.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Canterbury's National Provincial Championship Success (1976–2005)</h2>
+                <p>The NPC, established in 1976, witnessed Canterbury's immediate triumph, going undefeated in 1977. After intermittent success, Canterbury dominated the 1980s with multiple titles. The introduction of playoffs in 1992 added a new dynamic. Canterbury faced challenges but secured titles in 1997, 2001, and 2004. The 2005 season marked the end of the NPC era.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Canterbury's Air New Zealand Cup Dynasty (2006–2009)</h2>
+                  <p>As the NPC evolved into the Air New Zealand Cup in 2006, Canterbury's era of dominance began. Despite a setback in 2006, Canterbury secured consecutive titles in 2007, 2008, and 2009, showcasing remarkable consistency and skill. The 2008 season marked the start of an unprecedented dynasty.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Canterbury's ITM Cup Triumphs (2010–2015)</h2>
+                  <p>With the ITM Cup era starting in 2010, Canterbury continued its winning streak. The 2011 season, influenced by the Rugby World Cup, saw Canterbury clinching its ninth title in a dramatic final. The years that followed solidified Canterbury's supremacy, achieving a historic six-peat in 2013.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont left-containter">
+                  <img src="img/rugbyicon.png">
+                  <div class="text-box">
+                    <h2>Mitre 10 Cup Era: Sustained Excellence (2016–2021)</h2>
+                    <p>The rebranded Mitre 10 Cup witnessed Canterbury's continued success. Canterbury secured titles in 2016 and 2017, showcasing resilience and skill. Despite a hiccup in 2018, Canterbury remained a formidable force, consistently reaching the finals. The years 2019 and 2020 saw competitive performances, emphasizing Canterbury's enduring legacy in New Zealand rugby.
+
+                    </p>
+                    <span class="left-container-arrow"></span>
+                  </div>
+                </div>
+                <div class="cont right-containter">
+                    <img src="img/rugbyicon.png">
+                    <div class="text-box">
+                      <h2>Ranfurly Shield Legacy (1903–Present)</h2>
+                      <p>Canterbury's association with the Ranfurly Shield is steeped in history. With 15 wins and 136 defenses, Canterbury stands as a formidable Shield contender. Notable periods include the 1930s, 1950s, and the remarkable 1982–1985 defense streak. Canterbury's recent successes in 2016 and challenges reflect the ongoing significance of the Ranfurly Shield in Canterbury rugby.
+
+                      </p>
+                      <span class="right-container-arrow"></span>
+                    </div>
+                  </div>
+              
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

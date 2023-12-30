@@ -1,0 +1,1145 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RugbyWiki</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700&amp;display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      transition: margin-left 0.5s;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #CCCCCC;
+    }
+
+    header {
+      background-color: #333;
+      color: rgb(255, 255, 255);
+      text-align: left;
+      padding: 0.001em;
+      padding-left: 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header img {
+      width: 100px;
+      height: 100px;
+    }
+
+    nav {
+      display: flex;
+      margin-right: 50px;
+    }
+
+    nav a {
+      color: white;
+      padding: 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      background-color: #555;
+    }
+
+    .main-content {
+      margin-left: 0;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      background-color: #fff;
+    }
+
+    .news-item {
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      height: 600px;
+    }
+
+    .news-item img {
+      max-width: 100%;
+      border-radius: 8px 8px 0 0;
+      object-fit: cover;
+      height: 350px;
+      width: 100%;
+    }
+
+    .news-item h3 {
+      font-weight: bold;
+      color: black;
+      margin: 10px;
+      text-align: left;
+      margin-bottom: 30px;
+    }
+
+    .news-item p {
+      color: #000000af;
+      margin: 0 10px 10px;
+    }
+
+    .news-item a {
+      display: block;
+      color: #301a1a;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 10px;
+      position: absolute;
+      bottom: 10px;
+      left: 8%;
+      transform: translateX(-50%);
+    }
+
+    .news-item a:hover {
+      text-decoration: underline;
+    }
+
+    .tag {
+      font-weight: bold;
+      text-transform: uppercase;
+      color: darkgreen;
+      margin: 10px;
+    }
+
+    .main-content h1 {
+      color: #333;
+    }
+
+    #menu-toggle {
+      position: absolute;
+      left: -25px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: black;
+      color: black;
+      border: none;
+      padding: 30px;
+      cursor: pointer;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      z-index: 2;
+    }
+
+    #menu-toggle i {
+      font-size: 24px;
+    }
+
+    .menu-open nav {
+      margin-left: -200px;
+    }
+
+    .menu-open #menu-toggle {
+      left: 0;
+      z-index: 2;
+    }
+
+    .date {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      color: #000000;
+      font-weight: bold;
+    }
+
+    .banner {
+      width: 100%;
+      background-color: #fff;
+    }
+
+    .banner img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    .carousel-item {
+      height: 500px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.40) 0%, rgba(0, 0, 0, 0.40) 120%) #989898;
+      background-blend-mode: multiply, multiply;
+      /* Adjust the height as needed */
+    }
+
+    .carousel-item img {
+      object-fit: contain;
+      height: 100%;
+      width: 100%;
+    }
+
+    .carousel-caption {
+      background: rgba(0, 0, 0, 0.788);
+      padding: 40px;
+      border-radius: 0 0 0px 0px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      text-align: left;
+    }
+
+    .carousel-caption h3 {
+      font-weight: bold;
+      font-size: 30px;
+
+      margin-bottom: 20px;
+      cursor: pointer;
+      color: white;
+      /* Added margin for better separation */
+    }
+
+    .carousel-caption p {
+      margin-bottom: 10px;
+      /* Added margin for better separation */
+    }
+
+    .carousel-caption a {
+      color: white;
+      text-decoration: underline;
+      /* Added margin for better separation */
+    }
+
+    .carousel-caption .date {
+      color: #ffffff;
+      font-weight: bold;
+      text-align: left;
+      margin-top: 10px;
+    }
+
+    .carousel-container {
+      position: relative;
+      width: 100%;
+    }
+
+    /* Adjust the positioning of the SVG as needed */
+    svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    /* Add this style to create a circle around the arrows with a border */
+    .carousel-control-prev,
+    .carousel-control-next {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #33333300;
+      opacity: 0.8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      font-size: 24px;
+      border: 5px solid white;
+      /* Add this line to set the border */
+    }
+
+    /* Adjust the position of the arrows */
+    .carousel-control-prev {
+      left: 20px;
+    }
+
+    .carousel-control-next {
+      right: 20px;
+    }
+
+    .about-section {
+      background-color: #1b1b1b;
+      /* Light gray background */
+      color: #ffffff;
+      /* Dark text color */
+      padding: 50px;
+      text-align: center;
+      border-radius: 0px;
+      margin-top: 5px;
+    }
+
+    .about-section h2 {
+      font-size: 36px;
+      color: #007bff;
+      /* Blue color for the heading */
+      margin-bottom: 30px;
+    }
+
+    .about-section p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .about-section img {
+      max-width: 10%;
+      border-radius: 10px;
+      margin-top: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    #product-container {
+      position: relative;
+      width: 100%;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #CCCCCC;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex-direction: column;
+      height: 100%;
+      padding-bottom: 20px;
+    }
+
+    #product-image {
+      max-width: 30%;
+      /* Adjusted image width */
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 300px;
+      margin-top: 50px;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .info-block {
+      position: absolute;
+      text-align: center;
+      width: 20%;
+      /* Adjust the size as needed */
+      padding: 10px;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    #info1:hover+#product-image {
+      /* transform-origin: bottom left; */
+      transform: rotate(360deg);
+      /* Adjust the rotation angle as needed */
+    }
+
+    .info-block:hover {
+      transform: scale(1.3);
+      /* Adjust the scale factor as needed */
+      /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); Adjust the box shadow as needed */
+    }
+
+    #info1 {
+      top: 20%;
+      left: 10%;
+    }
+
+    #info2 {
+      top: 50%;
+      left: 12.5%;
+    }
+
+    #info3 {
+      top: 20%;
+      right: 10%;
+    }
+
+    #info4 {
+      top: 50%;
+      right: 12.5%;
+    }
+
+    #info5 {
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* New info block below the image */
+
+    .info-block img {
+      max-width: 50px;
+      /* Adjust the size of the icon */
+      max-height: 50px;
+      padding-bottom: 10px;
+    }
+
+    #info1,
+    #info3 {
+      margin-bottom: 20px;
+      /* Add some space between the info blocks */
+    }
+
+    #info5 {
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 20px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    #info5:hover {
+      transform: scale(1.3) translateX(-40%);
+    }
+
+    #info2,
+    #info4 {
+      margin-top: 20px;
+      /* Add some space between the info blocks */
+    }
+
+    #product-container h3 {
+      margin-top: 100px;
+      font-weight: bolder;
+      font-size: 50px;
+      text-align: center;
+    }
+
+    .forumbutton {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 50px;
+      /* Adjust the value for more or less rounded corners */
+      background-color: #1f201f;
+      /* Green background color */
+      color: white;
+      /* White text color */
+      cursor: pointer;
+      width: 150px;
+      height: 50px;
+    }
+
+    /* Hover effect */
+    .forumbutton:hover {
+      background-color: #272727;
+      /* Darker green background color on hover */
+    }
+
+    /* Add this style to enhance the provided footer */
+    
+
+    @media only screen and (max-width: 950px) {
+      body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #CCCCCC;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .news-item {
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        height: 300px;
+      }
+
+      .news-item img {
+        max-width: 100%;
+        border-radius: 8px 8px 0 0;
+        object-fit: cover;
+        height: 350px;
+        width: 100%;
+      }
+
+      .news-item h3 {
+        font-weight: bold;
+        color: black;
+        margin: 10px;
+        text-align: left;
+        margin-bottom: 30px;
+      }
+
+      .news-item p {
+        color: #000000af;
+        margin: 0 10px 10px;
+      }
+
+      .news-item a {
+        display: block;
+        color: #301a1a;
+        text-decoration: none;
+        font-weight: bold;
+        margin: 10px;
+        position: absolute;
+        bottom: 10px;
+        left: 8%;
+        transform: translateX(-50%);
+      }
+
+      .news-item a:hover {
+        text-decoration: underline;
+      }
+
+      .tag {
+        font-weight: bold;
+        text-transform: uppercase;
+        color: darkgreen;
+        margin: 10px;
+      }
+
+      .carousel-item {
+        height: 400px;
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.40) 0%, rgba(0, 0, 0, 0.40) 120%) #989898;
+        background-blend-mode: multiply, multiply;
+        /* Adjust the height as needed */
+      }
+
+      .carousel-item img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+      }
+
+      .carousel-caption {
+        background: rgba(0, 0, 0, 0.788);
+        padding: 10px;
+        border-radius: 0 0 0px 0px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: left;
+      }
+
+      .carousel-caption h3 {
+        font-weight: bold;
+        font-size: 20px;
+
+        margin-bottom: 20px;
+        cursor: pointer;
+        color: white;
+        /* Added margin for better separation */
+      }
+
+      .carousel-caption p {
+        margin-bottom: 10px;
+        font-size: 12px;
+        /* Added margin for better separation */
+      }
+
+      .carousel-caption a {
+        color: white;
+        text-decoration: underline;
+
+        /* Added margin for better separation */
+      }
+
+      .carousel-caption .date {
+        color: #ffffff;
+        font-weight: bold;
+        text-align: left;
+        margin-top: 10px;
+        display: none;
+      }
+
+      .carousel-container {
+        position: relative;
+        width: 100%;
+      }
+
+      /* Adjust the positioning of the SVG as needed */
+      svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+      }
+
+      /* Add this style to create a circle around the arrows with a border */
+      .carousel-control-prev,
+      .carousel-control-next {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #33333300;
+        opacity: 0.8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 45%;
+        transform: translateY(-50%);
+        color: white;
+        font-size: 24px;
+        border: 2px solid white;
+        /* Add this line to set the border */
+      }
+
+      /* Adjust the position of the arrows */
+      .carousel-control-prev {
+        left: 20px;
+      }
+
+      .carousel-control-next {
+        right: 20px;
+      }
+
+      .about-section {
+        background-color: #1b1b1b;
+        color: #ffffff;
+        padding: 50px;
+        text-align: center;
+        border-radius: 0px;
+        margin-top: 5px;
+      }
+
+      .about-section h2 {
+        font-size: 26px;
+        color: #007bff;
+        margin-bottom: 30px;
+      }
+
+      .about-section p {
+        font-size: 18px;
+        line-height: 1.6;
+      }
+
+      .about-section img {
+        max-width: 10%;
+        border-radius: 10px;
+        margin-top: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        display: none;
+      }
+
+      #product-container {
+        position: relative;
+        width: 100%;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #CCCCCC;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        padding-bottom: 20px;
+        max-width: 100%;
+      }
+
+      #product-image {
+        max-width: 30%;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        margin-top: 50px;
+        transition: transform 0.5s ease-in-out;
+        display: none;
+      }
+
+      .info-block {
+        position: relative;
+        text-align: center;
+        width: 80%;
+        /* Adjust the size as needed */
+        padding: 10px;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        margin-bottom: 20px;
+        /* Add space between info blocks */
+      }
+
+      .info-block img {
+        max-width: 50px;
+        max-height: 50px;
+        padding-bottom: 10px;
+      }
+
+      #product-container h3 {
+        margin-top: 20px;
+        /* Adjusted margin */
+        font-weight: bolder;
+        font-size: 20px;
+        text-align: center;
+      }
+
+      #info1 {
+        margin-top: 20px;
+        left: 0%;
+        font-size: 15px;
+      }
+
+      #info2 {
+        left: 0%;
+        font-size: 15px;
+      }
+
+      #info3 {
+        left: 0%;
+        font-size: 15px;
+      }
+
+      #info4 {
+        left: 0%;
+        font-size: 15px;
+      }
+
+      #info5 {
+        left: 40%;
+        font-size: 15px;
+      }
+
+      .info-block:hover {
+        transform: scale(1.1);
+      }
+
+      #info5:hover {
+        transform: scale(1.1) translateX(-45%);
+      }
+
+      /* Add this style to enhance the provided footer */
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      p {
+        margin: 10px 0;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      li {
+        margin-bottom: 10px;
+      }
+
+      a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    /* Hamburger-Menue */
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  .footer {
+      background-color: #333;
+      color: white;
+      padding: 40px 0;
+    }
+
+    .footer .container {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .footer .row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .footer .col-md-4 {
+      flex: 0 0 calc(33.3333% - 20px);
+      margin-bottom: 20px;
+    }
+
+    .footer h4 {
+      color: #ffcc00;
+      /* Change the heading color */
+    }
+
+    .footer p {
+      margin: 10px 0;
+    }
+
+    .footer ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer li {
+      margin-bottom: 10px;
+    }
+
+    .footer a {
+      color: #66ccff;
+      /* Change the link color */
+      text-decoration: none;
+      transition: color 0.3s ease-in-out;
+    }
+
+    .footer a:hover {
+      color: #ff9900;
+      /* Change the link color on hover */
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="carousel-container">
+    <!-- SVG added on top left of the carousel -->
+    <!-- <svg width="212" height="46" viewBox="0 0 212 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M212 0H0V46H212V45.0571L176 23L212 0.942861V0Z" fill="black" fill-opacity="0.71"></path>
+          <text x="40%" y="50%" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle" alignment-baseline="middle">Latest News</text>
+        </svg>           -->
+    <div id="carouselExample" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner"><div class="carousel-item active"><img src="https://resources.worldrugby-rims.pulselive.com/photo-resources/2023/12/29/fa9de9e8-b801-467a-bab0-1478a6ddffec/1847999469.jpg?width=500 1x, https://resources.worldrugby-rims.pulselive.com/photo-resources/2023/12/29/fa9de9e8-b801-467a-bab0-1478a6ddffec/1847999469.jpg?width=1000 2x" alt="World Rugby Chairman Sir Bill Beaumont awarded Knight Grand Cross of the Order of the British Empire for services to rugby in His Majesty The King’s New Year’s Honours list"><div class="carousel-caption"><h3 href="https://www.world.rugby/news/899095/world-rugby-chairman-sir-bill-beaumont-awarded-knight-grand-cross-of-the-order-of-the-british-empire-for-services-to-rugby-in-his-majesty-the-kings-new-years-honours-list" target="_blank">World Rugby Chairman Sir Bill Beaumont awarded Knight Grand Cross of the Order of the British Empire for services to rugby in His Majesty The King’s New Year’s Honours list</h3><p>World Rugby Chairman Sir Bill Beaumont has expressed his gratitude and says that he is “honoured and humbled” after being...</p><p class="date">29 December, 2023 ·
+                
+                4 min read</p><a href="https://www.world.rugby/news/899095/world-rugby-chairman-sir-bill-beaumont-awarded-knight-grand-cross-of-the-order-of-the-british-empire-for-services-to-rugby-in-his-majesty-the-kings-new-years-honours-list" target="_blank">Read more</a></div></div><div class="carousel-item "><img src="https://resources.worldrugby-rims.pulselive.com/photo-resources/2023/11/19/d84ea09a-5af0-48e9-9052-b13edfd2bac0/Celtic-Challenge-1.jpg?width=500 1x, https://resources.worldrugby-rims.pulselive.com/photo-resources/2023/11/19/d84ea09a-5af0-48e9-9052-b13edfd2bac0/Celtic-Challenge-1.jpg?width=1000 2x" alt="Expanded Celtic Challenge aims to maintain momentum in second season"><div class="carousel-caption"><h3 href="https://www.world.rugby/news/899092/celtic-challenge-2023-24-preview" target="_blank">Expanded Celtic Challenge aims to maintain momentum in second season</h3><p>Six teams from Ireland, Scotland and Wales will compete in the five-week women’s tournament, which gets underway in Cork on...</p><p class="date">28 December, 2023 ·
+                
+                3 min read</p><a href="https://www.world.rugby/news/899092/celtic-challenge-2023-24-preview" target="_blank">Read more</a></div></div><div class="carousel-item "><img src="https://resources.worldrugby-rims.pulselive.com/photo-resources/worldrugby/photo/2023/12/10/25f3dcba-4123-4d49-bb4f-c4341a05f78a/ML20231210_346.JPG?width=500 1x, https://resources.worldrugby-rims.pulselive.com/photo-resources/worldrugby/photo/2023/12/10/25f3dcba-4123-4d49-bb4f-c4341a05f78a/ML20231210_346.JPG?width=1000 2x" alt="Rugby sevens set for blockbuster 2024"><div class="carousel-caption"><h3 href="https://www.world.rugby/news/898377/rugby-sevens-set-for-blockbuster-2024" target="_blank">Rugby sevens set for blockbuster 2024</h3><p>With HSBC SVNS 2024 and Olympic glory up for grabs in 2024, it promises to be a thrilling year for...</p><p class="date">27 December, 2023 ·
+                
+                3 min read</p><a href="https://www.world.rugby/news/898377/rugby-sevens-set-for-blockbuster-2024" target="_blank">Read more</a></div></div><div class="carousel-item "><img src="https://resources.worldrugby-rims.pulselive.com/photo-resources/2023/12/23/79d5e6ac-1976-4b29-8e12-08fab3618578/Rugby-match-in-snow.JPG?width=500 1x, https://resources.worldrugby-rims.pulselive.com/photo-resources/2023/12/23/79d5e6ac-1976-4b29-8e12-08fab3618578/Rugby-match-in-snow.JPG?width=1000 2x" alt="Rugby’s Christmas Day connections"><div class="carousel-caption"><h3 href="https://www.world.rugby/news/898741/rugbys-christmas-day-connections" target="_blank">Rugby’s Christmas Day connections</h3><p>We throw the spotlight on some of the standout players to be born on Christmas Day.</p><p class="date">25 December, 2023 ·
+                
+                3 min read</p><a href="https://www.world.rugby/news/898741/rugbys-christmas-day-connections" target="_blank">Read more</a></div></div><div class="carousel-item "><img src="https://resources.world.rugby/photo-resources/worldrugby/photo/2019/10/27/301c68ea-5693-48c6-854f-8507f222d441/1183724723.jpg?width=500 1x, https://resources.world.rugby/photo-resources/worldrugby/photo/2019/10/27/301c68ea-5693-48c6-854f-8507f222d441/1183724723.jpg?width=1000 2x" alt="Retired class of 2023 – the centurions"><div class="carousel-caption"><h3 href="https://www.world.rugby/news/898365/retired-class-of-2023-the-centurions" target="_blank">Retired class of 2023 – the centurions</h3><p>A host of players with 100 caps or more to their name hung up their international boots this year.</p><p class="date">22 December, 2023 ·
+                
+                4 min read</p><a href="https://www.world.rugby/news/898365/retired-class-of-2023-the-centurions" target="_blank">Read more</a></div></div><div class="carousel-item "><img src="https://resources.worldrugby-rims.pulselive.com/photo-resources/worldrugby/photo/2023/12/09/4eeb86ae-2e8d-4a85-8a6e-f4038ebc9468/1842840416.jpg?width=500 1x, https://resources.worldrugby-rims.pulselive.com/photo-resources/worldrugby/photo/2023/12/09/4eeb86ae-2e8d-4a85-8a6e-f4038ebc9468/1842840416.jpg?width=1000 2x" alt="RugbyPass TV continues to showcase women’s rugby with two more key competitions signed up"><div class="carousel-caption"><h3 href="https://www.world.rugby/news/898484/rugbypass-tv-continues-to-showcase-womens-rugby-with-celtic-challenge-and-allianz-premiership-womens-rugby-added-for-the-202324-season" target="_blank">RugbyPass TV continues to showcase women’s rugby with two more key competitions signed up</h3><p>World Rugby to bring coverage of Allianz Premiership Women’s Rugby (PWR) and Women’s Celtic Challenge to fans around the globe...</p><p class="date">21 December, 2023 ·
+                
+                2 min read</p><a href="https://www.world.rugby/news/898484/rugbypass-tv-continues-to-showcase-womens-rugby-with-celtic-challenge-and-allianz-premiership-womens-rugby-added-for-the-202324-season" target="_blank">Read more</a></div></div><div class="carousel-item "><img src="https://resources.worldrugby-rims.pulselive.com/photo-resources/2023/12/20/bfc3a4fe-3cb5-4fe1-af91-1fe305756d0e/Hit-Hard.png?width=500 1x, https://resources.worldrugby-rims.pulselive.com/photo-resources/2023/12/20/bfc3a4fe-3cb5-4fe1-af91-1fe305756d0e/Hit-Hard.png?width=1000 2x" alt="Wheelchair Rugby “Hits Hard” in exclusive new all access RugbyPassTV documentary"><div class="carousel-caption"><h3 href="https://www.world.rugby/news/898428/wheelchair-rugby-hits-hard-in-exclusive-new-all-access-rugbypasstv-documentary" target="_blank">Wheelchair Rugby “Hits Hard” in exclusive new all access RugbyPassTV documentary</h3><p>RugbyPassTV, the world’s home of rugby content online, is shining a light on the world of wheelchair rugby from 19...</p><p class="date">20 December, 2023 ·
+                
+                3 min read</p><a href="https://www.world.rugby/news/898428/wheelchair-rugby-hits-hard-in-exclusive-new-all-access-rugbypasstv-documentary" target="_blank">Read more</a></div></div><div class="carousel-item "><img src="https://resources.worldrugby-rims.pulselive.com/photo-resources/2023/12/12/294c3efb-0efa-451c-bd73-83f4e9658b08/Croatia-women-celebrate-after-debut-win-v-Bulgaria.JPG?width=500 1x, https://resources.worldrugby-rims.pulselive.com/photo-resources/2023/12/12/294c3efb-0efa-451c-bd73-83f4e9658b08/Croatia-women-celebrate-after-debut-win-v-Bulgaria.JPG?width=1000 2x" alt="Historic women’s test can be the start of something special in the Balkans"><div class="carousel-caption"><h3 href="https://www.world.rugby/news/897901/historic-womens-test-can-be-the-start-of-something-special-in-the-balkans" target="_blank">Historic women’s test can be the start of something special in the Balkans</h3><p>We speak with Croatia women’s head coach Petra Druskovic about their new beginning as a team and her hopes for...</p><p class="date">19 December, 2023 ·
+                
+                5 min read</p><a href="https://www.world.rugby/news/897901/historic-womens-test-can-be-the-start-of-something-special-in-the-balkans" target="_blank">Read more</a></div></div><div class="carousel-item "><img src="https://resources.worldrugby-rims.pulselive.com/photo-resources/2023/12/17/3fd9908e-130d-4713-9133-b2e78c75d5ea/Hong-Kong-China-U19-champions-2023.jpg?width=500 1x, https://resources.worldrugby-rims.pulselive.com/photo-resources/2023/12/17/3fd9908e-130d-4713-9133-b2e78c75d5ea/Hong-Kong-China-U19-champions-2023.jpg?width=1000 2x" alt="Hong Kong China qualify for World Rugby U20 Trophy 2024"><div class="carousel-caption"><h3 href="https://www.world.rugby/news/898341/hong-kong-china-qualify-for-world-rugby-u20-trophy-2024" target="_blank">Hong Kong China qualify for World Rugby U20 Trophy 2024</h3><p>An impressive performance at the Asia Rugby U19 Championship secures Hong Kong China an eighth consecutive regional title and a...</p><p class="date">17 December, 2023 ·
+                
+                1 min read</p><a href="https://www.world.rugby/news/898341/hong-kong-china-qualify-for-world-rugby-u20-trophy-2024" target="_blank">Read more</a></div></div><div class="carousel-item "><img src="https://resources.worldrugby-rims.pulselive.com/photo-resources/2023/12/19/5b610f8a-8999-4509-8280-a121a64b8afb/Pierre-Brousset.jpg?width=500 1x, https://resources.worldrugby-rims.pulselive.com/photo-resources/2023/12/19/5b610f8a-8999-4509-8280-a121a64b8afb/Pierre-Brousset.jpg?width=1000 2x" alt="Pierre Brousset excited by the prospect of his Six Nations debut"><div class="carousel-caption"><h3 href="https://www.world.rugby/news/897850/pierre-brousset-six-nations-2024-referee" target="_blank">Pierre Brousset excited by the prospect of his Six Nations debut</h3><p>The French match official has been appointed to take charge of his first Championship match: Ireland v Italy on 11...</p><p class="date">17 December, 2023 ·
+                
+                4 min read</p><a href="https://www.world.rugby/news/897850/pierre-brousset-six-nations-2024-referee" target="_blank">Read more</a></div></div></div>
+    <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  </div>
+
+  <div id="product-container">
+    <h3>Welcome to RugbyWiki - Your Ultimate Rugby Resource</h3>
+    <img id="product-image" src="img/rugbyball.png" alt="Product Image">
+
+    <!-- Information Blocks -->
+    <div class="info-block" id="info1">
+      <img src="img/target.svg" alt="Icon 1">
+      <p>RugbyWiki is committed to creating a central hub for rugby enthusiasts. Our mission is to provide in-depth
+        insights, engage you with interactive features, and offer a tech-infused experience.</p>
+    </div>
+
+    <div class="info-block" id="info2">
+      <img src="img/insights.svg" alt="Icon 2">
+      <p>In-Depth Insights: Beyond basics, our content caters to both beginners and seasoned players.</p>
+    </div>
+
+    <div class="info-block" id="info3">
+      <img src="img/about.svg" alt="Icon 3">
+      <p>Stay updated with the latest rugby news and join community discussions on social media. Explore the world of
+        rugby with us and contribute to building a vibrant community.</p>
+    </div>
+
+    <div class="info-block" id="info4">
+      <img src="img/hand.svg" alt="Icon 4">
+      <p>Interactive Features: Participate in live match discussions and polls. RugbyWiki is a community where your
+        voice matters.</p>
+    </div>
+
+    <div class="info-block" id="info5">
+      <img src="img/community.svg" alt="Icon 5">
+      <p>RugbyWiki is a community-driven platform. Contribute your thoughts, share your rugby journey, and be part of
+        shaping RugbyWiki into something extraordinary.
+      </p>
+    </div>
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script>
+    function toggleMenu() {
+      var menu = document.querySelector('.menu-links');
+      menu.classList.toggle('open');
+      var icon = document.querySelector('.hamburger-icon');
+      icon.classList.toggle('open');
+    }
+
+
+    // Toggle function with jQuery
+    $(document).ready(function () {
+      $("#menu-toggle").click(function () {
+        $("body").toggleClass("menu-open");
+      });
+    });
+
+    // Replace your existing script with this modified script
+    $(document).ready(function () {
+      // Get the news items
+      var newsItems = $(".news-item");
+
+      // Iterate through each news item and add to the carousel
+      newsItems.each(function (index) {
+        var imageSrc = $(this).find("img").attr("src");
+        var title = $(this).find("h3").text();
+        var content = $(this).find(".content").text();
+        var date = $(this).find(".date").text();
+        var link = $(this).find("h3").attr("data-href"); // Use a data attribute to store the link
+
+        // Create a carousel item
+        var carouselItem = $("<div>").addClass("carousel-item");
+        if (index === 0) {
+          carouselItem.addClass("active");
+        }
+
+        // Add image to carousel item
+        carouselItem.append($("<img>").attr("src", imageSrc));
+
+        // Add caption to carousel item
+        var caption = $("<div>").addClass("carousel-caption");
+        var titleLink = $("<h3>").text(title);
+        titleLink.click(function () {
+          window.location.href = link; // Redirect to the specified URL
+        });
+
+        caption.append(titleLink);
+        caption.append($("<p>").text(content));
+        caption.append($("<p>").addClass("date").text(date));
+        carouselItem.append(caption);
+
+        // Append carousel item to the carousel
+        $("#carouselExample .carousel-inner").append(carouselItem);
+      });
+
+      // Disable default carousel click behavior
+      $('.carousel-control-prev, .carousel-control-next').click(function (e) {
+        e.preventDefault();
+      });
+
+      // Allow user to switch between slides only on arrow click
+      $(".carousel-control-prev").on("click", function () {
+        $("#carouselExample").carousel("prev");
+      });
+
+      $(".carousel-control-next").on("click", function () {
+        $("#carouselExample").carousel("next");
+      });
+    });
+
+    const productImage = document.getElementById('product-image');
+
+    // Update the rotation on hover
+    document.getElementById('info1').addEventListener('mouseover', () => {
+      productImage.style.transform = 'rotate(70deg)'; // Adjust the default rotation angle as needed
+    });
+
+    // Reset rotation on mouseout
+    document.getElementById('info1').addEventListener('mouseout', () => {
+      productImage.style.transform = 'rotate(0deg)';
+    });
+
+    document.getElementById('info2').addEventListener('mouseover', () => {
+      productImage.style.transform = 'rotate(20deg)'; // Adjust the default rotation angle as needed
+    });
+
+    // Reset rotation on mouseout
+    document.getElementById('info2').addEventListener('mouseout', () => {
+      productImage.style.transform = 'rotate(0deg)';
+    });
+
+    document.getElementById('info3').addEventListener('mouseover', () => {
+      productImage.style.transform = 'rotate(200deg)'; // Adjust the default rotation angle as needed
+    });
+
+    // Reset rotation on mouseout
+    document.getElementById('info3').addEventListener('mouseout', () => {
+      productImage.style.transform = 'rotate(0deg)';
+    });
+
+    document.getElementById('info4').addEventListener('mouseover', () => {
+      productImage.style.transform = 'rotate(245deg)'; // Adjust the default rotation angle as needed
+    });
+
+    // Reset rotation on mouseout
+    document.getElementById('info4').addEventListener('mouseout', () => {
+      productImage.style.transform = 'rotate(0deg)';
+    });
+
+    document.getElementById('info5').addEventListener('mouseover', () => {
+      productImage.style.transform = 'rotate(320deg)'; // Adjust the default rotation angle as needed
+    });
+
+    // Reset rotation on mouseout
+    document.getElementById('info5').addEventListener('mouseout', () => {
+      productImage.style.transform = 'rotate(0deg)';
+    });
+
+  </script>
+
+
+
+</body></html>

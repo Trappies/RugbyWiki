@@ -1,0 +1,1565 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .cont:nth-child(14){
+          animation-delay: 13s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #toulonKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #toulonKitSection {
+          display: none;
+        }
+
+        #toulonKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #toulonKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #toulonKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #toulonKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #toulonKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #toulonKitSection {
+          display: flex;
+        }
+
+        #toulonKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #toulonKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Toulon</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/toulonbanner.png" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About Toulon</h3>
+    <p>Founded in 1908, RC Toulonnais, commonly known as Toulon Rugby, is a French rugby union club based in Toulon, Provence-Alpes-Côte d'Azur. The team boasts a rich history and has become a powerhouse in European rugby. Toulon has experienced significant success, particularly in recent years, winning three consecutive European Rugby Champions Cups from 2013 to 2015, solidifying their status as one of the continent's premier clubs. The team's home matches are played at the Stade Mayol, a venue renowned for its passionate atmosphere. Toulon has attracted top-tier international talent, contributing to their formidable roster. With a blend of tradition, success, and star-studded lineups, Toulon Rugby continues to be a force to be reckoned with in the world of professional rugby.
+    </p>
+  
+    
+
+      <div id="toulonKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Toulon Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/toulonhome.png" alt="Toulon Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/toulonaway.png" alt="Toulon Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 18px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="toulonKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Toulon Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/toulonhome.png" alt="Toulon Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/toulonaway.png" alt="Toulon Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305561-b26e0a8a4a-3/EstebanAbadieRCToulon.jpg" class="card-img-top" alt="Esteban Abadie" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Esteban Abadie</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291533-d14a3aec0a-3/BrianAlainuueseRCToulon.jpg" class="card-img-top" alt="Brian Alainu'uese" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Brian Alainu'uese</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313018-f1a68233ea-3/KomitiJuniorAlainuueseRCToulon.jpg" class="card-img-top" alt="Komiti Junior Alainuuese" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Komiti Junior Alainuuese</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/271242-a8329d8603-3/FranckAzemaRCToulon.jpg" class="card-img-top" alt="Franck Azema" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Franck Azema</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291529-1ae254579c-3/TeddyBaubignyRCToulon.jpg" class="card-img-top" alt="Teddy Baubigny" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Teddy Baubigny</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291522-644a915355-3/DanBiggarRCToulon.jpg" class="card-img-top" alt="Dan Biggar" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dan Biggar</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/276786-cdd7dbdb31-3/YanisBoulasselrugbyplayer.jpg" class="card-img-top" alt="Yanis Boulassel" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Yanis Boulassel</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291516-dcc1070391-3/KieranBrookesRCToulon.jpg" class="card-img-top" alt="Kieran Brookes" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kieran Brookes</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/271244-d94a84ee22-3/JamesCoughlanRCToulon.jpg" class="card-img-top" alt="James Coughlan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James Coughlan</h5>
+            <p class="card-text">Assistant Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291519-3d3e7c68eb-3/JulesCoulonRCToulon.jpg" class="card-img-top" alt="Jules Coulon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jules Coulon</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291014-4d2b687568-3/PDamondRCToulon.jpg" class="card-img-top" alt="P Damond" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">P Damond</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291523-3189d61cbc-3/JulesDanglotRCToulon.jpg" class="card-img-top" alt="Jules Danglot" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jules Danglot</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/244393-1d894c703c-3/EricDasalmartinirugbyplayer.jpg" class="card-img-top" alt="Eric Dasalmartini" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Eric Dasalmartini</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291514-58ef1e910e-3/BruceDevauxRCToulon.jpg" class="card-img-top" alt="Bruce Devaux" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Bruce Devaux</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/255239-ffb4af6a4a-3/MariusDomonRCToulon.jpg" class="card-img-top" alt="Marius Domon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marius Domon</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300973-349b4fc925-3/GaelDreanRCToulon.jpg" class="card-img-top" alt="Gael Drean" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gael Drean</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/248025-e72ebd3706-3/ErwanDridiRCToulon.jpg" class="card-img-top" alt="Erwan Dridi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Erwan Dridi</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299717-b0be789eea-3/CornellduPreezRCToulon.jpg" class="card-img-top" alt="Cornell du Preez" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cornell du Preez</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/271245-2bac5c61ff-3/JulienDupuyRCToulon.jpg" class="card-img-top" alt="Julien Dupuy" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Julien Dupuy</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/248331-b51479d174-3/ClmentEgizianorugbyplayer.jpg" class="card-img-top" alt="Clément Egiziano" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Clément Egiziano</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291515-032f7381a3-3/AnthonyEtrillardRCToulon.jpg" class="card-img-top" alt="Anthony Etrillard" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Anthony Etrillard</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305569-7cbf52400e-3/LeicesterFaingaanukuRCToulon.jpg" class="card-img-top" alt="Leicester Fainga'anuku" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Leicester Fainga'anuku</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291016-983ad6db4d-3/JFifitaRCToulon.jpg" class="card-img-top" alt="J Fifita" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">J Fifita</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291531-a7eeb4f51b-3/BekaGigashviliRCToulon.jpg" class="card-img-top" alt="Beka Gigashvili" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Beka Gigashvili</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/266708-5ecc5ca115-3/FranciscoGonzlezrugbyplayer.jpg" class="card-img-top" alt="Fabio González" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Fabio González</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/263146-7b30ca16f5-3/JakeGordonrugbyplayer.jpg" class="card-img-top" alt="Jake Gordon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jake Gordon</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300968-6cca060808-3/Jean-BaptisteGrosRCToulon.jpg" class="card-img-top" alt="Jean-Baptiste Gros" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jean-Baptiste Gros</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/249311-c1ad92943e-3/MatthiasHalagahurugbyplayer.jpg" class="card-img-top" alt="Matthias Halagahu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matthias Halagahu</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305565-f5f178ee3b-3/EnzoHerveRCToulon.jpg" class="card-img-top" alt="Enzo Herve" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Enzo Herve</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299718-f71681ca7a-3/FacundoIsaRCToulon.jpg" class="card-img-top" alt="Facundo Isa" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Facundo Isa</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305558-9301bf350f-3/AlunWynJonesRCToulon.jpg" class="card-img-top" alt="Alun Wyn Jones" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alun Wyn Jones</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300974-79de1f2049-3/MatteoLeCorvecRCToulon.jpg" class="card-img-top" alt="Matteo Le Corvec" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matteo Le Corvec</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305566-0dd3f70bdb-3/NoahLolesioRCToulon.jpg" class="card-img-top" alt="Noah Lolesio" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Noah Lolesio</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291536-2757a84bf0-3/AymericLucRCToulon.jpg" class="card-img-top" alt="Aymeric Luc" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Aymeric Luc</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306316-b683c7fc27-3/DavidMchedlidzeRCToulon.jpg" class="card-img-top" alt="David Mchedlidze" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">David Mchedlidze</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299979-74013c01d8-3/PierreMignoniRCToulon.jpg" class="card-img-top" alt="Pierre Mignoni" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Pierre Mignoni</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/266758-990b1287b6-3/SimonMorettiRCToulon.jpg" class="card-img-top" alt="Simon Moretti" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Simon Moretti</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305568-49979632b4-3/NoaNakaitaciRCToulon.jpg" class="card-img-top" alt="Noa Nakaitaci" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Noa Nakaitaci</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292428-ed764a91fe-3/WaiseaNayacalevuRCToulon.jpg" class="card-img-top" alt="Waisea Nayacalevu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Waisea Nayacalevu</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291532-004dfe9f98-3/CharlesOllivonRCToulon.jpg" class="card-img-top" alt="Charles Ollivon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Charles Ollivon</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299719-a9bb2b6033-3/DuncanPaiaauaRCToulon.jpg" class="card-img-top" alt="Duncan Paia'aua" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Duncan Paia'aua</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291530-4b9b20b9ee-3/DanyPrisoRCToulon.jpg" class="card-img-top" alt="Dany Priso" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dany Priso</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291525-3eb7ba7056-3/MalanRabutRCToulon.jpg" class="card-img-top" alt="Maëlan Rabut" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Maëlan Rabut</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/271762-b2da4ec3d9-3/RyanReabbdjrugbyplayer.jpg" class="card-img-top" alt="Rayan Rebbadj" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rayan Rebbadj</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291517-849665f073-3/SwanRebbadjRCToulon.jpg" class="card-img-top" alt="Swan Rebbadj" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Swan Rebbadj</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313020-fc5df61609-3/DavidRibbansRCToulon.jpg" class="card-img-top" alt="David Ribbans" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">David Ribbans</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/248069-76ff396b1f-3/KalaniRobertRCToulon.jpg" class="card-img-top" alt="Kalani Robert" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kalani Robert</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291534-48244c1e07-3/BaptisteSerinRCToulon.jpg" class="card-img-top" alt="Baptiste Serin" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Baptiste Serin</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/248071-d3c6f67531-3/EmerickSetianoRCToulon.jpg" class="card-img-top" alt="Emerick Setiano" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Emerick Setiano</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291526-4e446b57ea-3/JeremySinzelleRCToulon.jpg" class="card-img-top" alt="Jeremy Sinzelle" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jeremy Sinzelle</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300971-b47ee5d519-3/MathieuSmailiRCToulon.jpg" class="card-img-top" alt="Mathieu Smaili" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mathieu Smaili</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299722-135c6a617e-3/MathieuTanguyRCToulon.jpg" class="card-img-top" alt="Mathieu Tanguy" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mathieu Tanguy</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/244395-fd8c5332e8-3/SebastienTillous-BordeRCToulon.jpg" class="card-img-top" alt="Sebastien Tillous-Borde" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sebastien Tillous-Borde</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299721-c5aa33d8bc-3/ChristopherTolofuaRCToulon.jpg" class="card-img-top" alt="Christopher Tolofua" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Christopher Tolofua</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305560-8d7cb556c7-3/SelevasioTolofuaRCToulon.jpg" class="card-img-top" alt="Selevasio Tolofua" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Selevasio Tolofua</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305567-f16609b89b-3/SetarikiTuicuvuRCToulon.jpg" class="card-img-top" alt="Setariki Tuicuvu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Setariki Tuicuvu</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301056-8d0418b273-3/GabinVilliereRCToulon.jpg" class="card-img-top" alt="Gabin Villiere" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gabin Villiere</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313019-4c43e30833-3/WaiseaVuidravuwaluRCToulon.jpg" class="card-img-top" alt="Waisea Vuidravuwalu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Waisea Vuidravuwalu</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291524-789bd1a8aa-3/JiutaWainiqoloRCToulon.jpg" class="card-img-top" alt="Jiuta Wainiqolo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jiuta Wainiqolo</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291518-511a8ef570-3/AdrienWarionRCToulon.jpg" class="card-img-top" alt="Adrien Warion" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Adrien Warion</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313021-e32d8a94ad-3/BenWhiteRCToulon.jpg" class="card-img-top" alt="Ben White" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben White</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/262296-03d1eadea1-3/EliottYemsirugbyplayer.jpg" class="card-img-top" alt="Eliott Yemsi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Eliott Yemsi</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305563-d91f1099ef-3/MickyYoungRCToulon.jpg" class="card-img-top" alt="Micky Young" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Micky Young</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305562-98a0339320-3/YannickYouyoutteRCToulon.jpg" class="card-img-top" alt="Yannick Youyoutte" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Yannick Youyoutte</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Rugby Club Toulonnais - French Rugby Royalty</h2>
+                <p>Founded in 1908 and based in Toulon, Rugby Club Toulonnais, also known as Toulon, holds a storied history in French rugby. The club has secured four league titles, two Pro D2 titles, and two Challenge Yves du Manoir domestically. Internationally, Toulon achieved a remarkable feat by winning the Heineken Cup/European Rugby Champions Cup three times consecutively. The club, with a vibrant fan base, iconic red and black kits, and a stadium with a capacity of 17,500 at Stade Mayol, has etched its place in the hearts of rugby enthusiasts.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Toulon's Resilience and Glory Through the Years</h2>
+                <p>Facing financial challenges in the early 2000s, Toulon's journey included relegation and subsequent promotion from the Second Division. The club, under the leadership of president Mourad Boudjellal, witnessed a transformative period marked by strategic signings, including legends like Jonny Wilkinson. Their return to the Top 14 in the 2008–09 season set the stage for remarkable achievements. Toulon's resurgence saw them finish second domestically, securing a spot in the Heineken Cup and showcasing their prowess on the European stage.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Triumph in Diversity - Toulon's Star-Studded Lineup</h2>
+                <p>Mourad Boudjellal's vision for Toulon included assembling a diverse and star-studded lineup. Notable signings such as Tana Umaga, George Gregan, Andrew Mehrtens, and Jonny Wilkinson brought experience and international flair to the team. This strategic approach not only bolstered Toulon's presence in the Top 14 but also elevated them to become a formidable force in European competitions.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Toulon's European Conquest</h2>
+                  <p>At the pinnacle of their success, Toulon clinched the 2013 Heineken Cup Final, securing a narrow 16–15 victory against Clermont Auvergne. This triumph solidified their status as a European rugby powerhouse. The club's ability to navigate challenges, sign rugby legends, and deliver stellar performances on the pitch has left an indelible mark on the history of Rugby Club Toulonnais.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

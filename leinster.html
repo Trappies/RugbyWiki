@@ -1,0 +1,1645 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .cont:nth-child(14){
+          animation-delay: 13s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #leinsterKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #leinsterKitSection {
+          display: none;
+        }
+
+        #leinsterKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #leinsterKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #leinsterKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #leinsterKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #leinsterKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #leinsterKitSection {
+          display: flex;
+        }
+
+        #leinsterKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #leinsterKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Leinster</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/leinsterbanner.png" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About Leinster</h3>
+    <p>Leinster Rugby, based in Dublin, Ireland, stands as a powerhouse in European rugby with a storied legacy of success. Founded in 1879, Leinster has evolved into one of the most dominant rugby clubs globally. Competing in both the Pro14 and European competitions, the team boasts an impressive trophy cabinet, including multiple European Rugby Champions Cups and Pro14 titles. Known for their commitment to player development, Leinster has nurtured world-class talents, contributing significantly to the Irish national team's success. The province's vibrant fan base, coupled with their passionate home games at the RDS Arena, creates an electric atmosphere. Leinster Rugby's commitment to excellence, both on and off the field, solidifies its standing as a rugby juggernaut with a bright future ahead.
+    </p>
+  
+    
+
+      <div id="leinsterKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Leinster Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/leinsterhome.png" alt="Leinster Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/leinsteraway.png" alt="Leinster Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 18px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="leinsterKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Leinster Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/leinsterhome.png" alt="Leinster Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/leinsteraway.png" alt="Leinster Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310782-109a3c6a67-3/MikeAlaalatoaLeinsterRugby.jpg" class="card-img-top" alt="Mike Ala'alatoa" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mike Ala'alatoa</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310784-d7152b73e7-3/RyanBairdLeinsterRugby.jpg" class="card-img-top" alt="Ryan Baird" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ryan Baird</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310785-102fed5532-3/LeeBarronLeinsterRugby.jpg" class="card-img-top" alt="Lee Barron" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lee Barron</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/289942-800d1c3249-3/ConallBoomerLeinsterRugby.jpg" class="card-img-top" alt="Conall Boomer" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Conall Boomer</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298415-0d44a79ede-3/JackBoyleLeinsterRugby.jpg" class="card-img-top" alt="Jack Boyle" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jack Boyle</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298423-ae42b7e5aa-3/BenBrownleeLeinsterRugby.jpg" class="card-img-top" alt="Ben Brownlee" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben Brownlee</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310786-f74a16d485-3/EdByrneLeinsterRugby.jpg" class="card-img-top" alt="Ed Byrne" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ed Byrne</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310788-7159e658d4-3/HarryByrneLeinsterRugby.jpg" class="card-img-top" alt="Harry Byrne" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Harry Byrne</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310814-7742530863-3/RossByrneLeinsterRugby.jpg" class="card-img-top" alt="Ross Byrne" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ross Byrne</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310789-eff1453ced-3/ThomasClarksonLeinsterRugby.jpg" class="card-img-top" alt="Thomas Clarkson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Thomas Clarkson</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/269168-9fe837b0ff-3/NiallComerfordLeinsterRugby.jpg" class="card-img-top" alt="Niall Comerford" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Niall Comerford</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310815-7b2c6f2440-3/JackConanLeinsterRugby.jpg" class="card-img-top" alt="Jack Conan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jack Conan</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/289943-605a9139c7-3/ThomasConnollyLeinsterRugby.jpg" class="card-img-top" alt="Thomas Connolly" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Thomas Connolly</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310790-294e7d786d-3/WillConnorsLeinsterRugby.jpg" class="card-img-top" alt="Will Connors" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Will Connors</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298425-0719901487-3/ChrisCosgraveLeinsterRugby.jpg" class="card-img-top" alt="Chris Cosgrave" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Chris Cosgrave</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298419-a5fcedd8c2-3/JamesCulhaneLeinsterRugby.jpg" class="card-img-top" alt="James Culhane" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James Culhane</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298435-3af39a3893-3/LeoCullenLeinsterRugby.jpg" class="card-img-top" alt="Leo Cullen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Leo Cullen</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310791-5068121002-3/MaxDeeganLeinsterRugby.jpg" class="card-img-top" alt="Max Deegan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Max Deegan</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310792-e97c7e5924-3/BrianDeenyLeinsterRugby.jpg" class="card-img-top" alt="Brian Deeny" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Brian Deeny</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312024-54735f50ac-3/DylanDonnellanLeinsterRugby.jpg" class="card-img-top" alt="Dylan Donnellan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dylan Donnellan</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310816-8f11fbd6ed-3/CaelanDorisLeinsterRugby.jpg" class="card-img-top" alt="Caelan Doris" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Caelan Doris</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298438-3845c0ea08-3/EmmettFarrellLeinsterRugby.jpg" class="card-img-top" alt="Emmett Farrell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Emmett Farrell</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310794-8faea8c7d7-3/CormacFoleyLeinsterRugby.jpg" class="card-img-top" alt="Cormac Foley" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cormac Foley</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310817-38de3a0ec0-3/CiaranFrawleyLeinsterRugby.jpg" class="card-img-top" alt="Ciaran Frawley" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ciaran Frawley</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310818-4784d3f53d-3/TadhgFurlongLeinsterRugby.jpg" class="card-img-top" alt="Tadhg Furlong" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tadhg Furlong</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310819-4ae3e50140-3/JamisonGibson-ParkLeinsterRugby.jpg" class="card-img-top" alt="Jamison Gibson-Park" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jamison Gibson-Park</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298434-bb382ee5b3-3/AndrewGoodmanLeinsterRugby.jpg" class="card-img-top" alt="Andrew Goodman" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Andrew Goodman</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298431-0ad3c1e7b8-3/FintanGunneLeinsterRugby.jpg" class="card-img-top" alt="Fintan Gunne" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Fintan Gunne</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310820-f40e70eb2a-3/CianHealyLeinsterRugby.jpg" class="card-img-top" alt="Cian Healy" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cian Healy</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310821-ab06e9c508-3/RobbieHenshawLeinsterRugby.jpg" class="card-img-top" alt="Robbie Henshaw" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Robbie Henshaw</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/168914-31e7790e85-3/ColmHoganrugbyplayer.jpg" class="card-img-top" alt="Colm Hogan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Colm Hogan</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310795-f2fb44f873-3/JasonJenkinsLeinsterRugby.jpg" class="card-img-top" alt="Jason Jenkins" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jason Jenkins</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310822-27a55adbc1-3/HugoKeenanLeinsterRugby.jpg" class="card-img-top" alt="Hugo Keenan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Hugo Keenan</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310823-a784ad6e2d-3/RonanKelleherLeinsterRugby.jpg" class="card-img-top" alt="Ronan Kelleher" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ronan Kelleher</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298480-85eaba1f90-3/AitzolKingLeinsterRugby.jpg" class="card-img-top" alt="Aitzol King" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Aitzol King</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310796-560de91948-3/JordanLarmourLeinsterRugby.jpg" class="card-img-top" alt="Jordan Larmour" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jordan Larmour</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298417-edd0130cfb-3/TemiLasisiLeinsterRugby.jpg" class="card-img-top" alt="Temi Lasisi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Temi Lasisi</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310824-5c571e2e41-3/JamesLoweLeinsterRugby.jpg" class="card-img-top" alt="James Lowe" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James Lowe</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285819-0e1a5f4c64-3/DiarmuidManganLeinsterRugby.jpg" class="card-img-top" alt="Diarmuid Mangan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Diarmuid Mangan</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298437-4de9501494-3/RobinMcBrydeLeinsterRugby.jpg" class="card-img-top" alt="Robin McBryde" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Robin McBryde</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310825-26dd391690-3/JoeMcCarthyLeinsterRugby.jpg" class="card-img-top" alt="Joe McCarthy" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joe McCarthy</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312025-2d78d5da53-3/PaddyMcCarthyLeinsterRugby.jpg" class="card-img-top" alt="Paddy McCarthy" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Paddy McCarthy</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310798-38928f4a16-3/LukeMcGrathLeinsterRugby.jpg" class="card-img-top" alt="Luke McGrath" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Luke McGrath</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312026-ead050019b-3/RoryMcGuireLeinsterRugby.jpg" class="card-img-top" alt="Rory McGuire" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rory McGuire</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/245601-f365518f2e-3/AlexMcHenryrugbyplayer.jpg" class="card-img-top" alt="Alex McHenry" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alex McHenry</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310799-23eb4e5489-3/JohnMcKeeLeinsterRugby.jpg" class="card-img-top" alt="John McKee" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">John McKee</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310800-a782713a0b-3/MichaelMilneLeinsterRugby.jpg" class="card-img-top" alt="Michael Milne" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Michael Milne</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310801-a56f61c243-3/MartinMoloneyLeinsterRugby.jpg" class="card-img-top" alt="Martin Moloney" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Martin Moloney</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298429-1b3e80e0da-3/LiamMolonyLeinsterRugby.jpg" class="card-img-top" alt="Liam Molony" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Liam Molony</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310803-f5c020038d-3/RossMolonyLeinsterRugby.jpg" class="card-img-top" alt="Ross Molony" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ross Molony</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298420-7c1c6d8493-3/BenMurphy.jpg" class="card-img-top" alt="Ben Murphy." style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben Murphy.</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310804-453673d16c-3/CharlieNgataiLeinsterRugby.jpg" class="card-img-top" alt="Charlie Ngatai" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Charlie Ngatai</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298439-d609ea8b52-3/SenOBrienLeinsterRugby.jpg" class="card-img-top" alt="Seán O'Brien" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Seán O'Brien</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310805-a2120111cc-3/TommyOBrienLeinsterRugby.jpg" class="card-img-top" alt="Tommy O'Brien" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tommy O'Brien</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310826-3dc876cd7d-3/JimmyOBrienLeinsterRugby.jpg" class="card-img-top" alt="Jimmy O'Brien" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jimmy O'Brien</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310827-823e26e83a-3/JamieOsborneLeinsterRugby.jpg" class="card-img-top" alt="Jamie Osborne" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jamie Osborne</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298428-e5332b05a8-3/ConorOTighearnaighLeinsterRugby.jpg" class="card-img-top" alt="Conor O’Tighearnaigh" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Conor O’Tighearnaigh</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310807-9f9e90013f-3/ScottPennyLeinsterRugby.jpg" class="card-img-top" alt="Scott Penny" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Scott Penny</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310828-0f28831d19-3/AndrewPorterLeinsterRugby.jpg" class="card-img-top" alt="Andrew Porter" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Andrew Porter</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310808-d12330909e-3/SamPrendergastLeinsterRugby.jpg" class="card-img-top" alt="Sam Prendergast" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sam Prendergast</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310829-65a9b05fa7-3/GarryRingroseLeinsterRugby.jpg" class="card-img-top" alt="Garry Ringrose" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Garry Ringrose</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310809-4d407df7a9-3/RhysRuddockLeinsterRugby.jpg" class="card-img-top" alt="Rhys Ruddock" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rhys Ruddock</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310810-4acb2e835f-3/RobRussellLeinsterRugby.jpg" class="card-img-top" alt="Rob Russell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rob Russell</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310832-fa53552f44-3/JamesRyanLeinsterRugby.jpg" class="card-img-top" alt="James Ryan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James Ryan</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310833-992e90d252-3/DanSheehanLeinsterRugby.jpg" class="card-img-top" alt="Dan Sheehan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dan Sheehan</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310811-bc1ec14e0a-3/AlexSorokaLeinsterRugby.jpg" class="card-img-top" alt="Alex Soroka" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alex Soroka</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298422-667d192d36-3/CharlieTectorLeinsterRugby.jpg" class="card-img-top" alt="Charlie Tector" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Charlie Tector</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310812-271dce62f7-3/LiamTurnerLeinsterRugby.jpg" class="card-img-top" alt="Liam Turner" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Liam Turner</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310834-b32801c800-3/JoshvanderFlierLeinsterRugby.jpg" class="card-img-top" alt="Josh van der Flier" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Josh van der Flier</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Founding (1879–1899)</h2>
+                <p>In the late 19th century, the Leinster Branch was established during a meeting at Lawrence's premises on Grafton Street in 1879. This marked the formal founding of Leinster, although its provincial team had been active since 1875. The union's function was to organize rugby football in the province, with F. Kennedy and C.B. Croker elected as its first Honorary Secretary and Treasurer, respectively. The inaugural Interprovincial matches against Ulster and Munster took place in 1875, with Leinster emerging as a prominent force. The Leinster Schools Interprovincial matches began in 1888, showcasing the province's commitment to nurturing young talent.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Amateur Period (1900–1990s)</h2>
+                <p>The early 1920s saw the creation of the Provincial Towns Cup and the Metropolitan Cup, solidifying Leinster's role as a feeder for the Interprovincial side. Despite interruptions during the Great War and World War II, Leinster faced touring sides, including the memorable match against the New Zealand Army's Kiwis in 1946. The province continued to host international teams, highlighting its growing stature in the rugby world.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Leinster Lions (1990s–2005)</h2>
+                <p>Transitioning into professionalism in the mid-1990s, Leinster adopted the "Leinster Lions" moniker during the 2001–02 season. This era saw notable achievements, including winning the inaugural Celtic League in 2001–02. The mascot, "Leo the Lion," and the iconic song "Molly Malone" became integral to the Leinster experience. The subsequent years brought challenges, with title misses in 2003–04 and near-misses in the Celtic League.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Title Misses (2004–2007)</h2>
+                  <p>Leinster's fortunes improved in the 2004–05 season, finishing third in the league and reaching the quarterfinals of the European Cup. However, near misses in the Celtic League continued in the following seasons, setting the stage for a period of remarkable dominance.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>European and Domestic Dominance (2008–2014)</h2>
+                  <p>The late 2000s marked a turning point for Leinster, winning the Celtic League in 2007–08 and securing the European Cup in 2008–09. The 2009 European Cup Final in Murrayfield witnessed a historic victory over Leicester Tigers. The 2010–11 season saw Leinster's resurgence, clinching the European Cup with a remarkable comeback against Northampton. The subsequent seasons solidified their European and domestic dominance, achieving unprecedented success with back-to-back European titles in 2011–12 and continued Pro12 triumphs.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont right-containter">
+                  <img src="img/rugbyicon.png">
+                  <div class="text-box">
+                    <h2>Blooding a New Generation (2015–2017)</h2>
+                    <p>After seven years of major trophies, Leinster faced a transition period in 2014–15, finishing fifth in the league. Coaching changes, including Stuart Lancaster's appointment, revitalized the team. Despite falling short in the Champions Cup and Pro12, optimism surged as a new generation of players emerged.
+
+                    </p>
+                    <span class="right-container-arrow"></span>
+                  </div>
+                </div>
+                <div class="cont left-containter">
+                    <img src="img/rugbyicon.png">
+                    <div class="text-box">
+                      <h2>Return to Success (2018–present)</h2>
+                      <p>The 2017-18 season marked a resurgence, with Leinster claiming four consecutive Pro14 championships. In 2017-18, they secured the Heineken Cup by defeating Racing 92. Despite a runner-up finish in 2018-19, Leinster maintained their Pro14 dominance. Recent seasons witnessed challenges in the Heineken Cup but showcased resilience, with notable victories and advancements in the face of pandemic-related disruptions. Leinster's rich history continues to unfold, leaving an indelible mark on the rugby landscape.
+
+                      </p>
+                      <span class="left-container-arrow"></span>
+                    </div>
+                  </div>
+              
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

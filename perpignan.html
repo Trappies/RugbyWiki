@@ -1,0 +1,1605 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .cont:nth-child(14){
+          animation-delay: 13s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #perpignanKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #perpignanKitSection {
+          display: none;
+        }
+
+        #perpignanKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #perpignanKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #perpignanKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #perpignanKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #perpignanKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #perpignanKitSection {
+          display: flex;
+        }
+
+        #perpignanKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #perpignanKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Perpignan</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/perpignanbanner.png" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About Perpignan</h3>
+    <p>Perpignan Rugby, also known as USA Perpignan, is a distinguished French professional rugby union club based in Perpignan, Occitanie. Established in 1902, the club boasts a rich history and plays its home matches at the iconic Stade Aimé Giral, which has witnessed many thrilling rugby encounters. Sporting the distinctive colors of sang et or (blood and gold), Perpignan has been a force in French rugby, winning numerous accolades, including French top-division championships. The club has showcased resilience over the years, navigating various divisions and competitions, contributing significantly to the vibrant rugby culture in the region and beyond.
+    </p>
+  
+    
+
+      <div id="perpignanKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Perpignan Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/perpignanhome.png" alt="Perpignan Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/perpignanaway.png" alt="Perpignan Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 19px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="perpignanKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Perpignan Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/perpignanhome.png" alt="Perpignan Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/perpignanaway.png" alt="Perpignan Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312052-a07b33554e-3/MathieuAcebesPerpignan.jpg" class="card-img-top" alt="Mathieu Acebes" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mathieu Acebes</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312054-3c2408b6cc-3/TomAllenPerpignan.jpg" class="card-img-top" alt="Tom Allen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Allen</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/app/public/images/noimage/webPlayer.png" class="card-img-top" alt="Patrick Arlettaz" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Patrick Arlettaz</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311901-ecb232f707-3/LucasBachelierPerpignan.jpg" class="card-img-top" alt="Lucas Bachelier" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lucas Bachelier</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311914-ddf6097f34-3/Jean-PascalBarraquePerpignan.jpg" class="card-img-top" alt="Jean-Pascal Barraque" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jean-Pascal Barraque</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312047-ed691ca314-3/EwanBertheauPerpignan.jpg" class="card-img-top" alt="Ewan Bertheau" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ewan Bertheau</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292351-813f33e8ee-3/ABououdaPerpignan.jpg" class="card-img-top" alt="A Bououda" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">A Bououda</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/266136-4a0aa6d17a-3/AnthonyBouthierrugbyplayer.jpg" class="card-img-top" alt="Anthony Bouthier" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Anthony Bouthier</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313323-0e16d5a515-3/AlanBrazoPerpignan.jpg" class="card-img-top" alt="Alan Brazo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alan Brazo</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/217386-9b94094355-3/ConorCareyrugbyplayer.jpg" class="card-img-top" alt="Conor Carey" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Conor Carey</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312055-6d91999939-3/PietroCeccarelliPerpignan.jpg" class="card-img-top" alt="Pietro Ceccarelli" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Pietro Ceccarelli</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311895-c20d435ba2-3/BastienChinarroPerpignan.jpg" class="card-img-top" alt="Bastien Chinarro" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Bastien Chinarro</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313328-76388a548d-3/XavierChiocciPerpignan.jpg" class="card-img-top" alt="Xavier Chiocci" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Xavier Chiocci</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312050-c507232800-3/AlistairCrossdalePerpignan.jpg" class="card-img-top" alt="Alistair Crossdale" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alistair Crossdale</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/283759-0d01d910ee-3/LeoDarrelarugbyplayer.jpg" class="card-img-top" alt="Leo Darrela" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Leo Darrela</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313324-04783314f4-3/JeronimodelaFuentePerpignan.jpg" class="card-img-top" alt="Jeronimo de la Fuente" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jeronimo de la Fuente</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312062-110ca5bbdd-3/SadekDeghmachePerpignan.jpg" class="card-img-top" alt="Sadek Deghmache" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sadek Deghmache</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/app/public/images/noimage/webPlayer.png" class="card-img-top" alt="A Desrues" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">A Desrues</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312053-9631f64e13-3/LucasDuboisPerpignan.jpg" class="card-img-top" alt="Lucas Dubois" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lucas Dubois</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313325-1dd6b9f0ff-3/AliveretiDuguivaluPerpignan.jpg" class="card-img-top" alt="Alivereti Duguivalu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alivereti Duguivalu</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312064-aa549ec09b-3/LouisDupichotPerpignan.jpg" class="card-img-top" alt="Louis Dupichot" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Louis Dupichot</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284493-fa1d933136-3/TomEcochardPerpignan.jpg" class="card-img-top" alt="Tom Ecochard" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Ecochard</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312060-41568ed0b4-3/ShahnEruPerpignan.jpg" class="card-img-top" alt="Shahn Eru" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Shahn Eru</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313322-092b170f6e-3/SootalaFaasooPerpignan.jpg" class="card-img-top" alt="So'otala Fa'aso'o" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">So'otala Fa'aso'o</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311891-85dddebf7b-3/AkatoFakatikaPerpignan.jpg" class="card-img-top" alt="Akato Fakatika" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Akato Fakatika</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311924-4b98db9ed9-3/TheoFornerPerpignan.jpg" class="card-img-top" alt="Theo Forner" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Theo Forner</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312061-28d035b67a-3/KelianGalletierPerpignan.jpg" class="card-img-top" alt="Kelian Galletier" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kelian Galletier</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311921-b49ea0ae32-3/BorisGoutardPerpignan.jpg" class="card-img-top" alt="Boris Goutard" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Boris Goutard</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/278050-34275b77b8-3/JefferyHeafalarugbyplayer.jpg" class="card-img-top" alt="Jeffrey Heafala" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jeffrey Heafala</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311892-dc3a505df7-3/VakhtangJincharadzePerpignan.jpg" class="card-img-top" alt="Vakhtang Jincharadze" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Vakhtang Jincharadze</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/256540-85d1e46257-3/MateoJolyrugbyplayer.jpg" class="card-img-top" alt="Mateo Joly" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mateo Joly</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312043-e29d794a70-3/ArthurJolyPerpignan.jpg" class="card-img-top" alt="Arthur Joly" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Arthur Joly</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312044-3adc5398a1-3/TristanLabouteleyPerpignan.jpg" class="card-img-top" alt="Tristan Labouteley" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tristan Labouteley</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300991-87abdf0564-3/SeilalaLamPerpignan.jpg" class="card-img-top" alt="Seilala Lam" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Seilala Lam</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312042-799e4be860-3/SachaLotrianPerpignan.jpg" class="card-img-top" alt="Sacha Lotrian" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sacha Lotrian</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/app/public/images/noimage/webPlayer.png" class="card-img-top" alt="Guillaume Marin" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Guillaume Marin</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306298-5095a85127-3/JeremieMaurouardPerpignan.jpg" class="card-img-top" alt="Jeremie Maurouard" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jeremie Maurouard</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312049-6bd265eee9-3/JakeMcIntyrePerpignan.jpg" class="card-img-top" alt="Jake McIntyre" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jake McIntyre</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/272943-4e80879f30-3/SamuelMezaacherugbyplayer.jpg" class="card-img-top" alt="Samuel Mezaache" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Samuel Mezaache</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/272173-f928159a9b-3/GuillemMontagnePerpignan.jpg" class="card-img-top" alt="Guillem Montagne" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Guillem Montagne</h5>
+            <p class="card-text">Number 20</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312056-1d56e26933-3/VictorMontgaillardPerpignan.jpg" class="card-img-top" alt="Victor Montgaillard" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Victor Montgaillard</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311900-b5e84d53da-3/VictorMoreauxPerpignan.jpg" class="card-img-top" alt="Victor Moreaux" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Victor Moreaux</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/app/public/images/noimage/webPlayer.png" class="card-img-top" alt="Valentin Moro" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Valentin Moro</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311915-c3e8e82160-3/ApisaiNaqalevuPerpignan.jpg" class="card-img-top" alt="Apisai Naqalevu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Apisai Naqalevu</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313321-85556db99e-3/MarvinOriePerpignan.jpg" class="card-img-top" alt="Marvin Orie" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marvin Orie</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300980-89a0ba573e-3/JoaqunOviedoPerpignan.jpg" class="card-img-top" alt="Joaquín Oviedo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joaquín Oviedo</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311912-def2d462f6-3/AlexandrePerezPerpignan.jpg" class="card-img-top" alt="Alexandre Perez" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alexandre Perez</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/261084-d58f799c57-3/GaetanPichonrugbyplayer.jpg" class="card-img-top" alt="Gaetan Pichon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gaetan Pichon</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/260772-c2c0cd7a0d-3/BaptistePlanaPerpignan.jpg" class="card-img-top" alt="Baptiste Plana" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Baptiste Plana</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311898-363f561122-3/TanielaRamasibanaPerpignan.jpg" class="card-img-top" alt="Taniela Ramasibana" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Taniela Ramasibana</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/265594-c0dd8de7f2-3/EthanRandlePerpignan.jpg" class="card-img-top" alt="Ethan Randle" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ethan Randle</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/243599-ebcdde7404-3/HughRoachrugbyplayer.jpg" class="card-img-top" alt="Hugh Roach" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Hugh Roach</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311910-ea75d772d2-3/MatteoRodorPerpignan.jpg" class="card-img-top" alt="Matteo Rodor" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matteo Rodor</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311894-e8a7df0b40-3/NemoRoelofsePerpignan.jpg" class="card-img-top" alt="Nemo Roelofse" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nemo Roelofse</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313326-6f2686333d-3/IgnacioRuizPerpignan.jpg" class="card-img-top" alt="Ignacio Ruiz" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ignacio Ruiz</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300984-e31f814550-3/EdwardSawailauPerpignan.jpg" class="card-img-top" alt="Edward Sawailau" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Edward Sawailau</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312046-38be9a09a7-3/PatrickSobelaPerpignan.jpg" class="card-img-top" alt="Patrick Sobela" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Patrick Sobela</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313327-4794c608d4-3/MathieuTanguyPerpignan.jpg" class="card-img-top" alt="Mathieu Tanguy" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mathieu Tanguy</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300982-618ad1aa33-3/AfusipaFahaIvaluTaumoepeauPerpignan.jpg" class="card-img-top" alt="Afusipa Taumoepeau" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Afusipa Taumoepeau</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312057-3302c00c3b-3/GiorgiTetrashviliPerpignan.jpg" class="card-img-top" alt="Giorgi Tetrashvili" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Giorgi Tetrashvili</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312045-4c113c82f8-3/PosoloTuilagiPerpignan.jpg" class="card-img-top" alt="Posolo Tuilagi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Posolo Tuilagi</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311906-e27b4b1432-3/MathieuUgenaPerpignan.jpg" class="card-img-top" alt="Mathieu Ugena" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mathieu Ugena</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/265596-82285e0357-3/EmmanuelVaitulukinaPerpignan.jpg" class="card-img-top" alt="Emmanuel Vaitulukina" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Emmanuel Vaitulukina</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313329-ef0e97e907-3/JacovanTonderPerpignan.jpg" class="card-img-top" alt="Jaco van Tonder" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jaco van Tonder</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312048-bf86c12996-3/LucasVelartePerpignan.jpg" class="card-img-top" alt="Lucas Velarte" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lucas Velarte</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312063-af09a5aa13-3/TaviteVeredamuPerpignan.jpg" class="card-img-top" alt="Tavite Veredamu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tavite Veredamu</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/app/public/images/entities/290878-31aab93c7b-3/LennyViolarugbyplayer.jpg" class="card-img-top" alt="Lenny Viola" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lenny Viola</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/265598-33929c539d-3/BraydenWiliamePerpignan.jpg" class="card-img-top" alt="Brayden Wiliame" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Brayden Wiliame</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Early Years</h2>
+                <p>Established in 1902 as AS Perpignan, the club's early successes culminated in the tragic loss of 19-year-old fly-half Aimé Giral during World War I. To honor Giral, the team adopted the colors of a Poilu uniform and named their stadium after him. The 1920s witnessed Perpignan's dominance, with multiple Championship victories.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Mid-Century Triumphs</h2>
+                <p>Perpignan continued its success in the late 1930s, securing Championships and Challenge Yves du Manoir titles. The post-war era brought another Championship in 1944 and subsequent victories in 1955. The club maintained its prowess, winning the Challenge Yves du Manoir in 1965 and reaching the 1977 Championship final.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Professional Era</h2>
+                  <p>Entering the professional era, Perpignan faced challenges but remained a formidable force. In 2003, they reached the European final, and in 2009, they clinched the Top 14 Championship. The club's commitment to excellence was evident in signings like All Blacks fly-half Dan Carter.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Recent Achievements</h2>
+                  <p>Despite a brief stint with FC Barcelona and twinning agreements, Perpignan's focus remained on rugby glory. In 2010, they reached the Top 14 final again, showcasing their resilience. The club's legacy and commitment to success continue to resonate in the world of French rugby.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

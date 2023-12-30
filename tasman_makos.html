@@ -1,0 +1,1516 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .cont:nth-child(14){
+          animation-delay: 13s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #tasmanKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #tasmanKitSection {
+          display: none;
+        }
+
+        #tasmanKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #tasmanKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #tasmanKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #tasmanKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #tasmanKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #tasmanKitSection {
+          display: flex;
+        }
+
+        #tasmanKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #tasmanKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Tasman Makos</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/tasmanbanner.png" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About Tasman Makos</h3>
+    <p>The Tasman Makos, a formidable New Zealand rugby union team, call the picturesque Tasman region home. Established as a union in recent times, the Makos have swiftly carved a niche for themselves in the rugby landscape. Donning the colors of green, black, and gold, the team competes with zeal in the National Provincial Championship. The Makos' prowess is not only a testament to their on-field skills but also reflects the rugby passion that resonates in the Tasman community. Affiliated with the Crusaders Super Rugby franchise, the Tasman Makos embody the spirit of excellence and unity in New Zealand rugby.
+
+    </p>
+  
+    
+
+      <div id="tasmanKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Tasman Makos Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/tasmanhome.png" alt="Tasman Makos Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/tasmanaway.png" alt="Tasman Makos Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="tasmanKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Tasman Makos Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/tasmanhome.png" alt="Tasman Makos Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/tasmanaway.png" alt="Tasman Makos Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298143-585b288522-3/TomasiAlosioTasmanMako.jpg" class="card-img-top" alt="Tomasi Alosio" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tomasi Alosio</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/283739-2c2530694e-3/FletcherAndersonrugbyplayer.jpg" class="card-img-top" alt="Fletcher Anderson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Fletcher Anderson</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298145-d4f211e15e-3/LeviAumuaTasmanMako.jpg" class="card-img-top" alt="Levi Aumua" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Levi Aumua</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282277-e4b1c11982-3/SetalekiBakerTasmanMako.jpg" class="card-img-top" alt="Setaleki Baker" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Setaleki Baker</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282275-cf94d534c6-3/NetaniBaleisomosomoTasmanMako.jpg" class="card-img-top" alt="Netani Baleisomosomo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Netani Baleisomosomo</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298086-cb4326831d-3/EthanBlackadderTasmanMako.jpg" class="card-img-top" alt="Ethan Blackadder" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ethan Blackadder</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298116-afc91b969d-3/LouieChapmanTasmanMako.jpg" class="card-img-top" alt="Louie Chapman" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Louie Chapman</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298071-2ed1f6af9a-3/FinlayChristieTasmanMako.jpg" class="card-img-top" alt="Finlay Christie" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Finlay Christie</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/100924-b7f9f9dd5a-3/ShaneChristieTasmanMakos.jpg" class="card-img-top" alt="Shane Christie" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Shane Christie</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298118-538ad86310-3/TeAhiwaruCirikidavetaTasmanMako.jpg" class="card-img-top" alt="Te Ahiwaru Cirikidaveta" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Te Ahiwaru Cirikidaveta</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298152-ea2c286ca6-3/GrayCorneliusTasmanMako.jpg" class="card-img-top" alt="Gray Cornelius" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gray Cornelius</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282269-8f26ff223d-3/CalebCoventryTasmanMako.jpg" class="card-img-top" alt="Caleb Coventry" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Caleb Coventry</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305098-1a5e229bac-3/RyanCoxonTasmanMako.jpg" class="card-img-top" alt="Ryan Coxon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ryan Coxon</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/220997-0a39d96e8f-3/MichaelCurryTasmanMako.jpg" class="card-img-top" alt="Michael Curry" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Michael Curry</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298122-b4359d3741-3/LeicesterFaingaanukuTasmanMako.jpg" class="card-img-top" alt="Leicester Fainga'anuku" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Leicester Fainga'anuku</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282267-44d5b86dde-3/AngusFletcherTasmanMako.jpg" class="card-img-top" alt="Angus Fletcher" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Angus Fletcher</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298155-d2d875f6b4-3/NoahFosterTasmanMako.jpg" class="card-img-top" alt="Noah Foster" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Noah Foster</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282271-d16b0f9c71-3/JackGreyTasmanMako.jpg" class="card-img-top" alt="Jack Grey" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jack Grey</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305093-60f084e3ea-3/WillGualterTasmanMako.jpg" class="card-img-top" alt="Will Gualter" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Will Gualter</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282280-eb246fccce-3/ZacHarrison-JonesTasmanMako.jpg" class="card-img-top" alt="Zac Harrison - Jones" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Zac Harrison - Jones</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298081-9b03361f37-3/DavidHaviliTasmanMako.jpg" class="card-img-top" alt="David Havili" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">David Havili</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298124-b2017d538e-3/SioneHaviliTasmanMako.jpg" class="card-img-top" alt="Sione Havili-Talitui" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sione Havili-Talitui</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298097-866dd04ab7-3/MaxHicksTasmanMako.jpg" class="card-img-top" alt="Max Hicks" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Max Hicks</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309831-85830ffdac-3/ColmHoganTasmanMako.jpg" class="card-img-top" alt="Colm Hogan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Colm Hogan</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305097-de89b7fa57-3/NoahHothamTasmanMako.jpg" class="card-img-top" alt="Noah Hotham" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Noah Hotham</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298126-cc9ab21183-3/MitchellHuntTasmanMako.jpg" class="card-img-top" alt="Mitchell Hunt" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mitchell Hunt</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298077-2cd547ded6-3/LucaInchTasmanMako.jpg" class="card-img-top" alt="Luca Inch" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Luca Inch</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298128-1d7a6da240-3/WillJordanTasmanMako.jpg" class="card-img-top" alt="Will Jordan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Will Jordan</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305095-98fb85a9fd-3/FeletiKaituuTasmanMako.jpg" class="card-img-top" alt="Feleti Kaitu'u" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Feleti Kaitu'u</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282278-7745aada2e-3/PatelesioLatuTasmanMako.jpg" class="card-img-top" alt="Patelesio Latu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Patelesio Latu</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308949-2a22faeb0d-3/HLeppienTasmanMako.jpg" class="card-img-top" alt="H Leppien" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">H Leppien</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298130-5316c89dec-3/TyrelLomaxTasmanMako.jpg" class="card-img-top" alt="Tyrel Lomax" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tyrel Lomax</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282273-fea22f9084-3/MasonLundTasmanMako.jpg" class="card-img-top" alt="Mason Lund" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mason Lund</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298090-f4a146ffd7-3/QuentinMacDonaldTasmanMako.jpg" class="card-img-top" alt="Quentin MacDonald" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Quentin MacDonald</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/265060-b485b6e0cc-3/TomMarshallTasmanMako.jpg" class="card-img-top" alt="Tom Marshall" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Marshall</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298068-aa4196e0fe-3/SamMatengaTasmanMako.jpg" class="card-img-top" alt="Sam Matenga" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sam Matenga</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282262-4e73ec1c83-3/LeopinoMaupeseTasmanMako.jpg" class="card-img-top" alt="Leopino Maupese" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Leopino Maupese</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306692-03a9bf3014-3/ShunMiyakeTasmanMako.jpg" class="card-img-top" alt="Shun Miyake" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Shun Miyake</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298095-d2cb884051-3/AtunaisaMoliTasmanMako.jpg" class="card-img-top" alt="Atunaisa Moli" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Atunaisa Moli</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298134-48c4d31e0c-3/AlexNankivellTasmanMako.jpg" class="card-img-top" alt="Alex Nankivell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alex Nankivell</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282279-628d54e85a-3/VilliamiNapaaTasmanMako.jpg" class="card-img-top" alt="Villiami Napa'a" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Villiami Napa'a</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298093-588b8d59e2-3/MahonriNgakuruTasmanMako.jpg" class="card-img-top" alt="Mahonri Ngakuru" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mahonri Ngakuru</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/247584-95e0e64063-3/TimOMalleyTasmanMako.jpg" class="card-img-top" alt="Tim O'Malley" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tim O'Malley</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298136-9084070ee3-3/FetuliPaeaTasmanMako.jpg" class="card-img-top" alt="Fetuli Paea" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Fetuli Paea</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305094-afd65c33cb-3/PariPariParkinsonTasmanMako.jpg" class="card-img-top" alt="Pari Pari Parkinson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Pari Pari Parkinson</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298065-0759174405-3/SevuReeceTasmanMako.jpg" class="card-img-top" alt="Sevu Reece" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sevu Reece</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298088-5d91c96661-3/HughRentonTasmanMako.jpg" class="card-img-top" alt="Hugh Renton" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Hugh Renton</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282264-86846cd435-3/TaineRobinsonTasmanMako.jpg" class="card-img-top" alt="Taine Robinson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Taine Robinson</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305096-5833c319f8-3/TimSailTasmanMako.jpg" class="card-img-top" alt="Tim Sail" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tim Sail</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298066-46691ba64e-3/AntonSegnerTasmanMako.jpg" class="card-img-top" alt="Anton Segner" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Anton Segner</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298091-db385d5dd3-3/AntonioShalfoonTasmanMako.jpg" class="card-img-top" alt="Antonio Shalfoon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Antonio Shalfoon</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298084-213c98a11b-3/MaccaSpringerTasmanMako.jpg" class="card-img-top" alt="Macca Springer" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Macca Springer</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298148-72332b0abf-3/BradenStewartTasmanMako.jpg" class="card-img-top" alt="Braden Stewart" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Braden Stewart</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298141-e939f15002-3/QuintenStrangeTasmanMako.jpg" class="card-img-top" alt="Quinten Strange" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Quinten Strange</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298073-0180f1636f-3/KershawlSykes-MartinTasmanMako.jpg" class="card-img-top" alt="Kershawl Sykes-Martin" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kershawl Sykes-Martin</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298069-f1f59efc00-3/TimociTavatavanawaiTasmanMako.jpg" class="card-img-top" alt="Timoci Tavatavanawai" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Timoci Tavatavanawai</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282283-dc045e5baf-3/GrahamUrquhartTasmanMako.jpg" class="card-img-top" alt="Graham Urquhart" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Graham Urquhart</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282268-c8ce49c682-3/ApetoneVakaTasmanMako.jpg" class="card-img-top" alt="Apetone Vaka" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Apetone Vaka</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282276-fd35c64e58-3/NikVikenaTasmanMako.jpg" class="card-img-top" alt="Nik Vikena" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nik Vikena</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298157-9412bf3779-3/TeRangatariaWaitokiaTasmanMako.jpg" class="card-img-top" alt="Te Rangataria Waitokia" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Te Rangataria Waitokia</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/282274-8ab86d019f-3/MattGrahamWilliamsTasmanMako.jpg" class="card-img-top" alt="Matt Graham Williams" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matt Graham Williams</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Tasman Mako: Rugby Excellence in Te Tai-o-Aorere</h2>
+                <p>Founded in 2006, the Tasman Mako, formerly known as the Tasman Makos, stand as a powerhouse in New Zealand's rugby scene. Competing in the National Provincial Championship, this professional rugby union team hails from Tasman Bay / Te Tai-o-Aorere. With home games hosted at Lansdowne Park in Blenheim or Trafalgar Park in Nelson, the Mako showcase their skills in the vibrant Tasman region. Affiliated with the Crusaders Super Rugby franchise, their red and blue colors symbolize the passion and determination embedded in the Tasman Mako's rugby legacy.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Home Turf Glory: Lansdowne Park and Trafalgar Park</h2>
+                <p>Experience the thrill of rugby at its finest as the Tasman Mako dominate their home games at Lansdowne Park in Blenheim or Trafalgar Park in Nelson. These iconic venues in the Tasman region serve as the battlegrounds where the Mako unleash their prowess in the National Provincial Championship. Be part of the fervent atmosphere as the team, affiliated with the Crusaders Super Rugby franchise, defends their turf in striking red and blue, leaving an indelible mark on New Zealand's rugby legacy.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+              
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

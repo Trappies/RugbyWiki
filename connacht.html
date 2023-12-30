@@ -1,0 +1,1611 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #connachtKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #connachtKitSection {
+          display: none;
+        }
+
+        #connachtKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #connachtKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #connachtKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #connachtKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #connachtKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #connachtKitSection {
+          display: flex;
+        }
+
+        #connachtKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #connachtKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Connacht</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/connachtbanner.jpg" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About Connacht</h3>
+    <p>Connacht Rugby, based in Galway, Ireland, has forged a spirited path in the world of rugby. Established in 1885, the team competes in various leagues, with a notable presence in the United Rugby Championship and European competitions. Despite being one of the smaller provinces in Ireland, Connacht has built a reputation for resilience and a never-say-die attitude. The historic highlight came in 2016 when they clinched the Pro12 title, marking a momentous achievement for the team and its passionate fanbase. With a commitment to nurturing local talent and embracing an expansive style of play, Connacht Rugby continues to captivate audiences and contribute to the vibrant rugby culture in Ireland and beyond.
+    </p>
+  
+    
+
+      <div id="connachtKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Connacht Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/connachthome.png" alt="Connacht Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/connachtaway.png" alt="Connacht Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 18px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="connachtKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Connacht Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/connachthome.png" alt="Connacht Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/connachtaway.png" alt="Connacht Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310876-0563e0f79a-3/BundeeAkiConnachtRugby.jpg" class="card-img-top" alt="Bundee Aki" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Bundee Aki</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310877-ab2ef07197-3/JackAungierConnachtRugby.jpg" class="card-img-top" alt="Jack Aungier" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jack Aungier</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/234647-2598562042-3/MarkBalaskiConnachtRugby.jpg" class="card-img-top" alt="Mark Balaski" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mark Balaski</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310878-363bc02452-3/FinlayBealhamConnachtRugby.jpg" class="card-img-top" alt="Finlay Bealham" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Finlay Bealham</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310879-775d855241-3/CaolinBladeConnachtRugby.jpg" class="card-img-top" alt="Caolin Blade" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Caolin Blade</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310880-bd2ebf4a53-3/ShayneBoltonConnachtRugby.jpg" class="card-img-top" alt="Shayne Bolton" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Shayne Bolton</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310882-2c67d7500e-3/PaulBoyleConnachtRugby.jpg" class="card-img-top" alt="Paul Boyle" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Paul Boyle</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310883-1c2d7e77b6-3/DenisBuckleyConnachtRugby.jpg" class="card-img-top" alt="Denis Buckley" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Denis Buckley</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310885-c1db77c230-3/MatthewBurkeConnachtRugby.jpg" class="card-img-top" alt="Matthew Burke" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matthew Burke</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310886-7f91e1c89d-3/JarradButlerConnachtRugby.jpg" class="card-img-top" alt="Jarrad Butler" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jarrad Butler</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310887-5f5c68b8ef-3/JackCartyConnachtRugby.jpg" class="card-img-top" alt="Jack Carty" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jack Carty</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/217448-fd51a85745-3/PeterClaffeyConnachtRugby.jpg" class="card-img-top" alt="Peter Claffey" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Peter Claffey</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/217433-ad66eed8d7-3/JamesConnollyConnachtRugby.jpg" class="card-img-top" alt="James Connolly" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James Connolly</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310888-efcfd90e92-3/SantiagoCorderoConnachtRugby.jpg" class="card-img-top" alt="Santiago Cordero" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Santiago Cordero</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/206978-7d2b87b50d-3/CormacDalyrugbyplayer.jpg" class="card-img-top" alt="Cormac Daly" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cormac Daly</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310889-29251eb5ac-3/TomDalyConnachtRugby.jpg" class="card-img-top" alt="Tom Daly" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Daly</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310884-fdc5928913-3/EoindeBuitlarConnachtRugby.jpg" class="card-img-top" alt="Eoin de Buitléar" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Eoin de Buitléar</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/228303-a10c7f523f-3/ConorDeanConnachtRugby.jpg" class="card-img-top" alt="Conor Dean" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Conor Dean</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/221715-4ee5b6257c-3/ColmDeBuitlearConnachtRugby.jpg" class="card-img-top" alt="Colm DeBuitlear" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Colm DeBuitlear</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/272503-abecea7c5a-3/MatthewDevineConnachtRugby.jpg" class="card-img-top" alt="Matthew Devine" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matthew Devine</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310890-c36ac59001-3/PeterDooleyConnachtRugby.jpg" class="card-img-top" alt="Peter Dooley" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Peter Dooley</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310891-cf37d20cbf-3/OisinDowlingConnachtRugby.jpg" class="card-img-top" alt="Oisin Dowling" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Oisin Dowling</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310892-9c72936582-3/JordanDugganConnachtRugby.jpg" class="card-img-top" alt="Jordan Duggan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jordan Duggan</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/234643-2aec0b4b08-3/JoshuaDunneConnachtRugby.jpg" class="card-img-top" alt="Joshua Dunne" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joshua Dunne</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310893-f8639f0365-3/TomFarrellConnachtRugby.jpg" class="card-img-top" alt="Tom Farrell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Farrell</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310895-945f86b362-3/CathalFordeConnachtRugby.jpg" class="card-img-top" alt="Cathal Forde" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cathal Forde</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/217478-16ae3457a1-3/AndyFriendConnachtRugby.jpg" class="card-img-top" alt="Andy Friend" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Andy Friend</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/217379-681b16db4c-3/CillianGallagherConnachtRugby.jpg" class="card-img-top" alt="Cillian Gallagher" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cillian Gallagher</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/268834-b8670fa38b-3/HubertGilvarryrugbyplayer.jpg" class="card-img-top" alt="Hubert Gilvarry" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Hubert Gilvarry</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310896-5b2b61b1f7-3/JJHanrahanConnachtRugby.jpg" class="card-img-top" alt="JJ Hanrahan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">JJ Hanrahan</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310897-10427b781d-3/MackHansenConnachtRugby.jpg" class="card-img-top" alt="Mack Hansen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mack Hansen</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310898-f35581b1f2-3/DavidHawkshawConnachtRugby.jpg" class="card-img-top" alt="David Hawkshaw" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">David Hawkshaw</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310899-214b7cd42d-3/DaveHeffernanConnachtRugby.jpg" class="card-img-top" alt="Dave Heffernan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dave Heffernan</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310900-bbf5076637-3/ShamusHurley-LangtonConnachtRugby.jpg" class="card-img-top" alt="Shamus Hurley-Langton" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Shamus Hurley-Langton</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310901-a131119165-3/SamIlloConnachtRugby.jpg" class="card-img-top" alt="Sam Illo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sam Illo</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310903-8808597db0-3/SeanJansenConnachtRugby.jpg" class="card-img-top" alt="Sean Jansen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sean Jansen</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310904-17dfa98b2c-3/ShaneJenningsConnachtRugby.jpg" class="card-img-top" alt="Shane Jennings" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Shane Jennings</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310905-8345d1a906-3/JoeJoyceConnachtRugby.jpg" class="card-img-top" alt="Joe Joyce" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joe Joyce</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310906-5570685549-3/DiarmuidKilgallenConnachtRugby.jpg" class="card-img-top" alt="Diarmuid Kilgallen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Diarmuid Kilgallen</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/239882-584bb8d23e-3/PaddyMcAllisterConnachtRugby.jpg" class="card-img-top" alt="Paddy McAllister" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Paddy McAllister</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310907-bd562463c3-3/OisinMcCormackConnachtRugby.jpg" class="card-img-top" alt="Oisin McCormack" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Oisin McCormack</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310908-01d193ae76-3/MichaelMcDonaldConnachtRugby.jpg" class="card-img-top" alt="Michael McDonald" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Michael McDonald</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310909-e402688017-3/TadghMcElroyConnachtRugby.jpg" class="card-img-top" alt="Tadgh McElroy" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tadgh McElroy</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310910-57c67372cb-3/LiamMcNamaraConnachtRugby.jpg" class="card-img-top" alt="Liam McNamara" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Liam McNamara</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310911-f0fa041de7-3/OranMcNultyConnachtRugby.jpg" class="card-img-top" alt="Oran McNulty" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Oran McNulty</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302117-953b2a338a-3/DeclanMooreConnachtRugby.jpg" class="card-img-top" alt="Declan Moore" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Declan Moore</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310933-5a0b10d0ea-3/JohnMuldoonConnachtRugby.jpg" class="card-img-top" alt="John Muldoon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">John Muldoon</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286162-db7b83301c-3/JoshMurphyConnachtRugby.jpg" class="card-img-top" alt="Josh Murphy" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Josh Murphy</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310913-d882a4ab86-3/NiallMurrayConnachtRugby.jpg" class="card-img-top" alt="Niall Murray" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Niall Murray</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310912-9516c37083-3/DarraghMurrayConnachtRugby.jpg" class="card-img-top" alt="Darragh Murray" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Darragh Murray</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310915-552197389e-3/SeanFOBrienConnachtRugby.jpg" class="card-img-top" alt="Sean F O'Brien" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sean F O'Brien</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/217465-cf76a7be08-3/SeanJOBrienConnachtRugby.jpg" class="card-img-top" alt="Sean Padraic O'Brien" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sean Padraic O'Brien</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310916-bd72082596-3/TiernanOHalloranConnachtRugby.jpg" class="card-img-top" alt="Tiernan O'Halloran" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tiernan O'Halloran</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310917-2c2b102b13-3/ConorOliverConnachtRugby.jpg" class="card-img-top" alt="Conor Oliver" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Conor Oliver</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310918-7dbf748433-3/JohnPorchConnachtRugby.jpg" class="card-img-top" alt="John Porch" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">John Porch</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310920-20d4b5c1f3-3/CianPrendergastConnachtRugby.jpg" class="card-img-top" alt="Cian Prendergast" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cian Prendergast</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310921-08bda6f19f-3/ByronRalstonConnachtRugby.jpg" class="card-img-top" alt="Byron Ralston" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Byron Ralston</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310922-3d798a75b7-3/ColmReillyConnachtRugby.jpg" class="card-img-top" alt="Colm Reilly" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Colm Reilly</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310923-5d7ff7955c-3/DominicRobertson-McCoyConnachtRugby.jpg" class="card-img-top" alt="Dominic Robertson-McCoy" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dominic Robertson-McCoy</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310924-4b315f1116-3/AndrewSmith.jpg" class="card-img-top" alt="Andrew Smith." style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Andrew Smith.</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286172-0256eeb945-3/GrantStewartConnachtRugby.jpg" class="card-img-top" alt="Grant Stewart" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Grant Stewart</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310925-59ad2c73e7-3/GavinThornburyConnachtRugby.jpg" class="card-img-top" alt="Gavin Thornbury" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gavin Thornbury</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310926-c7eb17df34-3/DylanTierney-MartinConnachtRugby.jpg" class="card-img-top" alt="Dylan Tierney-Martin" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dylan Tierney-Martin</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310932-4183e4dd39-3/ColmTuckerConnachtRugby.jpg" class="card-img-top" alt="Colm Tucker" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Colm Tucker</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/241598-1401e2f16f-3/CharlieWardrugbyplayer.jpg" class="card-img-top" alt="Charlie Ward" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Charlie Ward</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/217479-a6fbe51036-3/PeterWalkinsrugbyplayer.jpg" class="card-img-top" alt="Peter Wilkins" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Peter Wilkins</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310929-fd1726e589-3/PeteWilkinsConnachtRugby.jpg" class="card-img-top" alt="Pete Wilkins" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Pete Wilkins</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Foundation and Amateur Era (1885–1995)</h2>
+                <p>Connacht Rugby traces its roots back to its establishment on December 8, 1885, with the formation of the Connacht Branch of the Irish Rugby Football Union. Founded by six teams, including Ballinasloe and Castlebar, the province now boasts 25 senior clubs. Over the years, Connacht has produced notable players like Henry Anderson and Aengus McMorrow, who paved the way for Connacht representation in Ireland and beyond.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Early Professional Years (1995–2003)</h2>
+                <p>With rugby union declared an "open" game in 1995, the professional era began. Connacht participated in the inaugural Heineken Cup in the 1995–96 season and experienced success in the 1997–98 Challenge Cup, defeating English and French teams. Despite financial challenges and threats to its professional status in 2003, Connacht persevered, thanks in part to a public protest and player support.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Michael Bradley Era (2003–2010)</h2>
+                <p>Michael Bradley took the helm in 2003, navigating Connacht through financial constraints and achieving notable success in the European Challenge Cup. Despite struggles in the Celtic League, Connacht's resilience shone in cup competitions. Bradley's tenure culminated in the 2009–10 season, marked by a historic Challenge Cup run and increased fan support.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Eric Elwood as Head Coach (2010–2013)</h2>
+                <p>Following Bradley, former Connacht and Ireland fly-half Eric Elwood took charge. The team's entry into the Heineken Cup in 2011–12 heightened its popularity. Elwood's tenure saw improved performances, notably reaching the Pro12 semi-finals in 2015, and the team's first major trophy, winning the Pro12 in 2016.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Pat Lam Takes Over (2013–2017)</h2>
+                  <p>Pat Lam, a former Samoa international, succeeded Elwood. Under Lam's leadership, Connacht achieved historic success, winning the Pro12 in 2016. Despite challenges, including injuries and European restructuring, Connacht's popularity soared, and average attendance reached new heights.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+            </div>
+            <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Post-Lam Era (2017–Present)</h2>
+                  <p>Kieran Keane and later Andy Friend took charge post-Lam. Connacht continued its presence in European competitions, consistently qualifying for the Challenge Cup knockout stages. Friend's impact was evident in improved league performances, securing a third-place finish in the 2018–19 Pro14. The team reached the knockout stages of the 2021-22 Heineken Champions Cup, marking another milestone in Connacht's storied history. Friend's subsequent promotion to Director of Rugby reflects a positive trajectory for Connacht Rugby.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+            
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

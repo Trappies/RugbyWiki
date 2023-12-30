@@ -1,0 +1,1471 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #rebelsKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #rebelsKitSection {
+          display: none;
+        }
+
+        #rebelsKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #rebelsKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #rebelsKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #rebelsKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #rebelsKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #rebelsKitSection {
+          display: flex;
+        }
+
+        #rebelsKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #rebelsKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Rebels</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/rebelsbanner.jpg" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About The Rebels</h3>
+    <p>The Melbourne Rebels, established in 2010, quickly became a formidable force in Australian rugby. As the newest addition to the Super Rugby competition, the team embarked on a mission to carve its place in the rugby landscape. In their debut season, captained by Stirling Mortlock, the Rebels showcased determination despite facing the challenges typical for newcomers. Over the years, the team evolved, witnessing highs and lows, with standout performances from players like Kurtley Beale and Will Genia. The Rebels' commitment to developing Australian rugby talent and their spirited performances in Super Rugby and Super Rugby AU have solidified their presence in the sport, earning them respect and recognition as a powerhouse in the Southern Hemisphere's rugby scene.
+    </p>
+  
+    
+
+      <div id="rebelsKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Rebels Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/rebelshome.png" alt="Rebels Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/rebelsaway.png" alt="Rebels Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 14px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="rebelsKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Rebels Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/rebelshome.png" alt="Rebels Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/rebelsaway.png" alt="Rebels Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/275515-00de0d43c0-3/LachieAndersonMelbourneRebels.jpg" class="card-img-top" alt="Lachie Anderson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lachie Anderson</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313192-4bbbad62dc-3/JoshCanhamMelbourneRebels.jpg" class="card-img-top" alt="Josh Canham" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Josh Canham</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/294801-44a002a4f8-3/TimCardallMelbourneRebels.jpg" class="card-img-top" alt="Tim Cardall" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tim Cardall</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/294793-63ad205319-3/JaidenChristianMelbourneRebels.jpg" class="card-img-top" alt="Jaiden Christian" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jaiden Christian</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313218-50bc8fb44c-3/FilipoDaugunuMelbourneRebels.jpg" class="card-img-top" alt="Filipo Daugunu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Filipo Daugunu</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313215-ff85e39bd2-3/EthanDobbinsMelbourneRebels.jpg" class="card-img-top" alt="Ethan Dobbins" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ethan Dobbins</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313199-625d28d975-3/VaioliniEkuasiMelbourneRebels.jpg" class="card-img-top" alt="Vaiolini Ekuasi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Vaiolini Ekuasi</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313187-6428063b53-3/CabousEloffMelbourneRebels.jpg" class="card-img-top" alt="Cabous Eloff" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cabous Eloff</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313195-746bc56100-3/PoneFaamausiliMelbourneRebels.jpg" class="card-img-top" alt="Pone Fa’amausili" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Pone Fa’amausili</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313204-33c6e12800-3/DavidFeliuaiMelbourneRebels.jpg" class="card-img-top" alt="David Feliuai" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">David Feliuai</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/262872-adc7195b23-3/KevinFooteMelbourneRebels.jpg" class="card-img-top" alt="Kevin Foote" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kevin Foote</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/294800-e883265316-3/TheoFourieMelbourneRebels.jpg" class="card-img-top" alt="Theo Fourie" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Theo Fourie</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313194-fb64e7cb60-3/MattGibbonMelbourneRebels.jpg" class="card-img-top" alt="Matt Gibbon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matt Gibbon</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313208-66a40299f1-3/MasonGordonMelbourneRebels.jpg" class="card-img-top" alt="Mason Gordon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mason Gordon</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313201-bb9f1d2a81-3/CarterGordonMelbourneRebels.jpg" class="card-img-top" alt="Carter Gordon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Carter Gordon</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/276877-2f3b964a47-3/RichardHardwickMelbourneRebels.jpg" class="card-img-top" alt="Richard Hardwick" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Richard Hardwick</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/275356-528cc929c0-3/ReeceHodgeMelbourneRebels.jpg" class="card-img-top" alt="Reece Hodge" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Reece Hodge</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/255545-ce949474ff-3/TrevorHoseaMelbourneRebels.jpg" class="card-img-top" alt="Trevor Hosea" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Trevor Hosea</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/294805-e72ce7c204-3/ZacHoughMelbourneRebels.jpg" class="card-img-top" alt="Zac Hough" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Zac Hough</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/275400-321872593a-3/StaceyIliMelbourneRebels.jpg" class="card-img-top" alt="Stacey Ili" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Stacey Ili</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/294812-dd92d564ff-3/MontyIoaneMelbourneRebels.jpg" class="card-img-top" alt="Monty Ioane" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Monty Ioane</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/275396-a31512648d-3/TamatiIoaneMelbourneRebels.jpg" class="card-img-top" alt="Tamati Ioane" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tamati Ioane</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/275380-0d6bc35581-3/NicholasJoosteMelbourneRebels.jpg" class="card-img-top" alt="Nicholas Jooste" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nicholas Jooste</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313190-733ad039ef-3/IsaacAedoKaileaMelbourneRebels.jpg" class="card-img-top" alt="Isaac Aedo Kailea" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Isaac Aedo Kailea</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313200-bde508ee40-3/AndrewKellawayMelbourneRebels.jpg" class="card-img-top" alt="Andrew Kellaway" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Andrew Kellaway</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313193-e3604ad888-3/JoshKemenyMelbourneRebels.jpg" class="card-img-top" alt="Josh Kemeny" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Josh Kemeny</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313219-986c872d10-3/DarbyLancasterMelbourneRebels.jpg" class="card-img-top" alt="Darby Lancaster" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Darby Lancaster</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313196-08374c27a7-3/RobLeotaMelbourneRebels.jpg" class="card-img-top" alt="Rob Leota" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rob Leota</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/294815-bb5344c48b-3/RyanLouwrensMelbourneRebels.jpg" class="card-img-top" alt="Ryan Louwrens" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ryan Louwrens</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313184-96070e3368-3/AlexMafiMelbourneRebels.jpg" class="card-img-top" alt="Alex Mafi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alex Mafi</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313188-df4c83ee18-3/DanielMaiavaMelbourneRebels.jpg" class="card-img-top" alt="Daniel Maiava" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Daniel Maiava</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313207-4218b05415-3/LebronNaeaMelbourneRebels.jpg" class="card-img-top" alt="Lebron Naea" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lebron Naea</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/275479-54329b09bf-3/RayNuuMelbourneRebels.jpg" class="card-img-top" alt="Ray Nu'u" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ray Nu'u</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313222-07756877df-3/DivadPaluMelbourneRebels.jpg" class="card-img-top" alt="Divad Palu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Divad Palu</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313211-b64fc8ab27-3/GeoffParlingMelbourneRebels.jpg" class="card-img-top" alt="Geoff Parling" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Geoff Parling</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/275377-a93625e378-3/MatthewPhilipMelbourneRebels.jpg" class="card-img-top" alt="Matthew Philip" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matthew Philip</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313206-53ed22c5d1-3/JoePincusMelbourneRebels.jpg" class="card-img-top" alt="Joe Pincus" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joe Pincus</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313217-0b0b4bac4b-3/MattProctorMelbourneRebels.jpg" class="card-img-top" alt="Matt Proctor" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matt Proctor</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/241373-4647959728-3/AnaruRangiMelbourneRebels.jpg" class="card-img-top" alt="Anaru Rangi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Anaru Rangi</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/294811-35cd1d7b3f-3/LukasRipleyMelbourneRebels.jpg" class="card-img-top" alt="Lukas Ripley" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lukas Ripley</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313220-c8c4cf1291-3/LukhanSalakaia-LotoMelbourneRebels.jpg" class="card-img-top" alt="Lukhan Salakaia-Loto" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lukhan Salakaia-Loto</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313213-f6d8b12a6c-3/TimSampsonMelbourneRebels.jpg" class="card-img-top" alt="Tim Sampson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tim Sampson</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313185-d67d1f477d-3/AngeloSmithMelbourneRebels.jpg" class="card-img-top" alt="Angelo Smith" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Angelo Smith</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/275393-2a0bd8090c-3/MosesSoroviMelbourneRebels.jpg" class="card-img-top" alt="Moses Sorovi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Moses Sorovi</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313198-6717dc1060-3/TuainaTaiiTualimaMelbourneRebels.jpg" class="card-img-top" alt="Tuaina Taii Tualima" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tuaina Taii Tualima</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313197-550ce66b98-3/SamTalakaiMelbourneRebels.jpg" class="card-img-top" alt="Sam Talakai" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sam Talakai</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313216-4588806ee3-3/TanielaTupouMelbourneRebels.jpg" class="card-img-top" alt="Taniela Tupou" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Taniela Tupou</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/275389-9f32077f6f-3/JamesTuttleMelbourneRebels.jpg" class="card-img-top" alt="James Tuttle" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James Tuttle</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313191-82014c39ea-3/JordanUeleseMelbourneRebels.jpg" class="card-img-top" alt="Jordan Uelese" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jordan Uelese</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313205-6cda7f230a-3/DavidVaihuMelbourneRebels.jpg" class="card-img-top" alt="David Vaihu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">David Vaihu</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/275061-c5a060204f-3/GlenVaihuMelbourneRebels.jpg" class="card-img-top" alt="Glen Vaihu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Glen Vaihu</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/275398-94c691f6dc-3/IlikenaVudogoMelbourneRebels.jpg" class="card-img-top" alt="Ilikena Vudogo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ilikena Vudogo</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313186-906c826f6e-3/BradWilkinMelbourneRebels.jpg" class="card-img-top" alt="Brad Wilkin" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Brad Wilkin</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Inception and Ascent: Melbourne's Bid for Super Rugby Franchise</h2>
+                <p>Amidst the era of professionalism in rugby union, the restructuring of the Super 10 competition post the 1995 World Cup set the stage for the formation of SANZAR, overseeing a 12-team provincial union from Australia, New Zealand, and South Africa. Melbourne's journey began with bids for the 13th and 14th franchise in 2002, showcasing its rugby enthusiasm through successful hosting and public support. Despite setbacks, including the Western Force winning the bid, this marked Melbourne's initial foray into professional rugby.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Battle for the 15th Super Rugby License</h2>
+                <p>The desire for expansion led to the creation of an additional Super Rugby license, sparking a competitive bidding process in 2009. Victoria, backed by various consortiums, faced intricate negotiations and arbitration. Despite challenges, including financial considerations and debates over broadcasting rights, Melbourne emerged victorious, securing the 15th Super Rugby license and officially becoming the Melbourne Rebels.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Establishment and Leadership Dynamics</h2>
+                <p>The ownership license transitioned to Harold Mitchell's consortium in 2010, initiating the establishment phase of the Melbourne Rebels. Leadership witnessed multiple shifts, from coaching appointments to CEO changes, navigating challenges such as the resignation of Brian Waldron due to salary cap issues. The dynamic evolution of leadership underscored the franchise's commitment to stability and growth.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Financial Challenges and Strategic Sale in 2015</h2>
+                <p>The Rebels faced financial burdens, contributing significantly to the Australian Rugby Union's fiscal deficit in 2014. In a strategic move to alleviate financial pressures, the ARU announced the sale of the Rebels to Imperium Sports Management in June 2015. This marked a pivotal moment, signaling a shift in ownership dynamics and financial restructuring for the Melbourne Rebels.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Survival Amidst Super Rugby Restructuring (2017)</h2>
+                  <p>The threat of a reduced Super Rugby competition in 2017 put the Rebels in a precarious position, with the potential for one Australian franchise to be axed. In a bold move, CEO Andrew Cox sold the franchise back to the Victorian Rugby Union for $1, safeguarding the Rebels from potential elimination. The subsequent removal of the Western Force solidified the Rebels' survival as a Super Rugby side.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+            </div>
+            <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Legacy and Community Integration</h2>
+                  <p>The transfer of shares to the Victorian Rugby Union in 2013 marked a strategic decision to promote rugby's growth in Victoria, aligning professional and community objectives. The combined operations under new leadership, including CEO Rob Clarke, emphasized a collaborative approach. This integration highlighted the Rebels' commitment to fostering rugby at both grassroots and professional levels.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+            
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

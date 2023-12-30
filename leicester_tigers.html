@@ -1,0 +1,1715 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .cont:nth-child(14){
+          animation-delay: 13s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #leicesterKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #leicesterKitSection {
+          display: none;
+        }
+
+        #leicesterKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #leicesterKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #leicesterKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #leicesterKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #leicesterKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #leicesterKitSection {
+          display: flex;
+        }
+
+        #leicesterKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #leicesterKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Leicester Tigers</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/tigersbanner.png" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About The Leicester Tigers</h3>
+    <p>Established in 1880, the Leicester Tigers stand as one of English rugby's most illustrious institutions. Based at Welford Road Stadium, this powerhouse has earned a formidable reputation, boasting an impressive collection of silverware. With ten Premiership titles and back-to-back European Cup victories in 2001 and 2002, the Tigers have consistently been at the forefront of domestic and international success. The iconic red, green, and white jersey symbolizes their rich history, while legendary players like Martin Johnson and Neil Back have contributed to the club's legacy. The Welford Roar, echoing through the historic stadium, is a testament to the unwavering support from the passionate fan base that has witnessed the Tigers' triumphs and resilience over the years, making Leicester Tigers a true titan in the world of rugby.
+    </p>
+  
+    
+
+      <div id="leicesterKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Leicester Tigers Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/tigershome.png" alt="Leicester Tigers Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/tigersaway.png" alt="Leicester Tigers Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 18px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="leicesterKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Leicester Tigers Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/tigershome.png" alt="Leicester Tigers Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/tigersaway.png" alt="Leicester Tigers Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310427-4fc78f64d2-3/OllieAllanLeicesterTigers.jpg" class="card-img-top" alt="Ollie Allan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ollie Allan</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285666-884781342a-3/ChrisAshtonLeicesterTigers.jpg" class="card-img-top" alt="Chris Ashton" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Chris Ashton</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308729-be7afdbd3a-3/CharlieAtkinsonLeicesterTigers.jpg" class="card-img-top" alt="Charlie Atkinson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Charlie Atkinson</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309801-b830052ece-3/JoshBassettLeicesterTigers.jpg" class="card-img-top" alt="Josh Bassett" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Josh Bassett</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/noimage/webPlayer.png" class="card-img-top" alt="Charlie Briers" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Charlie Briers</h5>
+            <p class="card-text">Number 21</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270959-3f4d44054e-3/CyleBrinkLeicesterTigers.jpg" class="card-img-top" alt="Cyle Brink" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cyle Brink</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310774-7cc1d0f12c-3/MikeBrownLeicesterTigers.jpg" class="card-img-top" alt="Mike Brown" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mike Brown</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/252298-95322133ea-3/JosephBrowningLeicesterTigers.jpg" class="card-img-top" alt="Joseph Browning" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joseph Browning</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/287515-7735dee4c0-3/FreddieBurnsLeicesterTigers.jpg" class="card-img-top" alt="Freddie Burns" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Freddie Burns</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296355-9c4a21d756-3/RobCarmichaelrugbyplayer.jpg" class="card-img-top" alt="Rob Carmichael" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rob Carmichael</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308722-6d90a8b2d6-3/FinnCarnduffLeicesterTigers.jpg" class="card-img-top" alt="Finn Carnduff" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Finn Carnduff</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308726-8513a3e01d-3/SamCarterLeicesterTigers.jpg" class="card-img-top" alt="Sam Carter" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sam Carter</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270933-19e8b6f106-3/OllieChessumLeicesterTigers.jpg" class="card-img-top" alt="Ollie Chessum" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ollie Chessum</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270945-1b2f53446d-3/LewisChessumLeicesterTigers.jpg" class="card-img-top" alt="Lewis Chessum" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lewis Chessum</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/287507-df0a623e54-3/CharlieClareLeicesterTigers.jpg" class="card-img-top" alt="Charlie Clare" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Charlie Clare</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310421-a9333d0e1d-3/RichardCliftLeicesterTigers.jpg" class="card-img-top" alt="Richard Clift" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Richard Clift</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/287505-b139cf4c94-3/PhilCokanasigaLeicesterTigers.jpg" class="card-img-top" alt="Phil Cokanasiga" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Phil Cokanasiga</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270955-c35c19dabc-3/DanColeLeicesterTigers.jpg" class="card-img-top" alt="Dan Cole" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dan Cole</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/287159-38393f257f-3/OllyCracknellLeicesterTigers.jpg" class="card-img-top" alt="Olly Cracknell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Olly Cracknell</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310425-cfb10de7e3-3/OllieCraneLeicesterTigers.jpg" class="card-img-top" alt="Ollie Crane" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ollie Crane</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285665-af32e4ad31-3/JamesCroninLeicesterTigers.jpg" class="card-img-top" alt="James Cronin" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James Cronin</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270973-d839e1ae4c-3/JacobCusickLeicesterTigers.jpg" class="card-img-top" alt="Jacob Cusick" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jacob Cusick</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/252304-95a3c1dd19-3/BrettDeaconLeicesterTigers.jpg" class="card-img-top" alt="Brett Deacon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Brett Deacon</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270954-1e21c11cb5-3/NicDollyLeicesterTigers.jpg" class="card-img-top" alt="Nic Dolly" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nic Dolly</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/252314-ce6b13a3db-3/SamEdwardsLeicesterTigers.jpg" class="card-img-top" alt="Sam Edwards" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sam Edwards</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/252371-c1fe2e59c2-3/MikeFordLeicesterTigers.jpg" class="card-img-top" alt="Mike Ford" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mike Ford</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/271913-dcfe857f55-3/EllisGengeLeicesterTigers.jpg" class="card-img-top" alt="Ellis Genge" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ellis Genge</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309446-5326437dd9-3/ElliotGourlayLeicesterTigers.jpg" class="card-img-top" alt="Elliot Gourlay" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Elliot Gourlay</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308724-5137ce1cd8-3/OllieHassell-CollinsLeicesterTigers.jpg" class="card-img-top" alt="Ollie Hassell-Collins" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ollie Hassell-Collins</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308721-1677c5e74b-3/KyleHatherellLeicesterTigers.jpg" class="card-img-top" alt="Kyle Hatherell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kyle Hatherell</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270929-1d6850d233-3/CameronHendersonLeicesterTigers.jpg" class="card-img-top" alt="Cameron Henderson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cameron Henderson</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/287509-fc024c47e9-3/JoeHeyesLeicesterTigers.jpg" class="card-img-top" alt="Joe Heyes" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joe Heyes</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270963-7f917d1ae1-3/WillHurdLeicesterTigers.jpg" class="card-img-top" alt="Will Hurd" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Will Hurd</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270961-b65101daca-3/EmekaIlioneLeicesterTigers.jpg" class="card-img-top" alt="Emeka Ilione" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Emeka Ilione</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302190-d84a8f9ccd-3/SolomoneKataLeicesterTigers.jpg" class="card-img-top" alt="Solomone Kata" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Solomone Kata</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270991-616c8bc897-3/DanKelly.jpg" class="card-img-top" alt="Dan Kelly." style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dan Kelly.</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310426-94d2bf16e8-3/SimonKoroiyadiLeicesterTigers.jpg" class="card-img-top" alt="Simon Koroiyadi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Simon Koroiyadi</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/287513-159e79a2ba-3/HanroLiebenbergLeicesterTigers.jpg" class="card-img-top" alt="Hanro Liebenberg" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Hanro Liebenberg</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270965-f5fc2d617e-3/TomManzLeicesterTigers.jpg" class="card-img-top" alt="Tom Manz" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Manz</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308727-a74cb2d523-3/JoshManzLeicesterTigers.jpg" class="card-img-top" alt="Josh Manz" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Josh Manz</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270924-cf7137400f-3/GeorgeMartinLeicesterTigers.jpg" class="card-img-top" alt="George Martin" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">George Martin</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309618-2a79d007d8-3/DanMcKellarLeicesterTigers.jpg" class="card-img-top" alt="Dan McKellar" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dan McKellar</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310430-a8b1b0ebed-3/MorganMeredithLeicesterTigers.jpg" class="card-img-top" alt="Morgan Meredith" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Morgan Meredith</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310424-1e881d0a21-3/CameronMiellLeicesterTigers.jpg" class="card-img-top" alt="Cameron Miell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cameron Miell</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/271912-f5695db77d-3/JulianMontoyaLeicesterTigers.jpg" class="card-img-top" alt="Julian Montoya" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Julian Montoya</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310429-2fcca4f027-3/CharlieMyallLeicesterTigers.jpg" class="card-img-top" alt="Charlie Myall" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Charlie Myall</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292409-90434b7d2a-3/HandrePollardLeicesterTigers.jpg" class="card-img-top" alt="Handre Pollard" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Handre Pollard</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270937-a111ca558d-3/GuyPorterLeicesterTigers.jpg" class="card-img-top" alt="Guy Porter" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Guy Porter</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308728-19af454a48-3/JoePowellLeicesterTigers.jpg" class="card-img-top" alt="Joe Powell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joe Powell</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/287093-b754437b3d-3/MarcusRamageLeicesterTigers.jpg" class="card-img-top" alt="Marcus Ramage" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marcus Ramage</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/287512-e9cdb67c11-3/TommyReffellLeicesterTigers.jpg" class="card-img-top" alt="Tommy Reffell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tommy Reffell</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270978-2a7dbf7a0a-3/DanRichardsonLeicesterTigers.jpg" class="card-img-top" alt="Dan Richardson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dan Richardson</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/209957-8b1efb8208-3/OllyRobinsonrugbyplayer.jpg" class="card-img-top" alt="Olly Robinson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Olly Robinson</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309444-f88d0bc639-3/MattRogersonLeicesterTigers.jpg" class="card-img-top" alt="Matt Rogerson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matt Rogerson</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285667-23fe7e8fd8-3/MattScottLeicesterTigers.jpg" class="card-img-top" alt="Matt Scott" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matt Scott</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308725-92d818604b-3/JamieShillcockLeicesterTigers.jpg" class="card-img-top" alt="Jamie Shillcock" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jamie Shillcock</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/252357-28e5f87843-3/HarrySimmonsLeicesterTigers.jpg" class="card-img-top" alt="Harry Simmons" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Harry Simmons</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/287517-eb5edc961b-3/FreddieStewardLeicesterTigers.jpg" class="card-img-top" alt="Freddie Steward" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Freddie Steward</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302193-38248226e1-3/FinnTheobald-ThomasLeicesterTigers.jpg" class="card-img-top" alt="Finn Theobald-Thomas" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Finn Theobald-Thomas</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310420-409ad7d240-3/ArchievanderFlierLeicesterTigers.jpg" class="card-img-top" alt="Archie van der Flier" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Archie van der Flier</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270927-de2df7765c-3/JackvanPoortvlietLeicesterTigers.jpg" class="card-img-top" alt="Jack van Poortvliet" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jack van Poortvliet</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270983-e002ee986b-3/FrancoisvanWykLeicesterTigers.jpg" class="card-img-top" alt="Francois van Wyk" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Francois van Wyk</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/252312-4792356cce-3/ArchieVanesLeicesterTigers.jpg" class="card-img-top" alt="Archie Vanes" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Archie Vanes</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270915-bbf571d0b6-3/AledWaltersLeicesterTigers.jpg" class="card-img-top" alt="Aled Walters" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Aled Walters</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/287504-bb9271aefb-3/AnthonyWatsonLeicesterTigers.jpg" class="card-img-top" alt="Anthony Watson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Anthony Watson</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/287510-f3d726a9f7-3/HarryWellsLeicesterTigers.jpg" class="card-img-top" alt="Harry Wells" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Harry Wells</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270943-2e6abc5325-3/JamesWhitcombeLeicesterTigers.jpg" class="card-img-top" alt="James Whitcombe" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James Whitcombe</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310773-c5e374f509-3/TomWhiteleyLeicesterTigers.jpg" class="card-img-top" alt="Tom Whiteley" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Whiteley</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/252237-caf206a62f-3/JasperWieseLeicesterTigers.jpg" class="card-img-top" alt="Jasper Wiese" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jasper Wiese</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308723-ea82008ed9-3/KieranWilkinsonLeicesterTigers.jpg" class="card-img-top" alt="Kieran Wilkinson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kieran Wilkinson</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/197679-4465730c98-3/MikeWilliamsLeicesterTigers.jpg" class="card-img-top" alt="Mike Williams" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mike Williams</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309445-3fe7228131-3/JosephWoodwardLeicesterTigers.jpg" class="card-img-top" alt="Joseph Woodward" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joseph Woodward</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310423-b8c8ce6655-3/BenWoolettLeicesterTigers.jpg" class="card-img-top" alt="Ben Woolett" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben Woolett</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/287514-6d1631d9f2-3/BenYoungsLeicesterTigers.jpg" class="card-img-top" alt="Ben Youngs" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben Youngs</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Foundation and Tom Crumbie Era (1880–1928): Building the Legacy</h2>
+                <p>Leicester Football Club, born from the merger of three smaller teams in 1880, embarked on a journey marked by innovation and triumph. Under the 33-year secretaryship of Tom Crumbie starting in 1895, the club rose to national prominence by disbanding reserve teams and clinching their first silverware, the Midlands Counties Cup, in 1898. Leicester's status as a premier club solidified with notable fixtures like facing The Original All Blacks in 1905 and hosting the Invincible All Blacks in 1924. The club weathered challenges during the Lions captains' era, witnessing Doug Prentice's leadership and Bernard Gadney's contributions. Despite a challenging period in 1936-37, the club's resilience set the stage for a record attendance of 35,000 against the Invincible All Blacks.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Lions Captains, Decline, and Club Restructure (1928–1971): Navigating Challenges</h2>
+                <p>The era from 1928 to 1971 saw Leicester Tigers navigating highs and lows. Club captain Doug Prentice's leadership during the 1930 British Lions tour and Bernard Gadney's role as the first home-produced England captain in 1934 marked significant milestones. The first BBC radio broadcast of a Tigers game in 1930 and the introduction of regional "Merit Tables" in 1976-77 showcased the evolving landscape. The club's transition to a more traditional membership-based approach in the 1956/57 season and the coaching tenure of Chalkie White in 1968 reflected the club's adaptability. Despite challenges in the late '60s, the club laid the groundwork for future successes.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Introduction of Competitions (1971–1978): Pioneering Changes</h2>
+                <p>The 1971/72 season brought pivotal changes with the introduction of a national Knockout Cup competition and Tigers' first "Youth" XV. Leicester's journey in the Cup, regional "Merit Tables," and reaching the Twickenham final in 1977-78 highlighted their competitive spirit. The expansion of competitions set the stage for increased popularity, with the attendance at the 1977-78 final more than doubling the previous season. This period also witnessed Leicester's membership doubling from 750 in 1978 to 2,000 by the end of 1979, signaling a growing fan base.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Centenary and Cup and League Success (1979–1988): Triumphs and Celebrations</h2>
+                  <p>The late '70s and '80s marked a golden period for Leicester Tigers. Securing their first national trophy, the 1978–79 John Player Cup, set the tone for subsequent successes. Retaining the cup in 1979–80 and winning the Midlands Merit Table showcased their dominance. The centenary celebrations in 1980, including a tour to Australia and Fiji, reflected the club's stature. Tigers' Dusty Hare breaking the world record for points scored in 1981 and retaining the cup in 1980–81 underlined individual and team accomplishments.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Professional and European Success (1993–2003): A Decade of Dominance</h2>
+                  <p>The transition to professionalism from 1993 to 2002 marked a remarkable era for Leicester Tigers. Their nine trophies in ten years, starting with the 1993 Pilkington Cup, showcased consistent excellence. Under Director of Rugby Dean Richards and subsequent coaches, Tigers secured four consecutive Premiership titles from 1999 to 2002 and back-to-back Heineken Cups in 2001 and 2002. The club's dominance at home, going 57 games unbeaten from 1997 to 2002, solidified their status as a rugby powerhouse.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont right-containter">
+                  <img src="img/rugbyicon.png">
+                  <div class="text-box">
+                    <h2>Premiership Success (2004–2013): Resilience and Renewed Triumphs</h2>
+                    <p>The period from 2004 to 2013 saw Leicester Tigers navigating challenges and reclaiming success. Pat Howard, Marcelo Loffreda, and Richard Cockerill's coaching stints showcased the club's adaptability. Premiership titles in 2009 and 2010, coupled with domestic league and cup doubles, highlighted their resilience. Despite European Cup final losses, Tigers' consistent presence in playoffs showcased their competitive edge. The 2013 triumph, winning their 10th English title, marked a record-extending achievement, solidifying their standing in Premiership history.
+
+                    </p>
+                    <span class="right-container-arrow"></span>
+                  </div>
+                </div>
+                <div class="cont left-containter">
+                    <img src="img/rugbyicon.png">
+                    <div class="text-box">
+                      <h2>Championship Drought (2013–2020): Transition and Challenges</h2>
+                      <p>The post-2013 era brought challenges for Leicester Tigers. Despite reaching Premiership finals in 2011 and 2012, the club faced setbacks, including a change in coaching staff. The departure of key players, shifts in leadership, and missing playoffs in 2018 signaled a transitional phase. The 2019-20 season, impacted by the COVID-19 pandemic, saw financial strains and player departures. Geordan Murphy's departure in 2020 marked the end of an era.
+
+                      </p>
+                      <span class="left-container-arrow"></span>
+                    </div>
+                  </div>
+                  <div class="cont right-containter">
+                      <img src="img/rugbyicon.png">
+                      <div class="text-box">
+                        <h2>Borthwick in Charge (2020–2022): Rebuilding and Triumphs</h2>
+                        <p>With Steve Borthwick taking the helm, Leicester Tigers entered a new phase. The 2020-21 season saw a resurgence, reaching the European Rugby Challenge Cup final and securing Champions Cup rugby. The subsequent season showcased a strong start, breaking records and securing a home play-off semi-final. A dramatic win in the Premiership final against Saracens, securing their 11th English title, marked a remarkable turnaround. Borthwick's leadership brought renewed optimism, and Leicester Tigers emerged as a force to be reckoned with.
+
+                        </p>
+                        <span class="right-container-arrow"></span>
+                      </div>
+                    </div>
+                    <div class="cont left-containter">
+                        <img src="img/rugbyicon.png">
+                        <div class="text-box">
+                          <h2>Speculations and Transitions (2022–Present): Future Paths</h2>
+                          <p>As speculations surround Steve Borthwick's potential role as England head coach, Leicester Tigers navigate uncertainties. The 2022-23 season showcased promise with a strong start and notable achievements in domestic and European competitions. With coaching transitions and the potential departure of key players, the club faces challenges and opportunities. The rich history and resilience of Leicester Tigers position them as a dynamic force in the ever-evolving landscape of rugby. The future unfolds with anticipation, as the club continues its legacy in the world of rugby.
+                            
+                          </p>
+                          <span class="left-container-arrow"></span>
+                        </div>
+                      </div>
+              
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

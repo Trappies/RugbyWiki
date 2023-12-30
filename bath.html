@@ -1,0 +1,1522 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #bathKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #bathKitSection {
+          display: none;
+        }
+
+        #bathKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #bathKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #bathKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #bathKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #bathKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #bathKitSection {
+          display: flex;
+        }
+
+        #bathKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #bathKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Bath</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/bathbanner.jpg" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About Bath</h3>
+    <p>The Bordeaux Beagles rugby team is a formidable presence in the French rugby scene, renowned for their skill, determination, and passionate fanbase. Based in the vibrant city of Bordeaux, the team competes in top-tier competitions, showcasing their prowess on the field. Known for their distinctive blend of attacking flair and solid defense, the Beagles have left an indelible mark in French rugby history. The team's colors, a nod to Bordeaux's rich wine heritage, adorn the players as they navigate the challenges of domestic and international competitions. With a commitment to excellence and a roster of talented players, the Bordeaux Beagles continue to be a force to be reckoned with, contributing to the dynamic and competitive landscape of French rugby. 
+    </p>
+  
+    
+
+      <div id="bathKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Bath Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/bathhome.png" alt="Bath Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/bathaway.png" alt="Bath Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 18px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="bathKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Bath Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/bathhome.png" alt="Bath Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/bathaway.png" alt="Bath Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285069-5cd70ac670-3/NiallAnnettBathRugby.jpg" class="card-img-top" alt="Niall Annett" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Niall Annett</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284623-b1333d62be-3/OrlandoBaileyBathRugby.jpg" class="card-img-top" alt="Orlando Bailey" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Orlando Bailey</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304547-99610980a3-3/AlfieBarbearyBathRugby.jpg" class="card-img-top" alt="Alfie Barbeary" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alfie Barbeary</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284608-b6bd78a28b-3/JoshBaylissBathRugby.jpg" class="card-img-top" alt="Josh Bayliss" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Josh Bayliss</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304561-dd41bab2b3-3/LeeBlackettBathRugby.jpg" class="card-img-top" alt="Lee Blackett" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lee Blackett</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304562-528fcc0a5f-3/RichardBlazeBathRugby.jpg" class="card-img-top" alt="Richard Blaze" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Richard Blaze</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284598-84628d2e97-3/WillButtBathRugby.jpg" class="card-img-top" alt="Will Butt" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Will Butt</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304563-f32f0084e7-3/JonCallardBathRugby.jpg" class="card-img-top" alt="Jon Callard" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jon Callard</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285529-6beb6cc3d8-3/TomCarr-SmithBathRugby.jpg" class="card-img-top" alt="Tom Carr-Smith" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Carr-Smith</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285546-70762e54be-3/NathanCattBathRugby.jpg" class="card-img-top" alt="Nathan Catt" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nathan Catt</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284620-e5170bbc74-3/ChrisCloeteBathRugby.jpg" class="card-img-top" alt="Chris Cloete" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Chris Cloete</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284634-3474c846d5-3/JacoCoetzeeBathRugby.jpg" class="card-img-top" alt="Jaco Coetzee" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jaco Coetzee</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284628-df17b45672-3/JoeCokanasigaBathRugby.jpg" class="card-img-top" alt="Joe Cokanasiga" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joe Cokanasiga</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284603-acdcc38653-3/ArthurCordwellBathRugby.jpg" class="card-img-top" alt="Arthur Cordwell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Arthur Cordwell</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304555-42df0a832e-3/IeuanDaviesBathRugby.jpg" class="card-img-top" alt="Ieuan Davies" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ieuan Davies</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285079-794b81ecaa-3/TomdeGlanvilleBathRugby.jpg" class="card-img-top" alt="Tom de Glanville" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom de Glanville</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309802-765af7d471-3/ThomasduToitBathRugby.jpg" class="card-img-top" alt="Thomas du Toit" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Thomas du Toit</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285073-91e660d9ef-3/TomDunnBathRugby.jpg" class="card-img-top" alt="Tom Dunn" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Dunn</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285547-86092ef0f8-3/CharlieEwelsBathRugby.jpg" class="card-img-top" alt="Charlie Ewels" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Charlie Ewels</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/273715-c3a65d2468-3/EpalahameFaivarugbyplayer.jpg" class="card-img-top" alt="Epalahame Faiva" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Epalahame Faiva</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304564-ce3adb7924-3/JPFerreiraBathRugby.jpg" class="card-img-top" alt="JP Ferreira" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">JP Ferreira</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285055-de8f8b12ba-3/PiersFrancisBathRugby.jpg" class="card-img-top" alt="Piers Francis" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Piers Francis</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285050-28c0e77adc-3/MattGallagherBathRugby.jpg" class="card-img-top" alt="Matt Gallagher" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matt Gallagher</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284616-f2b63190d7-3/GabeGossBathRugby.jpg" class="card-img-top" alt="Gabe Goss" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gabe Goss</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304531-a29e78dbd9-3/ArchieGriffinBathRugby.jpg" class="card-img-top" alt="Archie Griffin" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Archie Griffin</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285475-0ad903c498-3/SamHarrisBathRugby.jpg" class="card-img-top" alt="Sam Harris" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sam Harris</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285490-9329aff29a-3/LouieHennesseyBathRugby.jpg" class="card-img-top" alt="Louie Hennessey" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Louie Hennessey</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/292432-95decb4f90-3/TedHillBathRugby.jpg" class="card-img-top" alt="Ted Hill" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ted Hill</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285166-7664300c0b-3/JohannesJonkerBathRugby.jpg" class="card-img-top" alt="Johannes Jonker" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Johannes Jonker</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/291537-77e7a056e7-3/OllieLawrenceBathRugby.jpg" class="card-img-top" alt="Ollie Lawrence" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ollie Lawrence</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298542-279030cafc-3/FergusLee-WarnerBathRugby.jpg" class="card-img-top" alt="Fergus Lee-Warner" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Fergus Lee-Warner</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285217-852b9bb0fe-3/RuaridhMcConnochieBathRugby.jpg" class="card-img-top" alt="Ruaridh McConnochie" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ruaridh McConnochie</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285076-770668c248-3/JoshMcNallyBathRugby.jpg" class="card-img-top" alt="Josh McNally" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Josh McNally</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285526-9b65c98c2e-3/NahumMeriganBathRugby.jpg" class="card-img-top" alt="Nahum Merigan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nahum Merigan</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285543-b9b239c75d-3/WillMuirBathRugby.jpg" class="card-img-top" alt="Will Muir" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Will Muir</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284612-909a7d651b-3/BenoObanoBathRugby.jpg" class="card-img-top" alt="Beno Obano" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Beno Obano</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285040-1b42631de0-3/MaxOjomohBathRugby.jpg" class="card-img-top" alt="Max Ojomoh" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Max Ojomoh</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284637-66d5b47c3d-3/CameronRedpathBathRugby.jpg" class="card-img-top" alt="Cameron Redpath" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cameron Redpath</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285540-152ffda2c2-3/MilesReidBathRugby.jpg" class="card-img-top" alt="Miles Reid" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Miles Reid</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285212-9ea5ec7849-3/EwanRichardsBathRugby.jpg" class="card-img-top" alt="Ewan Richards" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ewan Richards</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304565-1332175aaa-3/AndyRobinsonBathRugby.jpg" class="card-img-top" alt="Andy Robinson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Andy Robinson</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285549-9074a052c9-3/QuinnRouxBathRugby.jpg" class="card-img-top" alt="Quinn Roux" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Quinn Roux</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311449-51107c723c-3/FinnRussellBathRugby.jpg" class="card-img-top" alt="Finn Russell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Finn Russell</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285551-794467719f-3/JuanSchoemanBathRugby.jpg" class="card-img-top" alt="Juan Schoeman" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Juan Schoeman</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285169-e6796666ad-3/LouisSchreuderBathRugby.jpg" class="card-img-top" alt="Louis Schreuder" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Louis Schreuder</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304566-15d7bffa36-3/StevieScottBathRugby.jpg" class="card-img-top" alt="Stevie Scott" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Stevie Scott</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285484-36214a1af9-3/JasperSpandlerBathRugby.jpg" class="card-img-top" alt="Jasper Spandler" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jasper Spandler</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285057-266a96f685-3/BenSpencerBathRugby.jpg" class="card-img-top" alt="Ben Spencer" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben Spencer</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285496-82144989fd-3/JohnStewartBathRugby.jpg" class="card-img-top" alt="John Stewart" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">John Stewart</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298543-b6eb7286cd-3/WillStuartBathRugby.jpg" class="card-img-top" alt="Will Stuart" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Will Stuart</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/304552-597fb2bc09-3/JJTonksBathRugby.jpg" class="card-img-top" alt="JJ Tonks" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">JJ Tonks</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285557-c50c1c0210-3/SamUnderhillBathRugby.jpg" class="card-img-top" alt="Sam Underhill" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sam Underhill</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285047-7b70f8c14b-3/JohannvanGraanBathRugby.jpg" class="card-img-top" alt="Johann van Graan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Johann van Graan</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285063-af6170cc54-3/Gerrit-JanvanVelzeBathRugby.jpg" class="card-img-top" alt="Gerrit-Jan van Velze" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gerrit-Jan van Velze</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285532-c93704a61f-3/KieranVerdenBathRugby.jpg" class="card-img-top" alt="Kieran Verden" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kieran Verden</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285513-4dff662100-3/GeorgeWorboysBathRugby.jpg" class="card-img-top" alt="George Worboys" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">George Worboys</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285505-ee30d3a1a8-3/MaxWrightBathRugby.jpg" class="card-img-top" alt="Max Wright" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Max Wright</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>The Pioneer Years (1865–1900)</h2>
+                <p>Founded in 1865 by members of Lansdown Cricket Club, Bath Football Club emerged as a winter pastime. The club's nomadic existence during the 1800s laid the groundwork for its resilient spirit. Playing against local and, eventually, Welsh clubs, Bath faced defeats but set the stage for its future in rugby.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Jack Rowell's Revolution (1978–1995)</h2>
+                <p>Jack Rowell's tenure from 1978 heralded a transformative era for Bath Rugby. Rowell shifted the club's ethos, bringing in professionalism and assembling a powerful side. The '80s and early '90s saw Bath dominate the John Player and Pilkington Cups, establishing themselves as a formidable force in English rugby.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Grand Slam Glory (1993–1994)</h2>
+                <p>In the 1993–94 season, Bath achieved a unique "Grand Slam" of titles. Winning the league, Pilkington Cup, Middlesex Sevens, and Worthington Tens, Bath showcased unparalleled prowess. This period marked the pinnacle of Bath's achievements during the twilight years of amateurism in English rugby.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Heineken Cup Triumph (1997–1998)</h2>
+                  <p>Despite struggles post-professionalism, Bath Rugby made history in 1998 by becoming the first British club to lift the Heineken Cup. Captained by Andy Nicol, Bath secured a thrilling 19–18 victory over French club Brive in the final held in Bordeaux. Jon Callard's scoring heroics sealed Bath's place in rugby lore.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>European Challenge Cup Success (2007–2008)</h2>
+                  <p>In 2008, Bath ended a decade-long trophy drought by winning the European Challenge Cup. Facing Worcester Warriors in the final, Bath, led by outgoing skipper Steve Borthwick, triumphed 24–16. The win signaled a resurgence for Bath, showcasing their ability to compete at the highest level in European competitions.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>A New Chapter (2010 Onwards)</h2>
+                  <p>The 2010 ownership change brought new plans for Bath Rugby. With ambitions to create a new headquarters at Farleigh House and build a new stadium, Bath embarked on a journey to revitalize the club. Coaching changes, including the return of Brian Ashton, set the stage for a new era, and the club sought to recapture past glories.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Recent Challenges and Renewed Hope (2021–2022)</h2>
+                  <p>Facing challenges in the 2021–22 season, Bath Rugby underwent a significant restructuring. The appointment of Johann van Graan as Head of Rugby marked a strategic move to stabilize and rebuild the club's fortunes. Van Graan, joining from Munster, brought a wealth of experience and a long-term vision for Bath Rugby's success.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+            
+            
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

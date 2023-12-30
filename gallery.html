@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RugbyWiki - Gallery</title>
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+
+    <!-- Lightbox JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
+    <style>
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+            margin-right: 50px;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        .main {
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+
+        .main h1 {
+            position: relative;
+            height: auto;
+            width: 550px;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 5% 0 2% 0;
+            text-align: center;
+            font-size: 2.8em;
+            font-weight: 650;
+            letter-spacing: 1.5px;
+            color: #017bf5;
+            border-left: 5px solid #017bf5;
+            border-right: 5px solid #017bf5;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .main p {
+            position: relative;
+            height: auto;
+            width: 100%;
+            text-align: center;
+            font-weight: 500;
+            font-size: 1.5em;
+            letter-spacing: 1px;
+            color: #777;
+        }
+
+        .main .gallery {
+            position: relative;
+            height: auto;
+            width: 90%;
+            margin: auto;
+            padding: 45px 0;
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            /*i write auto four time because we want four rows*/
+            grid-gap: 2vh;
+            grid-auto-flow: dense;
+        }
+
+        .main .gallery .img {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.9);
+            border-radius: 2px;
+        }
+
+        .main .gallery .img:first-child {
+            grid-column-start: span 2;
+            grid-row-start: span 2;
+        }
+
+        .main .gallery .img:nth-child(2n+3) {
+            grid-row-start: span 2;
+        }
+
+        .main .gallery .img:nth-child(4n+5) {
+            grid-column-start: span 2;
+            grid-row-start: span 2;
+        }
+
+        .main .gallery .img:nth-child(6n+7) {
+            grid-row-start: span 1;
+        }
+
+        .main .gallery .img:nth-child(8n+9) {
+            grid-column-start: span 1;
+            grid-row-start: span 1;
+        }
+
+        .main .gallery .img img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            filter: brightness(0.5) grayscale(100);
+            border-radius: 2px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .main .gallery .img:hover img {
+            filter: brightness(1) grayscale(0);
+        }
+
+        @media only screen and (max-width: 768px) {
+            .main h1 {
+                font-size: 1.8em;
+                width: 400px;
+            }
+
+            .main p {
+                font-size: 1.2em;
+            }
+
+            .main .gallery {
+                display: grid;
+                grid-template-columns: auto auto auto;
+            }
+        }
+
+        @media only screen and (max-width: 430px) {
+            .main h1 {
+                font-size: 1.2em;
+                width: 300px;
+            }
+
+            .main p {
+                font-size: 0.89em;
+            }
+
+            .main .gallery {
+                display: block;
+            }
+
+            .main .gallery .img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                margin: 2% 0;
+            }
+
+            .main .gallery .img img {
+                display: block;
+                filter: brightness(1) grayscale(0);
+            }
+        }
+
+        @media only screen and (max-width: 500px) {
+      body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+       .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        max-height: 100%;
+        height: 100%;
+        margin-top: 0px;
+      }
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    /* Hamburger-Menue */
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="img/RugbyWiki.png">
+        <nav id="desktop-nav">
+          <a href="index.html">Home</a>
+          <a href="tournaments.html">Tournaments</a>
+          <a href="teams.html">Teams</a>
+          <a href="rules.html">Rules</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="rankings.html">Rankings</a>
+          <a href="forum.html">Community</a>
+        </nav>
+        <nav id="hamburger-nav">
+          <div class="hamburger-menu">
+            <div class="hamburger-icon" onclick="toggleMenu()">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="menu-links">
+              <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+              <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+              <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+              <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+              <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+              <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+              <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+    <div class="main">
+        <div class="gallery">
+            <div class="img">
+                <a href="img_rugby/image1.jpg" data-lightbox="rugby-gallery" data-title="Rugby Image 1">
+                    <img src="img_rugby/image1.jpg" />
+                </a>
+            </div>
+            <div class="img">
+                <a href="img_rugby/image2.jpg" data-lightbox="rugby-gallery" data-title="Rugby Image 2">
+                    <img src="img_rugby/image2.jpg" />
+                </a>
+            </div>
+            <div class="img">
+                <a href="img_rugby/image3.jpg" data-lightbox="rugby-gallery" data-title="Rugby Image 3">
+                    <img src="img_rugby/image3.jpg" />
+                </a>
+            </div>
+            <div class="img">
+                <a href="img_rugby/image4.jpg" data-lightbox="rugby-gallery" data-title="Rugby Image 4">
+                    <img src="img_rugby/image4.jpg" />
+                </a>
+            </div>
+            <div class="img">
+                <a href="img_rugby/image5.jpg" data-lightbox="rugby-gallery" data-title="Rugby Image 5">
+                    <img src="img_rugby/image5.jpg" />
+                </a>
+            </div>
+            <div class="img">
+                <a href="img_rugby/image6.jpg" data-lightbox="rugby-gallery" data-title="Rugby Image 6">
+                    <img src="img_rugby/image6.jpg" />
+                </a>
+            </div>
+            <div class="img">
+                <a href="img_rugby/image7.png" data-lightbox="rugby-gallery" data-title="Rugby Image 7">
+                    <img src="img_rugby/image7.png" />
+                </a>
+            </div>
+            <div class="img">
+                <a href="img_rugby/image8.jpg" data-lightbox="rugby-gallery" data-title="Rugby Image 8">
+                    <img src="img_rugby/image8.jpg" />
+                </a>
+            </div>
+            <div class="img">
+                <a href="img_rugby/image9.jpg" data-lightbox="rugby-gallery" data-title="Rugby Image 9">
+                    <img src="img_rugby/image9.jpg" />
+                </a>
+            </div>
+            <div class="img">
+                <a href="img_rugby/image10.jpeg" data-lightbox="rugby-gallery" data-title="Rugby Image 10">
+                    <img src="img_rugby/image10.jpeg" />
+                </a>
+            </div>
+            <div class="img">
+                <a href="img_rugby/image11.jpg" data-lightbox="rugby-gallery" data-title="Rugby Image 11">
+                    <img src="img_rugby/image11.jpg" />
+                </a>
+            </div>
+            <div class="img">
+                <a href="img_rugby/image12.jpg" data-lightbox="rugby-gallery" data-title="Rugby Image 12">
+                    <img src="img_rugby/image12.jpg" />
+                </a>
+            </div>
+            <div class="img">
+                <a href="img_rugby/image13.jpg" data-lightbox="rugby-gallery" data-title="Rugby Image 13">
+                    <img src="img_rugby/image13.jpg" />
+                </a>
+            </div>
+            <div class="img">
+                <a href="img_rugby/image14.jpg" data-lightbox="rugby-gallery" data-title="Rugby Image 14">
+                    <img src="img_rugby/image14.jpg" />
+                </a>
+            </div>
+            <div class="img">
+                <a href="img_rugby/image15.jpg" data-lightbox="rugby-gallery" data-title="Rugby Image 15">
+                    <img src="img_rugby/image15.jpg" />
+                </a>
+            </div>
+            <div class="img">
+                <a href="img_rugby/image16.jpg" data-lightbox="rugby-gallery" data-title="Rugby Image 16">
+                    <img src="img_rugby/image16.jpg" />
+                </a>
+            </div>
+            <div class="img">
+                <a href="img_rugby/image17.jpg" data-lightbox="rugby-gallery" data-title="Rugby Image 17">
+                    <img src="img_rugby/image17.jpg" />
+                </a>
+            </div>
+            <div class="img">
+                <a href="img_rugby/image18.jpg" data-lightbox="rugby-gallery" data-title="Rugby Image 18">
+                    <img src="img_rugby/image18.jpg" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true
+        });
+    </script>
+</body>
+
+</html>

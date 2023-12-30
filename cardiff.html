@@ -1,0 +1,1672 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #cardiffKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #cardiffKitSection {
+          display: none;
+        }
+
+        #cardiffKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #cardiffKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #cardiffKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #cardiffKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #cardiffKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #cardiffKitSection {
+          display: flex;
+        }
+
+        #cardiffKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #cardiffKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Cardiff</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/cardiffbanner.jpeg" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About Cardiff</h3>
+    <p>Cardiff Rugby, based in Cardiff, Wales, is a professional rugby team competing in the United Rugby Championship. The club has a rich history dating back to its foundation in 1876, making it one of the oldest rugby clubs in Wales. Historically known as Cardiff RFC, the team has undergone various changes and rebranding, eventually adopting the name Cardiff Rugby. The iconic Cardiff Arms Park serves as their home ground. Over the years, Cardiff has been a powerhouse in Welsh rugby, contributing significantly to the sport's heritage. The team has a strong fan base and a tradition of developing top-tier talent. Cardiff Rugby competes at the highest level, embodying the passion and commitment synonymous with Welsh rugby.
+    </p>
+  
+    
+
+      <div id="cardiffKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Cardiff Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/cardiffhome.png" alt="Cardiff Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/cardiffaway.png" alt="Cardiff Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 18px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="cardiffKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Cardiff Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/cardiffhome.png" alt="Cardiff Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/cardiffaway.png" alt="Cardiff Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311341-efeebef63b-3/JoshAdamsCardiffRugby.jpg" class="card-img-top" alt="Josh Adams" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Josh Adams</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312542-903d12bf79-3/ScottAndrewsCardiffRugby.jpg" class="card-img-top" alt="Scott Andrews" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Scott Andrews</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311342-989e7bc50c-3/KeironAssiratiCardiffRugby.jpg" class="card-img-top" alt="Keiron Assirati" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Keiron Assirati</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298696-a9d2d9676a-3/KieronAssirattiCardiffRugby.jpg" class="card-img-top" alt="Kieron Assiratti" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kieron Assiratti</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311337-2170eafc78-3/MatthewAubreyCardiffRugby.jpg" class="card-img-top" alt="Matthew Aubrey" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matthew Aubrey</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274503-5b228610a8-3/RhysBarrattrugbyplayer.jpg" class="card-img-top" alt="Rhys Barratt" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rhys Barratt</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/262156-3b76cbf696-3/JacobBeethamrugbyplayer.jpg" class="card-img-top" alt="Jacob Beetham" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jacob Beetham</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311344-181cbf21d7-3/LiamBelcherCardiffRugby.jpg" class="card-img-top" alt="Liam Belcher" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Liam Belcher</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311345-5ac2bf8fc5-3/EllisBevanCardiffRugby.jpg" class="card-img-top" alt="Ellis Bevan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ellis Bevan</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311346-8db998501d-3/JamesBothamCardiffRugby.jpg" class="card-img-top" alt="James Botham" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James Botham</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/242050-da30d5df91-3/GwilymBradleyrugbyplayer.jpg" class="card-img-top" alt="Gwilym Bradley" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gwilym Bradley</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311347-78dec844f7-3/TheoCabangoCardiffRugby.jpg" class="card-img-top" alt="Theo Cabango" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Theo Cabango</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298694-7d1053c607-3/RhysCarreCardiffRugby.jpg" class="card-img-top" alt="Rhys Carre" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rhys Carre</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311339-72fa86cefd-3/MaxClarkCardiffRugby.jpg" class="card-img-top" alt="Max Clark" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Max Clark</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/274560-8713c4b91e-3/JoeCowellrugbyplayer.jpg" class="card-img-top" alt="Joe Cowell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joe Cowell</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311348-533d2fc2cc-3/EfanDanielCardiffRugby.jpg" class="card-img-top" alt="Efan Daniel" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Efan Daniel</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/269808-7d34afc30e-3/SebDaviesCardiffRugby.jpg" class="card-img-top" alt="Seb Davies" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Seb Davies</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311351-4ad0781514-3/WillDavies-KingCardiffRugby.jpg" class="card-img-top" alt="Will Davies-King" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Will Davies-King</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285955-2ffb771d90-3/WilliamDavies-KingCardiffRugby.jpg" class="card-img-top" alt="William Davies-King" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">William Davies-King</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311329-328971712f-3/TinusdeBeerCardiffRugby.jpg" class="card-img-top" alt="Tinus de Beer" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tinus de Beer</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311452-dba44d94ac-3/LucasDeLaRuaCardiffRugby.jpg" class="card-img-top" alt="Lucas De La Rua" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lucas De La Rua</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/269810-330b27eaaf-3/CoreyDomachowskiCardiffRugby.jpg" class="card-img-top" alt="Corey Domachowski" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Corey Domachowski</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/262154-067a66755e-3/IoanEvansrugbyplayer.jpg" class="card-img-top" alt="Ioan Evans" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ioan Evans</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/284762-15d9d8f317-3/AlexEverettrugbyplayer.jpg" class="card-img-top" alt="Alex Everett" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alex Everett</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298703-b6b4db6468-3/TaulupeFaletauCardiffRugby.jpg" class="card-img-top" alt="Taulupe Faletau" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Taulupe Faletau</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/253504-4a64611f28-3/DanFishCardiffBlues.jpg" class="card-img-top" alt="Dan Fish" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dan Fish</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/269815-fb015ca51e-3/MasonGradyCardiffRugby.jpg" class="card-img-top" alt="Mason Grady" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mason Grady</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/272056-05bc03284d-3/TomHabberfieldCardiffRugby.jpg" class="card-img-top" alt="Tom Habberfield" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Habberfield</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/269816-70b39ff96f-3/WillisHalaholoCardiffRugby.jpg" class="card-img-top" alt="Uilisi Halaholo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Uilisi Halaholo</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285044-40faf37b3f-3/GabrielHamer-Webbrugbyplayer.jpg" class="card-img-top" alt="Gabriel Hamer-Webb" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gabriel Hamer-Webb</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/269821-379bb6e343-3/JamieHillCardiffRugby.jpg" class="card-img-top" alt="Jamie Hill" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jamie Hill</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/244757-cddcffe72c-3/RichardHodgesCardiffBlues.jpg" class="card-img-top" alt="Richard Hodges" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Richard Hodges</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/277608-76c40630bc-3/HarrisonJamesrugbyplayer.jpg" class="card-img-top" alt="Harrison James" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Harrison James</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/272057-b1a04703f5-3/GeraintJamesrugbyplayer.jpg" class="card-img-top" alt="Geraint James" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Geraint James</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285493-509841a3e9-3/WillJeanesCardiffRugby.jpg" class="card-img-top" alt="Will Jeanes" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Will Jeanes</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312541-49525f665e-3/GethinJenkinsCardiffRugby.jpg" class="card-img-top" alt="Gethin Jenkins" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gethin Jenkins</h5>
+            <p class="card-text">Assistant Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/272058-3ea82b4aec-3/RowanJenkinsCardiffRugby.jpg" class="card-img-top" alt="Rowan Jenkins" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rowan Jenkins</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/269822-e7d1e2eae2-3/EllisJenkinsCardiffRugby.jpg" class="card-img-top" alt="Ellis Jenkins" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ellis Jenkins</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/269824-6813a580c2-3/OwenLaneCardiffRugby.jpg" class="card-img-top" alt="Owen Lane" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Owen Lane</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285957-e159214c9b-3/ReynoldLee-LoCardiffRugby.jpg" class="card-img-top" alt="Reynold Lee-Lo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Reynold Lee-Lo</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285958-7d2d40481f-3/ShaneLewis-HughesCardiffRugby.jpg" class="card-img-top" alt="Shane Lewis-Hughes" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Shane Lewis-Hughes</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311335-dcfd387d6d-3/RhysLitterickCardiffRugby.jpg" class="card-img-top" alt="Rhys Litterick" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rhys Litterick</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/262149-b7fd584329-3/EthanLloydrugbyplayer.jpg" class="card-img-top" alt="Ethan Lloyd" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ethan Lloyd</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/313650-b1ba12e00a-3/EvanLloyd.jpg" class="card-img-top" alt="Evan Lloyd." style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Evan Lloyd.</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311450-d0d8b3a707-3/AlexMannCardiffRugby.jpg" class="card-img-top" alt="Alex Mann" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alex Mann</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302360-793d9d561d-3/MackenzieMartinrugbyplayer.jpg" class="card-img-top" alt="Mackenzie Martin" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mackenzie Martin</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298692-9945e692e0-3/HarriMillardCardiffRugby.jpg" class="card-img-top" alt="Harri Millard" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Harri Millard</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/269831-c68d82bae9-3/MatthewMorganCardiffRugby.jpg" class="card-img-top" alt="Matthew Morgan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matthew Morgan</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/244754-b5e3c59b96-3/JohnMulvihillrugbyplayer.jpg" class="card-img-top" alt="John Mulvihill" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">John Mulvihill</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/164873-fa6a734096-3/TorinMyhillrugbyplayer.jpg" class="card-img-top" alt="Torin Myhill" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Torin Myhill</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311336-22808d66d0-3/CiaranParkerCardiffRugby.jpg" class="card-img-top" alt="Ciaran Parker" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ciaran Parker</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312540-4093799b95-3/RichieReesCardiffRugby.jpg" class="card-img-top" alt="Richie Rees" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Richie Rees</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/272059-07f3df9509-3/AlunReesrugbyplayer.jpg" class="card-img-top" alt="Alun Rees" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alun Rees</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311453-593e05e1c3-3/JoshReynoldsCardiffRugby.jpg" class="card-img-top" alt="Josh Reynolds" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Josh Reynolds</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311330-809de14567-3/ArwelRobsonCardiffRugby.jpg" class="card-img-top" alt="Arwel Robson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Arwel Robson</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312539-c18d8a8033-3/MattSherrattCardiffRugby.jpg" class="card-img-top" alt="Matt Sherratt" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matt Sherratt</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/244758-3ad1209137-3/TomSmithCardiffBlues.jpg" class="card-img-top" alt="Tom Smith" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Smith</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/269843-5403e93fa2-3/AledSummerhillCardiffRugby.jpg" class="card-img-top" alt="Aled Summerhill" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Aled Summerhill</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/269844-6add6f3d95-3/BenThomasCardiffRugby.jpg" class="card-img-top" alt="Ben Thomas" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben Thomas</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298693-5bf3cd0a97-3/RoryThorntonCardiffRugby.jpg" class="card-img-top" alt="Rory Thornton" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rory Thornton</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298699-c1c34c4703-3/LopetiTimaniCardiffRugby.jpg" class="card-img-top" alt="Lopeti Timani" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lopeti Timani</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/269846-fa29eb0de5-3/JoshTurnbullCardiffRugby.jpg" class="card-img-top" alt="Josh Turnbull" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Josh Turnbull</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/noimage/webPlayer.png" class="card-img-top" alt="Ryan Wilkins" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ryan Wilkins</h5>
+            <p class="card-text">Number 23</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/269848-391212a4a6-3/TomosWilliamsCardiffRugby.jpg" class="card-img-top" alt="Tomos Williams" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tomos Williams</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299734-df8f7643c4-3/TeddyWilliamsCardiffRugby.jpg" class="card-img-top" alt="Teddy Williams" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Teddy Williams</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285790-5aa2753f98-3/AdamWilliamsCardiffRugby.jpg" class="card-img-top" alt="Adam Williams" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Adam Williams</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311451-ef16fdd0c5-3/CameronWinnettCardiffRugby.jpg" class="card-img-top" alt="Cameron Winnett" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cameron Winnett</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/165486-65cc390895-3/EvanYardleyrugbyplayer.jpg" class="card-img-top" alt="Evan Yardley" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Evan Yardley</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298701-3e763ef1b9-3/TomYoungCardiffRugby.jpg" class="card-img-top" alt="Tom Young" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Young</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Origins</h2>
+                <p>Cardiff Rugby Football Club has a rich history dating back to the late 19th century. Its roots can be traced to the formation of Tredegarville, the first reliably recorded rugby club in Cardiff, around 1870. By 1876, Glamorgan FC and Cardiff Wanderers merged to establish Cardiff RFC. Under Frank Hancock's leadership in 1885, Cardiff introduced innovations like the seven backs and eight forwards formation, earning them a spot in the World Rugby Hall of Fame in 2011. The club produced legendary players like Gwyn Nicholls, Bleddyn Williams, Cliff Morgan, Gareth Edwards, Barry John, and Gerald Davies, all Hall of Fame members.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Professionalism and Restructuring</h2>
+                <p>The advent of professionalism in 1995 prompted a reorganization of Welsh rugby. Cardiff Rugby Ltd was formed in 1996 to manage the professional team, advocating for an Anglo-Welsh or British League. This led to conflicts with the Welsh Rugby Union, culminating in the "rebel season" of 1998/99. After financial struggles and disputes, a solution was reached in 2002, with Cardiff and Llanelli designated as standalone teams. The club went through various name considerations, finally settling on "Cardiff Blues" in 2003.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Dai Young Era (2003–2011)</h2>
+                <p>Dai Young took over as Head Coach in 2002, facing challenges in the early years. The team recorded victories, underwent a rebranding, and signed notable players. The 2008/09 season marked a triumph in the Anglo-Welsh Cup and a memorable run in the Heineken Cup, reaching the quarter-finals. Despite heartbreak in the penalty shootout against Leicester Tigers, the team showcased significant progress.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Move to Cardiff City Stadium and Amlin Cup Triumph</h2>
+                  <p>The relocation to Cardiff City Stadium brought changes and challenges. Financial pressures mounted, but the team triumphed in the Amlin Cup in the 2009/10 season, becoming the first Welsh side to win a European trophy. However, financial losses persisted, and the club's return to the Arms Park was marked by financial struggles.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Phil Davies Era and Amlin Cup Success</h2>
+                  <p>Phil Davies took over as Director of Rugby, overseeing a transition period with the departure of key players. The club faced financial losses, and despite on-field challenges, a new artificial playing surface was introduced. A memorable triumph came in the Amlin Cup in 2013/14, securing victory in the final against Gloucester.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>John Mulvihill Years and "Project Reset"</h2>
+                  <p>John Mulvihill became the Director of Rugby, navigating challenges imposed by "Project Reset" negotiations. Despite the transfer embargo, the team achieved success, winning the Challenge Cup in 2017/18. The financial landscape underwent significant changes, with a new board and chairman overseeing the club's operations.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Covid-19 Impact and Departure of John Mulvihill</h2>
+                  <p>The COVID-19 pandemic disrupted the 2019/20 season, leading to financial uncertainties and extended contracts for players. John Mulvihill departed in 2021 after two and a half years of managing the team through unprecedented challenges.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Return of Dai Young and Rebranding to Cardiff Rugby</h2>
+                  <p>Dai Young returned in 2021, stabilizing the team and securing a return to Champions Cup rugby. The club underwent a rebranding in March 2021, transitioning to "Cardiff Rugby" and emphasizing its identity and regional responsibilities.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Champions Cup "Misfits"</h2>
+                  <p>The 2021/22 season faced unexpected challenges, including COVID-19-related disruptions during the South Africa tour. Despite a depleted squad, the team, labeled as "misfits," displayed resilience and determination in challenging matches against top-tier opponents.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Present and Future</h2>
+                  <p>As of the latest updates, Dai Young continues to lead the team, and Cardiff Rugby looks toward a future that combines a rich history with ongoing efforts to strengthen its position in the rugby world. The recent rebranding reflects a commitment to the club's identity and regional responsibilities.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+            
+            
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

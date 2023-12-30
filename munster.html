@@ -1,0 +1,1677 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .cont:nth-child(14){
+          animation-delay: 13s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #munsterKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #munsterKitSection {
+          display: none;
+        }
+
+        #munsterKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #munsterKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #munsterKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #munsterKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #munsterKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #munsterKitSection {
+          display: flex;
+        }
+
+        #munsterKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #munsterKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Munster</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/munsterbanner.jpg" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About Munster</h3>
+    <p>Munster Rugby, based in Limerick and Cork, Ireland, is a professional rugby team with a rich history and a passionate fan base. Founded in 1879, Munster has become one of the powerhouse clubs in European rugby. The team competes in domestic competitions like the United Rugby Championship (URC) and European tournaments such as the Heineken Champions Cup. Munster has a storied legacy, highlighted by two European Cup victories in the 2005-06 and 2007-08 seasons. The club's success is rooted in its strong rugby culture, producing world-class players and fostering a resilient and determined style of play. With iconic moments like their historic win against the touring All Blacks in 1978, Munster Rugby holds a special place in the hearts of rugby enthusiasts, embodying the spirit and tradition of Irish rugby.
+    </p>
+  
+    
+
+      <div id="munsterKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Munster Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/munsterhome.png" alt="Munster Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/munsteraway.png" alt="Munster Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 18px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="munsterKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Munster Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/munsterhome.png" alt="Munster Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/munsteraway.png" alt="Munster Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310995-39ba0c95f0-3/ThomasAhernMunsterRugby.jpg" class="card-img-top" alt="Thomas Ahern" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Thomas Ahern</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310997-fbb4a28086-3/StephenArcherMunsterRugby.jpg" class="card-img-top" alt="Stephen Archer" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Stephen Archer</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/277315-7ce1bbdcb8-3/DiarmuidBarronMunsterRugby.jpg" class="card-img-top" alt="Diarmuid Barron" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Diarmuid Barron</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285966-91f5ee1c79-3/TadhgBeirneMunsterRugby.jpg" class="card-img-top" alt="Tadhg Beirne" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tadhg Beirne</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311003-78f782d13b-3/ScottBuckleyMunsterRugby.jpg" class="card-img-top" alt="Scott Buckley" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Scott Buckley</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309808-0388890041-3/TonyButlerMunsterRugby.jpg" class="card-img-top" alt="Tony Butler" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tony Butler</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311004-f2b0e664d3-3/PatrickCampbellMunsterRugby.jpg" class="card-img-top" alt="Patrick Campbell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Patrick Campbell</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311005-2153481989-3/JoeyCarberyMunsterRugby.jpg" class="card-img-top" alt="Joey Carbery" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joey Carbery</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285969-f85b0994e1-3/CraigCaseyMunsterRugby.jpg" class="card-img-top" alt="Craig Casey" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Craig Casey</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311006-865b86ee31-3/AndrewConwayMunsterRugby.jpg" class="card-img-top" alt="Andrew Conway" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Andrew Conway</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/272087-b19014e977-3/GeorgeCoomberrugbyplayer.jpg" class="card-img-top" alt="George Coomber" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">George Coomber</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311008-d03dd9cb86-3/LiamCoombesMunsterRugby.jpg" class="card-img-top" alt="Liam Coombes" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Liam Coombes</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311007-6023f61b63-3/GavinCoombesMunsterRugby.jpg" class="card-img-top" alt="Gavin Coombes" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gavin Coombes</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309809-3f2fbc2827-3/EthanCoughlanMunsterRugby.jpg" class="card-img-top" alt="Ethan Coughlan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ethan Coughlan</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311009-8e0c880dae-3/NeilCroninMunsterRugby.jpg" class="card-img-top" alt="Neil Cronin" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Neil Cronin</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/271015-dd3284ecdd-3/JackCrowleyMunsterRugby.jpg" class="card-img-top" alt="Jack Crowley" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jack Crowley</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311014-75698f43f3-3/JackDalyMunsterRugby.jpg" class="card-img-top" alt="Jack Daly" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jack Daly</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311012-ca204297e3-3/ShaneDalyMunsterRugby.jpg" class="card-img-top" alt="Shane Daly" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Shane Daly</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309807-1cd3a06456-3/MarkDonnellyMunsterRugby.jpg" class="card-img-top" alt="Mark Donnelly" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mark Donnelly</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285976-8e5f6987d1-3/KeithEarlsMunsterRugby.jpg" class="card-img-top" alt="Keith Earls" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Keith Earls</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/288167-7858499ec4-3/EdwinEdogboMunsterRugby.jpg" class="card-img-top" alt="Edwin Edogbo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Edwin Edogbo</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/272090-5afb036aa8-3/AlanFlanneryrugbyplayer.jpg" class="card-img-top" alt="Alan Flannery" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alan Flannery</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/272257-fc4677755f-3/JohnForderugbyplayer.jpg" class="card-img-top" alt="John Forde" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">John Forde</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311015-b7d85470e1-3/AntoineFrischMunsterRugby.jpg" class="card-img-top" alt="Antoine Frisch" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Antoine Frisch</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285848-7112385ed0-3/FionnGibbonsMunsterRugby.jpg" class="card-img-top" alt="Fionn Gibbons" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Fionn Gibbons</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309806-8562fb18fa-3/BrianGleesonMunsterRugby.jpg" class="card-img-top" alt="Brian Gleeson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Brian Gleeson</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311016-bd5d16924e-3/MikeHaleyMunsterRugby.jpg" class="card-img-top" alt="Mike Haley" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mike Haley</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311017-9f95db2a20-3/JohnHodnettMunsterRugby.jpg" class="card-img-top" alt="John Hodnett" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">John Hodnett</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/245662-497f5585d1-3/BillyHollandMunsterRugby.jpg" class="card-img-top" alt="Billy Holland" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Billy Holland</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311018-e69462e09f-3/CianHurleyMunsterRugby.jpg" class="card-img-top" alt="Cian Hurley" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cian Hurley</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311019-4e9d502ffd-3/AlexKendellenMunsterRugby.jpg" class="card-img-top" alt="Alex Kendellen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alex Kendellen</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285987-2f04d89dfe-3/DaveKilcoyneMunsterRugby.jpg" class="card-img-top" alt="Dave Kilcoyne" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dave Kilcoyne</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285988-f56ec50fbd-3/JeanKleynMunsterRugby.jpg" class="card-img-top" alt="Jean Kleyn" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jean Kleyn</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311021-3499d8415b-3/KeynanKnoxMunsterRugby.jpg" class="card-img-top" alt="Keynan Knox" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Keynan Knox</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285990-780a4b4ca1-3/JeremyLoughmanMunsterRugby.jpg" class="card-img-top" alt="Jeremy Loughman" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jeremy Loughman</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/238964-e0fe1c582c-3/NickMcCarthyMunsterRugby.jpg" class="card-img-top" alt="Nick McCarthy" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nick McCarthy</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/noimage/webPlayer.png" class="card-img-top" alt="Shay McCarthy" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Shay McCarthy</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/272258-cc4cb67bfd-3/ConorMoloneyrugbyplayer.jpg" class="card-img-top" alt="Conor Moloney" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Conor Moloney</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311023-48a2392dfe-3/ChrisMooreMunsterRugby.jpg" class="card-img-top" alt="Chris Moore" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Chris Moore</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285991-d3f0a8815c-3/ConorMurrayMunsterRugby.jpg" class="card-img-top" alt="Conor Murray" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Conor Murray</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311024-4eef289a8a-3/AlexNankivellMunsterRugby.jpg" class="card-img-top" alt="Alex Nankivell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alex Nankivell</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311025-84d5426a76-3/CalvinNashMunsterRugby.jpg" class="card-img-top" alt="Calvin Nash" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Calvin Nash</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312529-5f36c4264f-3/SeanSeanOBrienMunsterRugby.jpg" class="card-img-top" alt="Sean Sean O'Brien" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sean Sean O'Brien</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/251077-ebf5231673-3/SeanOBrien.jpg" class="card-img-top" alt="Sean Garrett O'Brien" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sean Garrett O'Brien</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/noimage/webPlayer.png" class="card-img-top" alt="Ben O'Connor" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben O'Connor</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/245681-262304ad91-3/TommyODonnellMunsterRugby.jpg" class="card-img-top" alt="Tommy O'Donnell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tommy O'Donnell</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311027-e809baf8a5-3/JackODonoghueMunsterRugby.jpg" class="card-img-top" alt="Jack O'Donoghue" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jack O'Donoghue</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285996-23fcc617a8-3/PeterOMahonyMunsterRugby.jpg" class="card-img-top" alt="Peter O'Mahony" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Peter O'Mahony</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311029-03d4b54a61-3/JackOSullivanMunsterRugby.jpg" class="card-img-top" alt="Jack O'Sullivan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jack O'Sullivan</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/272111-7d4ca8e9d0-3/DanielOkekeMunsterRugby.jpg" class="card-img-top" alt="Daniel Okeke" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Daniel Okeke</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296339-4adfced070-3/EvanOConnellrugbyplayer.jpg" class="card-img-top" alt="Evan O’Connell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Evan O’Connell</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311030-7df595a7f9-3/PaddyPattersonMunsterRugby.jpg" class="card-img-top" alt="Paddy Patterson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Paddy Patterson</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311039-1dc7dc357d-3/MikePrendergastMunsterRugby.jpg" class="card-img-top" alt="Mike Prendergast" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mike Prendergast</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/288408-7980a0b240-3/RuadhanQuinnrugbyplayer.jpg" class="card-img-top" alt="Ruadhan Quinn" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ruadhan Quinn</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311038-88b1910b1e-3/GrahamRowntreeMunsterRugby.jpg" class="card-img-top" alt="Graham Rowntree" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Graham Rowntree</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/noimage/webPlayer.png" class="card-img-top" alt="Kieran Ryan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kieran Ryan</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311031-72bf9e8465-3/JohnRyanMunsterRugby.jpg" class="card-img-top" alt="John Ryan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">John Ryan</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285999-da2e5abd79-3/RomanSalanoaMunsterRugby.jpg" class="card-img-top" alt="Roman Salanoa" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Roman Salanoa</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311032-619e5b253c-3/RoryScannellMunsterRugby.jpg" class="card-img-top" alt="Rory Scannell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rory Scannell</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311033-ad1be64ccc-3/NiallScannellMunsterRugby.jpg" class="card-img-top" alt="Niall Scannell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Niall Scannell</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286002-5215d556c7-3/RGSnymanMunsterRugby.jpg" class="card-img-top" alt="RG Snyman" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">RG Snyman</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/245699-77da9399f3-3/AlexWoottonMunsterRugby.jpg" class="card-img-top" alt="Alex Wootton" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alex Wootton</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311036-f9cb3e70f5-3/FineenWycherleyMunsterRugby.jpg" class="card-img-top" alt="Fineen Wycherley" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Fineen Wycherley</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311035-1e9e147d4c-3/JoshWycherleyMunsterRugby.jpg" class="card-img-top" alt="Josh Wycherley" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Josh Wycherley</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311037-5040669f2e-3/SimonZeboMunsterRugby.jpg" class="card-img-top" alt="Simon Zebo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Simon Zebo</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Munster's Rugby Roots: Foundation and Early Years</h2>
+                <p>In the late 19th century, Munster played a pivotal role in establishing the foundation of Irish rugby, alongside Leinster and Ulster. The Munster branch of the IRFU took charge, organizing the sport within the province and fostering healthy competition among local clubs like Shannon and Garryowen. Interprovincial matches and the IRFU Interprovincial Championship marked the early stages of Munster's rugby legacy, setting the stage for a rich history.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Battles with the World: Against Touring Sides</h2>
+                <p>Munster's history is marked by unforgettable clashes with touring teams, showcasing the province's resilience and determination. While early encounters resulted in losses, the turning points came with historic victories over Australia and the All Blacks in 1967 and 1978, respectively. These nail-biting matches not only added to Munster's rugby mythology but also inspired plays and books that celebrated the indomitable spirit of the team.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Triumphs and Challenges Against the Southern Hemisphere</h2>
+                <p>Munster's encounters with rugby powerhouses from the southern hemisphere provide a compelling narrative of triumphs and challenges. From the groundbreaking win over Australia in 1967 to the recent historic victory against South Africa in 2022, Munster's journey against these formidable opponents is a testament to their competitive spirit and their ability to leave an indelible mark on the global rugby stage.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Professional Era and European Glory (1999–2009)</h2>
+                  <p>As rugby embraced professionalism, Munster emerged as a dominant force in European competitions. The late '90s witnessed near misses, but the breakthrough came with the historic Heineken Cup triumph in 2006. Led by figures like Ronan O'Gara and guided by coach Declan Kidney, Munster's journey during this era epitomized determination, laying the groundwork for sustained success in the professional rugby landscape.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>The McGahan and Penney Years (2009–2014)</h2>
+                  <p>The late 2000s marked a period of continuity and challenges for Munster under coaches McGahan and Penney. Securing the Celtic League and experiencing near misses in European competitions showcased Munster's resilience. The departure of key figures signaled the end of an era, presenting both obstacles and opportunities as Munster sought to redefine itself under new leadership.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Champions Cup Era (2014–2017)</h2>
+                  <p>Transitioning into the Champions Cup era under coach Rassie Erasmus, Munster experienced highs and lows. Memorable victories against Leicester Tigers and a record-breaking quarter-final win over Toulouse highlighted Munster's competitiveness. Despite reaching the Champions Cup semi-final in 2017, the ultimate European glory remained elusive, setting the stage for continued pursuit in subsequent seasons.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Pro14 Expansion and Recent Years</h2>
+                  <p>Munster's recent history is characterized by adaptability in the face of change, including Pro14 expansion and coaching transitions. The team faced challenges, including the tragic loss of Anthony Foley, but continued to compete at the highest level. The departure of key players like Simon Zebo marked a shift, and under coach Johann van Graan, Munster remained focused on pursuing success in both Pro14 and European competitions.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Transition and Departures (2019)</h2>
+                  <p>In 2019, Munster underwent significant coaching changes as backs coach Felix Jones and forwards coach Jerry Flannery departed. This marked the end of an era for Doug Howlett, the club legend and head of commercial and marketing, who left for New Zealand. Simultaneously, Munster's CEO Garrett Fitzgerald retired after serving since 1999, leaving an impactful legacy. The arrival of new coaches, including Graham Rowntree and Stephen Larkham, set the stage for a period of transformation.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Conference Shift in Pro14 (2019–2021)</h2>
+                  <p>Munster navigated changes in the Pro14 setup, moving to Conference B for the 2019–20 and 2020–21 seasons. This shift, based on points earned in the 2018–19 season, added a new dynamic to their league campaigns. Despite facing formidable opponents, Munster showcased their prowess with a home victory against Welsh side Dragons, setting the tone for the season.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>European Campaigns (2019–2020)</h2>
+                  <p>Munster's journey in the 2019–20 Champions Cup witnessed highs and lows. Notable victories against Ospreys and Saracens demonstrated their resilience, but a drawn match against Racing 92 and a loss in the return fixture posed challenges. Controversy arose with an incident involving team doctor Jamie Kearns. Despite a valiant effort against Racing 92, Munster fell short, ending their Champions Cup run.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Pro14 Suspension and Resumption (2020)</h2>
+                  <p>The 2019–20 Pro14 faced an indefinite suspension due to the COVID-19 pandemic. Munster, dealing with postponed fixtures and retirements, resumed the season in August 2020. The team faced Leinster in a closely contested match, marked by notable debuts and a commendable performance by Chris Farrell. Munster's victory against Connacht secured a semi-final spot but ended in a defeat against Leinster.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Challenges and Optimism (2020–2021)</h2>
+                  <p>Munster's 2020–21 season started with a dramatic away win against Scarlets. The Champions Cup campaign saw promising wins against Harlequins and Clermont. However, disruptions due to the pandemic led to the suspension of rounds 3 and 4. Munster's Pro14 success earned them a spot in the Grand Final, but they faced a defeat against arch-rivals Leinster. The season showcased resilience but ended with a longing for the ultimate triumph.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Champions Cup Knockout Stages (2021–2022)</h2>
+                  <p>Munster's 2021–22 Champions Cup journey showcased remarkable performances. Wins against Wasps and Castres secured a place in the knockout stage. Facing Exeter Chiefs in the round of 16, Munster displayed determination, winning the second leg to advance. The quarter-final against Toulouse was an epic encounter, featuring extra time and a penalty shootout, ultimately ending in Toulouse's favor. Despite the loss, Munster's resilience shone through.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>United Rugby Championship and Head Coaching Transition (2022–2023)</h2>
+                  <p>The 2021–22 United Rugby Championship saw Munster finishing sixth overall. The quarter-final against Ulster marked the end of the season and Johann van Graan's coaching tenure. The coaching landscape underwent a significant shift, with Graham Rowntree being appointed head coach for the 2022–23 season. Munster faced challenges but emerged victorious in the 2022–23 United Rugby Championship final against the Stormers, securing Graham Rowntree's first silverware as head coach.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              
+            
+            
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

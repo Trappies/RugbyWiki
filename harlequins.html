@@ -1,0 +1,1581 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #harlequinsKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #harlequinsKitSection {
+          display: none;
+        }
+
+        #harlequinsKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #harlequinsKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #harlequinsKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #harlequinsKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #harlequinsKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #harlequinsKitSection {
+          display: flex;
+        }
+
+        #harlequinsKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #harlequinsKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Harlequins</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/harlequinsbanner.jpg" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About The Harlequins</h3>
+    <p>The Harlequins rugby club, based in London, England, is a prominent and historic club with a rich legacy in English rugby. Established in 1866, the team is known for its distinctive multi-colored jersey, which reflects the vibrant and diverse nature of the club. The Harlequins have achieved success both domestically and internationally, with notable victories in domestic competitions like the Premiership Rugby and the European Challenge Cup. The club has produced numerous international players who have represented England and other nations, contributing to the sport's growth and excellence. With a strong fan base and a commitment to entertaining and dynamic rugby, the Harlequins continue to be a force in the world of rugby union.
+    </p>
+  
+    
+
+      <div id="harlequinsKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Harlequins Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/harlequinshome.png" alt="Harlequins Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/harlequinsaway.png" alt="Harlequins Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 18px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="harlequinsKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Harlequins Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/harlequinshome.png" alt="Harlequins Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/harlequinsaway.png" alt="Harlequins Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309166-53485307a6-3/MakeenAlikhanHarlequins.jpg" class="card-img-top" alt="Makeen Alikhan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Makeen Alikhan</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309165-4b2c0dad99-3/CameronAndersonHarlequins.jpg" class="card-img-top" alt="Cameron Anderson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cameron Anderson</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309169-7acc95b47e-3/LennoxAnyanwuHarlequins.jpg" class="card-img-top" alt="Lennox Anyanwu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lennox Anyanwu</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309171-89e34ad73b-3/FinBaxterHarlequins.jpg" class="card-img-top" alt="Fin Baxter" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Fin Baxter</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270878-70500fa2de-3/OscarBeardHarlequins.jpg" class="card-img-top" alt="Oscar Beard" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Oscar Beard</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310417-acfce80a4b-3/JamieBensonHarlequins.jpg" class="card-img-top" alt="Jamie Benson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jamie Benson</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308731-7d6577bd5d-3/BrynBradleyHarlequins.jpg" class="card-img-top" alt="Bryn Bradley" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Bryn Bradley</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308732-02e89e6497-3/PeterBrowneHarlequins.jpg" class="card-img-top" alt="Peter Browne" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Peter Browne</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309173-bedbeceebd-3/DannyCareHarlequins.jpg" class="card-img-top" alt="Danny Care" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Danny Care</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309174-ce161f1cc0-3/LovejoyChawatamaHarlequins.jpg" class="card-img-top" alt="Lovejoy Chawatama" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lovejoy Chawatama</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309203-e2c9ce5434-3/RossChisholmHarlequins.jpg" class="card-img-top" alt="Ross Chisholm" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ross Chisholm</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270869-6d8258fa9c-3/JamesChisholmHarlequins.jpg" class="card-img-top" alt="James Chisholm" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">James Chisholm</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308493-b04be929f2-3/CharlieClare.jpg" class="card-img-top" alt="Charlie Clare." style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Charlie Clare.</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270814-b9c5a9bf64-3/WillCollierHarlequins.jpg" class="card-img-top" alt="Will Collier" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Will Collier</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309175-24966e7cb8-3/ChandlerCunningham-SouthHarlequins.jpg" class="card-img-top" alt="Chandler Cunningham-South" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Chandler Cunningham-South</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285584-972434c0fc-3/NickDavidHarlequins.jpg" class="card-img-top" alt="Nick David" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nick David</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285574-ff8f9c65b2-3/AlexDombrandtHarlequins.jpg" class="card-img-top" alt="Alex Dombrandt" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alex Dombrandt</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270828-d97b15eff8-3/WillEdwardsHarlequins.jpg" class="card-img-top" alt="Will Edwards" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Will Edwards</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270872-efe9d259fa-3/JordanElsHarlequins.jpg" class="card-img-top" alt="Jordan Els" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jordan Els</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270844-b976fc2de9-3/AndreEsterhuizenHarlequins.jpg" class="card-img-top" alt="Andre Esterhuizen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Andre Esterhuizen</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270824-aebf0b4f60-3/WilliamEvansHarlequins.jpg" class="card-img-top" alt="William Evans" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">William Evans</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309176-16b76b5b0c-3/JarrodEvansHarlequins.jpg" class="card-img-top" alt="Jarrod Evans" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jarrod Evans</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309206-c402444149-3/JerryFlanneryHarlequins.jpg" class="card-img-top" alt="Jerry Flannery" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jerry Flannery</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270865-266f8e7759-3/SantiagoGarciaBottaHarlequins.jpg" class="card-img-top" alt="Santiago Garcia Botta" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Santiago Garcia Botta</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285577-7a268ea453-3/LewisGjaltemaHarlequins.jpg" class="card-img-top" alt="Lewis Gjaltema" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lewis Gjaltema</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285583-35973027eb-3/TyroneGreenHarlequins.jpg" class="card-img-top" alt="Tyrone Green" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tyrone Green</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310975-efd1a1d04a-3/MaxGreenHarlequins.jpg" class="card-img-top" alt="Max Green" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Max Green</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285563-3bd7f627b7-3/GeorgeHammondHarlequins.jpg" class="card-img-top" alt="George Hammond" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">George Hammond</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285017-088fa6569b-3/GeorgeHeadHarlequins.jpg" class="card-img-top" alt="George Head" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">George Head</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285566-a1d276a4f6-3/IrneHerbstHarlequins.jpg" class="card-img-top" alt="Irne Herbst" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Irne Herbst</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270875-32cbd82dc3-3/HaydenHydeHarlequins.jpg" class="card-img-top" alt="Hayden Hyde" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Hayden Hyde</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309810-20d98b4161-3/NathanJibuluHarlequins.jpg" class="card-img-top" alt="Nathan Jibulu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nathan Jibulu</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/275105-1ee9a2e80e-3/AdamJonesHarlequins.jpg" class="card-img-top" alt="Adam Jones" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Adam Jones</h5>
+            <p class="card-text">Assistant Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309182-67152f3aa6-3/WillJosephHarlequins.jpg" class="card-img-top" alt="Will Joseph" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Will Joseph</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270899-9948c500f0-3/MatasJureviciusHarlequins.jpg" class="card-img-top" alt="Matas Jurevicius" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matas Jurevicius</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285569-a0c22bd6cb-3/JackKenninghamHarlequins.jpg" class="card-img-top" alt="Jack Kenningham" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jack Kenningham</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310415-0d3d82db6a-3/SeanKerrHarlequins.jpg" class="card-img-top" alt="Sean Kerr" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sean Kerr</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285582-c95dae4ba4-3/SimonKerrodHarlequins.jpg" class="card-img-top" alt="Simon Kerrod" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Simon Kerrod</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/289886-2beea15679-3/LudoKoldaeHarlequins.jpg" class="card-img-top" alt="Ludo Kolade" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ludo Kolade</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270841-c461eddc0d-3/DinoLambHarlequins.jpg" class="card-img-top" alt="Dino Lamb" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dino Lamb</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309185-5d9c12832c-3/JoeLaunchburyHarlequins.jpg" class="card-img-top" alt="Joe Launchbury" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joe Launchbury</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285571-24a1234393-3/TomLawdayHarlequins.jpg" class="card-img-top" alt="Tom Lawday" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Lawday</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270820-1705ab2236-3/StephanLewiesHarlequins.jpg" class="card-img-top" alt="Stephan Lewies" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Stephan Lewies</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309187-7f8bcb6972-3/DillonLewisHarlequins.jpg" class="card-img-top" alt="Dillon Lewis" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dillon Lewis</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270836-7aa47978dd-3/LouisLynaghHarlequins.jpg" class="card-img-top" alt="Louis Lynagh" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Louis Lynagh</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309188-65ed81bcb0-3/JoeMarlerHarlequins.jpg" class="card-img-top" alt="Joe Marler" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joe Marler</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270910-402b32af8a-3/TabaiMatsonHarlequins.jpg" class="card-img-top" alt="Tabai Matson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tabai Matson</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309205-12d3258d25-3/BillyMillardHarlequins.jpg" class="card-img-top" alt="Billy Millard" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Billy Millard</h5>
+            <p class="card-text">Assistant Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309189-c4de396adf-3/CadanMurleyHarlequins.jpg" class="card-img-top" alt="Cadan Murley" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cadan Murley</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310416-127221cf5c-3/JakeMurrayHarlequins.jpg" class="card-img-top" alt="Jake Murray" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jake Murray</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270889-754ed71690-3/JackMuskHarlequins.jpg" class="card-img-top" alt="Jack Musk" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jack Musk</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270855-62fd32ba83-3/LukeNorthmoreHarlequins.jpg" class="card-img-top" alt="Luke Northmore" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Luke Northmore</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309193-2df0b148ed-3/TomOsbourneHarlequins.jpg" class="card-img-top" alt="Tom Osbourne" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Osbourne</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309196-c59f76c94e-3/WillPorterHarlequins.jpg" class="card-img-top" alt="Will Porter" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Will Porter</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270887-ac94e3a525-3/SamRileyHarlequins.jpg" class="card-img-top" alt="Sam Riley" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sam Riley</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308491-9c3985f6cb-3/ConnorSlevinHarlequins.jpg" class="card-img-top" alt="Connor Slevin" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Connor Slevin</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/309199-b1da89f301-3/MarcusSmithHarlequins.jpg" class="card-img-top" alt="Marcus Smith" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marcus Smith</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270898-febe45a0dd-3/WillTrenholmHarlequins.jpg" class="card-img-top" alt="Will Trenholm" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Will Trenholm</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296396-31719d11f1-3/BenjaminWaghornrugbyplayer.jpg" class="card-img-top" alt="Benjamin Waghorn" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Benjamin Waghorn</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270826-c7695c2760-3/JackWalkerHarlequins.jpg" class="card-img-top" alt="Jack Walker" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jack Walker</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270810-f87f616d04-3/LukeWallaceHarlequins.jpg" class="card-img-top" alt="Luke Wallace" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Luke Wallace</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270816-650d42af2d-3/ArchieWhiteHarlequins.jpg" class="card-img-top" alt="Archie White" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Archie White</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/308495-29b52605ad-3/AZhengHarlequins.jpg" class="card-img-top" alt="Roma Zheng" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Roma Zheng</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Formation and Early Years: Harlequin's Rugby Club Legacy</h2>
+                <p>Harlequins Rugby Club, initially known as Hampstead Football Club, boasts a storied history dating back to its founding in 1866. Renamed Harlequin Rugby Football Club in 1870, the club adopted its distinctive multi-colored jersey, symbolizing its diverse and evolving membership. Over its first 40 years, the club played in various venues, but since 1909, it has called only three locations home. The pivotal acquisition of The Stoop in 1963, later renamed The Twickenham Stoop, marked a significant milestone, providing a dedicated training pitch and a lasting legacy for the club. Harlequins' journey from its early days to the present reflects not just a commitment to rugby excellence but also the enduring spirit of camaraderie that defines this historic club.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>1961, First East Africa Tour: A Pioneering Journey</h2>
+                <p>In 1961, Harlequins embarked on a groundbreaking tour of East Africa, joining forces with Pretoria Harlequins from South Africa. This tour not only showcased rugby prowess but also marked the first coordinated series of matches among three sister clubs of the Harlequin family. Lasting 19 days, it became the longest overseas tour undertaken by a British club at the time. The London club's triumphs on African soil underscored not only their rugby skills but also the global unity fostered by the sport. The tour's significance resonates not only in victories but in the bonds forged among the Harlequin family and their international counterparts.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Acquisition of The Stoop: Harlequins' Home Ground</h2>
+                <p>In 1963, Harlequins FC secured an athletics ground with 14 acres, located near the Twickenham ground. This acquisition, later known as The Twickenham Stoop, became the club's training pitch and a cherished home. Named after Adrian Dura Stoop, a pioneer in developing modern back play, the Stoop Memorial Ground has witnessed decades of triumphs, heartaches, and the evolution of Harlequins into a rugby powerhouse. The journey from securing this ground to its renaming in 2005 reflects not only a commitment to excellence on the field but also a tribute to the individuals who shaped the club's identity.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>League Rugby and the Professional Era: A Transition to Excellence</h2>
+                  <p>With the advent of leagues in 1987, Harlequins embraced a more competitive environment, consistently maintaining their status among England's top 12 clubs until 2005. Notable achievements include winning the John Player Cup in 1988 and the Pilkington Cup in 1991, with additional appearances in the finals of 1992, 1993, and 2001. Harlequins' contribution to the Rugby World Cup final in 1991, with eight players from the club, stands as a testament to their prowess in producing top-tier talent. The club's historic win in the European Shield in 2001 and subsequent triumph in the Parker Pen Challenge Cup in 2004 further solidified their status as trailblazers in European rugby.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>The John Kingston Era (2016-2018): Pursuit of European Glory</h2>
+                  <p>Following Conor O'Shea's departure in 2016, John Kingston took the helm, steering Harlequins toward European Champions Cup qualification. Kingston's 17-year tenure with the club culminated in a walk of honor, acknowledging his immense contribution. The transitional phase marked by Kingston's leadership laid the groundwork for the next chapter in Harlequins' journey.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>2018 to Present: Paul Gustard's Impact and Beyond</h2>
+                  <p>The appointment of England defense coach Paul Gustard ushered in a new era for Harlequins in 2018. Despite a patchy start to the 2018–19 season, a five-match winning run showcased the team's resilience. The subsequent seasons saw fluctuations in performance, including a commendable run in the Challenge Cup. However, silverware remained elusive, with Gustard's departure in 2021 signaling a shift in leadership.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>2023-24 Season: Navigating Change and Aspiring to Greatness</h2>
+                  <p>As Harlequins navigates the 2023-24 season, significant changes, including key signings and competitive matches, define their journey. The narrow loss to Gloucester in the season opener exemplifies the team's determination, setting the stage for a season marked by challenges and aspirations. The blend of experienced players, World Cup participants, and emerging talents positions Harlequins for a compelling season, and fans eagerly anticipate the unfolding chapters of this historic club's legacy on the rugby stage.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+            
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

@@ -1,0 +1,1381 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #fijiandruaKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #fijiandruaKitSection {
+          display: none;
+        }
+
+        #fijiandruaKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #fijiandruaKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #fijiandruaKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #fijiandruaKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #fijiandruaKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #fijiandruaKitSection {
+          display: flex;
+        }
+
+        #fijiandruaKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #fijiandruaKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Fijian Drua</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/fijiandruabanner.jpg" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About The Fijian Drua</h3>
+    <p>The Fijian Drua rugby team, based in Fiji, is a powerhouse in the world of rugby, known for their electrifying and dynamic style of play. Founded in 2017, the Drua competes in various rugby competitions, including Super Rugby Pacific. The team serves as a breeding ground for Fijian talent, providing a platform for local players to showcase their skills on an international stage. With a strong emphasis on expansive and entertaining rugby, the Fijian Drua has garnered a reputation for thrilling performances that reflect the rich rugby culture of Fiji. As a vital component of Fiji's rugby landscape, the Drua not only contributes to the development of rugby talent but also adds a vibrant and competitive edge to the global rugby scene.
+    </p>
+  
+    
+
+      <div id="fijiandruaKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Fijian Drua Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/fijiandruahome.png" alt="Fijian Drua Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/fijiandruaaway.png" alt="Fijian Drua Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="fijiandruaKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Fijian Drua Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/fijiandruahome.png" alt="Fijian Drua Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/fijiandruaaway.png" alt="Fijian Drua Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298388-a4bccf0db1-3/PhilipBaselalaFijianDrua.jpg" class="card-img-top" alt="Philip Baselala" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Philip Baselala</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/236190-c85a6a1b41-3/MickByrnerugbyplayer.jpg" class="card-img-top" alt="Mick Byrne" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mick Byrne</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301789-2ad7520bf7-3/EliaCanakaivataFijianDrua.jpg" class="card-img-top" alt="Elia Canakaivata" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Elia Canakaivata</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301817-3826ea5475-3/TeAhiwaruCirikidavetaFijianDrua.jpg" class="card-img-top" alt="Te Ahiwaru Cirikidaveta" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Te Ahiwaru Cirikidaveta</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301779-f44fdf2e3f-3/MeliDerenalagiFijianDrua.jpg" class="card-img-top" alt="Meli Derenalagi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Meli Derenalagi</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301802-cc4d3568bf-3/MesakeDogeFijianDrua.jpg" class="card-img-top" alt="Mesake Doge" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mesake Doge</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301794-bad5286b31-3/MesulameDolokotoFijianDrua.jpg" class="card-img-top" alt="Mesulame Dolokoto" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mesulame Dolokoto</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301806-1ba8f86eab-3/IlaisaDroaseseFijianDrua.jpg" class="card-img-top" alt="Ilaisa Droasese" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ilaisa Droasese</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/294733-2b5f87e1f7-3/HaereitiHetetFijianDrua.jpg" class="card-img-top" alt="Haereiti Hetet" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Haereiti Hetet</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301780-9d46bc9b86-3/TevitaIkanivereFijianDrua.jpg" class="card-img-top" alt="Tevita Ikanivere" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tevita Ikanivere</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301791-76a7c1a490-3/JoneKoroiduaduaFijianDrua.jpg" class="card-img-top" alt="Jone Koroiduadua" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jone Koroiduadua</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/275026-ca28e09c4e-3/SimioneKuruvoliFijianDrua.jpg" class="card-img-top" alt="Simione Kuruvoli" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Simione Kuruvoli</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301803-cb04bdab09-3/FrankLomaniFijianDrua.jpg" class="card-img-top" alt="Frank Lomani" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Frank Lomani</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301805-cc534fa5d9-3/IosefoMasiFijianDrua.jpg" class="card-img-top" alt="Iosefo Masi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Iosefo Masi</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301816-13a2c3d4f7-3/PeniMatawaluFijianDrua.jpg" class="card-img-top" alt="Peni Matawalu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Peni Matawalu</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301782-c1373f720b-3/ChristopherMinimbiFijianDrua.jpg" class="card-img-top" alt="Christopher Minimbi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Christopher Minimbi</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301787-c034fc5010-3/ViliveMiramiraFijianDrua.jpg" class="card-img-top" alt="Vilive Miramira" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Vilive Miramira</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301792-115d9bf2db-3/RaikabulaMomoedonuFijianDrua.jpg" class="card-img-top" alt="Raikabula Momoedonu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Raikabula Momoedonu</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301813-efb708dfcb-3/CalebMuntzFijianDrua.jpg" class="card-img-top" alt="Caleb Muntz" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Caleb Muntz</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302276-2494d6eeba-3/MMurrayFijianDrua.jpg" class="card-img-top" alt="Motikiai Murray" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Motikiai Murray</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301820-fa4820ef2a-3/MichaelNaitokaniFijianDrua.jpg" class="card-img-top" alt="Michael Naitokani" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Michael Naitokani</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301781-157b07e046-3/IsoaNasilasilaFijianDrua.jpg" class="card-img-top" alt="Isoa Nasilasila" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Isoa Nasilasila</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301801-a1094bfe91-3/KalioneNasokoFijianDrua.jpg" class="card-img-top" alt="Kalione Nasoko" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kalione Nasoko</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301798-bddf0143ae-3/RusiateNasoveFijianDrua.jpg" class="card-img-top" alt="Rusiate Nasove" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rusiate Nasove</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298389-c852e50f34-3/LivaiRasalaNataveFijianDrua.jpg" class="card-img-top" alt="Livai Rasala Natave" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Livai Rasala Natave</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/297129-e701dbaf33-3/TanielaRakuroFijianDrua.jpg" class="card-img-top" alt="Taniela Rakuro" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Taniela Rakuro</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301807-b72adbb460-3/KalavetiRavouvouFijianDrua.jpg" class="card-img-top" alt="Kalaveti Ravouvou" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kalaveti Ravouvou</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301815-fc8bba6a91-3/SelestinoRavutaumadaFijianDrua.jpg" class="card-img-top" alt="Selestino Ravutaumada" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Selestino Ravutaumada</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301788-82f7020f65-3/RatuRotuisoliaFijianDrua.jpg" class="card-img-top" alt="Ratu Rotuisolia" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ratu Rotuisolia</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301786-8a9155900e-3/KitioneSalawaFijianDrua.jpg" class="card-img-top" alt="Kitione Salawa" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kitione Salawa</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301811-7dab39c1b5-3/TuidrakiSamusamuvodreFijianDrua.jpg" class="card-img-top" alt="Tuidraki Samusamuvodre" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tuidraki Samusamuvodre</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298391-df78e3ecb0-3/EroniSauFijianDrua.jpg" class="card-img-top" alt="Eroni Sau" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Eroni Sau</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301790-76db5ab840-3/TimociSauvoliFijianDrua.jpg" class="card-img-top" alt="Timoci Sauvoli" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Timoci Sauvoli</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301814-b0232920dc-3/KitioneTaligaFijianDrua.jpg" class="card-img-top" alt="Kitione Taliga" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kitione Taliga</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301785-a1b666ed4b-3/JoeTamaniFijianDrua.jpg" class="card-img-top" alt="Joe Tamani" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joe Tamani</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301797-d45b446493-3/SamuTawakeFijianDrua.jpg" class="card-img-top" alt="Samu Tawake" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Samu Tawake</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301812-da17f524f4-3/TetiTelaFijianDrua.jpg" class="card-img-top" alt="Teti Tela" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Teti Tela</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301822-7023cef1d9-3/JoneTikoFijianDrua.jpg" class="card-img-top" alt="Jone Tiko" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jone Tiko</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301783-7861b49213-3/ZurielTogiatamaFijianDrua.jpg" class="card-img-top" alt="Zuriel Togiatama" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Zuriel Togiatama</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301793-ec9714e752-3/SorovakatiniTuifagaleleFijianDrua.jpg" class="card-img-top" alt="Sorovakatini Tuifagalele" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sorovakatini Tuifagalele</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301795-5badd801db-3/MeliTuniFijianDrua.jpg" class="card-img-top" alt="Meli Tuni" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Meli Tuni</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301796-64420bbd38-3/EmosiTuqiriFijianDrua.jpg" class="card-img-top" alt="Emosi Tuqiri" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Emosi Tuqiri</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301784-356771dcea-3/KaliopasiUluilakepaFijianDrua.jpg" class="card-img-top" alt="Kaliopasi Uluilakepa" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kaliopasi Uluilakepa</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301810-14c5f5c5c2-3/KemuValetiniFijianDrua.jpg" class="card-img-top" alt="Kemu Valetini" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kemu Valetini</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301818-c484e27873-3/ApisalomeVotaFijianDrua.jpg" class="card-img-top" alt="Apisalome Vota" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Apisalome Vota</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301823-61a0754ae2-3/EtoniaBoseWaqaFijianDrua.jpg" class="card-img-top" alt="Etonia Bose Waqa" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Etonia Bose Waqa</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Fijian Drua's National Rugby Championship Triumph (2018)</h2>
+                <p>In their second season in the National Rugby Championship (NRC) in 2018, the Fijian Drua exhibited dominance by finishing on top of the table after the regular season. They secured the Horan-Little Shield and went on to defeat Canberra Vikings in the semifinal before avenging their previous losses to Queensland Country in the final, clinching the 2018 NRC title with a thrilling 36–26 victory. This triumph showcased the Drua's prowess in Australian domestic rugby, solidifying their reputation as a force to be reckoned with.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Fijian Drua's Super Rugby Entry (2022)</h2>
+                <p>After successfully competing in the NRC, the Fijian Drua elevated their status by gaining entry into the prestigious Super Rugby competition. Following the disbandment of the NRC and the expiration of licenses for other Super Rugby sides, the New Zealand Rugby Union granted the Drua a license to join the Super Rugby competition from the 2022 season onwards. Despite challenges posed by the COVID-19 pandemic, the Drua's inclusion marked a significant moment for Fijian rugby on the global stage. The team's participation in Super Rugby Pacific solidified their place among elite rugby franchises.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Mick Byrne Leads Fijian Drua into Super Rugby (2022–2023)</h2>
+                <p>In preparation for their Super Rugby debut, the Fijian Drua appointed Mick Byrne as the head coach for the 2022 and 2023 seasons. This strategic move aimed to harness Byrne's expertise and guide the team through the challenges of the top-tier competition. The confirmation of their base in Suva, Fiji, for the 2022 season, and later in Australia due to travel restrictions, demonstrated the team's adaptability. With Lake Ainsworth Sports and Recreation Centre in Lennox Head, New South Wales as their base, the Fijian Drua embarked on their Super Rugby journey, representing Fijian rugby with pride and determination.
+
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Drua's Inaugural Super Rugby Pacific Campaign (2022)</h2>
+                <p>The anticipation for the Fijian Drua's inaugural Super Rugby Pacific campaign reached its peak with the announcement of the schedule for the 2022 season. The team's first match against the Blues in Auckland marked a historic moment in Fijian rugby. With Nemani Nagusa named captain for the 2022 season, the Drua aimed to make a lasting impact in Super Rugby, showcasing the Fijian spirit and style of play. The team's name, inspired by the traditional Fijian double canoe known as the drua, symbolized their commitment to speed, agility, and flair on the rugby field. The sky blue, black, and white colors represented the team's identity throughout their journey in both the NRC and Super Rugby.
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

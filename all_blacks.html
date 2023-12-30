@@ -1,0 +1,1351 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #allblacksKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #allblacksKitSection {
+          display: none;
+        }
+
+        #allblacksKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #allblacksKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #allblacksKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #allblacksKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #allblacksKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #allblacksKitSection {
+          display: flex;
+        }
+
+        #allblacksKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #allblacksKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - All Blacks</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/allblacksbanner.jpg" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About The All Blacks</h3>
+    <p>The All Blacks, New Zealand's national rugby union team, stand as one of the most formidable and successful teams in the history of the sport. Renowned for their iconic silver fern emblem and traditional black jerseys, the team has an illustrious legacy dating back to their first international match in 1903. The All Blacks have consistently dominated world rugby, claiming numerous Tri-Nations and Rugby Championship titles. Their intensity, skill, and the haka, a powerful Maori war dance performed before matches, make them a symbol of strength and unity. With an exceptional win record and back-to-back Rugby World Cup victories in 2011 and 2015, the All Blacks continue to embody excellence in rugby and command respect on the global stage.
+    </p>
+  
+    
+
+      <div id="allblacksKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">All Blacks Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/allblackshome.png" alt="All Blacks Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/allblacksaway.png" alt="All Blacks Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="allblacksKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">All Blacks Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/allblackshome.png" alt="All Blacks Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/allblacksaway.png" alt="All Blacks Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307530-0dbb03bb8c-3/JordieBarrettNewZealand.jpg" class="card-img-top" alt="Jordie Barrett" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jordie Barrett</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307531-aa3ac5dafd-3/ScottBarrettNewZealand.jpg" class="card-img-top" alt="Scott Barrett" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Scott Barrett</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307518-fed53e9b00-3/BeaudenBarrettNewZealand.jpg" class="card-img-top" alt="Beauden Barrett" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Beauden Barrett</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/262720-019697aacd-3/EthanBlackadderNewZealand.jpg" class="card-img-top" alt="Ethan Blackadder" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ethan Blackadder</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307520-2d41298d78-3/SamCaneNewZealand.jpg" class="card-img-top" alt="Sam Cane" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sam Cane</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307507-1aa5fb75ac-3/FinlayChristieNewZealand.jpg" class="card-img-top" alt="Finlay Christie" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Finlay Christie</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307535-37880163b0-3/CalebClarkeNewZealand.jpg" class="card-img-top" alt="Caleb Clarke" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Caleb Clarke</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307509-0d371a4999-3/DaneColesNewZealand.jpg" class="card-img-top" alt="Dane Coles" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dane Coles</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307526-43da0a1015-3/EthandeGrootNewZealand.jpg" class="card-img-top" alt="Ethan de Groot" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ethan de Groot</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307517-5a8b63e993-3/LeicesterFaingaanukuNewZealand.jpg" class="card-img-top" alt="Leicester Fainga'anuku" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Leicester Fainga'anuku</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307536-db3b6b6f64-3/GregFeekNewZealand.jpg" class="card-img-top" alt="Greg Feek" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Greg Feek</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307502-27690b569d-3/IanFosterNewZealand.jpg" class="card-img-top" alt="Ian Foster" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ian Foster</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307528-5da9489ddf-3/ShannonFrizellNewZealand.jpg" class="card-img-top" alt="Shannon Frizell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Shannon Frizell</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307513-a25d4947ff-3/DavidHaviliNewZealand.jpg" class="card-img-top" alt="David Havili" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">David Havili</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307523-43fb463351-3/RiekoIoaneNewZealand.jpg" class="card-img-top" alt="Rieko Ioane" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rieko Ioane</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307522-aea15d649b-3/LukeJacobsonNewZealand.jpg" class="card-img-top" alt="Luke Jacobson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Luke Jacobson</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307519-597e8f5b14-3/WillJordanNewZealand.jpg" class="card-img-top" alt="Will Jordan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Will Jordan</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307511-2b66ddd444-3/NepoLaulalaNewZealand.jpg" class="card-img-top" alt="Nepo Laulala" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nepo Laulala</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307503-c2d109d71f-3/AntonLienert-BrownNewZealand.jpg" class="card-img-top" alt="Anton Lienert-Brown" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Anton Lienert-Brown</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307524-86bf3e5a49-3/TyrelLomaxNewZealand.jpg" class="card-img-top" alt="Tyrel Lomax" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tyrel Lomax</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307508-3ff18ed217-3/DamianMcKenzieNewZealand.jpg" class="card-img-top" alt="Damian McKenzie" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Damian McKenzie</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307512-1172959889-3/RichieMoungaNewZealand.jpg" class="card-img-top" alt="Richie Mo'unga" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Richie Mo'unga</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307515-c7923e31d8-3/EmoniNarawaNewZealand.jpg" class="card-img-top" alt="Emoni Narawa" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Emoni Narawa</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307505-4bc6f1901b-3/FletcherNewellNewZealand.jpg" class="card-img-top" alt="Fletcher Newell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Fletcher Newell</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307525-640c9dbfb9-3/DaltonPapaliiNewZealand.jpg" class="card-img-top" alt="Dalton Papali'i" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dalton Papali'i</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307533-5248162a0d-3/BrodieRetallickNewZealand.jpg" class="card-img-top" alt="Brodie Retallick" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Brodie Retallick</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307504-5cd88ac6eb-3/CameronRoigardNewZealand.jpg" class="card-img-top" alt="Cameron Roigard" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cameron Roigard</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307537-7812409aa0-3/JasonRyanNewZealand.jpg" class="card-img-top" alt="Jason Ryan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jason Ryan</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307521-8cdacf2129-3/ArdieSaveaNewZealand.jpg" class="card-img-top" alt="Ardie Savea" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ardie Savea</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307538-53b369b265-3/JoeSchmidtNewZealand.jpg" class="card-img-top" alt="Joe Schmidt" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joe Schmidt</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307510-9912395654-3/AaronSmithNewZealand.jpg" class="card-img-top" alt="Aaron Smith" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Aaron Smith</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307514-3b53c3db87-3/SamisoniTaukeiahoNewZealand.jpg" class="card-img-top" alt="Samisoni Taukei'aho" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Samisoni Taukei'aho</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307506-bb555533b6-3/CodieTaylorNewZealand.jpg" class="card-img-top" alt="Codie Taylor" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Codie Taylor</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307516-060c6b74eb-3/MarkTeleaNewZealand.jpg" class="card-img-top" alt="Mark Telea" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mark Telea</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307529-0558ac4a35-3/OfaTuungafasiNewZealand.jpg" class="card-img-top" alt="Ofa Tu'ungafasi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ofa Tu'ungafasi</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307534-ec5bb5ea7f-3/TupouVaaiNewZealand.jpg" class="card-img-top" alt="Tupou Vaa'i" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tupou Vaa'i</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307532-48ac30d36e-3/SamWhitelockNewZealand.jpg" class="card-img-top" alt="Sam Whitelock" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sam Whitelock</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307527-39be3deb9a-3/TamaitiWilliamsNewZealand.jpg" class="card-img-top" alt="Tamaiti Williams" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tamaiti Williams</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Introduction of Rugby to New Zealand</h2>
+                <p>Rugby, known universally in New Zealand as just "rugby," was introduced to the nation in 1870 by Charles Monro. The first recorded game took place in Nelson in May 1870, and the Canterbury Rugby Football Union, New Zealand's first provincial union, was formed in 1879. The first official New Zealand side toured New South Wales in 1893, captained by Thomas Ellison, winning nine out of ten matches. The team's first true test match occurred in 1903 against Australia, resulting in a 22–3 victory at the Sydney Cricket Ground in front of over 30,000 spectators.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>The Original All Blacks (1905–06)</h2>
+                <p>The representative New Zealand team, known as the "Originals," toured the British Isles in 1905. The team played 35 matches, winning 34, with their only loss being a controversial 0–3 defeat to Wales in Cardiff. Despite on-field success, the team faced criticism for not adhering to the amateur and gentlemanly spirit promoted by the International Rugby Football Board. The success of the Originals led to the formation of a professional team, the "All Golds," in 1907, which toured the British Isles and played rugby league.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Development of a Legacy</h2>
+                <p>International rugby was suspended during World War I, but a New Zealand Services team competed in the inter-services King's Cup. The 1924 All Black tourists to the British Isles and France, known as "the Invincibles," won every game but were deprived of a potential grand slam. In 1937, South Africa toured New Zealand, decisively winning the test series despite losing the first test.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Controversial Tours</h2>
+                <p>The 1960 All Blacks tour of South Africa excluded Maori players, leading to a 10-year refusal of tours to the country. The 1976 All Blacks tour of apartheid South Africa resulted in controversy and contributed to the Gleneagles Agreement in 1977. The 1981 South African tour to New Zealand sparked protests against apartheid, and the country experienced unrest during the tour.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Early World Cups</h2>
+                <p>New Zealand hosted and won the inaugural World Cup in 1987, beating France 29–9 in the final. By the 1991 World Cup, New Zealand was an aging side, reaching the semi-finals but losing to Australia. In 1995, New Zealand reached the final but lost 12–15 to South Africa in extra time.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Professionalism</h2>
+                <p>The professional era in rugby union began in 1995, and New Zealand won the inaugural Tri-Nations in 1996. The All Blacks dominated the 2005 Tri-Nations, achieving a second Grand Slam over the Home Nations. In 2011, New Zealand hosted and won the Rugby World Cup, defeating France 8–7 in the final.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Hansen Era</h2>
+                <p>Under coach Steve Hansen, the All Blacks went undefeated in the 2013 Rugby Championship, achieving a 100% record in a calendar year. The 2015 Rugby World Cup saw them retain the title, becoming the first nation to win the tournament three times. The All Blacks continued their success in the 2016 Rugby Championship, going undefeated.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>2019 and Beyond</h2>
+                <p>In 2019, the All Blacks had a mixed year, suffering a historic loss to Ireland but retaining the Bledisloe Cup. The Rugby World Cup ended in the semi-finals with a loss to England. After the tournament, coach Steve Hansen retired, marking the end of an era for the All Blacks. Ian Foster took over as the new head coach.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>2020-2023 Journey</h2>
+                <p>From 2020 to 2023, the All Blacks navigated a dynamic journey, overcoming the challenges of the COVID-19 pandemic and securing victories in the Tri-Nations, including the Bledisloe Cup. The subsequent years were marked by dominant performances in 2021, successful defenses of the Bledisloe Cup and Rugby Championship, and a unique ending with back-to-back losses. In 2022, the team faced successes, setbacks, and coaching changes, concluding the season with 8 wins, 4 losses, and 1 draw. The challenges persisted in 2023, with a shortened Rugby Championship and a historic defeat against the Springboks. Despite retaining the Bledisloe and Freedom Cup, they fell short in the Rugby World Cup final. The season closed with a 9-3-0 record, marking the end of the Ian Foster era.
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Robertson Era (Commencing Nov 1, 2023)</h2>
+                <p>Following the conclusion of the 2023 Rugby World Cup, Scott Robertson assumed the role of head coach from November 1, 2023. His tenure marks a new chapter for the All Blacks, with his first game scheduled for 2024, ushering in a period of transition and anticipation for the team and its supporters.
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

@@ -1,0 +1,368 @@
+[
+  {
+    "rank": "1  South Africa",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/815.png.webp?maxw=35",
+    "team": "South Africa",
+    "points": "94.54"
+  },
+  {
+    "rank": "2  Ireland",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/808.png.webp?maxw=35",
+    "team": "Ireland",
+    "points": "90.57"
+  },
+  {
+    "rank": "3  New Zealand",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/811.png.webp?maxw=35",
+    "team": "New Zealand",
+    "points": "89.8"
+  },
+  {
+    "rank": "4  France",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/806.png.webp?maxw=35",
+    "team": "France",
+    "points": "87.81"
+  },
+  {
+    "rank": "5  England",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/804.png.webp?maxw=35",
+    "team": "England",
+    "points": "85.46"
+  },
+  {
+    "rank": "6  Scotland",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/814.png.webp?maxw=35",
+    "team": "Scotland",
+    "points": "83.43"
+  },
+  {
+    "rank": "7  Argentina",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/801.png.webp?maxw=35",
+    "team": "Argentina",
+    "points": "80.68"
+  },
+  {
+    "rank": "8  Wales",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/818.png.webp?maxw=35",
+    "team": "Wales",
+    "points": "80.64"
+  },
+  {
+    "rank": "9  Australia",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/802.png.webp?maxw=35",
+    "team": "Australia",
+    "points": "77.48"
+  },
+  {
+    "rank": "10  Fiji",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/805.png.webp?maxw=35",
+    "team": "Fiji",
+    "points": "76.38"
+  },
+  {
+    "rank": "11  Italy",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/809.png.webp?maxw=35",
+    "team": "Italy",
+    "points": "75.93"
+  },
+  {
+    "rank": "12  Japan",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/810.png.webp?maxw=35",
+    "team": "Japan",
+    "points": "74.27"
+  },
+  {
+    "rank": "13  Portugal",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/825.png.webp?maxw=35",
+    "team": "Portugal",
+    "points": "72.78"
+  },
+  {
+    "rank": "14  Georgia",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/807.png.webp?maxw=35",
+    "team": "Georgia",
+    "points": "72.68"
+  },
+  {
+    "rank": "15  Samoa",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/813.png.webp?maxw=35",
+    "team": "Samoa",
+    "points": "72.23"
+  },
+  {
+    "rank": "16  Tonga",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/816.png.webp?maxw=35",
+    "team": "Tonga",
+    "points": "71.57"
+  },
+  {
+    "rank": "17  USA",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/817.png.webp?maxw=35",
+    "team": "USA",
+    "points": "67.94"
+  },
+  {
+    "rank": "18  Uruguay",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/828.png.webp?maxw=35",
+    "team": "Uruguay",
+    "points": "67.39"
+  },
+  {
+    "rank": "19  Romania",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/812.png.webp?maxw=35",
+    "team": "Romania",
+    "points": "63.28"
+  },
+  {
+    "rank": "20  Spain",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/827.png.webp?maxw=35",
+    "team": "Spain",
+    "points": "62.86"
+  },
+  {
+    "rank": "21  Canada",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/803.png.webp?maxw=35",
+    "team": "Canada",
+    "points": "60.9"
+  },
+  {
+    "rank": "22  Namibia",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/824.png.webp?maxw=35",
+    "team": "Namibia",
+    "points": "60.56"
+  },
+  {
+    "rank": "23  Chile",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/821.png.webp?maxw=35",
+    "team": "Chile",
+    "points": "60.49"
+  },
+  {
+    "rank": "25  Russia",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/826.png.webp?maxw=35",
+    "team": "Russia",
+    "points": "58.06"
+  },
+  {
+    "rank": "26  Switzerland",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030377.png.webp?maxw=35",
+    "team": "Switzerland",
+    "points": "56.29"
+  },
+  {
+    "rank": "27  Netherlands",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/945.png.webp?maxw=35",
+    "team": "Netherlands",
+    "points": "55.84"
+  },
+  {
+    "rank": "28  Brazil",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/820.png.webp?maxw=35",
+    "team": "Brazil",
+    "points": "55.37"
+  },
+  {
+    "rank": "29  Belgium",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/829.png.webp?maxw=35",
+    "team": "Belgium",
+    "points": "54.58"
+  },
+  {
+    "rank": "32  Germany",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/822.png.webp?maxw=35",
+    "team": "Germany",
+    "points": "52.32"
+  },
+  {
+    "rank": "33  Poland",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030327.png.webp?maxw=35",
+    "team": "Poland",
+    "points": "51.54"
+  },
+  {
+    "rank": "34  Kenya",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/823.png.webp?maxw=35",
+    "team": "Kenya",
+    "points": "51.12"
+  },
+  {
+    "rank": "36  Sweden",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030376.png.webp?maxw=35",
+    "team": "Sweden",
+    "points": "50.46"
+  },
+  {
+    "rank": "37  Uganda",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030418.png.webp?maxw=35",
+    "team": "Uganda",
+    "points": "49.29"
+  },
+  {
+    "rank": "40  Croatia",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030360.png.webp?maxw=35",
+    "team": "Croatia",
+    "points": "47.5"
+  },
+  {
+    "rank": "42  Tunisia",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030422.png.webp?maxw=35",
+    "team": "Tunisia",
+    "points": "47.19"
+  },
+  {
+    "rank": "43  Lithuania",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030368.png.webp?maxw=35",
+    "team": "Lithuania",
+    "points": "47.02"
+  },
+  {
+    "rank": "45  Malta",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030369.png.webp?maxw=35",
+    "team": "Malta",
+    "points": "46.75"
+  },
+  {
+    "rank": "49  Mexico",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030337.png.webp?maxw=35",
+    "team": "Mexico",
+    "points": "45.82"
+  },
+  {
+    "rank": "51  Malaysia",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/1000540.png.webp?maxw=35",
+    "team": "Malaysia",
+    "points": "45.14"
+  },
+  {
+    "rank": "53  Ukraine",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030379.png.webp?maxw=35",
+    "team": "Ukraine",
+    "points": "44.82"
+  },
+  {
+    "rank": "54  Cayman Islands",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030338.png.webp?maxw=35",
+    "team": "Cayman Islands",
+    "points": "44.37"
+  },
+  {
+    "rank": "57  Moldova",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030370.png.webp?maxw=35",
+    "team": "Moldova",
+    "points": "43.13"
+  },
+  {
+    "rank": "59  Latvia",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030380.png.webp?maxw=35",
+    "team": "Latvia",
+    "points": "42.74"
+  },
+  {
+    "rank": "60  Bulgaria",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030359.png.webp?maxw=35",
+    "team": "Bulgaria",
+    "points": "42.41"
+  },
+  {
+    "rank": "62  Luxembourg",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030404.png.webp?maxw=35",
+    "team": "Luxembourg",
+    "points": "41.44"
+  },
+  {
+    "rank": "63  Israel",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030367.png.webp?maxw=35",
+    "team": "Israel",
+    "points": "41.24"
+  },
+  {
+    "rank": "68  Zambia",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030419.png.webp?maxw=35",
+    "team": "Zambia",
+    "points": "38.83"
+  },
+  {
+    "rank": "70  Hungary",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030365.png.webp?maxw=35",
+    "team": "Hungary",
+    "points": "37.46"
+  },
+  {
+    "rank": "71  Slovenia",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030375.png.webp?maxw=35",
+    "team": "Slovenia",
+    "points": "37.1"
+  },
+  {
+    "rank": "72  Serbia",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030374.png.webp?maxw=35",
+    "team": "Serbia",
+    "points": "36.57"
+  },
+  {
+    "rank": "76  Botswana",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030347.png.webp?maxw=35",
+    "team": "Botswana",
+    "points": "36.21"
+  },
+  {
+    "rank": "77  Denmark",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030363.png.webp?maxw=35",
+    "team": "Denmark",
+    "points": "36.1"
+  },
+  {
+    "rank": "78  Finland",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030364.png.webp?maxw=35",
+    "team": "Finland",
+    "points": "35.98"
+  },
+  {
+    "rank": "83  Barbados",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030385.png.webp?maxw=35",
+    "team": "Barbados",
+    "points": "34.72"
+  },
+  {
+    "rank": "87  Austria",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030403.png.webp?maxw=35",
+    "team": "Austria",
+    "points": "31.82"
+  },
+  {
+    "rank": "88  Andorra",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030357.png.webp?maxw=35",
+    "team": "Andorra",
+    "points": "31.68"
+  },
+  {
+    "rank": "94  Iran",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030366.png.webp?maxw=35",
+    "team": "Iran",
+    "points": "30"
+  },
+  {
+    "rank": "94  Qatar",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030373.png.webp?maxw=35",
+    "team": "Qatar",
+    "points": "30"
+  },
+  {
+    "rank": "94  Turkey",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030378.png.webp?maxw=35",
+    "team": "Turkey",
+    "points": "30"
+  },
+  {
+    "rank": "104  Eswatini",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030348.png.webp?maxw=35",
+    "team": "Eswatini",
+    "points": "26.04"
+  },
+  {
+    "rank": "105  Norway",
+    "logo": "https://eu-cdn.rugbypass.com/webp-images/images/team-images/logos/index/100030372.png.webp?maxw=35",
+    "team": "Norway",
+    "points": "25.95"
+  }
+]

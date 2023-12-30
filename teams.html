@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teams</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+      transition: margin-left 0.5s;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff;
+    }
+        
+        /* Add your custom styles here */
+        .team-box {
+            border: 1px solid #ddd;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .team-box:hover {
+            background-color: #3333332a;
+        }
+
+        .team-image {
+            max-width: 100%;
+            max-height: 100px;
+            display: block;
+            margin: 0 auto; /* Center the image */
+        }
+
+        .team-name {
+            font-weight: bold;
+            text-align: center;
+            margin-top: 50px; /* Adjust spacing between image and heading */
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            /* Align items horizontally */
+            align-items: center;
+            /* Align items vertically */
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+            margin-right: 50px;
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        @media only screen and (max-width: 950px) {
+      body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      /* Add this style to enhance the provided footer */
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+       .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+
+      .container h1 {
+        text-align: center;
+      }
+
+      /*
+      .row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+      }
+
+      p {
+        margin: 10px 0;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      li {
+        margin-bottom: 10px;
+      }
+
+      a {
+        color: #66ccff;
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      a:hover {
+        color: #ff9900;
+      } */
+
+    }
+
+    /* Hamburger-Menue */
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  .footer {
+      background-color: #333;
+      color: white;
+      padding: 40px 0;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .footer-col-md-4 {
+      flex: 0 0 calc(33.3333% - 20px);
+      margin-bottom: 20px;
+    }
+
+    .footer-h4 {
+      color: #ffcc00;
+      /* Change the heading color */
+    }
+
+    .footer-p {
+      margin: 10px 0;
+    }
+
+    .footer-ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-li {
+      margin-bottom: 10px;
+    }
+
+    .footer-a {
+      color: #66ccff;
+      /* Change the link color */
+      text-decoration: none;
+      transition: color 0.3s ease-in-out;
+    }
+
+    .footer-a:hover {
+      color: #ff9900;
+      /* Change the link color on hover */
+    }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <img src="img/RugbyWiki.png">
+        <nav id="desktop-nav">
+          <a href="index.html">Home</a>
+          <a href="tournaments.html">Tournaments</a>
+          <a href="teams.html">Teams</a>
+          <a href="rules.html">Rules</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="rankings.html">Rankings</a>
+          <a href="forum.html">Community</a>
+        </nav>
+        <nav id="hamburger-nav">
+          <div class="hamburger-menu">
+            <div class="hamburger-icon" onclick="toggleMenu()">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="menu-links">
+              <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+              <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+              <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+              <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+              <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+              <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+              <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+    <div class="container mt-4">
+        <!-- <h1 class="mb-4">Teams</h1> -->
+
+        <!-- Filters -->
+        <div class="form-row mb-3">
+            <div class="form-group col-md-4">
+                <label for="countryFilter">Filter by Country:</label>
+                <select id="countryFilter" class="form-control">
+                    <option value="All">All</option>
+                    <!-- Populate with unique countries -->
+                    <option value="England">England</option>
+                    <option value="Italy">Italy</option>
+                    <option value="Wales">Wales</option>
+                    <option value="Ireland">Ireland</option>
+                    <option value="France">France</option>
+                    <option value="Scotland">Scotland</option>
+                    <option value="South Africa">South Africa</option>
+                    <option value="New Zealand">New Zealand</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Fiji">Fiji</option>
+                    <option value="USA and Canada">USA and Canada</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="tournamentFilter">Filter by Tournament:</label>
+                <select id="tournamentFilter" class="form-control">
+                    <option value="All">All</option>
+                    <!-- Populate with unique tournaments -->
+                    <option value="Six Nations">Six Nations</option>
+                    <option value="Rugby Championship">Rugby Championship</option>
+                    <option value="Super Rugby Pacific">Super Rugby Pacific</option>
+                    <option value="Heineken Champions Cup">Heineken Champions Cup</option>
+                    <option value="Top 14">Top 14</option>
+                    <option value="Premiership Rugby">Premiership Rugby</option>
+                    <option value="United Rugby Championship">United Rugby Championship</option>
+                    <option value="Major League Rugby">Major League Rugby</option>
+                    <option value="EPCR Challenge Cup">EPCR Challenge Cup</option>
+                    <option value="Bunnings NPC">Bunnings NPC</option>
+                    <option value="Currie Cup">Currie Cup</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Teams -->
+        <div id="teamsContainer" class="row">
+            <!-- Teams will be dynamically added here -->
+        </div>
+
+    </div>
+    
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script>
+        function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+        // Add your custom JavaScript here
+        const teamsData = [
+            // Insert teams data here
+            { name: 'England', country: 'England', tournament: 'Six Nations', image: 'teams_img/england.png' },
+            { name: 'Italy', country: 'Italy', tournament: 'Six Nations', image: 'teams_img/italy.png' },
+            { name: 'Wales', country: 'Wales', tournament: 'Six Nations', image: 'teams_img/wales.png' },
+            { name: 'France', country: 'France', tournament: 'Six Nations', image: 'teams_img/france.png' },
+            { name: 'Ireland', country: 'Ireland', tournament: 'Six Nations', image: 'teams_img/ireland.png' },
+            { name: 'Scotland', country: 'Scotland', tournament: 'Six Nations', image: 'teams_img/scotland.png' },
+
+            { name: 'Springboks', country: 'South Africa', tournament: 'Rugby Championship', image: 'teams_img/springboks.png' },
+            { name: 'All Blacks', country: 'New Zealand', tournament: 'Rugby Championship', image: 'teams_img/allblacks.png' },
+            { name: 'Wallabies', country: 'Australia', tournament: 'Rugby Championship', image: 'teams_img/wallabies.png' },
+            { name: 'Los Pumas', country: 'Argentina', tournament: 'Rugby Championship', image: 'teams_img/argentina.png' },
+
+            { name: 'Chiefs', country: 'New Zealand', tournament: 'Super Rugby Pacific', image: 'teams_img/chiefs.png' },
+            { name: 'Crusaders', country: 'New Zealand', tournament: 'Super Rugby Pacific', image: 'teams_img/crusaders.png' },
+            { name: 'Blues', country: 'New Zealand', tournament: 'Super Rugby Pacific', image: 'teams_img/blues.png' },
+            { name: 'Brumbies', country: 'Australia', tournament: 'Super Rugby Pacific', image: 'teams_img/brumbies.png' },
+            { name: 'Hurricanes', country: 'New Zealand', tournament: 'Super Rugby Pacific', image: 'teams_img/hurricanes.png' },
+            { name: 'Waratahs', country: 'Australia', tournament: 'Super Rugby Pacific', image: 'teams_img/waratahs.png' },
+            { name: 'Fijian Drua', country: 'Fiji', tournament: 'Super Rugby Pacific', image: 'teams_img/fijiandrua.png' },
+            { name: 'Reds', country: 'Australia', tournament: 'Super Rugby Pacific', image: 'teams_img/reds.png' },
+            { name: 'Highlanders', country: 'New Zealand', tournament: 'Super Rugby Pacific', image: 'teams_img/highlanders.png' },
+            { name: 'Western Force', country: 'Australia', tournament: 'Super Rugby Pacific', image: 'teams_img/westernforce.png' },
+            { name: 'Rebels', country: 'Australia', tournament: 'Super Rugby Pacific', image: 'teams_img/rebels.png' },
+            { name: 'Moana Pasifika', country: 'New Zealand', tournament: 'Super Rugby Pacific', image: 'teams_img/moana_pasifika.svg' },
+
+            { name: 'Bristol Bears', country: 'England', tournament: 'Heineken Champions Cup', image: 'teams_img/bristolbears.png' },
+            { name: 'Bulls', country: 'South Africa', tournament: 'Heineken Champions Cup', image: 'teams_img/bulls.jpg' },
+            { name: 'Connacht', country: 'Ireland', tournament: 'Heineken Champions Cup', image: 'teams_img/connacht.png' },
+            { name: 'Lyon', country: 'France', tournament: 'Heineken Champions Cup', image: 'teams_img/lyon.png' },
+            { name: 'Saracens', country: 'England', tournament: 'Heineken Champions Cup', image: 'teams_img/saracens.png' },
+            { name: 'Bordeaux', country: 'France', tournament: 'Heineken Champions Cup', image: 'teams_img/bordeaux.svg' },
+            { name: 'Bath', country: 'England', tournament: 'Heineken Champions Cup', image: 'teams_img/bath.png' },
+            { name: 'Cardiff', country: 'Wales', tournament: 'Heineken Champions Cup', image: 'teams_img/cardiff.jpg' },
+            { name: 'Harlequins', country: 'England', tournament: 'Heineken Champions Cup', image: 'teams_img/harlequins.png' },
+            { name: 'Racing 92', country: 'France', tournament: 'Heineken Champions Cup', image: 'teams_img/racing92.png' },
+            { name: 'Toulouse', country: 'France', tournament: 'Heineken Champions Cup', image: 'teams_img/toulouse.png' },
+            { name: 'Ulster', country: 'Ireland', tournament: 'Heineken Champions Cup', image: 'teams_img/ulster.png' },
+            { name: 'Bayonne', country: 'France', tournament: 'Heineken Champions Cup', image: 'teams_img/bayonne.png' },
+            { name: 'Exeter Chiefs', country: 'England', tournament: 'Heineken Champions Cup', image: 'teams_img/exeter.png' },
+            { name: 'Glasgow Warriors', country: 'Scotland', tournament: 'Heineken Champions Cup', image: 'teams_img/glasgow.png' },
+            { name: 'Munster', country: 'Ireland', tournament: 'Heineken Champions Cup', image: 'teams_img/munster.png' },
+            { name: 'Northampton Saints', country: 'England', tournament: 'Heineken Champions Cup', image: 'teams_img/northampton.svg' },
+            { name: 'Toulon', country: 'France', tournament: 'Heineken Champions Cup', image: 'teams_img/toulon.png' },
+            { name: 'Leicester Tigers', country: 'England', tournament: 'Heineken Champions Cup', image: 'teams_img/leicester.png' },
+            { name: 'Leinster', country: 'Ireland', tournament: 'Heineken Champions Cup', image: 'teams_img/leinster.png' },
+            { name: 'Sale Sharks', country: 'England', tournament: 'Heineken Champions Cup', image: 'teams_img/salesharks.png' },
+            { name: 'Stade Francais', country: 'France', tournament: 'Heineken Champions Cup', image: 'teams_img/stadefrancais.svg' },
+            { name: 'La Rochelle', country: 'France', tournament: 'Heineken Champions Cup', image: 'teams_img/larochelle.png' },
+            { name: 'Stormers', country: 'South Africa', tournament: 'Heineken Champions Cup', image: 'teams_img/stormers.png' },
+
+            { name: 'Pau', country: 'France', tournament: 'Top 14', image: 'teams_img/pau.png' },
+            { name: 'Toulon', country: 'France', tournament: 'Top 14', image: 'teams_img/toulon.png' },
+            { name: 'Stade Francais', country: 'France', tournament: 'Top 14', image: 'teams_img/stadefrancais.svg' },
+            { name: 'Racing 92', country: 'France', tournament: 'Top 14', image: 'teams_img/racing92.png' },
+            { name: 'Castres', country: 'France', tournament: 'Top 14', image: 'teams_img/castres.png' },
+            { name: 'Toulouse', country: 'France', tournament: 'Top 14', image: 'teams_img/toulouse.png' },
+            { name: 'Bordeaux', country: 'France', tournament: 'Top 14', image: 'teams_img/bordeaux.svg' },
+            { name: 'Clermont', country: 'France', tournament: 'Top 14', image: 'teams_img/clermont.png' },
+            { name: 'Oyonnax', country: 'France', tournament: 'Top 14', image: 'teams_img/oyonnax.png' },
+            { name: 'Lyon', country: 'France', tournament: 'Top 14', image: 'teams_img/lyon.png' },
+            { name: 'La Rochelle', country: 'France', tournament: 'Top 14', image: 'teams_img/larochelle.png' },
+            { name: 'Bayonne', country: 'France', tournament: 'Top 14', image: 'teams_img/bayonne.png' },
+            { name: 'Perpignan', country: 'France', tournament: 'Top 14', image: 'teams_img/perpignan.png' },
+            { name: 'Montpellier', country: 'France', tournament: 'Top 14', image: 'teams_img/montpellier.png' },
+
+            { name: 'Sale Sharks', country: 'England', tournament: 'Premiership Rugby', image: 'teams_img/salesharks.png' },
+            { name: 'Saracens', country: 'England', tournament: 'Premiership Rugby', image: 'teams_img/saracens.png' },
+            { name: 'Bath', country: 'England', tournament: 'Premiership Rugby', image: 'teams_img/bath.png' },
+            { name: 'Harlequins', country: 'England', tournament: 'Premiership Rugby', image: 'teams_img/harlequins.png' },
+            { name: 'Northampton Saints', country: 'England', tournament: 'Premiership Rugby', image: 'teams_img/northampton.svg' },
+            { name: 'Exeter Chiefs', country: 'England', tournament: 'Premiership Rugby', image: 'teams_img/exeter.png' },
+            { name: 'Leicester Tigers', country: 'England', tournament: 'Premiership Rugby', image: 'teams_img/leicester.png' },
+            { name: 'Bristol Bears', country: 'England', tournament: 'Premiership Rugby', image: 'teams_img/bristolbears.png' },
+            { name: 'Gloucester', country: 'England', tournament: 'Premiership Rugby', image: 'teams_img/gloucester.png' },
+            { name: 'Newcastle Falcons', country: 'England', tournament: 'Premiership Rugby', image: 'teams_img/newcastle.png' },
+
+            { name: 'Glasgow Warriors', country: 'Scotland', tournament: 'United Rugby Championship', image: 'teams_img/glasgow.png' },
+            { name: 'Leinster', country: 'Irelend', tournament: 'United Rugby Championship', image: 'teams_img/leinster.png' },
+            { name: 'Bulls', country: 'South Africa', tournament: 'United Rugby Championship', image: 'teams_img/bulls.jpg' },
+            { name: 'Ulster', country: 'Ireland', tournament: 'United Rugby Championship', image: 'teams_img/ulster.png' },
+            { name: 'Edinburgh', country: 'Scotland', tournament: 'United Rugby Championship', image: 'teams_img/edinburgh.png' },
+            { name: 'Benetton', country: 'Italy', tournament: 'United Rugby Championship', image: 'teams_img/benetton.png' },
+            { name: 'Connacht', country: 'Ireland', tournament: 'United Rugby Championship', image: 'teams_img/connacht.png' },
+            { name: 'Munster', country: 'Ireland', tournament: 'United Rugby Championship', image: 'teams_img/munster.png' },
+            { name: 'Lions', country: 'South Africa', tournament: 'United Rugby Championship', image: 'teams_img/lions.png' },
+            { name: 'Cardiff', country: 'Wales', tournament: 'United Rugby Championship', image: 'teams_img/cardiff.jpg' },
+            { name: 'Stormers', country: 'South Africa', tournament: 'United Rugby Championship', image: 'teams_img/stormers.png' },
+            { name: 'Zebre Parma', country: 'Italy', tournament: 'United Rugby Championship', image: 'teams_img/zebre.png' },
+            { name: 'Ospreys', country: 'Wales', tournament: 'United Rugby Championship', image: 'teams_img/ospreys.png' },
+            { name: 'Sharks', country: 'South Africa', tournament: 'United Rugby Championship', image: 'teams_img/sharks.png' },
+            { name: 'Dragons', country: 'Wales', tournament: 'United Rugby Championship', image: 'teams_img/dragons.png' },
+            { name: 'Scarlets', country: 'Wales', tournament: 'United Rugby Championship', image: 'teams_img/scarlets.png' },
+
+            { name: 'Chicago Hounds', country: 'USA and Canada', tournament: 'Major League Rugby', image: 'teams_img/chicagohounds.png' },
+            { name: 'Dallas Jackals', country: 'USA and Canada', tournament: 'Major League Rugby', image: 'teams_img/dallasjackals.png' },
+            { name: 'Houston Sabercats', country: 'USA and Canada', tournament: 'Major League Rugby', image: 'teams_img/houstonsabercats.png' },
+            { name: 'Miami Sharks', country: 'USA and Canada', tournament: 'Major League Rugby', image: 'teams_img/miamisharks.png' },
+            { name: 'New England Free Jacks', country: 'USA and Canada', tournament: 'Major League Rugby', image: 'teams_img/freejacks.png' },
+            { name: 'Nola Gold', country: 'USA and Canada', tournament: 'Major League Rugby', image: 'teams_img/nolagold.svg' },
+            { name: 'Old Glory DC', country: 'USA and Canada', tournament: 'Major League Rugby', image: 'teams_img/oldglorydc.png' },
+            { name: 'Rugby ATL', country: 'USA and Canada', tournament: 'Major League Rugby', image: 'teams_img/rugbyatl.png' },
+            { name: 'Rugby New York', country: 'USA and Canada', tournament: 'Major League Rugby', image: 'teams_img/rugbynewyork.png' },
+            { name: 'San Diego Legion', country: 'USA and Canada', tournament: 'Major League Rugby', image: 'teams_img/sdlegion.svg' },
+            { name: 'Seattle Seawolves', country: 'USA and Canada', tournament: 'Major League Rugby', image: 'teams_img/seattle.png' },
+            { name: 'Toronto Arrows', country: 'USA and Canada', tournament: 'Major League Rugby', image: 'teams_img/torontoarrows.png' },
+            { name: 'Utah Warriors', country: 'USA and Canada', tournament: 'Major League Rugby', image: 'teams_img/utahwarriors.png' },
+
+            { name: 'Toulon', country: 'France', tournament: 'EPCR Challenge Cup', image: 'teams_img/toulon.png' },
+            { name: 'Glasgow Warriors', country: 'Scotland', tournament: 'EPCR Challenge Cup', image: 'teams_img/glasgow.png' },
+            { name: 'Cardiff', country: 'Wales', tournament: 'EPCR Challenge Cup', image: 'teams_img/cardiff.jpg' },
+            { name: 'Bristol Bears', country: 'England', tournament: 'EPCR Challenge Cup', image: 'teams_img/bristolbears.png' },
+            { name: 'Connacht', country: 'Ireland', tournament: 'EPCR Challenge Cup', image: 'teams_img/connacht.png' },
+            { name: 'Brive', country: 'France', tournament: 'EPCR Challenge Cup', image: 'teams_img/brive.png' },
+            { name: 'Newcastle Falcons', country: 'England', tournament: 'EPCR Challenge Cup', image: 'teams_img/newcastle.png' },
+            { name: 'Bath', country: 'England', tournament: 'EPCR Challenge Cup', image: 'teams_img/bath.png' },
+            { name: 'Perpignan', country: 'France', tournament: 'EPCR Challenge Cup', image: 'teams_img/perpignan.png' },
+            { name: 'Zebre Parma', country: 'Italy', tournament: 'EPCR Challenge Cup', image: 'teams_img/zebre.png' },
+            { name: 'Scarlets', country: 'Wales', tournament: 'EPCR Challenge Cup', image: 'teams_img/scarlets.png' },
+            { name: 'Benetton', country: 'Italy', tournament: 'EPCR Challenge Cup', image: 'teams_img/benetton.png' },
+            { name: 'Lions', country: 'South Africa', tournament: 'EPCR Challenge Cup', image: 'teams_img/lions.png' },
+            { name: 'Stade Francais', country: 'France', tournament: 'EPCR Challenge Cup', image: 'teams_img/stadefrancais.svg' },
+            { name: 'Dragons', country: 'Wales', tournament: 'EPCR Challenge Cup', image: 'teams_img/dragons.png' },
+            { name: 'Cheetahs', country: 'South Africa', tournament: 'EPCR Challenge Cup', image: 'teams_img/cheetahs.png' },
+            { name: 'Pau', country: 'France', tournament: 'EPCR Challenge Cup', image: 'teams_img/pau.png' },
+            { name: 'Bayonne', country: 'France', tournament: 'EPCR Challenge Cup', image: 'teams_img/bayonne.png' },
+
+            { name: 'Wellington', country: 'New Zealand', tournament: 'Bunnings NPC', image: 'teams_img/wellington.png' },
+            { name: 'Taranaki Bulls', country: 'New Zealand', tournament: 'Bunnings NPC', image: 'teams_img/taranakibulls.png' },
+            { name: 'Canterbury', country: 'New Zealand', tournament: 'Bunnings NPC', image: 'teams_img/canterbury.png' },
+            { name: 'Bay of Plenty', country: 'New Zealand', tournament: 'Bunnings NPC', image: 'teams_img/bayofplenty.png' },
+            { name: 'Hawkes Bay', country: 'New Zealand', tournament: 'Bunnings NPC', image: 'teams_img/hawkesbay.png' },
+            { name: 'Auckland', country: 'New Zealand', tournament: 'Bunnings NPC', image: 'teams_img/aukland.png' },
+            { name: 'Tasman Makos', country: 'New Zealand', tournament: 'Bunnings NPC', image: 'teams_img/tasmanmakos.png' },
+            { name: 'Waikato', country: 'New Zealand', tournament: 'Bunnings NPC', image: 'teams_img/waikato.svg' },
+            { name: 'Counties Manukau', country: 'New Zealand', tournament: 'Bunnings NPC', image: 'teams_img/countiesmanukau.png' },
+            { name: 'North Harbour', country: 'New Zealand', tournament: 'Bunnings NPC', image: 'teams_img/northharbour.png' },
+            { name: 'Otago', country: 'New Zealand', tournament: 'Bunnings NPC', image: 'teams_img/otago.png' },
+            { name: 'Northland', country: 'New Zealand', tournament: 'Bunnings NPC', image: 'teams_img/northland.png' },
+            { name: 'Manawatu', country: 'New Zealand', tournament: 'Bunnings NPC', image: 'teams_img/manawatu.png' },
+            { name: 'Southland Stags', country: 'New Zealand', tournament: 'Bunnings NPC', image: 'teams_img/southland.png' },
+
+            { name: 'Cheetahs', country: 'South Africa', tournament: 'Currie Cup', image: 'teams_img/cheetahs.png' },
+            { name: 'Sharks', country: 'South Africa', tournament: 'Currie Cup', image: 'teams_img/sharks.png' },
+            { name: 'Pumas', country: 'South Africa', tournament: 'Currie Cup', image: 'teams_img/pumas.png' },
+            { name: 'Bulls', country: 'South Africa', tournament: 'Currie Cup', image: 'teams_img/bulls.jpg' },
+            { name: 'Western Province', country: 'South Africa', tournament: 'Currie Cup', image: 'teams_img/westernprovince.png' },
+            { name: 'Golden Lions', country: 'South Africa', tournament: 'Currie Cup', image: 'teams_img/goldenlions.png' },
+            { name: 'Griquas', country: 'South Africa', tournament: 'Currie Cup', image: 'teams_img/griquas.png' },
+            { name: 'Griffons', country: 'South Africa', tournament: 'Currie Cup', image: 'teams_img/griffons.png' },
+
+            // { name: 'Sale Sharks', country: 'England', tournament: 'Premiership Rugby Cup', image: 'teams_img/salesharks.png' },
+            // { name: 'Northampton Saints', country: 'England', tournament: 'Premiership Rugby Cup', image: 'teams_img/northampton.svg' },
+            // { name: 'Saracens', country: 'England', tournament: 'Premiership Rugby Cup', image: 'teams_img/saracens.png' },
+            // { name: 'Wasps', country: 'England', tournament: 'Premiership Rugby Cup', image: 'teams_img/wasps.png' },
+            // { name: 'Harlequins', country: 'England', tournament: 'Premiership Rugby Cup', image: 'teams_img/harlequins.png' },
+            // { name: 'Bristol Bears', country: 'England', tournament: 'Premiership Rugby Cup', image: 'teams_img/bristolbears.png' },
+            // { name: 'Gloucester', country: 'England', tournament: 'Premiership Rugby Cup', image: 'teams_img/gloucester.png' },
+            // { name: 'London Irish', country: 'England', tournament: 'Premiership Rugby Cup', image: 'teams_img/londonirish.png' },
+            // { name: 'Exeter Chiefs', country: 'England', tournament: 'Premiership Rugby Cup', image: 'teams_img/exeter.png' },
+            // { name: 'Bath', country: 'England', tournament: 'Premiership Rugby Cup', image: 'teams_img/bath.png' },
+            // { name: 'Leicester Tigers', country: 'England', tournament: 'Premiership Rugby Cup', image: 'teams_img/leicester.png' },
+            // { name: 'Worcester Warriors', country: 'England', tournament: 'Premiership Rugby Cup', image: 'teams_img/worcester.png' },
+            
+            
+            // ... (insert all teams)
+        ];
+
+        // Populate unique countries and tournaments in filters
+    const uniqueCountries = [...new Set(teamsData.map(team => team.country))];
+    const uniqueTournaments = [...new Set(teamsData.map(team => team.tournament))];
+
+    const countryFilter = document.getElementById('countryFilter');
+    const tournamentFilter = document.getElementById('tournamentFilter');
+    const teamsContainer = document.getElementById('teamsContainer');
+
+    function handleTeamClick(teamName) {
+        // Redirect to the team's HTML page (assuming the HTML file name is the team name in lowercase)
+        window.location.href = teamName.toLowerCase().replace(/\s+/g, '_') + '.html';
+    }
+
+    // Function to render teams based on filters
+    function renderTeams() {
+        const selectedCountry = countryFilter.value;
+        const selectedTournament = tournamentFilter.value;
+
+        const filteredTeams = teamsData.filter(team =>
+            (selectedCountry === 'All' || team.country === selectedCountry) &&
+            (selectedTournament === 'All' || team.tournament === selectedTournament)
+        );
+
+        teamsContainer.innerHTML = '';
+
+        // Use a Set to track displayed team names to avoid duplicates
+        const displayedTeamNames = new Set();
+
+        filteredTeams.forEach(team => {
+            // Check if the team name is already displayed
+            if (!displayedTeamNames.has(team.name)) {
+                const teamBox = document.createElement('div');
+                teamBox.className = 'team-box col-md-3';
+
+                teamBox.onclick = function () {
+                    handleTeamClick(team.name);
+                };
+
+                const teamImage = document.createElement('img');
+                teamImage.src = team.image;
+                teamImage.alt = team.name;
+                teamImage.className = 'img-fluid team-image';
+
+                const teamName = document.createElement('p');
+                teamName.textContent = team.name;
+
+                teamBox.appendChild(teamImage);
+                
+                teamBox.appendChild(teamName);
+                
+                teamsContainer.appendChild(teamBox);
+
+                // Add the team name to the Set to track displayed teams
+                displayedTeamNames.add(team.name);
+            }
+        });
+    }
+
+    // Event listeners for filters
+    countryFilter.addEventListener('change', renderTeams);
+    tournamentFilter.addEventListener('change', renderTeams);
+
+    // Initial render
+    renderTeams();
+    </script>
+</body>
+
+</html>

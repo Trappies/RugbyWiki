@@ -1,0 +1,1545 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .cont:nth-child(14){
+          animation-delay: 13s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #oyonnaxKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #oyonnaxKitSection {
+          display: none;
+        }
+
+        #oyonnaxKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #oyonnaxKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #oyonnaxKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #oyonnaxKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #oyonnaxKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #oyonnaxKitSection {
+          display: flex;
+        }
+
+        #oyonnaxKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #oyonnaxKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Oyonnax</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/oyonnaxbanner.png" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About Oyonnax</h3>
+    <p>Oyonnax Rugby, based in Oyonnax, France, is a professional rugby union club competing in the French league system. Established in 1909, the club has experienced periods of both success and challenges. Oyonnax reached prominence in the early 2010s, earning promotions to the Top 14, the top tier of French rugby. Their tenacious playstyle and dedicated fan base contributed to their rise through the ranks. While they faced relegation battles, Oyonnax consistently displayed resilience, showcasing the spirit of a club deeply rooted in its community. The Stade Charles-Mathon serves as the team's home ground, witnessing the highs and lows of Oyonnax Rugby's ongoing journey in the dynamic landscape of French rugby.
+    </p>
+  
+    
+
+      <div id="oyonnaxKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Oyonnax Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/oyonnaxhome.png" alt="Oyonnax Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/oyonnaxaway.png" alt="Oyonnax Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 19px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="oyonnaxKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Oyonnax Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/oyonnaxhome.png" alt="Oyonnax Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/oyonnaxaway.png" alt="Oyonnax Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306152-fdcbec3779-3/AntoineAbrahamUSOyonnax.jpg" class="card-img-top" alt="Antoine Abraham" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Antoine Abraham</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298315-bc67208088-3/BruceAlvaradorugbyplayer.jpg" class="card-img-top" alt="Bruce Alvarado" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Bruce Alvarado</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306164-a690ed5218-3/PhoenixBattyeUSOyonnax.jpg" class="card-img-top" alt="Phoenix Battye" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Phoenix Battye</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306153-f4eabf154d-3/ThibaultBerthaudUSOyonnax.jpg" class="card-img-top" alt="Thibault Berthaud" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Thibault Berthaud</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/283707-80518d9851-3/PedroBettencourtUSOyonnax.jpg" class="card-img-top" alt="Pedro Bettencourt" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Pedro Bettencourt</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306154-eef83be442-3/AdrienBordenaveUSOyonnax.jpg" class="card-img-top" alt="Adrien Bordenave" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Adrien Bordenave</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306185-f32c46038a-3/JustinBourauxUSOyonnax.jpg" class="card-img-top" alt="Justin Bouraux" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Justin Bouraux</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306182-505b8c27b4-3/CharlieCassangUSOyonnax.jpg" class="card-img-top" alt="Charlie Cassang" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Charlie Cassang</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306201-353b88c297-3/FabienCibrayUSOyonnax.jpg" class="card-img-top" alt="Fabien Cibray" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Fabien Cibray</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305527-68a0bbf221-3/EthanCluselUSOyonnax.jpg" class="card-img-top" alt="Ethan Clusel" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ethan Clusel</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298313-90612cbb94-3/AntoninCorsorugbyplayer.jpg" class="card-img-top" alt="Antonin Corso" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Antonin Corso</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/283713-456bc513b2-3/SouleymaneCoulibalyUSOyonnax.jpg" class="card-img-top" alt="Souleymane Coulibaly" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Souleymane Coulibaly</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306170-ea0d53bfb4-3/LoicCredozUSOyonnax.jpg" class="card-img-top" alt="Loic Credoz" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Loic Credoz</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/287871-df90ffec92-3/TomCurtrugbyplayer.jpg" class="card-img-top" alt="Tom Curt" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tom Curt</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286804-46e1c7fd5e-3/YvanDavidrugbyplayer.jpg" class="card-img-top" alt="Yvan David" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Yvan David</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306199-2d7847863b-3/VincentDebatyUSOyonnax.jpg" class="card-img-top" alt="Vincent Debaty" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Vincent Debaty</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/4754-053c7e3779-3/AmedeoDiPietrorugbyplayer.jpg" class="card-img-top" alt="Amedeo Di Pietro" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Amedeo Di Pietro</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306160-d9258685b0-3/TeddyDurandUSOyonnax.jpg" class="card-img-top" alt="Teddy Durand" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Teddy Durand</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/253971-b7d386b625-3/MannyEdmondsrugbyplayer.jpg" class="card-img-top" alt="Manny Edmonds" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Manny Edmonds</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306202-7e5c5b47fa-3/JoeElAbdUSOyonnax.jpg" class="card-img-top" alt="Joe El Abd" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joe El Abd</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306183-5f6226b4e4-3/IlanElKhattabiUSOyonnax.jpg" class="card-img-top" alt="Ilan El Khattabi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ilan El Khattabi</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306197-01d0540936-3/TonyEnsorUSOyonnax.jpg" class="card-img-top" alt="Tony Ensor" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tony Ensor</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306165-b1a257ac9e-3/HugoFabregueUSOyonnax.jpg" class="card-img-top" alt="Hugo Fabregue" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Hugo Fabregue</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306188-bf7e208768-3/ChrisFarrellUSOyonnax.jpg" class="card-img-top" alt="Chris Farrell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Chris Farrell</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306166-510e4d8875-3/LevaFifitaUSOyonnax.jpg" class="card-img-top" alt="Leva Fifita" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Leva Fifita</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298312-b5387dfc03-3/PaulGadearugbyplayer.jpg" class="card-img-top" alt="Paul Gadea" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Paul Gadea</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306161-592c5a72c4-3/BenjaminGeledanUSOyonnax.jpg" class="card-img-top" alt="Benjamin Geledan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Benjamin Geledan</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306172-928a597668-3/LoicGodenerUSOyonnax.jpg" class="card-img-top" alt="Loic Godener" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Loic Godener</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306173-cebc6841d2-3/RoryGriceUSOyonnax.jpg" class="card-img-top" alt="Rory Grice" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rory Grice</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306175-1419666575-3/LukeHamiltonUSOyonnax.jpg" class="card-img-top" alt="Luke Hamilton" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Luke Hamilton</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306176-3a4cb4ba22-3/HugoHermetUSOyonnax.jpg" class="card-img-top" alt="Hugo Hermet" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Hugo Hermet</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306192-dd77955661-3/DanielIkpefanUSOyonnax.jpg" class="card-img-top" alt="Daniel Ikpefan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Daniel Ikpefan</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306167-e28f3ac421-3/EwanJohnsonUSOyonnax.jpg" class="card-img-top" alt="Ewan Johnson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ewan Johnson</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/260733-e79debb14c-3/BekaKakabadzeUSOyonnax.jpg" class="card-img-top" alt="Beka Kakabadze" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Beka Kakabadze</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306177-d03b819910-3/KevinKornathUSOyonnax.jpg" class="card-img-top" alt="Kevin Kornath" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kevin Kornath</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/283674-55a97b246c-3/StephanLeRouxUSOyonnax.jpg" class="card-img-top" alt="Stephan Le Roux" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Stephan Le Roux</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306168-f06cd1e0c9-3/VictorLebasUSOyonnax.jpg" class="card-img-top" alt="Victor Lebas" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Victor Lebas</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306178-7e7fbd5168-3/KevinLebretonUSOyonnax.jpg" class="card-img-top" alt="Kevin Lebreton" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kevin Lebreton</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306162-2d5ea77643-3/ManuLeiatauaUSOyonnax.jpg" class="card-img-top" alt="Manu Leiataua" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Manu Leiataua</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298928-60d324acb5-3/SteveMafiUSOyonnax.jpg" class="card-img-top" alt="Steve Mafi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Steve Mafi</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/283670-ea51fe9557-3/EnzoMelisseUSOyonnax.jpg" class="card-img-top" alt="Enzo Melisse" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Enzo Melisse</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306189-18b4764449-3/LucasMensaUSOyonnax.jpg" class="card-img-top" alt="Lucas Mensa" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lucas Mensa</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306190-800673f0a3-3/TheoMilletUSOyonnax.jpg" class="card-img-top" alt="Theo Millet" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Theo Millet</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306186-b3727c4e8c-3/DomingoMiottiUSOyonnax.jpg" class="card-img-top" alt="Domingo Miotti" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Domingo Miotti</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306155-4a4a33f1b7-3/IrakliMirtskhulavaUSOyonnax.jpg" class="card-img-top" alt="Irakli Mirtskhulava" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Irakli Mirtskhulava</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/216260-29c4513535-3/TheoNanetterugbyplayer.jpg" class="card-img-top" alt="Theo Nanette" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Theo Nanette</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306179-4ba6ab5e02-3/DavidOdiaseUSOyonnax.jpg" class="card-img-top" alt="David Odiase" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">David Odiase</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306156-b885b55237-3/AliOzUSOyonnax.jpg" class="card-img-top" alt="Ali Oz" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ali Oz</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306180-c881303960-3/WandrillePicaultUSOyonnax.jpg" class="card-img-top" alt="Wandrille Picault" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Wandrille Picault</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298947-14c5802412-3/AlexisPisaniUSOyonnax.jpg" class="card-img-top" alt="Alexis Pisani" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alexis Pisani</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296539-7c7dbef898-3/JulienRatajczakrugbyplayer.jpg" class="card-img-top" alt="Julien Ratajczak" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Julien Ratajczak</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306193-9fc558d9ab-3/JoeRavouvouUSOyonnax.jpg" class="card-img-top" alt="Joe Ravouvou" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joe Ravouvou</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306159-485a1446b5-3/TommyRaynaudUSOyonnax.jpg" class="card-img-top" alt="Tommy Raynaud" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tommy Raynaud</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306195-4caacb6834-3/EnzoReybierUSOyonnax.jpg" class="card-img-top" alt="Enzo Reybier" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Enzo Reybier</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306184-97167209a7-3/JonathanRuruUSOyonnax.jpg" class="card-img-top" alt="Jonathan Ruru" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jonathan Ruru</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305525-71c5f3498e-3/MaximeSallesUSOyonnax.jpg" class="card-img-top" alt="Maxime Salles" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Maxime Salles</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306200-7741bc630a-3/DewaldSenekalUSOyonnax.jpg" class="card-img-top" alt="Dewald Senekal" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dewald Senekal</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306187-8b3f022d34-3/JulesSoulanUSOyonnax.jpg" class="card-img-top" alt="Jules Soulan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jules Soulan</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306196-6d2ace9514-3/GavinStarkUSOyonnax.jpg" class="card-img-top" alt="Gavin Stark" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gavin Stark</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312068-13d03bc473-3/RorySutherlandUSOyonnax.jpg" class="card-img-top" alt="Rory Sutherland" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rory Sutherland</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306198-1be3b253b4-3/DarrenSweetnamUSOyonnax.jpg" class="card-img-top" alt="Darren Sweetnam" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Darren Sweetnam</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306181-b3a3987bb1-3/FilimoTaofifenuaUSOyonnax.jpg" class="card-img-top" alt="Filimo Taofifenua" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Filimo Taofifenua</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306191-ce96e609cb-3/LeoTreillesUSOyonnax.jpg" class="card-img-top" alt="Leo Treilles" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Leo Treilles</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305516-96c0da15cc-3/ChristopherVaotoaUSOyonnax.jpg" class="card-img-top" alt="Christopher Vaotoa" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Christopher Vaotoa</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Oyonnax Rugby in Top 14</h2>
+                <p>Oyonnax Rugby, is a prominent French professional rugby union club competing in the esteemed Top 14 league. The club, founded in 1949 and situated in the Ain mountainous department, proudly dons black and red jerseys during their fiercely contested matches at the Stade Charles-Mathon, boasting an elevation of 532 meters (1,745 feet), making it the highest stadium in the league with a capacity of 11,400.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Historical Evolution</h2>
+                <p>Originally established in 1909 as Club Sportif Oyonnaxien, the club underwent a name change to Union Sportive Oyonaxienne in 1940 due to the enforced unification of sports clubs by the Vichy régime. Oyonnax navigated through regional leagues until their ascent to the First Division in 1967, only to face relegation shortly after. The team's resilience led to a return to Group B of the First Division (essentially the Second Division) in 1988. A pivotal moment occurred in 2003 when Oyonnax reached the Fédérale 1 final, eventually transitioning to the professional Pro D2. Their triumphant 2012/13 season saw them clinch the Pro D2 title, securing promotion to the prestigious Top 14. Despite a brief relegation in the 2016/17 season, Oyonnax swiftly reclaimed their spot in the Top 14.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+              
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

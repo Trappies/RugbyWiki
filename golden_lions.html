@@ -1,0 +1,1565 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .cont:nth-child(14){
+          animation-delay: 13s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #goldenlionsKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #goldenlionsKitSection {
+          display: none;
+        }
+
+        #goldenlionsKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #goldenlionsKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #goldenlionsKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #goldenlionsKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #goldenlionsKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #goldenlionsKitSection {
+          display: flex;
+        }
+
+        #goldenlionsKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #goldenlionsKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Golden Lions</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/goldenlionsbanner.png" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About Golden Lions</h3>
+    <p>The Golden Lions, hailing from Johannesburg, South Africa, boast a storied rugby legacy characterized by triumph and tenacity. Founded in 1889, the team has etched its name in history with numerous accomplishments, including multiple Currie Cup victories and contributions to South African rugby. The iconic red and white jerseys symbolize the pride and resilience of the Lions. Over the years, the Golden Lions have produced exceptional talent, contributing significantly to the national rugby landscape. Their commitment to excellence extends across various competitions, making them a formidable force in the dynamic world of South African rugby. With a rich history and a promising future, the Golden Lions continue to roar on the rugby stage, leaving an indelible mark on the sport in the Rainbow Nation.
+    </p>
+  
+    
+
+      <div id="goldenlionsKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Golden Lions Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/goldenlionshome.png" alt="Golden Lions Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/goldenlionshome.png" alt="Golden Lions Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="goldenlionsKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Golden Lions Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/goldenlionshome.png" alt="Golden Lions Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/goldenlionshome.png" alt="Golden Lions Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/136798-c0a09d0d16-3/JWBellrugbyplayer.jpg" class="card-img-top" alt="JW Bell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">JW Bell</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295542-8128bd76b4-3/KabousBezuidenhoutGoldenLions.jpg" class="card-img-top" alt="Kabous Bezuidenhout" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kabous Bezuidenhout</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296994-8a461dd49d-3/TylerBocksGoldenLions.jpg" class="card-img-top" alt="Tyler Bocks" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tyler Bocks</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301467-983cacfbfe-3/PJBothaGoldenLions.jpg" class="card-img-top" alt="PJ Botha" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">PJ Botha</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299874-33d0cbdc9a-3/MorneBrandonGoldenLions.jpg" class="card-img-top" alt="Morne Brandon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Morne Brandon</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296525-15ff5e8231-3/JarodCairnsGoldenLions.jpg" class="card-img-top" alt="Jarod Cairns" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jarod Cairns</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296992-f0d69edae6-3/JurichClaasensGoldenLions.jpg" class="card-img-top" alt="Jurich Claasens" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jurich Claasens</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296530-5d0b74981b-3/AndriesCoetzeeGoldenLions.jpg" class="card-img-top" alt="Andries Coetzee" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Andries Coetzee</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295944-fa7146ea11-3/RuanDelportGoldenLions.jpg" class="card-img-top" alt="Ruan Delport" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ruan Delport</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301034-f5eb3b789f-3/RuanDreyerGoldenLions.jpg" class="card-img-top" alt="Ruan Dreyer" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ruan Dreyer</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296978-13f7905e03-3/RenzoDuPlessisGoldenLions.jpg" class="card-img-top" alt="Renzo Du Plessis" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Renzo Du Plessis</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295550-0de72d388d-3/Jacques-LouisduToitGoldenLions.jpg" class="card-img-top" alt="Jacques-Louis du Toit" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jacques-Louis du Toit</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295548-c017cd6fb9-3/IzanEsterhuizenGoldenLions.jpg" class="card-img-top" alt="Izan Esterhuizen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Izan Esterhuizen</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296526-496383ff28-3/TravisGordonGoldenLions.jpg" class="card-img-top" alt="Travis Gordon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Travis Gordon</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296993-75e8784e6b-3/BoldwinHansenGoldenLions.jpg" class="card-img-top" alt="Boldwin Hansen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Boldwin Hansen</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301854-c7f9ec4b02-3/QuanHornGoldenLions.jpg" class="card-img-top" alt="Quan Horn" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Quan Horn</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301031-5ade3ff28d-3/FranckeHornGoldenLions.jpg" class="card-img-top" alt="Francke Horn" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Francke Horn</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/275570-7f7d34de93-3/VaughenIsaacsGoldenLions.jpg" class="card-img-top" alt="Vaughen Isaacs" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Vaughen Isaacs</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296990-480732f3af-3/PieterJansenvanVurenGoldenLions.jpg" class="card-img-top" alt="Pieter Jansen van Vuren" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Pieter Jansen van Vuren</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296528-ead94aba6d-3/RynhardtJonkerGoldenLions.jpg" class="card-img-top" alt="Rynardt Jonker" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rynardt Jonker</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299510-b6339eea69-3/KaydenKiewitGoldenLions.jpg" class="card-img-top" alt="Kayden Kiewit" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kayden Kiewit</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296524-9700503b8d-3/DarrienLandsbergGoldenLions.jpg" class="card-img-top" alt="Darrien Landsberg" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Darrien Landsberg</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/266428-250546b4bd-3/RicardoLaubscherrugbyplayer.jpg" class="card-img-top" alt="Ricardo Laubscher" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ricardo Laubscher</h5>
+            <p class="card-text">Assistant Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299876-f01a8fb299-3/GianniLombardGoldenLions.jpg" class="card-img-top" alt="Gianni Lombard" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gianni Lombard</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/288620-5e72444689-3/MariusLouwrugbyplayer.jpg" class="card-img-top" alt="Marius Louw" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marius Louw</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301033-67bba8c515-3/RabzMaxwaneGoldenLions.jpg" class="card-img-top" alt="Rabz Maxwane" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rabz Maxwane</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298640-c7d9546fee-3/BronsonMillsGoldenLions.jpg" class="card-img-top" alt="Bronson Mills" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Bronson Mills</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295538-3d4c5a51a4-3/MattMoreGoldenLions.jpg" class="card-img-top" alt="Matt More" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matt More</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296980-3f7da08fc5-3/KellyMpekuGoldenLions.jpg" class="card-img-top" alt="Kelly Mpeku" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kelly Mpeku</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295534-d9dd34d2d8-3/IlungaMukendiGoldenLions.jpg" class="card-img-top" alt="Ilunga Mukendi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ilunga Mukendi</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296988-b7a6325ff0-3/MorganNaudeGoldenLions.jpg" class="card-img-top" alt="Morgan Naude" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Morgan Naude</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295537-257809ffec-3/LindoNcusaneGoldenLions.jpg" class="card-img-top" alt="Lindo Ncusane" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lindo Ncusane</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295540-5455a1c2f0-3/SaskoNdlovuGoldenLions.jpg" class="card-img-top" alt="Sasko Ndlovu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sasko Ndlovu</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/256344-222163c6ee-3/PrinceNkabinderugbyplayer.jpg" class="card-img-top" alt="Prince Nkabinde" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Prince Nkabinde</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301032-60635c2f08-3/SaneleNohambaGoldenLions.jpg" class="card-img-top" alt="Sanele Nohamba" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sanele Nohamba</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300190-ef807854a1-3/AsenathiNtlabakanyeGoldenLions.jpg" class="card-img-top" alt="Asenathi Ntlabakanye" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Asenathi Ntlabakanye</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296529-6b240dbb58-3/SteanPienaarGoldenLions.jpg" class="card-img-top" alt="Stean Pienaar" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Stean Pienaar</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301030-d512d39c75-3/JCPretoriusGoldenLions.jpg" class="card-img-top" alt="JC Pretorius" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">JC Pretorius</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299875-52ecc5e265-3/ManuelRassGoldenLions.jpg" class="card-img-top" alt="Manuel Rass" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Manuel Rass</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296522-21ca6f523b-3/RhynardtRijnsburgerGoldenLions.jpg" class="card-img-top" alt="Rhynardt Rijnsburger" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rhynardt Rijnsburger</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295562-940172395d-3/RaynardRoetsGoldenLions.jpg" class="card-img-top" alt="Raynard Roets" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Raynard Roets</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296531-baceafe1c6-3/SibusisoSangweniGoldenLions.jpg" class="card-img-top" alt="Sibusiso Sangweni" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sibusiso Sangweni</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296523-5c030bdb7c-3/RubenSchoemanGoldenLions.jpg" class="card-img-top" alt="Ruben Schoeman" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ruben Schoeman</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295565-39e89f9db8-3/NgiaSelengbeGoldenLions.jpg" class="card-img-top" alt="Ngia Selengbe" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ngia Selengbe</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295559-1381431c64-3/SibusisoShongweGoldenLions.jpg" class="card-img-top" alt="Sibusiso Shongwe" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sibusiso Shongwe</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296984-29d28a3268-3/SithembisoSitholeGoldenLions.jpg" class="card-img-top" alt="Sithembiso Sithole" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sithembiso Sithole</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295535-74db4cc5bf-3/CalSmidGoldenLions.jpg" class="card-img-top" alt="Cal Smid" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cal Smid</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296519-1afb351b2b-3/RuanSmithGoldenLions.jpg" class="card-img-top" alt="Ruan Smith" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ruan Smith</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295554-5e3f1c8a3d-3/GinterSmutsGoldenLions.jpg" class="card-img-top" alt="Ginter Smuts" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ginter Smuts</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296991-5ef107aa98-3/Peter-JohnSteenkampGoldenLions.jpg" class="card-img-top" alt="Peter-John Steenkamp" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Peter-John Steenkamp</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295949-5bd3dd7625-3/NicoSteynGoldenLions.jpg" class="card-img-top" alt="Nico Steyn" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nico Steyn</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301028-a192285448-3/RuhanStraeuliGoldenLions.jpg" class="card-img-top" alt="Ruhan Straeuli" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ruhan Straeuli</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295563-a5badc3447-3/ZeilingaStrydomGoldenLions.jpg" class="card-img-top" alt="Zeilinga Strydom" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Zeilinga Strydom</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295552-0d21f77bec-3/JPSwanepoelGoldenLions.jpg" class="card-img-top" alt="JP Swanepoel" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">JP Swanepoel</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295566-aa036552c5-3/TiaanSwanepoelGoldenLions.jpg" class="card-img-top" alt="Tiaan Swanepoel" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tiaan Swanepoel</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/288604-d69cc4f7a8-3/EmmanuelTshitukarugbyplayer.jpg" class="card-img-top" alt="Emmanuel Tshituka" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Emmanuel Tshituka</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295544-16c472835d-3/ConnorvanBuurenGoldenLions.jpg" class="card-img-top" alt="Connor van Buuren" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Connor van Buuren</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296527-1ae3d8e408-3/MornevandenBergGoldenLions.jpg" class="card-img-top" alt="Morne van den Berg" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Morne van den Berg</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301027-d6ee6459d3-3/EdwillvanderMerweGoldenLions.jpg" class="card-img-top" alt="Edwill van der Merwe" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Edwill van der Merwe</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/295567-6f512b7851-3/IvanvanRooyenGoldenLions.jpg" class="card-img-top" alt="Ivan van Rooyen" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ivan van Rooyen</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296987-c12c5a7017-3/MichaelvanVuurenGoldenLions.jpg" class="card-img-top" alt="Michael van Vuuren" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Michael van Vuuren</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301029-964afe200c-3/RuanVenterGoldenLions.jpg" class="card-img-top" alt="Ruan Venter" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ruan Venter</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/296520-bff4c19b21-3/JacoVisagieGoldenLions.jpg" class="card-img-top" alt="Jaco Visagie" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jaco Visagie</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299511-53a24cf2fb-3/AndreWarnerGoldenLions.jpg" class="card-img-top" alt="Andre Warner" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Andre Warner</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/250256-ff93e1c4bf-3/KadeWolhuterrugbyplayer.jpg" class="card-img-top" alt="Kade Wolhuter" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kade Wolhuter</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Evolution of the Pride</h2>
+                <p>The Golden Lions, currently sponsored by Fidelity ADT, stand as a powerhouse in South African rugby. Originating as Transvaal in 1889, the team has weathered political shifts, changing its name to Gauteng Lions and ultimately adopting the iconic Golden Lions moniker. The team's distinctive white jerseys with a red hoop carry historical significance, possibly influenced by the Kilmarnock strip. The union's expansive roots once covered Western Transvaal, Northern Transvaal, and Eastern Transvaal, but transformations led to its current structure. The Golden Lions Rugby Union (GLRU) competes in the Currie Cup and Vodacom Cup, nurturing talent for the Lions in Super Rugby and the United Rugby Championship. Ellis Park remains their hallowed home ground, witnessing the evolution of a pride that continues to roar with pride and resilience.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Inception and Early Strides</h2>
+                <p>Established in 1889, the Transvaal Rugby Football Union emerged as a union of prominent clubs like Pirates and Pretoria. Their inaugural match against Griquas marked the beginning of a rich legacy. Adorned in dark blue and white initially, the union later embraced the now-iconic white jersey with a red hoop, earning them the nickname "Rooibontes." The union's original reach extended far beyond its current boundaries, with subsequent unions gaining independence. Notably, Robert Owen Loftus Versfeld, a union lifetime member, passed away at Ellis Park in 1932. The journey from Transvaal to the Golden Lions reflects a remarkable evolution in South African rugby history.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Name Changes and Modern Era</h2>
+                  <p>The Golden Lions Rugby Union (GLRU) witnessed several name changes, becoming the Lions in 1993, the Gauteng Lions in 1997, and ultimately adopting the Golden Lions Rugby Union in 1998. This evolution reflects the dynamic landscape of South African rugby. Competing in the Currie Cup and Vodacom Cup as the Xerox Golden Lions, the GLRU plays a pivotal role in developing talent for the Lions in elite competitions like Super Rugby and the United Rugby Championship. Ellis Park stands as the enduring fortress where the Golden Lions script their modern chapters, blending tradition with the demands of contemporary rugby.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

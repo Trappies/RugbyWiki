@@ -1,0 +1,1805 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .cont:nth-child(14){
+          animation-delay: 13s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #zebreKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #zebreKitSection {
+          display: none;
+        }
+
+        #zebreKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #zebreKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #zebreKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #zebreKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #zebreKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #zebreKitSection {
+          display: flex;
+        }
+
+        #zebreKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #zebreKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Zebre Parma</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/zebrebanner.png" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About Zebre Parma</h3>
+    <p>Zebre Parma, founded in 2012, is an Italian professional rugby union team based in Parma, Emilia-Romagna. Competing in the United Rugby Championship, Zebre represents a collaboration between the Italian Rugby Federation and the Emilia-Romagna Rugby Committee. The team's distinctive name, "Zebre," meaning zebras in Italian, reflects their black and white striped jerseys. As one of the two Italian franchises in the United Rugby Championship, Zebre Parma plays their home matches at the Stadio Sergio Lanfranchi. Over the years, Zebre has contributed players to the Italian national team, showcasing their role in developing rugby talent within Italy.
+    </p>
+  
+    
+
+      <div id="zebreKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Zebre Parma Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/zebrehome.png" alt="Zebre Parma Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/zebreaway.png" alt="Zebre Parma Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="zebreKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Zebre Parma Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/zebrehome.png" alt="Zebre Parma Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/zebreaway.png" alt="Zebre Parma Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/231387-8859f893aa-3/CharlesAlaimalorugbyplayer.jpg" class="card-img-top" alt="Charles Alaimalo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Charles Alaimalo</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286005-a7d4a51c77-3/LucaAndreaniZebreParma.jpg" class="card-img-top" alt="Luca Andreani" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Luca Andreani</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270745-e675c57d0b-3/MattiaBelliniZebreParma.jpg" class="card-img-top" alt="Mattia Bellini" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mattia Bellini</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311247-5b4079076a-3/EmilianoBergamaschiZebreParma.jpg" class="card-img-top" alt="Emiliano Bergamaschi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Emiliano Bergamaschi</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286006-5a241157ce-3/IacopoBianchiZebreParma.jpg" class="card-img-top" alt="Iacopo Bianchi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Iacopo Bianchi</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286007-dc70871917-3/LucaBigiZebreParma.jpg" class="card-img-top" alt="Luca Bigi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Luca Bigi</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270721-146f794490-3/GiulioBisegniZebreParma.jpg" class="card-img-top" alt="Giulio Bisegni" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Giulio Bisegni</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286041-373c1b6d4a-3/TommasoBoniZebreParma.jpg" class="card-img-top" alt="Tommaso Boni" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tommaso Boni</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311229-75db78dafb-3/FilippoBozzoniZebreParma.jpg" class="card-img-top" alt="Filippo Bozzoni" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Filippo Bozzoni</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302168-9e8143eec5-3/SimoneBrisighellaZebreParma.jpg" class="card-img-top" alt="Simone Brisighella" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Simone Brisighella</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/249559-e7f51d5bdf-3/RiccardoBrugnaraZebreRugby.jpg" class="card-img-top" alt="Riccardo Brugnara" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Riccardo Brugnara</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286042-c3ab2e195a-3/PierreBrunoZebreParma.jpg" class="card-img-top" alt="Pierre Bruno" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Pierre Bruno</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286008-36a4f14631-3/PauloBuonfiglioZebreParma.jpg" class="card-img-top" alt="Paulo Buonfiglio" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Paulo Buonfiglio</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311230-0669aafc33-3/BenCambrianiZebreParma.jpg" class="card-img-top" alt="Ben Cambriani" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ben Cambriani</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311206-2816c806f4-3/MatteoCanaliZebreParma.jpg" class="card-img-top" alt="Matteo Canali" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matteo Canali</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/249663-4b47f0dcdd-3/CarloCannaZebreRugby.jpg" class="card-img-top" alt="Carlo Canna" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Carlo Canna</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/167297-a7d260f91d-3/NardoCasolarirugbyplayer.jpg" class="card-img-top" alt="Nardo Casolari" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nardo Casolari</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270741-a36267da6c-3/MassimoCecilianiZebreParma.jpg" class="card-img-top" alt="Massimo Ceciliani" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Massimo Ceciliani</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/229299-e7d701ad20-3/AndreaChianuccirugbyplayer.jpg" class="card-img-top" alt="Andrea Chianucci" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Andrea Chianucci</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311210-33546858d7-3/DylandeLeeuwZebreParma.jpg" class="card-img-top" alt="Dylan de Leeuw" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dylan de Leeuw</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311212-3057ce2ca8-3/TommasoDiBartolomeoZebreParma.jpg" class="card-img-top" alt="Tommaso Di Bartolomeo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tommaso Di Bartolomeo</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/206669-59a036cf85-3/FilippoDiMarcorugbyplayer.jpg" class="card-img-top" alt="Filippo Di Marco" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Filippo Di Marco</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311233-c0878b5b77-3/TomasDominguezZebreParma.jpg" class="card-img-top" alt="Tomas Dominguez" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tomas Dominguez</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/261902-8ab0e35606-3/NicolDAmicorugbyplayer.jpg" class="card-img-top" alt="Nicolò D’Amico" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nicolò D’Amico</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286047-02878a5c52-3/TiffEdenZebreParma.jpg" class="card-img-top" alt="Tiff Eden" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tiff Eden</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/249537-01b1a7c242-3/JamieElliottZebreRugby.jpg" class="card-img-top" alt="Jamie Elliott" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jamie Elliott</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286010-c742befbb0-3/GiacomoFerrariZebreParma.jpg" class="card-img-top" alt="Giacomo Ferrari" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Giacomo Ferrari</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311215-4d9669d07f-3/DaniloFischettiZebreParma.jpg" class="card-img-top" alt="Danilo Fischetti" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Danilo Fischetti</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/206672-79d7ec0300-3/AlessandroForcuccirugbyplayer.jpg" class="card-img-top" alt="Alessandro Forcucci" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alessandro Forcucci</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286011-b586917bf5-3/TainaFox-MatamuaZebreParma.jpg" class="card-img-top" alt="Taina Fox-Matamua" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Taina Fox-Matamua</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286048-62d8542e0c-3/AlessandroFuscoZebreParma.jpg" class="card-img-top" alt="Alessandro Fusco" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alessandro Fusco</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311234-99f62ac546-3/GonzaloGarciaZebreParma.jpg" class="card-img-top" alt="Gonzalo Garcia" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gonzalo Garcia</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302164-878ef8287c-3/NicholasGasperiniZebreParma.jpg" class="card-img-top" alt="Nicholas Gasperini" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nicholas Gasperini</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286013-bab3f26604-3/RiccardoGenoveseZebreParma.jpg" class="card-img-top" alt="Riccardo Genovese" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Riccardo Genovese</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286049-c7233546a3-3/SimoneGesiZebreParma.jpg" class="card-img-top" alt="Simone Gesi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Simone Gesi</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270759-d35cc39f72-3/RenatoGiammarioliZebreParma.jpg" class="card-img-top" alt="Renato Giammarioli" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Renato Giammarioli</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311235-3708212a40-3/ScottGregoryZebreParma.jpg" class="card-img-top" alt="Scott Gregory" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Scott Gregory</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286015-a59cf4e083-3/MuhamedHasaZebreParma.jpg" class="card-img-top" alt="Muhamed Hasa" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Muhamed Hasa</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270758-bc0488799f-3/RamiroValdsIribarrenrugbyplayer.jpg" class="card-img-top" alt="Ramiro Valdés Iribarren" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ramiro Valdés Iribarren</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286050-a4f994cd0b-3/RatkoJelicZebreParma.jpg" class="card-img-top" alt="Ratko Jelic" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ratko Jelic</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/229310-0f58887969-3/AntoineKoffirugbyplayer.jpg" class="card-img-top" alt="Antoine Koffi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Antoine Koffi</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286016-244cc9c9b1-3/LeonardKrumovZebreParma.jpg" class="card-img-top" alt="Leonard Krumov" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Leonard Krumov</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270730-5aa07a8f39-3/JuniorLaloifiZebreParma.jpg" class="card-img-top" alt="Junior Laloifi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Junior Laloifi</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270756-59706c85a1-3/PotuLeavasaZebreParma.jpg" class="card-img-top" alt="Potu Leavasa" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Potu Leavasa</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286017-c2a1d7dcce-3/GiovanniLicataZebreParma.jpg" class="card-img-top" alt="Giovanni Licata" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Giovanni Licata</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311218-1932c680c6-3/StevenLongwellZebreParma.jpg" class="card-img-top" alt="Steven Longwell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Steven Longwell</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/249518-5a3ebbba8f-3/AndreaLovottiZebreRugby.jpg" class="card-img-top" alt="Andrea Lovotti" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Andrea Lovotti</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286053-45d89af89d-3/EnricoLucchinZebreParma.jpg" class="card-img-top" alt="Enrico Lucchin" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Enrico Lucchin</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286018-1faa687260-3/MarcoManfrediZebreParma.jpg" class="card-img-top" alt="Marco Manfredi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marco Manfredi</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/noimage/webPlayer.png" class="card-img-top" alt="Simone Marinaro" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Simone Marinaro</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/249543-8ed36047d9-3/LorenzoMasselliZebreRugby.jpg" class="card-img-top" alt="Lorenzo Masselli" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lorenzo Masselli</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286055-a6040e93af-3/DamianoMazzaZebreParma.jpg" class="card-img-top" alt="Damiano Mazza" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Damiano Mazza</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270746-9c2db9b0c3-3/MaximeMbandaZebreParma.jpg" class="card-img-top" alt="Maxime Mbanda" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Maxime Mbanda</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302165-81bb4103d2-3/SamueleMirenziZebreParma.jpg" class="card-img-top" alt="Samuele Mirenzi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Samuele Mirenzi</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/275847-4b6c83c65f-3/LiamMitchellZebreParma.jpg" class="card-img-top" alt="Liam Mitchell" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Liam Mitchell</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311238-dc9f840dee-3/GiovanniMontemauriZebreParma.jpg" class="card-img-top" alt="Giovanni Montemauri" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Giovanni Montemauri</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/226319-579d266c29-3/AlessandroMordaccirugbyplayer.jpg" class="card-img-top" alt="Alessandro Mordacci" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alessandro Mordacci</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311239-6d9bfdebef-3/LucaMorisiZebreParma.jpg" class="card-img-top" alt="Luca Morisi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Luca Morisi</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/249534-9a4ea6d724-3/IanNagleZebreRugby.jpg" class="card-img-top" alt="Ian Nagle" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ian Nagle</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286021-7c4d5840c3-3/IonNeculaiZebreParma.jpg" class="card-img-top" alt="Ion Neculai" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ion Neculai</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286022-217d4d5c5f-3/MatteoNoceraZebreParma.jpg" class="card-img-top" alt="Matteo Nocera" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matteo Nocera</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/275852-4d6914567a-3/TimOMalleyZebreParma.jpg" class="card-img-top" alt="Tim O'Malley" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tim O'Malley</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/249560-67964493c6-3/SamueleOrtisZebreRugby.jpg" class="card-img-top" alt="Samuele Ortis" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Samuele Ortis</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311241-b32ff6ac41-3/FetuliPaeaZebreParma.jpg" class="card-img-top" alt="Fetuli Paea" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Fetuli Paea</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/270722-821a97b157-3/GuglielmoPalazzaniZebreParma.jpg" class="card-img-top" alt="Guglielmo Palazzani" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Guglielmo Palazzani</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286057-a241ea07c1-3/LorenzoPaniZebreParma.jpg" class="card-img-top" alt="Lorenzo Pani" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lorenzo Pani</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311220-a10c2b33e2-3/NicolaPiantellaZebreParma.jpg" class="card-img-top" alt="Nicola Piantella" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nicola Piantella</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286024-e5f14bfbda-3/JuanPitinariZebreParma.jpg" class="card-img-top" alt="Juan Pitinari" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Juan Pitinari</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311222-22bbb178f1-3/JakePolledriZebreParma.jpg" class="card-img-top" alt="Jake Polledri" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jake Polledri</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311242-00324e24c3-3/GeronimoPrisciantelliZebreParma.jpg" class="card-img-top" alt="Geronimo Prisciantelli" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Geronimo Prisciantelli</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286025-3f980b6e9b-3/GiampietroRibaldiZebreParma.jpg" class="card-img-top" alt="Giampietro Ribaldi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Giampietro Ribaldi</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286026-f0910cfa15-3/DanieleRimpelliZebreParma.jpg" class="card-img-top" alt="Daniele Rimpelli" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Daniele Rimpelli</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286058-115db4d134-3/AntonioRizziZebreParma.jpg" class="card-img-top" alt="Antonio Rizzi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Antonio Rizzi</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286028-dc9609485f-3/LucaRizzoliZebreParma.jpg" class="card-img-top" alt="Luca Rizzoli" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Luca Rizzoli</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311245-22128e328f-3/FabioRoselliZebreParma.jpg" class="card-img-top" alt="Fabio Roselli" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Fabio Roselli</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286029-2c3f747454-3/DavideRuggeriZebreParma.jpg" class="card-img-top" alt="Davide Ruggeri" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Davide Ruggeri</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302166-572c037106-3/DavideSalvanZebreParma.jpg" class="card-img-top" alt="Davide Salvan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Davide Salvan</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286031-6bb617faec-3/AlessioSanaviaZebreParma.jpg" class="card-img-top" alt="Alessio Sanavia" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alessio Sanavia</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286033-4bc8fea3e4-3/DavidSisiZebreParma.jpg" class="card-img-top" alt="David Sisi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">David Sisi</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286059-a07d02a2d1-3/FrancoSmithjnr.jpg" class="card-img-top" alt="Franco Smith jnr." style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Franco Smith jnr.</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311225-0f5f1523d1-3/BautistaStavileBravinZebreParma.jpg" class="card-img-top" alt="Bautista Stavile Bravin" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Bautista Stavile Bravin</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/206699-98a771ab6f-3/NiccoloTaddiarugbyplayer.jpg" class="card-img-top" alt="Niccolo Taddia" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Niccolo Taddia</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286060-cba1f003cc-3/NicoloTeneggiZebreParma.jpg" class="card-img-top" alt="Nicolo Teneggi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nicolo Teneggi</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286061-3f2bd81406-3/JacopoTrullaZebreParma.jpg" class="card-img-top" alt="Jacopo Trulla" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jacopo Trulla</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/275835-8bb631277e-3/AsaeliTuivuakarugbyplayer.jpg" class="card-img-top" alt="Asaeli Tuivuaka" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Asaeli Tuivuaka</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286039-217af17a8f-3/GuidoVolpiZebreParma.jpg" class="card-img-top" alt="Guido Volpi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Guido Volpi</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286040-b596f8cf0b-3/AndreaZamboninZebreParma.jpg" class="card-img-top" alt="Andrea Zambonin" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Andrea Zambonin</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311227-2bb7f379dc-3/LiamZocchi-DommannZebreParma.jpg" class="card-img-top" alt="Liam Zocchi-Dommann" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Liam Zocchi-Dommann</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Zebre Parma: Italian Rugby Powerhouse</h2>
+                <p>Zebre Parma, founded in 2012, is a dynamic force in Italian professional rugby, competing fiercely in the United Rugby Championship and EPCR competitions. Representing the vibrant regions of Emilia-Romagna, Liguria, Lombardy, Piedmont, and more, Zebre earned the nickname "the XV of the North-West." This powerhouse, operated by the Italian Rugby Federation, emerged in the 2021–22 season as Zebre Parma, showcasing its commitment to excellence. Despite a challenging start in the Pro12 and Heineken Cup, Zebre's determination and improved performance in subsequent seasons highlight their growth and resilience.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Historic Entry into Celtic League: 2010–11 Season</h2>
+                <p>Zebre's journey into top-tier competition began with Italy's entry into the Celtic League, a proposal that faced hurdles but ultimately materialized in the 2010–11 season. The Italian teams, including Zebre, brought a new dynamic to the league, securing places in the coveted Heineken Cup. This move aimed to provide Italian players with a competitive platform domestically and enhance Italy's performance in the Six Nations Championship. Despite initial challenges and debates, the inclusion of Italian teams marked a significant step forward for the nation's rugby landscape.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Transition from Aironi to Zebre: 2012</h2>
+                  <p>Zebre's inception followed the struggles of Aironi, the previous Italian franchise. Aironi faced financial difficulties, leading to the revocation of their licenses for both the European Cup and Pro12. In June 2012, the Italian Rugby Federation unveiled Zebre as the new franchise based in Parma, emphasizing the federation's control over the revitalized team. While Zebre faced initial challenges, including winless campaigns, their subsequent seasons showcased improvement, with notable victories against strong opponents like Cardiff Blues and Ospreys.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Building Success: 2013–16 Seasons</h2>
+                  <p>Zebre's resilience and commitment to growth became evident in the 2013–14 season when they secured their first Pro12 victory against Cardiff Blues. The subsequent seasons saw notable achievements, including back-to-back victories against Treviso and a crucial bonus-point win against Newport Gwent Dragons in the 2015–16 season. Zebre's ability to avoid finishing last marked a turning point, demonstrating their capability to compete at a higher level.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+              
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

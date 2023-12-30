@@ -1,0 +1,1602 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #toulouseKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #toulouseKitSection {
+          display: none;
+        }
+
+        #toulouseKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #toulouseKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #toulouseKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #toulouseKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #toulouseKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #toulouseKitSection {
+          display: flex;
+        }
+
+        #toulouseKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #toulouseKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Toulouse</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/toulousebanner.jpg" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About Toulouse</h3>
+    <p>Stade Toulousain, established in 1907, stands as one of the most successful and storied rugby clubs in France. Based in Toulouse, the "Red and Blacks" boast an illustrious history marked by a record-breaking 20 French championship titles and four European Rugby Champions Cup victories. The team has been a dominant force, producing some of the finest rugby talents and contributing significantly to the French national team. Stade Toulousain's home matches are played at the iconic Stadium de Toulouse, creating an electric atmosphere for fans. The club's commitment to excellence and its rich legacy make Stade Toulousain a true powerhouse in both French and European rugby.
+    </p>
+  
+    
+
+      <div id="toulouseKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Toulouse Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/toulousehome.png" alt="Toulouse Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/toulouseaway.png" alt="Toulouse Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 18px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="toulouseKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Toulouse Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/toulousehome.png" alt="Toulouse Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/toulouseaway.png" alt="Toulouse Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299686-d080183a3a-3/PitaAhkiToulouse.jpg" class="card-img-top" alt="Pita Ahki" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Pita Ahki</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299699-836845323f-3/DavidAinuuToulouse.jpg" class="card-img-top" alt="David Ainu'u" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">David Ainu'u</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299666-20576ae8c7-3/DorianAldegheriToulouse.jpg" class="card-img-top" alt="Dorian Aldegheri" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dorian Aldegheri</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299668-241606c057-3/RichieArnoldToulouse.jpg" class="card-img-top" alt="Richie Arnold" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Richie Arnold</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305591-5439756171-3/MaxAuriacToulouse.jpg" class="card-img-top" alt="Max Auriac" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Max Auriac</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/271836-a10f0b9893-3/PaulAussetrugbyplayer.jpg" class="card-img-top" alt="Paul Ausset" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Paul Ausset</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299660-7031a3d756-3/CyrilBailleToulouse.jpg" class="card-img-top" alt="Cyril Baille" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Cyril Baille</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302064-3918d90ded-3/EtoBainivaluToulouse.jpg" class="card-img-top" alt="Eto Bainivalu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Eto Bainivalu</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305584-123eb0f056-3/LeoBanosToulouse.jpg" class="card-img-top" alt="Leo Banos" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Leo Banos</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302066-d2f316f374-3/Pierre-LouisBarassiToulouse.jpg" class="card-img-top" alt="Pierre-Louis Barassi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Pierre-Louis Barassi</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305589-3cf4c4a4dc-3/SetarekiBituniyataToulouse.jpg" class="card-img-top" alt="Setareki Bituniyata" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Setareki Bituniyata</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/266286-567da1bc9b-3/ArthurBonnevalToulouse.jpg" class="card-img-top" alt="Arthur Bonneval" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Arthur Bonneval</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302069-e8b743e79a-3/IanBoubilaToulouse.jpg" class="card-img-top" alt="Ian Boubila" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ian Boubila</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/266404-619c96e8cb-3/JeanBouilhouToulouse.jpg" class="card-img-top" alt="Jean Bouilhou" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jean Bouilhou</h5>
+            <p class="card-text">Assistant Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299705-36c9be6c4a-3/JoshuaBrennanToulouse.jpg" class="card-img-top" alt="Joshua Brennan" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joshua Brennan</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302071-b92b261c7b-3/AngeCapuozzoToulouse.jpg" class="card-img-top" alt="Ange Capuozzo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ange Capuozzo</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312567-e961d45583-3/MathisCastroFerreiraToulouse.jpg" class="card-img-top" alt="Mathis Castro Ferreira" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mathis Castro Ferreira</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299688-7e731f8163-3/SantiagoChocobaresToulouse.jpg" class="card-img-top" alt="Santiago Chocobares" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Santiago Chocobares</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301005-bdbbc47edf-3/PaulCostesToulouse.jpg" class="card-img-top" alt="Paul Costes" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Paul Costes</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302073-23443adcd5-3/GuillaumeCramontToulouse.jpg" class="card-img-top" alt="Guillaume Cramont" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Guillaume Cramont</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299676-dbe19e5c41-3/FrancoisCrosToulouse.jpg" class="card-img-top" alt="Francois Cros" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Francois Cros</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299709-a475294583-3/DimitriDelibesToulouse.jpg" class="card-img-top" alt="Dimitri Delibes" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dimitri Delibes</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/307167-2b49766f63-3/ValentinDelpyrugbyplayer.jpg" class="card-img-top" alt="Valentin Delpy" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Valentin Delpy</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299680-ef9dc5fe64-3/AntoineDupontToulouse.jpg" class="card-img-top" alt="Antoine Dupont" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Antoine Dupont</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302075-3520c1946a-3/MaximeDupratToulouse.jpg" class="card-img-top" alt="Maxime Duprat" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Maxime Duprat</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301001-74057a4023-3/RynhardtElstadtToulouse.jpg" class="card-img-top" alt="Rynhardt Elstadt" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rynhardt Elstadt</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302077-6f8c9d6c34-3/NelsonEpeeToulouse.jpg" class="card-img-top" alt="Nelson Epee" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nelson Epee</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305583-acc41db9a9-3/PiulaFaasaleleToulouse.jpg" class="card-img-top" alt="Piula Fa'asalele" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Piula Fa'asalele</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299701-13a4b1d43f-3/ThibaudFlamentToulouse.jpg" class="card-img-top" alt="Thibaud Flament" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Thibaud Flament</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305581-840ec935b2-3/OwenFranksToulouse.jpg" class="card-img-top" alt="Owen Franks" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Owen Franks</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305585-707c8279b9-3/BaptisteGermainToulouse.jpg" class="card-img-top" alt="Baptiste Germain" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Baptiste Germain</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/312566-c096085ae4-3/KalvinGourguesToulouse.jpg" class="card-img-top" alt="Kalvin Gourgues" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kalvin Gourgues</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299707-1c2f08162b-3/PaulGraouToulouse.jpg" class="card-img-top" alt="Paul Graou" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Paul Graou</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302059-acb5e88aec-3/SofianeGuitouneToulouse.jpg" class="card-img-top" alt="Sofiane Guitoune" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sofiane Guitoune</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/306072-0451ba124e-3/MalachiHawkesToulouse.jpg" class="card-img-top" alt="Malachi Hawkes" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Malachi Hawkes</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/249350-a20f1d0d96-3/TheoIdjellidaineToulouse.jpg" class="card-img-top" alt="Theo Idjellidaine" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Theo Idjellidaine</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302079-6efd3fee48-3/MelvynJaminetToulouse.jpg" class="card-img-top" alt="Melvyn Jaminet" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Melvyn Jaminet</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302081-ea4bdf5607-3/AnthonyJelonchToulouse.jpg" class="card-img-top" alt="Anthony Jelonch" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Anthony Jelonch</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/266396-c6a30842f1-3/JeromeKainoToulouse.jpg" class="card-img-top" alt="Jerome Kaino" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jerome Kaino</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305582-58341929ed-3/NepoLaulalaToulouse.jpg" class="card-img-top" alt="Nepo Laulala" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nepo Laulala</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299684-2a6abdac30-3/MatthisLebelToulouse.jpg" class="card-img-top" alt="Matthis Lebel" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matthis Lebel</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/277595-35552223fe-3/RubenMakaToulouse.jpg" class="card-img-top" alt="Ruben Maka" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ruben Maka</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299690-901d5a7cfd-3/JuanCruzMalliaToulouse.jpg" class="card-img-top" alt="Juan Cruz Mallia" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Juan Cruz Mallia</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299663-fc0bbb41e5-3/JulienMarchandToulouse.jpg" class="card-img-top" alt="Julien Marchand" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Julien Marchand</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299694-14ad06cf23-3/PeatoMauvakaToulouse.jpg" class="card-img-top" alt="Peato Mauvaka" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Peato Mauvaka</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299670-cdeff18850-3/EmmanuelMeafouToulouse.jpg" class="card-img-top" alt="Emmanuel Meafou" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Emmanuel Meafou</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302086-fb0e1b03f6-3/JoelMerklerToulouse.jpg" class="card-img-top" alt="Joel Merkler" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joel Merkler</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/253795-9e0a9a54f5-3/UgoMolarugbyplayer.jpg" class="card-img-top" alt="Ugo Mola" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ugo Mola</h5>
+            <p class="card-text">Head Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299696-d295a499c3-3/RodrigueNetiToulouse.jpg" class="card-img-top" alt="Rodrigue Neti" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rodrigue Neti</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299682-7ccbe2334b-3/RomainNtamackToulouse.jpg" class="card-img-top" alt="Romain Ntamack" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Romain Ntamack</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301003-e1e75fcf09-3/TheoNtamackToulouse.jpg" class="card-img-top" alt="Theo Ntamack" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Theo Ntamack</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305590-65769d7591-3/KakeruOkumuraToulouse.jpg" class="card-img-top" alt="Kakeru Okumura" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Kakeru Okumura</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299703-914b39c737-3/AlbanPlacinesToulouse.jpg" class="card-img-top" alt="Alban Placines" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alban Placines</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/266400-851798fe77-3/ClementPoitrenaudToulouse.jpg" class="card-img-top" alt="Clement Poitrenaud" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Clement Poitrenaud</h5>
+            <p class="card-text">Assistant Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/272946-9475afe0f7-3/RaphaelPortatrugbyplayer.jpg" class="card-img-top" alt="Raphael Portat" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Raphael Portat</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299692-bfae52995f-3/ThomasRamosToulouse.jpg" class="card-img-top" alt="Thomas Ramos" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Thomas Ramos</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302093-799dd473fd-3/HugoReilhesToulouse.jpg" class="card-img-top" alt="Hugo Reilhes" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Hugo Reilhes</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305587-714ca99fc9-3/SimonRendaToulouse.jpg" class="card-img-top" alt="Simon Renda" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Simon Renda</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/300999-ed7448034a-3/EdgarRetiereToulouse.jpg" class="card-img-top" alt="Edgar Retiere" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Edgar Retiere</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302055-fa156bfdc0-3/ArthurRetiereToulouse.jpg" class="card-img-top" alt="Arthur Retiere" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Arthur Retiere</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/259528-4d9515eff2-3/RomainRiguetToulouse.jpg" class="card-img-top" alt="Romain Riguet" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Romain Riguet</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299678-7364e84d44-3/AlexandreRoumatToulouse.jpg" class="card-img-top" alt="Alexandre Roumat" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alexandre Roumat</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305586-598789faf8-3/BillySearleToulouse.jpg" class="card-img-top" alt="Billy Searle" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Billy Searle</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/301007-588e679a59-3/LucasTauzinToulouse.jpg" class="card-img-top" alt="Lucas Tauzin" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lucas Tauzin</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/305588-bda92498f0-3/GeorgeTilsleyToulouse.jpg" class="card-img-top" alt="George Tilsley" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">George Tilsley</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302094-c5133e1722-3/MarcoTrauthToulouse.jpg" class="card-img-top" alt="Marco Trauth" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marco Trauth</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/302097-39e4e36d71-3/ClementVergeToulouse.jpg" class="card-img-top" alt="Clement Verge" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Clement Verge</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/299674-9158bea8de-3/JackWillisToulouse.jpg" class="card-img-top" alt="Jack Willis" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jack Willis</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Roots and Foundation: A Heritage of Tradition and Unity</h2>
+                <p>Stade Toulousain's rich legacy traces back to its inception in 1907, a union between "Stade Olympien des Étudiants de Toulouse" and "Véto-Sport." The club's crest, influenced by Thomas Aquinas and the Basilica of Saint-Sernin, reflects the deep historical ties to the city. The iconic red and black colors, drawn from the ceremonial costume of the capitouls of Toulouse, signify a connection to the city's consuls. This merger of entities in 1907 laid the foundation for a rugby powerhouse that embodies the spirit and history of Toulouse.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Early Years: Pioneers of French Rugby</h2>
+                <p>Stade Toulousain ventured into national rugby prominence in 1909, playing its first French Championship final and winning its inaugural title in 1912. The 1920s marked a golden era, securing championships in 1922, 1923, 1924, 1926, and 1927. Despite quieter decades, the club experienced a resurgence in the late 1940s, claiming the championship in 1947. The late 1980s mirrored the 1920s success, with back-to-back championships in 1985 and 1986, and victories in the Challenge Yves du Manoir.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>1970s to 1980s: Ups and Downs on the Championship Path</h2>
+                <p>The 1970s and 1980s brought mixed fortunes, with losses in finals against US Dax in 1971 and AS Béziers in 1980. However, the latter part of the decade witnessed a triumphant return, marked by consecutive championships in 1985, 1986, and 1989. The club also clinched the Challenge Yves du Manoir in 1988, showcasing a resurgence reminiscent of its earlier dominance.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>1990s to Present: The Era of Dominance and European Glory</h2>
+                  <p>The 1990s marked a resurgence for Stade Toulousain, securing four consecutive championships from 1994 to 1997 and claiming the European Rugby Cup in 1996. The club continued its success in the 2000s, winning two more European titles in 2003 and 2005. Toulouse's triumphs extended into the late 2000s, with a historic fourth Heineken Cup title in 2010, making them the first club to achieve this feat. Recent successes include the 2019 French Rugby Union Championship, the historic 2021 Champions Cup, and the 2021 Top 14, showcasing Stade Toulousain's enduring legacy and continued dominance in French and European rugby.
+
+                  </p>
+                  <span class="right-container-arrow"></span>
+                </div>
+              </div>
+            
+            
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>

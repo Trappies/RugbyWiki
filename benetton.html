@@ -1,0 +1,1555 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include Bootstrap CSS (Add the correct path or CDN link) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            margin-bottom: 50px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 0.001em;
+            padding-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        button.clicked {
+            border: 2px solid #000000;
+            /* Border style when the button is clicked */
+        }
+
+        button:hover {
+            background-color: #00000044;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Add this style for left and right alignment in list items */
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            /* font-size: 30px; */
+        }
+
+        /* Optional: Add padding or other styling as needed */
+        .stats-name {
+
+            font-size: 38px;
+        }
+
+        .stats-value {
+            font-weight: bold;
+            text-align: right;
+            font-size: 38px;
+        }
+
+        .col-md-6 p{
+          font-size: 20px;
+        }
+
+        .timeline {
+          position: relative;
+          max-width: 1200px;
+          margin: 100px auto;
+        }
+
+        .cont {
+          padding: 10px 50px;
+          position: relative;
+          width: 50%;
+          text-align: left;
+          animation: movedown 1s linear forwards;
+          opacity: 0;
+        }
+
+        @keyframes movedown {
+          0%{
+            opacity: 1;
+            transform: translateY(-30px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+
+        .cont:nth-child(1){
+          animation-delay: 0s;
+        }
+
+        .cont:nth-child(2){
+          animation-delay: 1s;
+        }
+
+        .cont:nth-child(3){
+          animation-delay: 2s;
+        }
+
+        .cont:nth-child(4){
+          animation-delay: 3s;
+        }
+
+        .cont:nth-child(5){
+          animation-delay: 4s;
+        }
+
+        .cont:nth-child(6){
+          animation-delay: 5s;
+        }
+
+        .cont:nth-child(7){
+          animation-delay: 6s;
+        }
+
+        .cont:nth-child(8){
+          animation-delay: 7s;
+        }
+
+        .cont:nth-child(9){
+          animation-delay: 8s;
+        }
+
+        .cont:nth-child(10){
+          animation-delay: 9s;
+        }
+
+        .cont:nth-child(11){
+          animation-delay: 10s;
+        }
+
+        .cont:nth-child(12){
+          animation-delay: 11s;
+        }
+
+        .cont:nth-child(13){
+          animation-delay: 12s;
+        }
+
+        .cont:nth-child(14){
+          animation-delay: 13s;
+        }
+
+        .text-box {
+          padding: 20px 30px;
+          background: #414040;
+          position: relative;
+          border-radius: 6px;
+          font-size: 15px;
+          text-align: left;
+        }
+
+        .left-containter {
+          left: 0;
+        }
+
+        .right-containter {
+          left: 50%;
+        }
+
+        .cont img {
+          position: absolute;
+          width: 40px;
+          border-radius: 50%;
+          right: -20px;
+          top: 32px;
+          z-index: 10;
+        }
+
+        .right-containter img{
+          left: -20px;
+        }
+
+        .timeline::after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 100%;
+          background: #414040;
+          top: 0;
+          left: 50%;
+          margin-left: -3px;
+          z-index: -1;
+          animation: moveline 6s linear forwards;
+        }
+
+        @keyframes moveline {
+          0%{
+            height: 0;
+          }
+          100%{
+            height: 100%;
+          }
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+        }
+
+        .text-box p {
+          color: #fff;
+        }
+
+        .text-box small {
+          display: inline-block;
+          margin-bottom: 15px;
+        }
+
+        .left-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-left: 15px solid #414040;
+          right: -15px;
+        }
+
+        .right-container-arrow {
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 28px;
+          z-index: 1;
+          border-top: 15px solid transparent;
+          border-bottom: 15px solid transparent;
+          border-right: 15px solid #414040;
+          left: -15px;
+        }
+
+        @media screen and (max-width: 600px){
+          .timeline{
+            margin: 50px auto;
+          }
+          .timeline::after{
+            left: 31px;
+          }
+          .cont{
+            width: 100%;
+            padding-left: 80px;
+            padding-right: 25px;
+          }
+          .text-box{
+            font-size: 13px;
+          }
+          .text-box small{
+            margin-bottom: 10px;
+          }
+          .right-containter{
+            left: 0;
+          }
+          .left-containter img, .right-containter img {
+            left: 10px;
+          }
+          .left-container-arrow, .right-container-arrow {
+            border-right: 15px solid #414040;
+            border-left: 0;
+            left: -15px;
+          }
+        }
+
+        .container p {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+
+        .card {
+    width: 70%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+
+  #benettonKitSection-mobile {
+    display: none;
+  }
+
+  @media only screen and (max-width: 500px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #benettonKitSection {
+          display: none;
+        }
+
+        #benettonKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: flex;
+          padding: 20px;
+        }
+
+        #benettonKitSection-mobile h3 {
+          color: #000000; /* Add your preferred title color */
+          margin-bottom: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+        }
+
+        #benettonKitSection-mobile img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        #benettonKitSection-mobile h2 {
+          margin-top: 10px;
+          font-size: 20px;
+        }
+
+        /* Optional: Add margin to the bottom of the entire section */
+        #benettonKitSection-mobile .row {
+          margin-bottom: 20px;
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+
+      .footer {
+        background-color: #333;
+        color: white;
+        padding: 40px 0;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-col-md-4 {
+        flex: 0 0 calc(33.3333% - 20px);
+        margin-bottom: 20px;
+      }
+
+      h4 {
+        color: #ffcc00;
+        /* Change the heading color */
+      }
+
+      .footer-col-md-4 p {
+        margin: 10px 0;
+      }
+
+      .footer-col-md-4 ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-col-md-4 li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col-md-4 a {
+        color: #66ccff;
+        /* Change the link color */
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .footer-col-md-4 a:hover {
+        color: #ff9900;
+        /* Change the link color on hover */
+      }
+
+    }
+
+    #hamburger-nav {
+      display: none;
+    }
+
+    .hamburger-menu {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 24px;
+      width: 30px;
+      cursor: pointer;
+      margin-right: 50px;
+    }
+
+    .hamburger-icon span {
+      max-width: 100%;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links {
+      position: absolute;
+      top: 100%;
+      right: 0%;
+      background-color: #111;
+      width: fit-content;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .menu-links a {
+      display: block;
+      padding: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .menu-links li {
+      list-style: none;
+    }
+
+    .menu-links.open {
+      max-height: fit-content;
+    }
+
+    .hamburger-icon.open span:first-child {
+      transform: rotate(45deg) translate(10px, 5px);
+    }
+
+    .hamburger-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.open span:last-child {
+      transform: rotate(-45deg) translate(10px, -5px);
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    .hamburger-icon span:first-child {
+      opacity: 1;
+    }
+
+    .hamburger-icon span:first-child {
+      transform: none;
+    }
+
+    @media screen and (max-width: 1200px) {
+      #desktop-nav {
+          display: none;
+      }
+
+      #hamburger-nav {
+          display: flex;
+      }
+  }
+
+  @media only screen and (max-width: 950px) {
+    body {
+        transition: margin-left 0.5s;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        max-width: 100%;
+        width: 100%;
+      }
+
+      #desktop-nav {
+        display: none;
+      }
+
+      #hamburger-nav {
+        display: flex;
+      }
+
+      .banner {
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 10px;
+            margin: 0 10px;
+            font-size: 26px;
+            cursor: pointer;
+            background-color: #3498db00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            border: none;
+            transition: border 0.3s ease;
+        }
+
+        #content {
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        #content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-box h2 {
+          font-weight: 600;
+          color: #fff;
+          font-size: 25px;
+        }
+
+        #benettonKitSection {
+          display: flex;
+        }
+
+        #benettonKitSection-mobile {
+          /* background-color: #f8f9fa; */
+          display: none;
+        }
+
+        #benettonKitSection img {
+          width: 80%;
+          height: auto;
+          border-radius: 8px;
+          /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        }
+
+        .card {
+    width: 80%; /* Adjust the percentage as needed */
+    margin: auto; /* Center the card within its container */
+  }
+
+  /* Add this style to ensure the images within the cards are responsive */
+  .card img {
+    width: 10%;
+    height: auto;
+  }
+
+  .col-md-4 {
+    margin-bottom: 10px; /* Adjust the value as needed */
+  }
+
+  .row {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+      .container h1 {
+        text-align: center;
+      }
+    }
+    </style>
+  <!-- Include Bootstrap JS (Add the correct path or CDN link) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var buttons = document.querySelectorAll('#buttonContainer button');
+  
+      buttons.forEach(function (button, index) {
+        button.addEventListener('click', function () {
+          // Remove 'clicked' class from all buttons
+          buttons.forEach(function (btn) {
+            btn.classList.remove('clicked');
+          });
+  
+          // Add 'clicked' class to the clicked button
+          button.classList.add('clicked');
+  
+          // Hide all content divs
+          var contentDivs = document.querySelectorAll('.tab-pane');
+          contentDivs.forEach(function (contentDiv) {
+            contentDiv.classList.remove('active', 'show');
+          });
+  
+          // Display the selected content
+          var selectedContent = document.getElementById('content' + (index + 1));
+          selectedContent.classList.add('active', 'show');
+        });
+      });
+      buttons[0].click();
+    });
+  </script>
+  
+  <title>RugbyWiki - Benetton</title>
+</head>
+<body>
+  <header>
+    <img src="img/RugbyWiki.png">
+    <nav id="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="tournaments.html">Tournaments</a>
+      <a href="teams.html">Teams</a>
+      <a href="rules.html">Rules</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="rankings.html">Rankings</a>
+      <a href="forum.html">Community</a>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+          <li><a href="tournaments.html" onclick="toggleMenu()">Tournaments</a></li>
+          <li><a href="teams.html" onclick="toggleMenu()">Teams</a></li>
+          <li><a href="rules.html" onclick="toggleMenu()">Rules</a></li>
+          <li><a href="gallery.html" onclick="toggleMenu()">Gallery</a></li>
+          <li><a href="rankings.html" onclick="toggleMenu()">Rankings</a></li>
+          <li><a href="forum.html" onclick="toggleMenu()">Community</a></li>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <img src="img/benettonbanner.png" alt="banner-image">
+  </div>
+
+  <div id="buttonContainer">
+    <button>Overview</button>
+    <button>Squad</button>
+    <button>History</button>
+  </div>
+
+  <div id="content" class="tab-content">
+    <div id="content1" class="tab-pane">
+      <div class="container">
+        <!-- <h2>Team Overview</h2> -->
+
+        
+    <h3 style="font-weight: bold;">About Benetton</h3>
+    <p>Benetton Rugby, based in Treviso, Italy, is a club that transcends the traditional rugby landscape. Founded in 1932, the team initially focused on representing the Veneto region. However, the club underwent a transformation, both in its name and its approach, becoming Benetton Rugby in 1979. What sets Benetton apart is its commitment to diversity, reflected not only in its players' nationalities but also in its inclusive philosophy. The team has become a melting pot of talent, featuring players from various backgrounds, contributing to a unique blend of styles on the rugby pitch. Benetton Rugby's journey exemplifies the power of sport to bring people together, fostering unity in a sport that thrives on camaraderie and shared passion.
+    </p>
+  
+    
+
+      <div id="benettonKitSection" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Benetton Kits</h3>
+          <table class="table">
+            <tbody><tr style="width: 300px;">
+              <td class="pr-2">
+                <img src="img/benettonhome.png" alt="Benetton Kit 1" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+                <h3>Home Kit</h3>
+              </td>
+              <td class="pr-2 pl-2">
+                <!-- Add another kit image here -->
+                <img src="img/benettonaway.png" alt="Benetton Kit 2" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 72px; padding-top: 50px;">
+                <h3>Away Kit</h3>
+              </td>
+            </tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div id="benettonKitSection-mobile" class="row mt-4">
+        <div class="col-md-12">
+          <h3 style="font-weight: bold;">Benetton Kits</h3>
+          <div class="row-mobile">
+            <!-- Home Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/benettonhome.png" alt="Benetton Home Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 20px;">
+              <h2 class="text-center">Home Kit</h3>
+            </div>
+      
+            <!-- Away Kit -->
+            <div class="col-md-6 mb-4">
+              <img src="img/benettonaway.png" alt="Benetton Away Kit" class="img-fluid rounded" style="max-width: 400px; padding-bottom: 10px;">
+              <h2 class="text-center">Away Kit</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    
+
+    <div id="content2" class="tab-pane">
+      <!-- <h2>Content for Button 2</h2> -->
+      
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286087-f52ba06fd5-3/TomasAlbornozBenettonRugby.jpg" class="card-img-top" alt="Tomas Albornoz" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tomas Albornoz</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310835-fee891f1af-3/FilippoAlongiBenettonRugby.jpg" class="card-img-top" alt="Filippo Alongi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Filippo Alongi</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285872-14be718f03-3/DestinyAminuBenettonRugby.jpg" class="card-img-top" alt="Destiny Aminu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Destiny Aminu</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286088-6b02c41903-3/RiccardoAndreoliBenettonRugby.jpg" class="card-img-top" alt="Riccardo Andreoli" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Riccardo Andreoli</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286089-57208ffe65-3/AlexArtusoBenettonRugby.jpg" class="card-img-top" alt="Alex Artuso" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alex Artuso</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286091-5696596034-3/CarlosBerleseBenettonRugby.jpg" class="card-img-top" alt="Carlos Berlese" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Carlos Berlese</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310837-1e6af3fa07-3/BautistaBernasconiBenettonRugby.jpg" class="card-img-top" alt="Bautista Bernasconi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Bautista Bernasconi</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310838-047a7f5d5c-3/MarcoBortolamiBenettonRugby.jpg" class="card-img-top" alt="Marco Bortolami" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marco Bortolami</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286092-9d598a7dbd-3/JuanIgnacioBrexBenettonRugby.jpg" class="card-img-top" alt="Juan Ignacio Brex" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Juan Ignacio Brex</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286094-96227380dd-3/NiccoloCannoneBenettonRugby.jpg" class="card-img-top" alt="Niccolo' Cannone" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Niccolo' Cannone</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286093-52e1e4bead-3/LorenzoCannoneBenettonRugby.jpg" class="card-img-top" alt="Lorenzo Cannone" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lorenzo Cannone</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286096-b30810cb9f-3/LorenzoCasilioBenettonRugby.jpg" class="card-img-top" alt="Lorenzo Casilio" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Lorenzo Casilio</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311327-e3a0d65e52-3/NicoloCasilioBenettonRugby.jpg" class="card-img-top" alt="Nicolo Casilio" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nicolo Casilio</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310840-17c46278d9-3/GiacomoDaReBenettonRugby.jpg" class="card-img-top" alt="Giacomo Da Re" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Giacomo Da Re</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310860-f4156e8ab6-3/TiaandeKlerkBenettonRugby.jpg" class="card-img-top" alt="Tiaan de Klerk" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tiaan de Klerk</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285881-b33dd66fba-3/MatthiasDouglasBenettonRugby.jpg" class="card-img-top" alt="Matthias Douglas" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matthias Douglas</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310841-607b8c7f0d-3/FilippoDragoBenettonRugby.jpg" class="card-img-top" alt="Filippo Drago" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Filippo Drago</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286097-9dfa7cae75-3/DewaldtDuvenageBenettonRugby.jpg" class="card-img-top" alt="Dewaldt Duvenage" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dewaldt Duvenage</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286099-37bde947ba-3/RiccardoFavrettoBenettonRugby.jpg" class="card-img-top" alt="Riccardo Favretto" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Riccardo Favretto</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310842-09eeab9e11-3/MalakaiFekitoaBenettonRugby.jpg" class="card-img-top" alt="Malakai Fekitoa" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Malakai Fekitoa</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286100-5cc48077ce-3/SimoneFerrariBenettonRugby.jpg" class="card-img-top" alt="Simone Ferrari" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Simone Ferrari</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286101-bedf37dff5-3/ThomasGalloBenettonRugby.jpg" class="card-img-top" alt="Thomas Gallo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Thomas Gallo</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310844-21e92dc5fc-3/MarcosFrancescoGalloriniBenettonRugby.jpg" class="card-img-top" alt="Marcos Francesco Gallorini" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marcos Francesco Gallorini</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310845-5660b8b499-3/AlessandroGarbisiBenettonRugby.jpg" class="card-img-top" alt="Alessandro Garbisi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alessandro Garbisi</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286108-dfb47de5ff-3/ToaHalafihiBenettonRugby.jpg" class="card-img-top" alt="Toa Halafihi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Toa Halafihi</h5>
+            <p class="card-text">No. 8</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285864-7644595ecd-3/SamHidalgo-ClyneBenettonRugby.jpg" class="card-img-top" alt="Sam Hidalgo-Clyne" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sam Hidalgo-Clyne</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310846-f7e63d65f7-3/EdoardoIachizziBenettonRugby.jpg" class="card-img-top" alt="Edoardo Iachizzi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Edoardo Iachizzi</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310847-85499bb6fc-3/AlessandroIzekorBenettonRugby.jpg" class="card-img-top" alt="Alessandro Izekor" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Alessandro Izekor</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310848-f49680cfb6-3/GideonKoegelenbergBenettonRugby.jpg" class="card-img-top" alt="Gideon Koegelenberg" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gideon Koegelenberg</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286120-fd0955637d-3/MicheleLamaroBenettonRugby.jpg" class="card-img-top" alt="Michele Lamaro" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Michele Lamaro</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310849-ce61259b9f-3/MarcoLazzaroniBenettonRugby.jpg" class="card-img-top" alt="Marco Lazzaroni" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marco Lazzaroni</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286110-d1873fbd15-3/GianmarcoLucchesiBenettonRugby.jpg" class="card-img-top" alt="Gianmarco Lucchesi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Gianmarco Lucchesi</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310864-fcc90c337a-3/CalumMacRaeBenettonRugby.jpg" class="card-img-top" alt="Calum MacRae" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Calum MacRae</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298668-1b6a79e433-3/SiuaMaileBenettonRugby.jpg" class="card-img-top" alt="Siua Maile" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Siua Maile</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310850-e7eec4bdff-3/LeonardoMarinBenettonRugby.jpg" class="card-img-top" alt="Leonardo Marin" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Leonardo Marin</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285868-2050cdbb53-3/IgnacioMendyBenettonRugby.jpg" class="card-img-top" alt="Ignacio Mendy" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ignacio Mendy</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310851-b2406e462d-3/TommasoMenoncelloBenettonRugby.jpg" class="card-img-top" alt="Tommaso Menoncello" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tommaso Menoncello</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310852-91a07f7855-3/MatteoMinozziBenettonRugby.jpg" class="card-img-top" alt="Matteo Minozzi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Matteo Minozzi</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310853-d92eb6106d-3/SebastianNegriBenettonRugby.jpg" class="card-img-top" alt="Sebastian Negri" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Sebastian Negri</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286109-7c56a25985-3/IvanNemerBenettonRugby.jpg" class="card-img-top" alt="Ivan Nemer" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Ivan Nemer</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310854-17fe35aa8f-3/GiacomoNicoteraBenettonRugby.jpg" class="card-img-top" alt="Giacomo Nicotera" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Giacomo Nicotera</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311324-5ab553fb49-3/PaoloOdogwuBenettonRugby.jpg" class="card-img-top" alt="Paolo Odogwu" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Paolo Odogwu</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310863-0aa4febb46-3/FabioOngaroBenettonRugby.jpg" class="card-img-top" alt="Fabio Ongaro" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Fabio Ongaro</h5>
+            <p class="card-text">Coach</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286116-fb67d99825-3/EdoardoPadovaniBenettonRugby.jpg" class="card-img-top" alt="Edoardo Padovani" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Edoardo Padovani</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286119-8493319375-3/TizianoPasqualiBenettonRugby.jpg" class="card-img-top" alt="Tiziano Pasquali" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Tiziano Pasquali</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285879-3f0601f6e1-3/DewiPassarellaBenettonRugby.jpg" class="card-img-top" alt="Dewi Passarella" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Dewi Passarella</h5>
+            <p class="card-text">Outside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286113-7c4ad573a7-3/GiovanniPettinelliBenettonRugby.jpg" class="card-img-top" alt="Giovanni Pettinelli" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Giovanni Pettinelli</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285867-22abb66d6e-3/OnisiRataveBenettonRugby.jpg" class="card-img-top" alt="Onisi Ratave" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Onisi Ratave</h5>
+            <p class="card-text">Left Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286115-eb153675a5-3/JoaquinRieraBenettonRugby.jpg" class="card-img-top" alt="Joaquin Riera" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Joaquin Riera</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311328-103cd45543-3/SantiagoRuizBenettonRugby.jpg" class="card-img-top" alt="Santiago Ruiz" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Santiago Ruiz</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286111-ccd8f427ff-3/FedericoRuzzaBenettonRugby.jpg" class="card-img-top" alt="Federico Ruzza" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Federico Ruzza</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285861-7794f8d19c-3/ScottScraftonBenettonRugby.jpg" class="card-img-top" alt="Scott Scrafton" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Scott Scrafton</h5>
+            <p class="card-text">No 5 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286117-6d96637cbf-3/RhynoSmithBenettonRugby.jpg" class="card-img-top" alt="Rhyno Smith" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Rhyno Smith</h5>
+            <p class="card-text">Fullback</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311325-74a9a9ebdd-3/EliSnymanBenettonRugby.jpg" class="card-img-top" alt="Eli Snyman" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Eli Snyman</h5>
+            <p class="card-text">No 4 Lock</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/311326-30fa135327-3/MircoSpagnoloBenettonRugby.jpg" class="card-img-top" alt="Mirco Spagnolo" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Mirco Spagnolo</h5>
+            <p class="card-text">Loosehead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285863-548c4b63ad-3/HenryStowersBenettonRugby.jpg" class="card-img-top" alt="Henry Stowers" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Henry Stowers</h5>
+            <p class="card-text">Blindside Flanker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310856-3e563ed5d4-3/NahuelTetazChaparroBenettonRugby.jpg" class="card-img-top" alt="Nahuel Tetaz Chaparro" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Nahuel Tetaz Chaparro</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/298670-f1984932d2-3/JacobUmagaBenettonRugby.jpg" class="card-img-top" alt="Jacob Umaga" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Jacob Umaga</h5>
+            <p class="card-text">Fly Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310858-328e7e4a9d-3/AndyUrenBenettonRugby.jpg" class="card-img-top" alt="Andy Uren" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Andy Uren</h5>
+            <p class="card-text">Scrum Half</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285866-b1cdbc7ad4-3/MarcusWatsonBenettonRugby.jpg" class="card-img-top" alt="Marcus Watson" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marcus Watson</h5>
+            <p class="card-text">Right Wing</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286118-7280cb538a-3/FedericoZaniBenettonRugby.jpg" class="card-img-top" alt="Federico Zani" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Federico Zani</h5>
+            <p class="card-text">Hooker</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/285865-a2d9dffb36-3/MarcoZanonBenettonRugby.jpg" class="card-img-top" alt="Marco Zanon" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Marco Zanon</h5>
+            <p class="card-text">Inside Centre</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/310859-4ab1486710-3/GiosuZilocchiBenettonRugby.jpg" class="card-img-top" alt="Giosuè Zilocchi" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Giosuè Zilocchi</h5>
+            <p class="card-text">Tighthead Prop</p>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://www.ultimaterugby.com/images/entities/286114-1f3d2a741c-3/ManuelZulianiBenettonRugby.jpg" class="card-img-top" alt="Manuel Zuliani" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">Manuel Zuliani</h5>
+            <p class="card-text">Openside Flanker</p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+        <div id="content3" class="tab-pane">
+          <div class="timeline">
+            <div class="cont left-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Italian Powerhouse Since 1932</h2>
+                <p>Benetton Rugby, formerly known as Benetton Treviso, stands as an Italian rugby icon based in Treviso, Veneto. Founded in 1932, the club boasts an impressive history, winning 15 Italian national championships. Owned by the renowned Benetton clothing company since 1979, the team competes in the United Rugby Championship, European Rugby Challenge Cup, and European Champions Cup. Notable players like Alessandro Zanni and Leonardo Ghiraldini have emerged from Treviso, contributing to the Italian national team. The club's commitment to excellence extends to its women's team, the Red Panthers, clinching 16 national championships since 1982.
+
+                </p>
+                <span class="left-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont right-containter">
+              <img src="img/rugbyicon.png">
+              <div class="text-box">
+                <h2>Amateur Triumphs and Professional Dominance</h2>
+                <p>In the amateur era (1932–1995), Treviso secured multiple Italian premierships and cups. The transition to professionalism in 1995 marked a golden era, dominating the Italian league and clinching the championship ten times between 1997 and 2010. Benetton Treviso's European presence began in the inaugural 1995–96 Heineken Cup, with consistent participation since. The club's move to the Pro12 in 2010 elevated its competition level, facing teams from Ireland, Wales, and Scotland. Despite challenges in subsequent seasons, a strategic coaching shift in 2016/2017, led by Kieran Crowley, propelled Treviso to a commendable 10th place.
+
+                </p>
+                <span class="right-container-arrow"></span>
+              </div>
+            </div>
+            <div class="cont left-containter">
+                <img src="img/rugbyicon.png">
+                <div class="text-box">
+                  <h2>Evolution into Benetton Rugby</h2>
+                  <p>The 2017/2018 season brought a significant change, with the Pro14 introducing two South African teams and dividing into conferences. Benetton Rugby, as it was renamed, embraced this shift and showcased notable improvement, narrowly missing the European Rugby Champions Cup play-offs in 2017/2018. The club's commitment to the future is evident in the establishment of an Academy Under 23 and a territorial Academy Under 19 from the 2022/23 season, ensuring a steady influx of talent and a promising trajectory for Benetton Rugby.
+
+                  </p>
+                  <span class="left-container-arrow"></span>
+                </div>
+              </div>
+              
+          </div>
+        </div>
+        
+        
+  </div>
+
+  <script>
+    function toggleMenu() {
+            var menu = document.querySelector('.menu-links');
+            menu.classList.toggle('open');
+            var icon = document.querySelector('.hamburger-icon');
+            icon.classList.toggle('open');
+        }
+  </script>
+
+</body></html>
