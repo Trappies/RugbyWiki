@@ -24,7 +24,7 @@ RugbyWiki is a website dedicated to providing in-depth coverage of various rugby
 To get started with RugbyWiki locally, follow these steps:
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/RugbyWiki.git
+   git clone https://github.com/Trappies/RugbyWiki.git
    cd RugbyWiki
 2. Install dependencies:
    ```bash
@@ -41,4 +41,5 @@ To get started with RugbyWiki locally, follow these steps:
 - **Deployment:** Netlify.
 
 ## View Live Site
-
+   ```bash
+   rugbywiki.co.za
