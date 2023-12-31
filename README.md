@@ -41,5 +41,4 @@ To get started with RugbyWiki locally, follow these steps:
 - **Deployment:** Netlify.
 
 ## View Live Site
-   ```bash
-   rugbywiki.co.za
+   https://rugbywiki.co.za
